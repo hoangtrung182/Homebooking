@@ -2,6 +2,7 @@
 	include './View/header.php';
 	include './Models/pdo.php';
 	include './Models/Categories.php';
+	include './Models/Rooms.php';
 	
 	if(isset($_GET['goto'])) {
 		switch ($_GET['goto']) {
@@ -17,7 +18,7 @@
 				if (isset($_POST['addNewCate']) && $_POST['addNewCate']) {
 					$ten_lp = $_POST['tenloai'];
 					insertCate($ten_lp);
-					$thongbao = "Thêm mới danh mục thành công!";
+					$thongbao = "Thêm mới loại phòng thành công!";
 				}
 				$listCates = selectCates();
 				include './Categories/listCates.php';
@@ -43,15 +44,101 @@
 					$id = $_POST['id'];
 					$ten_lp = $_POST['tenloai'];
 					updateCate($id, $ten_lp);
-					$thongbao = "Cập nhật danh mục thành công!";
+					$thongbao = "Cập nhật loại phòng thành công!";
 				}
 				$listCates = selectCates();
 				include './Categories/listCates.php';
+				break;
+			// Rooms -- Phòng Ở
+			case 'listRooms' :
+				$listRooms = selectRooms();
+				include './Rooms/listRooms.php';
+				break;
+			case 'addRooms1': 
+				$listCates = selectCates();
+				include './Rooms/addRoom.php';
+				break;
+			case 'addRoom': 
+				if (isset($_POST['addNewRoom']) && $_POST['addNewRoom']) {
+					$ten_loai = $_POST['name'];
+					$gia = $_POST['price'];
+					$discount = $_POST['discount'];
+					$mota = $_POST['desc'];
+					$ma_loai = $_POST['maloai'];
+
+					$anh_dai_dien = isset($_FILES['avatar']) ? $_FILES['avatar'] : '';
+					$save_url = '';
+					if ($anh_dai_dien['size'] > 0 && $anh_dai_dien['size'] < 500000) {
+						$photo_folder = 'img/';
+						$photo_file = uniqid() . $anh_dai_dien['name'];
+
+						$file_se_luu = $anh_dai_dien['tmp_name'];
+						$url = $photo_folder . $photo_file;
+
+						if (move_uploaded_file($file_se_luu, $url)) {
+							$save_url = $url;
+						}
+					}
+
+					insertRoom($ten_loai, $gia, $discount, $save_url, $mota, $ma_loai);
+					$thongbao = "Thêm mới phong thành công !";
+				}
+				$cate = getOneItem($ma_loai);
+				$listRooms = selectRooms();
+				include './Rooms/listRooms.php';
+				break;
+			case 'deleteRoom': 
+				if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+					deleteRoom($_GET['id']);
+					$thongbao_delete = "Xóa thành công !!";
+				}
+
+				$listRooms = selectRooms();
+				include './Rooms/listRooms.php';
+				break;
+			case 'editRoom': 
+				if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+					$room = getOneRoom($_GET['id']);
+				}
+
+				$listCates = selectCates();
+				include './Rooms/updateRoom.php';
+				// include './Product/list.php';
+				break;
+			case 'editedRoom': 
+				if (isset($_POST['updateRoom']) && $_POST['updateRoom']) {
+					$id = $_POST['id'];
+					$ten_loai = $_POST['name'];
+					$gia = $_POST['price'];
+					$discount = $_POST['discount'];
+					$mota = $_POST['desc'];
+					$ma_loai = $_POST['maloai'];
+
+					$anh_dai_dien = isset($_FILES['avatar']) ? $_FILES['avatar'] : '';
+					$save_url = '';
+					if ($anh_dai_dien['size'] > 0 && $anh_dai_dien['size'] < 500000) {
+						$photo_folder = 'img/';
+						$photo_file = uniqid() . $anh_dai_dien['name'];
+
+						$file_se_luu = $anh_dai_dien['tmp_name'];
+						$url = $photo_folder . $photo_file;
+
+						if (move_uploaded_file($file_se_luu, $url)) {
+							$save_url = $url;
+						}
+					}
+					updateRoom($id, $ten_loai, $gia, $discount, $save_url, $mota, $ma_loai);
+					$thongbao_update = "Cập nhật lại phòng thành công!";
+				}
+
+				$listRooms = selectRooms();
+				include './Rooms/listRooms.php';
 				break;
 			default:
 				# code...
 		}
 	}else {
+		$listRooms = selectRooms();
 		include './View/body.php';
 	}
 

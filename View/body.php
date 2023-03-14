@@ -85,49 +85,17 @@
                                         </div>
                                     </div>
                                     <div class="content-dm">
-                                        <div class="dm">
-                                            <img src="./img/image10.png" alt="">
-                                            <h3>Căn hộ sân bay Sabay - The Connect (Sabay Aiport Apartment - The
-                                                Connect)</h3>
-                                            <em>Giá mỗi đêm rẻ từ</em>
-                                            <p>VND 1.034.254</p>
-                                        </div>
-                                        <div class="dm">
-                                            <img src="./img/image10.png" alt="">
-                                            <h3>Căn hộ sân bay Sabay - The Connect (Sabay Aiport Apartment - The
-                                                Connect)</h3>
-                                            <em>Giá mỗi đêm rẻ từ</em>
-                                            <p>VND 1.034.254</p>
-                                        </div>
-                                        <div class="dm">
-                                            <img src="./img/image10.png" alt="">
-                                            <h3>Căn hộ sân bay Sabay - The Connect (Sabay Aiport Apartment - The
-                                                Connect)</h3>
-                                            <em>Giá mỗi đêm rẻ từ</em>
-                                            <p>VND 1.034.254</p>
-                                        </div>
-                                    </div>
-                                    <div class="content-dm">
-                                        <div class="dm">
-                                            <img src="./img/image10.png" alt="">
-                                            <h3>Căn hộ sân bay Sabay - The Connect (Sabay Aiport Apartment - The
-                                                Connect)</h3>
-                                            <em>Giá mỗi đêm rẻ từ</em>
-                                            <p>VND 1.034.254</p>
-                                        </div>
-                                        <div class="dm">
-                                            <img src="./img/image10.png" alt="">
-                                            <h3>Căn hộ sân bay Sabay - The Connect (Sabay Aiport Apartment - The
-                                                Connect)</h3>
-                                            <em>Giá mỗi đêm rẻ từ</em>
-                                            <p>VND 1.034.254</p>
-                                        </div>
-                                        <div class="dm">
-                                            <img src="./img/image10.png" alt="">
-                                            <h3>Căn hộ sân bay Sabay - The Connect (Sabay Aiport Apartment - The
-                                                Connect)</h3>
-                                            <em>Giá mỗi đêm rẻ từ</em>
-                                            <p>VND 1.034.254</p>
-                                        </div>
+                                        <?php 
+                                            foreach ($listRooms as $phong) {
+                                                extract($phong);
+                                             ?>
+                                                <div class="dm">
+                                                    <img src="<?= $avatar ?>" alt="">
+                                                    <h3><?= $ten_phong ?></h3>
+                                                    <em>Giá mỗi đêm rẻ từ</em>
+                                                    <p><?= number_format($gia,0,',','.')?> VND</p>
+                                                </div>
+                                            <?php }
+                                         ?>
                                     </div>
                                 </div>

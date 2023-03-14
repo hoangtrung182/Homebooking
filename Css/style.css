@@ -379,12 +379,14 @@
 }
 
 .content-dm {
-    display: flex;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
 }
 
 .content-dm img {
-    width: 100%;
+    height: 210px;
+    width: 300px;
 }
 
 .content-dm h3 {
@@ -408,4 +410,13 @@
     margin: 100px;
     text-align: center;
     color: #fff;
+}
+
+
+
+/*========Body =========*/
+.main-menu {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 20px;
 }
