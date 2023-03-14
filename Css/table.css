@@ -1,0 +1,68 @@
+
+/*======== Table ========*/
+
+
+table {
+    border: 0.5px solid #f3eeee;
+    width: 98%;
+    margin: auto;
+}
+
+.row1 {
+    color: #000;
+    font-size: 20px;
+    text-align: center;
+    /*height: 100px;*/
+}
+
+
+.type {
+    padding: 10px 10px;
+    background-color: rgb(227 227 227);
+}
+
+.input_submit {
+    margin-left: 15px;
+}
+
+.input_submit a {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+.notify_success {
+    height: 40px;
+    width: 35%;
+    background-color: #40b52be0;
+    color: #fff;
+    line-height: 40px;
+    padding-left: 14px;
+    border-radius: 3px;
+}
+
+
+.input_second {
+    height: 40px;
+    width: 80%;
+    border: none;
+    background-color: transparent;
+    border: 1px solid black;
+    margin-left: 30px;
+    font-size: 20px;
+    padding-left: 10px;
+    border-radius: 4px;
+    outline: none;
+}
+
+.form_title {
+    font-size: 32px;
+    color: #000;
+    text-align: center;
+}
+.form_label {
+    font-size: 26px;
+    color: #000; 
+    margin: 20px 30px;
+}

@@ -1,0 +1,49 @@
+.btn {
+	height: 31px;
+	width: 100px;
+	color: #fff;
+	background-color: #ff6b02;
+	border: none;
+	border-radius: 2px;
+	cursor: pointer;
+	margin: 15px;
+}
+
+.btn:hover {
+	opacity: .5;
+}
+
+.btn a {
+	color: #fff;
+	text-decoration: none;
+}
+
+
+.btn_delete {
+	background-color: red;
+	color: white;
+	/* border: none; */
+	padding: 5px 10px;
+	border-radius: 5px;
+	margin: auto;
+	border: 1px solid #ddd;
+}
+
+
+.btn_edit {
+	padding: 5px 15px;
+	margin: auto;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	color: white;
+	/* border: none; */
+	padding: 5px 10px;
+	border-radius: 5px;
+	margin: auto;
+	border: 1px solid #ddd;
+}
+
+.button {
+	/*margin-left: 30px;*/
+	margin: 20px 30px;
+}
