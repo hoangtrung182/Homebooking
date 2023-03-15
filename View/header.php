@@ -10,12 +10,11 @@
     <link rel="stylesheet" href="./Css/styles.css">
     <title>Trang Chủ | Agoda</title>
 </head>
-
 <body>
     <div class="container">
         <header class="header">
             <div class="logo">
-                <a href="index.php"><img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt=""></a>
+                <a href="./"><img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt=""></a>
             </div>
             <div class="menu">
                 <ul>

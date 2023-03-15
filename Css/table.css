@@ -71,3 +71,11 @@ table {
     width: 120px;
 }
 
+
+/*========Form ==========*/
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -23,24 +23,31 @@
                 <button class="box-4">Lưu trú sửa dụng trong ngày</button>
             </div>
         </div>
-         <form action="">
-            <input class="Email" type="email" placeholder="Enter Your Email Id">
-
-            <input class="date" type="date" id="start" name="trip-start" value="2023-03-22"
-                min="2023-01-01" max="2023-12-31">
-            <input class="date-2" type="date" id="start" name="trip-start" value="2023-03-13"
-                min="2023-01-01" max="2023-12-31">
-            <select class="option" name="" id="">
-                <option value="">
-                    <ion-icon name="people-outline"></ion-icon> Vui Lòng Chọn Phòng !!
-                </option>
-                <option value="">2 Phòng Lớn</option>
-                <option value="">Cặp Đôi</option>
-                <option value="">Phòng Gia Đình</option>
-                <option value="">Phòng Đơn</option>
-            </select>
-            <button class="tk">TÌM KIẾM</button>
-        </form>
+        <div class="form-container">
+             <form action="index.php?search=cate" method="post">
+                <label class="form_label" for="">Tìm kiếm theo loại phòng</label>
+                <select name="keyw" id="" class="input_third">
+                    <option value="0">Chọn loại phòng</option>
+                    <?php foreach ($listCates as $loaiphong) {
+                        extract($loaiphong);
+                         ?>
+                        <option value="<?= $ma_lp ?>">
+                            <?= $ten_lp ?>
+                        </option>
+                    <?php } ?>
+                </select><br>
+                <input type="submit" class="tk" value="TÌM KIẾM" name='search'>
+            </form>
+            <form action="index.php?search=price">
+                <label class="form_label" for="">Giá tiền</label>                
+                <select name="price_chose" id="" class="input_third">
+                    <option value="" selected>Sắp xếp theo</option>
+                    <option value="1">Giá từ cao đến thấp</option>
+                    <option value="2">Giá từ thấp đến cao</option>
+                </select><br>
+                <input type="submit" class="tk" value="TÌM KIẾM" name='search'>
+            </form>
+        </div>
     </div>
 </div>
 <section class="location-container">

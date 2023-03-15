@@ -23,18 +23,53 @@ function selectRooms() {
 	return $listRooms;
 }
 
-function select_items_search($keyw, $ma_loai)
-{
-	$sql = "SELECT * FROM hanghoa  WHERE 1 ";
+function selectSearchRooms($keyw, $ma_lp) {
+	$sql = "SELECT * FROM phong  WHERE 1 ";
 	if ($keyw != "") {
-		$sql .= " AND ten_hanghoa LIKE '%" . $keyw . "%'";
+		$sql .= " AND ten_phong LIKE '%" . $keyw . "%'";
 	}
-	if ($ma_loai > 0) {
-		$sql .= " AND ma_loai='" . $ma_loai . "'";
+	if ($ma_lp > 0) {
+		$sql .= " AND ma_lp='" . $ma_lp . "'";
 	}
-	$sql .= " order by ten_hanghoa desc";
-	$listItems = pdo_query($sql);
-	return $listItems;
+	$sql .= " order by ten_phong desc";
+	$listRoomsSearch = pdo_query($sql);
+	return $listRoomsSearch;
+}
+
+function roomsFiltered($ma_lp) {
+	$sql = "SELECT * FROM phong WHERE ma_lp =" . $ma_lp;
+	$listFiltered = pdo_query($sql);
+	return $listFiltered;
+}
+
+function roomsByPrice($value) {
+	if($value === '1') {
+		$sql = "SELECT * FROM phong order by gia desc";
+		$listRoomsByPrice = pdo_query($sql);
+		return $listRoomsByPrice;
+	}
+
+	if($value === '2') {
+		$sql = "SELECT * FROM phong order by gia asc";
+		$listRoomsByPrice = pdo_query($sql);
+		return $listRoomsByPrice;	
+	}
+	return $value;
+}
+
+function filteredBoth($ma_lp, $value) {
+	if($value === '1') {
+		$sql = "SELECT * FROM phong WHERE ma_lp = '$ma_lp'  AND order by gia desc";
+		$filteredBoth = pdo_query($sql);
+		return $filteredBoth;
+	}
+
+	if($value === '2') {
+		$sql = "SELECT * FROM phong WHERE ma_lp = '$ma_lp' AND order by gia asc";
+		$filteredBoth = pdo_query($sql);
+		return $filteredBoth;
+	}
+	return;
 }
 
 

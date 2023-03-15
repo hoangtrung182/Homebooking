@@ -130,16 +130,40 @@
 					updateRoom($id, $ten_loai, $gia, $discount, $save_url, $mota, $ma_loai);
 					$thongbao_update = "Cập nhật lại phòng thành công!";
 				}
-
 				$listRooms = selectRooms();
 				include './Rooms/listRooms.php';
 				break;
 			default:
 				# code...
 		}
+	}else if(isset($_GET['search'])) {
+		switch ($_GET['search']) {
+			case 'cate':
+				$roomsFilter = isset($_POST['keyw']) ? $_POST['keyw'] : '';
+				$roomsByPrice = isset($_POST['price_chose']) ? $_POST['price_chose'] : '';
+
+				// $listRoomsByPrice = roomsByPrice($roomsByPrice);
+
+				$filteredBoth = filteredBoth($roomsFilter, $roomsByPrice);
+				// $listFiltered = roomsFiltered($roomsFilter);
+				$listCates = selectCates();
+				include './View/roomsSearch.php';
+				break;
+			case 'price' :
+				break;
+			default:
+				# code...
+				break;
+		}
 	}else {
+		$listCates = selectCates();
 		$listRooms = selectRooms();
 		include './View/body.php';
 	}
 
 	include './View/footer.php';
+
+
+
+
+

@@ -452,3 +452,18 @@
 
 
 /*========Body =========*/
+
+
+
+.input_third {
+    height: 40px;
+    width: 50%;
+    border: none;
+    background-color: transparent;
+    border: 1px solid black;
+    margin-left: 30px;
+    font-size: 20px;
+    padding-left: 10px;
+    border-radius: 4px;
+    outline: none;
+}

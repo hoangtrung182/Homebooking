@@ -31,7 +31,7 @@ function getNameItem($id) {
 		$sql = "SELECT * FROM loaiphong WHERE ma_lp =" . $id;
 		$dm = pdo_query_one($sql);
 		extract($dm);
-		return $ten_loai;
+		return $ten_lp;
 	}
 }
 
