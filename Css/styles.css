@@ -8,7 +8,6 @@
     background-color: rgb(246, 249, 249);
     max-width: 1200px;
     margin: 0 auto;
-
 }
 
 .header {
@@ -132,6 +131,7 @@
     background-image: url(../img/1.jpg);
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
+    position: relative;
 }
 
 .title-h1 h1 {
@@ -149,21 +149,23 @@
     color: #fff;
 }
 
-.box {
-    width: 1000px;
-    height: 400px;
-    background: #fff;
-    margin-left: 100px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75)
-}
-
 
 .box-button {
     padding: 30px 0;
     display: flex;
     margin-left: 30px;
 
+}
+
+.box {
+    position: absolute;
+    top: 30%;
+    width: 1000px;
+    height: 400px;
+    background-color: #fff;
+     margin-left: 100px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
 }
 
 
@@ -342,6 +344,14 @@
     width: 100%;
 }
 
+/*==========Location===========*/
+.location-container {
+    margin-top: 200px;
+}
+.location {
+    margin-top: 60px;
+}
+
 .location-1 {
     margin: 30px 0;
 }
@@ -357,8 +367,7 @@
     display: flex;
     grid-gap: 30px;
     justify-content: space-between;
-    margin: 30px 0;
-    
+    margin: 30px 20px;
 }
 
 
@@ -378,27 +387,48 @@
     text-align: center;
 }
 
-.content-dm {
+
+/*=============List rooms Main============*/
+.list-rooms {
+    margin-top: 60px;
+}
+
+.rooms-title h2 {
+    text-align: center;
+    font-size: 36px;
+    margin: 30px 0;
+    color: #25aae1;
+}
+.row-rooms {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
 }
 
-.content-dm img {
-    height: 210px;
-    width: 300px;
+.room-item {
+    text-align: center;
+}
+.room-info {
+    text-align: left;
+    margin-left: 40px;
 }
 
-.content-dm h3 {
+.room-item img {
+    height: 210px;
+    width: 300px;
+    border-radius: 3px;
+}
+
+.room-item h3 {
     margin: 10px 0;
     font-size: 20px;
     color: black;
 }
-.content-dm p{
+.room-item p{
     color: #df2629;
     font-size: 16px;
 }
-.content-dm em{
+.room-item em{
     color: #5a4f4f;
 }
 .footer{

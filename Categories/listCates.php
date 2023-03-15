@@ -8,11 +8,9 @@
 <h2 class="form_title">Danh sách loại hàng</h2>
 <table border="1" cellspacing="0">
 	<tr class="row">
-		<!-- <th class="type"></th> -->
 		<th class="type">Mã phòng</th>
 		<th class="type">Tên loại phòng</th>
 		<th class="type" colspan="2">Thao tác</th>
-		<!-- <th class="type"></th> -->
 	</tr>
 	<?php
 		foreach($listCates as $loaiphong) {
