@@ -49,7 +49,7 @@
     </div>
     <div class="location">
         <div class="location-1">
-            <p>các địa điểm thu hút</p>
+            <p>các địa điểm thu hút ở việt nam</p>
         </div>
         <div class="location-content">
             <div class="location-img">
@@ -77,23 +77,25 @@
 </section>
 
 <section class="list-rooms">
-    <div class="rooms-title">
-        <h2 class="">Danh sách phòng có sẵn</h2>
-    </div>
-    <div class="row-rooms">
-        <?php 
-            foreach ($listRooms as $phong) {
-                extract($phong);
-             ?>
-                <div class="room-item">
-                    <img src="<?= $avatar ?>" alt="">
-                    <div class="room-info">
-                        <h3><?= $ten_phong ?></h3>
-                        <em>Giá mỗi đêm rẻ từ</em>
-                        <p><?= number_format($gia,0,',','.')?> VND</p>
+    <div class="sub_container">
+        <div class="rooms-title">
+            <h2 class="">Những phòng tốt gợi ý cho bạn</h2>
+        </div>
+        <div class="row-rooms">
+            <?php 
+                foreach ($listRooms as $phong) {
+                    extract($phong);
+                 ?>
+                    <div class="room-item">
+                        <img src="<?= $avatar ?>" alt="">
+                        <div class="room-info">
+                            <h3><?= $ten_phong ?></h3>
+                            <em>Giá mỗi đêm rẻ từ</em>
+                            <p><?= number_format($gia,0,',','.')?> VND</p>
+                        </div>
                     </div>
-                </div>
-            <?php }
-         ?>
+                <?php }
+             ?>
+        </div>
     </div>
-</div>
+</section>

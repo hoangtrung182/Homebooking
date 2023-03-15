@@ -142,4 +142,4 @@
 		include './View/body.php';
 	}
 
-	// include './View/footer.php';
+	include './View/footer.php';

@@ -6,7 +6,8 @@
 
 .container {
     background-color: rgb(246, 249, 249);
-    max-width: 1200px;
+    width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -160,10 +161,10 @@
 .box {
     position: absolute;
     top: 30%;
+    left: 100px;
     width: 1000px;
     height: 400px;
     background-color: #fff;
-     margin-left: 100px;
     border-radius: 10px;
     box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
 }
@@ -347,9 +348,8 @@
 /*==========Location===========*/
 .location-container {
     margin-top: 200px;
-}
-.location {
-    margin-top: 60px;
+    padding: 45px 0;
+    background-color: #e1d0d0;
 }
 
 .location-1 {
@@ -357,8 +357,8 @@
 }
 
 .location-1 p {
-
-    font-size: 20px;
+    font-size: 32px;
+    font-weight: bold;
     text-align: center;
     text-transform: uppercase;
 }
@@ -389,6 +389,13 @@
 
 
 /*=============List rooms Main============*/
+.sub_container {
+    width: 1000px;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .list-rooms {
     margin-top: 60px;
 }
@@ -401,21 +408,21 @@
 }
 .row-rooms {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
 }
-
 .room-item {
     text-align: center;
+    margin-bottom: 10px;
 }
 .room-info {
     text-align: left;
-    margin-left: 40px;
+    margin-left: 20px;
 }
 
 .room-item img {
     height: 210px;
-    width: 300px;
+    width: 230px;
     border-radius: 3px;
 }
 
@@ -445,8 +452,3 @@
 
 
 /*========Body =========*/
-.main-menu {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-gap: 20px;
-}
