@@ -52,6 +52,7 @@
 			// Rooms -- Phòng Ở
 			case 'listRooms' :
 				$listRooms = selectRooms();
+				$listCates = selectCates();
 				include './Rooms/listRooms.php';
 				break;
 			case 'addRooms1': 
@@ -140,16 +141,29 @@
 		switch ($_GET['search']) {
 			case 'cate':
 				$roomsFilter = isset($_POST['keyw']) ? $_POST['keyw'] : '';
-				$roomsByPrice = isset($_POST['price_chose']) ? $_POST['price_chose'] : '';
 
-				// $listRoomsByPrice = roomsByPrice($roomsByPrice);
-
-				$filteredBoth = filteredBoth($roomsFilter, $roomsByPrice);
-				// $listFiltered = roomsFiltered($roomsFilter);
+				$listFiltered = roomsFiltered($roomsFilter);
 				$listCates = selectCates();
 				include './View/roomsSearch.php';
 				break;
 			case 'price' :
+				$roomsByPrice = isset($_POST['price_chose']) ? $_POST['price_chose'] : '';
+				$listRoomsByPrice = roomsByPrice($roomsByPrice);
+				$listCates = selectCates();
+				include './View/roomsPrice.php';
+				break;
+			case 'rooms':
+				if (isset($_POST['searchRooms']) && $_POST['searchRooms']) {
+					$keyw = $_POST['keyw'];
+					$ma_lp = $_POST['ma_lp'];
+				} else {
+					$keyw = "";
+					$ma_lp = 0;
+				}
+
+				$listRooms = select_items_search($keyw, $ma_lp);
+				$listCates = selectCates();
+				include './Rooms/listRooms.php';
 				break;
 			default:
 				# code...

@@ -36,6 +36,22 @@ function selectSearchRooms($keyw, $ma_lp) {
 	return $listRoomsSearch;
 }
 
+
+function select_items_search($keyw, $ma_loai)
+{
+	$sql = "SELECT * FROM phong  WHERE 1 ";
+	if ($keyw != "") {
+		$sql .= " AND ten_phong LIKE '%" . $keyw . "%'";
+	}
+	if ($ma_loai > 0) {
+		$sql .= " AND ma_lp='" . $ma_loai . "'";
+	}
+	$sql .= " order by ten_phong desc";
+	$listItems = pdo_query($sql);
+	return $listItems;
+}
+
+
 function roomsFiltered($ma_lp) {
 	$sql = "SELECT * FROM phong WHERE ma_lp =" . $ma_lp;
 	$listFiltered = pdo_query($sql);

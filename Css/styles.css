@@ -31,11 +31,11 @@
 }
 
 .menu ul li a {
-
     color: rgb(3, 1, 1);
     text-transform: uppercase;
     padding: 10px 10px;
     text-decoration: none;
+    font-size: 22px;
 }
 
 .menu ul li a:hover {
@@ -163,7 +163,7 @@
     top: 30%;
     left: 100px;
     width: 1000px;
-    height: 400px;
+    height: 415px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
@@ -292,12 +292,11 @@
 }
 
 .tk {
-    width: 600px;
+    width: 200px;
     font-size: 15px;
     font-weight: 200px;
     color: #fff;
     cursor: pointer;
-    margin: 70px;
     height: 55px;
     border-radius: 3px;
     border: #fff;
@@ -306,7 +305,7 @@
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
-    margin-left: 180px;
+    margin: 70px 150px;
 }
 
 .tk:hover {
@@ -397,7 +396,7 @@
 }
 
 .list-rooms {
-    margin-top: 60px;
+    margin: 150px 0;
 }
 
 .rooms-title h2 {
@@ -417,7 +416,7 @@
 }
 .room-info {
     text-align: left;
-    margin-left: 20px;
+    margin-left: 5px;
 }
 
 .room-item img {
@@ -426,14 +425,14 @@
     border-radius: 3px;
 }
 
-.room-item h3 {
+.room-info h3 {
     margin: 10px 0;
-    font-size: 20px;
+    font-size: 22px;
     color: black;
 }
 .room-item p{
     color: #df2629;
-    font-size: 16px;
+    font-size: 18px;
 }
 .room-item em{
     color: #5a4f4f;
@@ -453,17 +452,10 @@
 
 /*========Body =========*/
 
-
-
-.input_third {
-    height: 40px;
-    width: 50%;
-    border: none;
-    background-color: transparent;
-    border: 1px solid black;
-    margin-left: 30px;
-    font-size: 20px;
-    padding-left: 10px;
-    border-radius: 4px;
-    outline: none;
+.form-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    align-items: center;
 }
+

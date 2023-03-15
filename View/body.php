@@ -24,8 +24,8 @@
             </div>
         </div>
         <div class="form-container">
-             <form action="index.php?search=cate" method="post">
-                <label class="form_label" for="">Tìm kiếm theo loại phòng</label>
+             <form action="index.php?search=cate" method="post" class="form_search">
+                <label class="form_label" for="">Tìm kiếm theo loại phòng</label><br>
                 <select name="keyw" id="" class="input_third">
                     <option value="0">Chọn loại phòng</option>
                     <?php foreach ($listCates as $loaiphong) {
@@ -38,10 +38,10 @@
                 </select><br>
                 <input type="submit" class="tk" value="TÌM KIẾM" name='search'>
             </form>
-            <form action="index.php?search=price">
-                <label class="form_label" for="">Giá tiền</label>                
+            <form action="index.php?search=price" method="post">
+                <label class="form_label" for="">Tìm kiếm theo giá cả</label><br>
                 <select name="price_chose" id="" class="input_third">
-                    <option value="" selected>Sắp xếp theo</option>
+                    <option value="" selected>Sắp xếp giá theo</option>
                     <option value="1">Giá từ cao đến thấp</option>
                     <option value="2">Giá từ thấp đến cao</option>
                 </select><br>

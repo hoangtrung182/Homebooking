@@ -5,7 +5,7 @@
 <p class=""><?= $thongbao ?></p>
 <p class=""><?= $thongbao_delete ?></p>
 
-<h2 class="form_title">Danh sách loại hàng</h2>
+<h2 class="form_title">Danh sách loại phòng</h2>
 <table border="1" cellspacing="0">
 	<tr class="row">
 		<th class="type">Mã phòng</th>

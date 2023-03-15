@@ -42,13 +42,23 @@ table {
     border-radius: 3px;
 }
 
+.input_one {
+    height: 30px;
+    width: 200px;
+    border: 1px solid #40b52be0;
+    padding-left: 10px;
+    border-radius: 4px;
+    outline: none;
+}
+
+
 
 .input_second {
     height: 40px;
     width: 80%;
     border: none;
     background-color: transparent;
-    border: 1px solid black;
+    border: 1px solid #40b52be0;
     margin-left: 30px;
     font-size: 20px;
     padding-left: 10px;
@@ -56,15 +66,31 @@ table {
     outline: none;
 }
 
+
+.input_third {
+    height: 40px;
+    width: 75%;
+    font-size: 18px;
+    border: none;
+    background-color: transparent;
+    border: 1px solid #40b52be0;
+    margin: 15px 60px;
+    padding-left: 10px;
+    border-radius: 4px;
+    outline: none;
+}
+
+
 .form_title {
     font-size: 32px;
     color: #000;
     text-align: center;
+    margin: 30px;
 }
 .form_label {
     font-size: 26px;
     color: #000; 
-    margin: 20px 30px;
+    margin: 30px 56px;
 }
 
 .thaotac {
@@ -74,8 +100,6 @@ table {
 
 /*========Form ==========*/
 
-.form-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.form_search {
+    border-right: 1px solid #000;
 }

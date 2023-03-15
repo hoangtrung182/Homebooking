@@ -1,10 +1,10 @@
 
 <body>
-	<h2 class="form_title">Danh sách sản phẩm</h2>
+	<h2 class="form_title">Danh sách căn phòng</h2>
 	<p class="form_label">Tìm kiếm sản phẩm</p>
-	<form action="index.php?target=listItems" method="post">
-		<input type="text" name="keyw" id="filter-input" class="" placeholder="Nhập tên sản phẩm.....">
-		<select name="maloai" id="" class="select-product">
+	<form action="index.php?search=rooms" method="post">
+		<input type="text" name="keyw" id="filter-input" class="input_one" placeholder="Nhập tên sản phẩm.....">
+		<select name="ma_lp" id="" class="input_one">
 			<option value="0" selected>Tất cả</option>
 			<?php foreach ($listCates as $loaiphong) {
 				extract($loaiphong); ?>
@@ -13,7 +13,7 @@
 				</option>
 			<?php } ?>
 		</select>
-		<input type="submit" id="btn-submit_product" class="btn" value="Tìm Kiếm" name="listok">
+		<input type="submit" id="btn-submit_product" class="btn" value="Tìm Kiếm" name="searchRooms">
 	</form>
 	<?php
 		$thongbao = isset($thongbao) ? $thongbao : '';
