@@ -134,6 +134,8 @@
 				$listRooms = selectRooms();
 				include './Rooms/listRooms.php';
 				break;
+				// Tin tuc
+			
 			default:
 				# code...
 		}
