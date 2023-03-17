@@ -23,31 +23,30 @@
                     <button class="box-4">Lưu trú sửa dụng trong ngày</button>
                 </div>
             </div>
-             <div class="form-container">
-                 <form action="index.php?search=cate" method="post" class="form_search">
-                    <label class="form_label" for="">Tìm kiếm theo loại phòng</label><br>
-                    <select name="keyw" id="" class="input_third">
-                        <option value="0">Chọn loại phòng</option>
-                        <?php foreach ($listCates as $loaiphong) {
-                            extract($loaiphong);
-                             ?>
-                            <option value="<?= $ma_lp ?>">
-                                <?= $ten_lp ?>
-                            </option>
-                        <?php } ?>
-                    </select><br>
-                    <input type="submit" class="tk" value="TÌM KIẾM" name='search'>
-                </form>
-                <form action="index.php?search=price" method="post">
-                    <label class="form_label" for="">Tìm kiếm theo giá</label><br>
-                    <select name="price_chose" id="" class="input_third">
-                        <option value="" selected>Sắp xếp giá theo</option>
-                        <option value="1">Giá từ cao đến thấp</option>
-                        <option value="2">Giá từ thấp đến cao</option>
-                    </select><br>
-                    <input type="submit" class="tk" value="TÌM KIẾM" name='search'>
-                </form>
-            </div>
+                <!-- Form -->
+            <form action="search.php?" method="get" class="form_search">
+                <label class="form_label" for="">Tìm kiếm theo loại phòng</label><br>
+                <select name="loaiphong" id="" class="input_third">
+                    <option value="">Chọn loại phòng</option>
+                    <?php foreach ($listCates as $loaiphong) {
+                        extract($loaiphong);
+                         ?>
+                        <option value="<?= $ma_lp ?>">
+                            <?= $ten_lp ?>
+                        </option>
+                    <?php } ?>
+                </select><br>
+                <label class="form_label" for="">Tìm kiếm theo giá cả</label><br>
+                <select name="price_chose" id="" class="input_third">
+                    <option value="" selected>Sắp xếp giá theo</option>
+                    <option value="desc">Giá từ cao đến thấp</option>
+                    <option value="asc">Giá từ thấp đến cao</option>
+                </select><br>
+                <div class="">
+                    <button class="tk">Tìm Kiếm</button>
+                </div>
+                <!-- <button class="tk">Tìm Kiếm</button> -->
+            </form>
         </div>
     </div>
     <section class="list-rooms">
@@ -57,7 +56,7 @@
             </div>
             <div class="row-rooms">
                 <?php 
-                    foreach ($listFiltered as $phong) {
+                    foreach ($BothFiltered as $phong) {
                         extract($phong);
                      ?>
                         <div class="room-item">

@@ -135,25 +135,11 @@
 				include './Rooms/listRooms.php';
 				break;
 				// Tin tuc
-			
 			default:
 				# code...
 		}
 	}else if(isset($_GET['search'])) {
 		switch ($_GET['search']) {
-			case 'cate':
-				$roomsFilter = isset($_POST['keyw']) ? $_POST['keyw'] : '';
-
-				$listFiltered = roomsFiltered($roomsFilter);
-				$listCates = selectCates();
-				include './View/roomsSearch.php';
-				break;
-			case 'price' :
-				$roomsByPrice = isset($_POST['price_chose']) ? $_POST['price_chose'] : '';
-				$listRoomsByPrice = roomsByPrice($roomsByPrice);
-				$listCates = selectCates();
-				include './View/roomsPrice.php';
-				break;
 			case 'rooms':
 				if (isset($_POST['searchRooms']) && $_POST['searchRooms']) {
 					$keyw = $_POST['keyw'];
