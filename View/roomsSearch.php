@@ -9,6 +9,7 @@
             <a href=""><button class="btn1">learnmore</button></a>
         </div>
     </nav>
+<!-- Banner & Form tìm kiếm -->
     <div class="background">
         <div class="title-h1">
             <h1>KHÁCH SẠN, KHU NGHỈ DƯỠNG, KÍ TÚC XÁ & HƠN THẾ NỮA</h1>
@@ -23,7 +24,7 @@
                     <button class="box-4">Lưu trú sửa dụng trong ngày</button>
                 </div>
             </div>
-                <!-- Form -->
+            <!-- Form -->
             <form action="search.php?" method="get" class="form_search">
                 <label class="form_label" for="">Tìm kiếm theo loại phòng</label><br>
                 <select name="loaiphong" id="" class="input_third">
@@ -45,10 +46,10 @@
                 <div class="">
                     <button class="tk">Tìm Kiếm</button>
                 </div>
-                <!-- <button class="tk">Tìm Kiếm</button> -->
             </form>
         </div>
     </div>
+<!-- Filter Products -->
     <section class="list-rooms">
         <div class="sub_container">
             <div class="">

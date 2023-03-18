@@ -6,16 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Css/table.css">
-    <link rel="stylesheet" href="./Css/button.css">
-    <!-- <link rel="stylesheet" href="./Css/styles.css"> -->
-    <link rel="stylesheet" href="./Css/Styless.css">
+    <link rel="stylesheet" href="./Css/button.css"> 
+    <link rel="stylesheet" href="./Css/style.css">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Trang Chủ | Agoda</title>
 </head>
 <body>
     <div class="container">
         <header class="header">
             <div class="logo">
-                <a href="./"><img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt=""></a>
+                <a href="./">
+                    <img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt="">
+                </a>
             </div>
             <div class="menu">
                 <ul>

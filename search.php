@@ -3,7 +3,9 @@
 	include './Models/pdo.php';
 	include './Models/Categories.php';
 	include './Models/Rooms.php';
-	
+
+// Filter by form
+
 	$id = isset($_GET['loaiphong']) ? $_GET['loaiphong'] : '';
 	$Price = isset($_GET['price_chose']) ? $_GET['price_chose'] : '';
 

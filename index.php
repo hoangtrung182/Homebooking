@@ -140,6 +140,7 @@
 		}
 	}else if(isset($_GET['search'])) {
 		switch ($_GET['search']) {
+			// Filter in Rooms
 			case 'rooms':
 				if (isset($_POST['searchRooms']) && $_POST['searchRooms']) {
 					$keyw = $_POST['keyw'];
