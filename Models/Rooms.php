@@ -39,7 +39,7 @@ function select_items_search($keyw, $ma_loai)
 }
 
 
-function bothFilter($id, $price) {
+function bothFilter($id, $price, $min, $max) {
 	if(!empty($id)) {
 		if(!empty($price)) {
 			if($price === 'desc') {
@@ -59,8 +59,40 @@ function bothFilter($id, $price) {
 			}else {
 				$sql = "SELECT * FROM phong order by gia asc ";
 			}
+		}else if(!empty($min)) {
+			if(!empty($max)) {
+				$sql = "SELECT * FROM phong WHERE gia >= '$min' AND gia <= '$max'";
+			}else {
+				$sql = "SELECT * FROM phong WHERE gia >= '$min'";
+			}
+		}else{
+			if(!empty($max)) {
+				$sql = "SELECT * FROM phong WHERE gia <= '$max'";
+			}else {
+				$sql = "SELECT * FROM phong";
+			}
 		}
 	}
+
+	// if(!empty($min)) {
+	// 	if(!empty($max)) {
+	// 		$sql = "SELECT * FROM phong WHERE gia BETWEEN '$min' AND '$max'";
+	// 	}else {
+	// 		$sql = "SELECT * FROM phong WHERE gia >= '$min'";
+	// 	}
+	// }else {
+	// 	if(!empty($max)) {
+	// 		$sql = "SELECT * FROM phong WHERE gia <= '$max'";
+	// 	}else {
+	// 		$sql = "SELECT * FROM phong";
+	// 	}
+	// }
+
+	// $sql = "SELECT * FROM phong WHERE gia BETWEEN '$min' AND '$max'";
+	// $sql = "SELECT * FROM phong WHERE gia <= '$max'";
+
+
+
 
 	$Filter = pdo_query($sql);
 	return $Filter;
@@ -89,7 +121,8 @@ function load_products($id, $iddm)
 function updateRoom($id, $ten_sp, $gia_sp, $giam_gia, $image, $mota, $ma_loai)
 {
 	$sql = "UPDATE phong SET ten_phong ='$ten_sp', gia = '$gia_sp', giam_gia = '$giam_gia',
-		 avatar = '$image', mo_ta = '$mota', ma_lp = '$ma_loai'  
+		 avata
+?>r = '$image', mo_ta = '$mota', ma_lp = '$ma_loai'  
 		 WHERE ma_phong =" . $id;
 	pdo_execute($sql);
 }
@@ -103,5 +136,3 @@ function updateRoom($id, $ten_sp, $gia_sp, $giam_gia, $image, $mota, $ma_loai)
 
 
 
-
-?>

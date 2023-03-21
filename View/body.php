@@ -42,7 +42,11 @@
                 <option value="" selected>Sắp xếp giá theo</option>
                 <option value="desc">Giá từ cao đến thấp</option>
                 <option value="asc">Giá từ thấp đến cao</option>
-            </select><br>   
+            </select><br>
+
+            <input type="number" name="price-min" placeholder="Nhập giá thấp nhất">
+            <input type="number" name="price-max" placeholder="Nhập giá cao nhất">
+
             <button class="tk">Tìm Kiếm</button>
             <!-- <button class="button-search">Tìm Kiếm</button> -->
         </form>
