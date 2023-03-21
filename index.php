@@ -1,3 +1,34 @@
+<?php 
+	include './View/header.php';
+	include './Models/pdo.php';
+	include './Models/Categories.php';
+	include './Models/Rooms.php';
+	include './Models/News.php';
+	
+	if(isset($_GET['goto'])) {
+		switch ($_GET['goto']) {
+			// Categories - Loại Phòng
+			case 'listCates':
+				$listCates = selectCates();
+				include './Categories/listCates.php';
+				break;
+			case 'addCate1': 
+				include './Categories/addCate.php';
+				break;
+			case 'addCate2':
+				if (isset($_POST['addNewCate']) && $_POST['addNewCate']) {
+					$ten_lp = $_POST['tenloai'];
+					insertCate($ten_lp);
+					$thongbao = "Thêm mới loại phòng thành công!";
+				}
+				$listCates = selectCates();
+				include './Categories/listCates.php';
+				break;
+			case 'deleteCate': 
+				if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+					deleteCate($_GET['id']);
+					$thongbao_xoa = "Xóa thành công !!";
+				}
 <?php
 include './View/header.php';
 include './Models/pdo.php';
@@ -37,7 +68,6 @@ if (isset($_GET['goto'])) {
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 				$item = getOneItem($_GET['id']);
 			}
-
 			include './Categories/updateCate.php';
 			break;
 		case 'editedCate':
@@ -274,6 +304,126 @@ if (isset($_GET['goto'])) {
 						$thongbao = "Bạn đã đặt phòng này rồi!";
 					}
 				}
+				$listRooms = selectRooms();
+				include './Rooms/listRooms.php';
+				break;
+				// NEWS
+
+				case 'listNews':
+					$listNews = selectNews();
+					
+					include './News/listNews.php';
+					break;
+
+				case 'addNews1': 
+					include './News/addNews.php';
+					break;
+				
+				case 'addNews2': 
+					if (isset($_POST['addNewNews']) && $_POST['addNewNews']) {
+						$tieu_de = $_POST['tieu_de'];
+						$gioi_thieu = $_POST['mo_ta'];
+						$ngay_dang = $_POST['ngay_dang'];
+						// $ma_tk = $_POST['ma_tk'];
+						$mo_ta = $_POST['mo_ta'];
+						$noi_dung = $_POST['noi_dung'];
+						$hinh_anh = isset($_FILES['hinh_anh']) ? $_FILES['hinh_anh'] : '';
+						$save_url = '';
+						if ($hinh_anh['size'] > 0 && $hinh_anh['size'] < 500000) {
+							$photo_folder = 'img/';
+							$photo_file = uniqid() . $hinh_anh['name'];
+	
+							$file_se_luu = $hinh_anh['tmp_name'];
+							$url = $photo_folder . $photo_file;
+	
+							if (move_uploaded_file($file_se_luu, $url)) {
+								$save_url = $url;
+							} 	
+						}
+
+						// var_dump($hinh_anh); 
+	
+						
+						insertNews($tieu_de,$save_url,$mo_ta,$noi_dung,$ngay_dang);
+						
+						$thongbao = "Thêm mới phong thành công !";
+					}
+					
+					$listNews = selectNews();
+					include './News/listNews.php';
+					break;
+
+					case 'editNews': 
+						if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+							$news = getOneNews($_GET['id']);
+						}
+		
+						$listNews = selectNews();
+						include './News/editNews.php';
+						// include './Product/list.php';
+						break;
+
+					case 'editedNews': 
+						if (isset($_POST['updateNews']) && $_POST['updateNews']) {
+							$id = $_POST['id'];
+							$tieu_de = $_POST['tieu_de'];
+							$ngay_dang = $_POST['ngay_dang'];
+							$mo_ta = $_POST['mo_ta'];
+							$noi_dung = $_POST['noi_dung'];
+							$hinh_anh = isset($_FILES['hinh_anh']) ? $_FILES['hinh_anh'] : '';
+							$save_url = '';
+							if ($hinh_anh['size'] > 0 && $hinh_anh['size'] < 500000) {
+								$photo_folder = 'img/';
+								$photo_file = uniqid() . $hinh_anh['name'];
+		
+								$file_se_luu = $hinh_anh['tmp_name'];
+								$url = $photo_folder . $photo_file;
+		
+								if (move_uploaded_file($file_se_luu, $url)) {
+									$save_url = $url;
+								}
+							}
+							updateNews($id,$tieu_de,$save_url,$mo_ta,$noi_dung,$ngay_dang);
+								$thongbao_update = "Cập nhật lại phòng thành công!";
+							}
+							$listRooms = selectRooms();
+							include './Rooms/listRooms.php';
+							break;
+
+						case 'deleteNews': 
+								if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+									deleteNews($_GET['id']);
+									$thongbao_delete = "Xóa thành công !!";
+								}
+				
+								$listNews = selectNews();
+								include './News/listNews.php';
+								break;
+				// End News
+			
+			default:
+				# code...
+		}
+	}else if(isset($_GET['search'])) {
+		switch ($_GET['search']) {
+			case 'cate':
+				$roomsFilter = isset($_POST['keyw']) ? $_POST['keyw'] : '';
+
+				$listFiltered = roomsFiltered($roomsFilter);
+				$listCates = selectCates();
+				include './View/roomsSearch.php';
+				break;
+			case 'price' :
+				$roomsByPrice = isset($_POST['price_chose']) ? $_POST['price_chose'] : '';
+				$listRoomsByPrice = roomsByPrice($roomsByPrice);
+				$listCates = selectCates();
+				include './View/roomsPrice.php';
+				break;
+			case 'rooms':
+				if (isset($_POST['searchRooms']) && $_POST['searchRooms']) {
+					$keyw = $_POST['keyw'];
+					$ma_lp = $_POST['ma_lp'];
+=======
 				include './Client/bookings/add_pay.php';
 			}
 			break;
