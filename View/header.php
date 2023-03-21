@@ -20,7 +20,7 @@
                 <ul>
                     <li><a href="index.php?goto=listCates">Loại Phòng</a></li>
                     <li><a href="index.php?goto=listRooms">Phòng Ở</a></li>
-                    <li><a href="#">Tin Tức</a></li>
+                    <li><a href="index.php?goto=listNews">Tin Tức</a></li>
                     <li><a href="#">Tài Khoản</a></li>
                     <li><a href="#">Bình luận</a></li>
                 </ul>

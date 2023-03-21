@@ -3,6 +3,7 @@
 	include './Models/pdo.php';
 	include './Models/Categories.php';
 	include './Models/Rooms.php';
+	include './Models/News.php';
 	
 	if(isset($_GET['goto'])) {
 		switch ($_GET['goto']) {
@@ -134,7 +135,99 @@
 				$listRooms = selectRooms();
 				include './Rooms/listRooms.php';
 				break;
-				// Tin tuc
+				// NEWS
+
+				case 'listNews':
+					$listNews = selectNews();
+					
+					include './News/listNews.php';
+					break;
+
+				case 'addNews1': 
+					include './News/addNews.php';
+					break;
+				
+				case 'addNews2': 
+					if (isset($_POST['addNewNews']) && $_POST['addNewNews']) {
+						$tieu_de = $_POST['tieu_de'];
+						$gioi_thieu = $_POST['mo_ta'];
+						$ngay_dang = $_POST['ngay_dang'];
+						// $ma_tk = $_POST['ma_tk'];
+						$mo_ta = $_POST['mo_ta'];
+						$noi_dung = $_POST['noi_dung'];
+						$hinh_anh = isset($_FILES['hinh_anh']) ? $_FILES['hinh_anh'] : '';
+						$save_url = '';
+						if ($hinh_anh['size'] > 0 && $hinh_anh['size'] < 500000) {
+							$photo_folder = 'img/';
+							$photo_file = uniqid() . $hinh_anh['name'];
+	
+							$file_se_luu = $hinh_anh['tmp_name'];
+							$url = $photo_folder . $photo_file;
+	
+							if (move_uploaded_file($file_se_luu, $url)) {
+								$save_url = $url;
+							} 	
+						}
+
+						// var_dump($hinh_anh); 
+	
+						
+						insertNews($tieu_de,$save_url,$mo_ta,$noi_dung,$ngay_dang);
+						
+						$thongbao = "Thêm mới phong thành công !";
+					}
+					
+					$listNews = selectNews();
+					include './News/listNews.php';
+					break;
+
+					case 'editNews': 
+						if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+							$news = getOneNews($_GET['id']);
+						}
+		
+						$listNews = selectNews();
+						include './News/editNews.php';
+						// include './Product/list.php';
+						break;
+
+					case 'editedNews': 
+						if (isset($_POST['updateNews']) && $_POST['updateNews']) {
+							$id = $_POST['id'];
+							$tieu_de = $_POST['tieu_de'];
+							$ngay_dang = $_POST['ngay_dang'];
+							$mo_ta = $_POST['mo_ta'];
+							$noi_dung = $_POST['noi_dung'];
+							$hinh_anh = isset($_FILES['hinh_anh']) ? $_FILES['hinh_anh'] : '';
+							$save_url = '';
+							if ($hinh_anh['size'] > 0 && $hinh_anh['size'] < 500000) {
+								$photo_folder = 'img/';
+								$photo_file = uniqid() . $hinh_anh['name'];
+		
+								$file_se_luu = $hinh_anh['tmp_name'];
+								$url = $photo_folder . $photo_file;
+		
+								if (move_uploaded_file($file_se_luu, $url)) {
+									$save_url = $url;
+								}
+							}
+							updateNews($id,$tieu_de,$save_url,$mo_ta,$noi_dung,$ngay_dang);
+								$thongbao_update = "Cập nhật lại phòng thành công!";
+							}
+							$listRooms = selectRooms();
+							include './Rooms/listRooms.php';
+							break;
+
+						case 'deleteNews': 
+								if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+									deleteNews($_GET['id']);
+									$thongbao_delete = "Xóa thành công !!";
+								}
+				
+								$listNews = selectNews();
+								include './News/listNews.php';
+								break;
+				// End News
 			
 			default:
 				# code...
