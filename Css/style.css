@@ -137,7 +137,7 @@
 
 .title-h1 h1 {
     color: azure;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     text-transform: uppercase;
 }
@@ -291,8 +291,9 @@
     border-color: rgb(235, 237, 237);
 }
 
+
 .tk {
-    width: 200px;
+    width: 500px;
     font-size: 15px;
     font-weight: 200px;
     color: #fff;
@@ -300,13 +301,16 @@
     height: 55px;
     border-radius: 3px;
     border: #fff;
+    margin: 20px 240px;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
     text-align: center;
     background-size: 200% 100%;
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
-    margin: 70px 150px;
 }
+
 
 .tk:hover {
     background-position: 100% 0;
@@ -346,9 +350,9 @@
 
 /*==========Location===========*/
 .location-container {
-    margin-top: 200px;
+    margin-top: 50px;
     padding: 45px 0;
-    background-color: #e1d0d0;
+    background-color: #a2e0e3;
 }
 
 .location-1 {
@@ -357,7 +361,7 @@
 
 .location-1 p {
     font-size: 32px;
-    font-weight: bold;
+    font-weight: 700;
     text-align: center;
     text-transform: uppercase;
 }
@@ -369,9 +373,12 @@
     margin: 30px 20px;
 }
 
+.location-img {
+    text-align: center;
+}
 
 .location-img img {
-    width: 100%;
+    width: 80%;
 }
 
 .location-img h3 {
@@ -379,11 +386,13 @@
     font-size: 20px;
     text-transform: uppercase;
     text-align: center;
+    font-weight: 600;
 }
 
 .location-img p {
     font-size: 16px;
     text-align: center;
+    font-weight: 500;
 }
 
 
@@ -396,14 +405,15 @@
 }
 
 .list-rooms {
-    margin: 150px 0;
+    margin: 100px 0;
 }
 
 .rooms-title h2 {
     text-align: center;
-    font-size: 36px;
+    font-size: 32px;
     margin: 30px 0;
-    color: #25aae1;
+    color: #ff2475;
+    font-weight: 700;
 }
 .row-rooms {
     display: grid;
@@ -427,7 +437,8 @@
 
 .room-info h3 {
     margin: 10px 0;
-    font-size: 22px;
+    font-size: 20px;
+    font-weight: 500;
     color: black;
 }
 .room-item p{
@@ -450,12 +461,26 @@
 
 
 
-/*========Body =========*/
-
-.form-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: space-between;
-    align-items: center;
+/*==== Slideshow=====*/
+.slideShoww {
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 3px;
+    /*margin-top: 20%;*/
 }
 
+.slideshow-title {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0;
+}
+
+.slideshow-btn {
+    padding: 30px 0;
+}
+
+.slideshow-btn button {
+    margin-right: 30px;
+}
