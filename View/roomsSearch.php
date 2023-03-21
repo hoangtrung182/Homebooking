@@ -53,7 +53,7 @@
     <section class="list-rooms">
         <div class="sub_container">
             <div class="">
-                <h2 class="form_title">Các kết quả tìm kiếm</h2>
+                <h2 class="form_title">CÁC PHÒNG TÌM KIẾM ĐƯỢC</h2>
             </div>
             <div class="row-rooms">
                 <?php 

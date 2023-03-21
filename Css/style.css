@@ -402,6 +402,7 @@
     max-width: 100%;
     margin-right: auto;
     margin-left: auto;
+    margin-top: 20%;
 }
 
 .list-rooms {
@@ -422,7 +423,7 @@
 }
 .room-item {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 24px;
 }
 .room-info {
     text-align: left;
