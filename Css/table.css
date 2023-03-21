@@ -100,6 +100,16 @@ table {
 
 /*========Form ==========*/
 
-.form_search {
-    border-right: 1px solid #000;
+
+/*Slideshow*/
+
+.slideShoww {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 800px;
+    margin-top: 20%;
+    border-radius: 4px;
+}
+.mySlides {
+    display:none
 }

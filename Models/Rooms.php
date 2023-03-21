@@ -18,22 +18,9 @@ function select_product_top10() {
 }
 
 function selectRooms() {
-	$sql = "SELECT * FROM phong order by ma_phong desc";
+	$sql = "SELECT * FROM phong order by ma_phong asc";
 	$listRooms = pdo_query($sql);
 	return $listRooms;
-}
-
-function selectSearchRooms($keyw, $ma_lp) {
-	$sql = "SELECT * FROM phong  WHERE 1 ";
-	if ($keyw != "") {
-		$sql .= " AND ten_phong LIKE '%" . $keyw . "%'";
-	}
-	if ($ma_lp > 0) {
-		$sql .= " AND ma_lp='" . $ma_lp . "'";
-	}
-	$sql .= " order by ten_phong desc";
-	$listRoomsSearch = pdo_query($sql);
-	return $listRoomsSearch;
 }
 
 
@@ -52,40 +39,31 @@ function select_items_search($keyw, $ma_loai)
 }
 
 
-function roomsFiltered($ma_lp) {
-	$sql = "SELECT * FROM phong WHERE ma_lp =" . $ma_lp;
-	$listFiltered = pdo_query($sql);
-	return $listFiltered;
-}
-
-function roomsByPrice($value) {
-	if($value === '1') {
-		$sql = "SELECT * FROM phong order by gia desc";
-		$listRoomsByPrice = pdo_query($sql);
-		return $listRoomsByPrice;
+function bothFilter($id, $price) {
+	if(!empty($id)) {
+		if(!empty($price)) {
+			if($price === 'desc') {
+				$sql = "SELECT * FROM phong WHERE ma_lp = '$id' order by gia desc";
+			}
+			
+			if($price === 'asc') {
+				$sql = "SELECT * FROM phong WHERE ma_lp = '$id' order by gia asc";
+			}
+		}else {
+			$sql = "SELECT * FROM phong WHERE ma_lp =" . $id;
+		}
+	}else {
+		if(!empty($price)) {
+			if($price === 'desc') {
+				$sql = "SELECT * FROM phong order by gia desc ";
+			}else {
+				$sql = "SELECT * FROM phong order by gia asc ";
+			}
+		}
 	}
 
-	if($value === '2') {
-		$sql = "SELECT * FROM phong order by gia asc";
-		$listRoomsByPrice = pdo_query($sql);
-		return $listRoomsByPrice;	
-	}
-	return $value;
-}
-
-function filteredBoth($ma_lp, $value) {
-	if($value === '1') {
-		$sql = "SELECT * FROM phong WHERE ma_lp = '$ma_lp'  AND order by gia desc";
-		$filteredBoth = pdo_query($sql);
-		return $filteredBoth;
-	}
-
-	if($value === '2') {
-		$sql = "SELECT * FROM phong WHERE ma_lp = '$ma_lp' AND order by gia asc";
-		$filteredBoth = pdo_query($sql);
-		return $filteredBoth;
-	}
-	return;
+	$Filter = pdo_query($sql);
+	return $Filter;
 }
 
 
@@ -115,4 +93,15 @@ function updateRoom($id, $ten_sp, $gia_sp, $giam_gia, $image, $mota, $ma_loai)
 		 WHERE ma_phong =" . $id;
 	pdo_execute($sql);
 }
+
+
+
+
+
+
+
+
+
+
+
 ?>

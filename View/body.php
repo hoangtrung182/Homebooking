@@ -6,9 +6,10 @@
         <p>Traveling internationally? Get updated information on COVID-19 travel guidance and restrictions.</p>
     </div>
     <div class="learn-more">
-        <a href=""><button class="btn1">learnmore</button></a>
+        <a href=""><button class="btn1">Learn more</button></a>
     </div>
 </nav>
+<!-- Banner & Form tìm kiếm -->
 <div class="background">
     <div class="title-h1">
         <h1>KHÁCH SẠN, KHU NGHỈ DƯỠNG, KÍ TÚC XÁ & HƠN THẾ NỮA</h1>
@@ -23,37 +24,56 @@
                 <button class="box-4">Lưu trú sửa dụng trong ngày</button>
             </div>
         </div>
-        <div class="form-container">
-             <form action="index.php?search=cate" method="post" class="form_search">
-                <label class="form_label" for="">Tìm kiếm theo loại phòng</label><br>
-                <select name="keyw" id="" class="input_third">
-                    <option value="0">Chọn loại phòng</option>
-                    <?php foreach ($listCates as $loaiphong) {
-                        extract($loaiphong);
-                         ?>
-                        <option value="<?= $ma_lp ?>">
-                            <?= $ten_lp ?>
-                        </option>
-                    <?php } ?>
-                </select><br>
-                <input type="submit" class="tk" value="TÌM KIẾM" name='search'>
-            </form>
-            <form action="index.php?search=price" method="post">
-                <label class="form_label" for="">Tìm kiếm theo giá cả</label><br>
-                <select name="price_chose" id="" class="input_third">
-                    <option value="" selected>Sắp xếp giá theo</option>
-                    <option value="1">Giá từ cao đến thấp</option>
-                    <option value="2">Giá từ thấp đến cao</option>
-                </select><br>
-                <input type="submit" class="tk" value="TÌM KIẾM" name='search'>
-            </form>
-        </div>
+        <!-- Form -->
+         <form action="search.php?" method="get" class="form_search">
+            <label class="form_label" for="">Tìm kiếm theo loại phòng</label><br>
+            <select name="loaiphong" id="" class="input_third">
+                <option value="">Chọn loại phòng</option>
+                <?php foreach ($listCates as $loaiphong) {
+                    extract($loaiphong);
+                     ?>
+                    <option value="<?= $ma_lp ?>">
+                        <?= $ten_lp ?>
+                    </option>
+                <?php } ?>
+            </select><br>
+            <label class="form_label" for="">Tìm kiếm theo giá cả</label><br>
+            <select name="price_chose" id="" class="input_third">
+                <option value="" selected>Sắp xếp giá theo</option>
+                <option value="desc">Giá từ cao đến thấp</option>
+                <option value="asc">Giá từ thấp đến cao</option>
+            </select><br>   
+            <button class="tk">Tìm Kiếm</button>
+            <!-- <button class="button-search">Tìm Kiếm</button> -->
+        </form>
     </div>
 </div>
-<section class="location-container">
-    <div class="ctkm">
-        <p>chương trình khuyến mại</p>
+
+
+
+<!-- Slideshow -->
+<div class="slideshow-container">
+    <div class="slideShoww" style="max-width:800px">
+        <div class="slideshow-title">
+            <p>chương trình khuyến mại</p>
+        </div>
+        <img class="mySlides" src="https://picsum.photos/601/250" style="width:100%">
+        <img class="mySlides" src="https://picsum.photos/599/250" style="width:100%">
+        <img class="mySlides" src="https://picsum.photos/600/250" style="width:100%">
+        <img class="mySlides" src="https://picsum.photos/598/250" style="width:100%">
     </div>
+    <div class="w3-center slideshow-btn">
+        <div class="button-container">
+            <button class="w3-button w3-light-grey" onclick="plusDivs(-1)">❮❮</button>
+            <button class="w3-button w3-light-grey" onclick="plusDivs(1)">❯❯</button>
+        </div>  
+    </div>
+</div>
+
+
+
+<!-- Main Location -->
+<section class="location-container">
     <div class="location">
         <div class="location-1">
             <p>các địa điểm thu hút ở việt nam</p>
@@ -83,10 +103,13 @@
     </div> 
 </section>
 
+
+
+<!-- Main Products -->
 <section class="list-rooms">
     <div class="sub_container">
         <div class="rooms-title">
-            <h2 class="">Những phòng tốt gợi ý cho bạn</h2>
+            <h2 class="">NHỮNG PHÒNG Ở TỐT GỢI Ý CHO BẠN</h2>
         </div>
         <div class="row-rooms">
             <?php 
@@ -106,3 +129,32 @@
         </div>
     </div>
 </section>
+
+<script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+
+    function currentDiv(n) {
+      showDivs(slideIndex = n);
+    }
+
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("demo");
+      if (n > x.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = x.length}
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" w3-red", "");
+      }
+      x[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " w3-red";
+    }
+</script>
