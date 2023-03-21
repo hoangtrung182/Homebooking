@@ -1,7 +1,13 @@
 <?php
 function selectRooms_booking()
 {
-    $sql = "SELECT * FROM phong INNER JOIN loaiphong ON phong.ma_lp=loaiphong.ma_lp order by ma_phong";
+    $sql = "SELECT * FROM phong INNER JOIN loaiphong ON phong.ma_lp=loaiphong.ma_lp  order by ma_phong";
+    $listRooms = pdo_query($sql);
+    return $listRooms;
+}
+function Test()
+{
+    $sql = "SELECT * FROM datphong INNER JOIN phong ON phong.ma_phong=datphong.ma_phong  order by ma_dp";
     $listRooms = pdo_query($sql);
     return $listRooms;
 }

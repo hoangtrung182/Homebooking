@@ -72,8 +72,15 @@
                     <input type="text" name="dia_chi" value="<?= $dia_chi ?>">
                 </div>
                 <div class="form-group">
-                    <label>Mã khuyến mãi</label>
-                    <input type="text" name="ma_km">
+                    <?php if (isset($_SESSION['user'])) { ?>
+                        <label>Mã khuyến mãi</label>
+                        <input type="text" name="ma_km">
+                    <?php } else { ?>
+                        <label>Mã khuyến mãi</label>
+                        <span>Vui lòng đăng nhập để nhận khuyến mãi!</span>
+                        <!-- <input type="hidden" name="ma_km" placeholder="Vui lòng đăng nhập để nhận khuyến mãi!"> -->
+                    <?php } ?>
+
                 </div>
                 <div class="">
                     <button type="submit" name="dat_phong" class="btn-order1">Đặt phòng</button>

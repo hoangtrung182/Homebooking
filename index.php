@@ -138,6 +138,10 @@ if (isset($_GET['goto'])) {
 		// Đặt phòng
 		case 'listRooms_booking':
 			$listRooms_booking = selectRooms_booking();
+			$test1 = Test();
+			//var_dump($test1);
+			date_default_timezone_set('ASIA/HO_CHI_MINH');
+			$date = date('Y-m-d H:i:s');
 			include './Client/bookings/listRooms.php';
 			break;
 		case 'detailRooms':
@@ -203,7 +207,7 @@ if (isset($_GET['goto'])) {
 					}
 
 					if ($_POST['ngay_den'] == '' || $_POST['ngay_ve'] == '' || strtotime($_POST['ngay_den']) >= strtotime($_POST['ngay_ve']) || $_POST['ngay_den'] < $ngay_dat) {
-						$thongbao = "Vui lòng chọn ngày!";
+						$thongbao = "Vui lòng chọn lại thời gian!";
 					} else {
 						include './Client/bookings/pay.php';
 						//header('./index.php?goto=pay');

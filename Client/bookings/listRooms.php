@@ -46,10 +46,34 @@
                         echo $format_number_3 . 'vnđ/đêm';
                     } ?>
                 </span>
-                <a href="./index.php?goto=detailRooms&id=<?= $room['ma_phong']; ?>"><button class="btn-order1"
-                        type="submit">Đặt ngay</button></a>
+                <div>
+                    <?php foreach ($test1 as $te) {
+                        extract($te);
+                        if ($te['ngay_den'] < $date && $te['ngay_ve'] > $date) { ?>
+                            <h3>Phòng đã được đặt!</h3>
+                        <?php } else { ?>
+                            <a href="./index.php?goto=detailRooms&id=<?= $room['ma_phong']; ?>"><button class="btn-order1"
+                                    type="submit">Đặt ngay</button></a>
+                        <?php } ?>
+                    <?php } ?>
+                    <a href="./index.php?goto=detailRooms&id=<?= $room['ma_phong']; ?>"><button class="btn-order1"
+                            type="submit">Đặt ngay</button></a>
+                </div>
             </div>
+
         <?php } ?>
+        <?php foreach ($test1 as $te) {
+            extract($te);
+            echo "hi";
+            var_dump($te);
+            if ($te['ngay_den'] < $date && $te['ngay_ve'] > $date) { ?>
+                <h3>Phòng đã được đặt!</h3>
+            <?php } else { ?>
+                <a href="./index.php?goto=detailRooms&id=<?= $room['ma_phong']; ?>"><button class="btn-order1" type="submit">Đặt
+                        ngay</button></a>
+            <?php } ?>
+        <?php } ?>
+
     </div>
 
     </div>
