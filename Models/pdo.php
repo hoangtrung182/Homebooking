@@ -4,8 +4,8 @@
  */
 function pdo_get_connection()
 {
-    $dburl = "mysql:host=localhost;dbname=duan1;charset=utf8"; //DB của Trung: xshop7
-    $username = 'root'; //Link : du_an_mau
+    $dburl = "mysql:host=localhost;dbname=duan1;charset=utf8";
+    $username = 'root';
     $password = '';
 
     $conn = new PDO($dburl, $username, $password);
