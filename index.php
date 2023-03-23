@@ -359,67 +359,6 @@ if (isset($_GET['goto'])) {
 			}
 			include './Client/bookings/detailRooms.php';
 			break;
-		case 'pays':
-			if (isset($_SESSION['user'])) {
-				$ten_kh = $_SESSION['user']['ten_kh'];
-				$phone = $_SESSION['user']['phone'];
-				$dia_chi = $_SESSION['user']['dia_chi'];
-			} else {
-				$ten_kh = '';
-				$phone = '';
-				$dia_chi = '';
-			}
-			if (isset($_SESSION['user'])) {
-				if (isset($_POST['dat_phong'])) {
-					$ma_kh = $_SESSION['user']['ma_kh'];
-					$ngay_dat = $_SESSION['datphong']['ngay_dat'];
-					$ngay_den = $_SESSION['datphong']['ngay_den'];
-					$ngay_ve = $_SESSION['datphong']['ngay_ve'];
-					$ma_lp = $_SESSION['datphong']['ma_lp'];
-					$ma_phong = $_SESSION['datphong']['ma_phong'];
-					$ten_phong = $_SESSION['datphong']['ten_phong'];
-					$ten_lp = $_SESSION['datphong']['ten_lp'];
-					$thanh_tien = $_SESSION['datphong']['thanh_tien'];
-					$ten_kh = $_POST['ten_kh'];
-					$phone = $_POST['phone'];
-					$dia_chi = $_POST['dia_chi'];
-					$ma_km = '1';
-					$trang_thai = 0;
-					$_SESSION['thanhtoan'] = [
-						'ma_kh' => $ma_kh,
-						'ngay_dat' => $ngay_dat,
-						'ngay_den' => $ngay_den,
-						'ngay_ve' => $ngay_ve,
-						'ma_lp' => $ma_lp,
-						'ten_phong' => $ten_phong,
-						'ten_lp' => $ten_lp,
-						'thanh_tien' => $thanh_tien,
-						'ten_kh' => $ten_kh,
-						'phone' => $sdt,
-						'dia_chi' => $dia_chi,
-						'ma_km' => $ma_km,
-					];
-					$result = check_datphong($ma_phong);
-					//var_dump($result);
-					date_default_timezone_set('ASIA/HO_CHI_MINH');
-					$date = date('Y-m-d');
-					if ($result == '') {
-						$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_tk, $ma_km);
-					} else if ($resert != '') {
-						if ($result['ngay_ve'] < $date) {
-							$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_tk, $ma_km);
-
-						} else {
-							$thongbao = "Bạn đang ở phòng này!";
-						}
-					} else {
-						$thongbao = "Bạn đã đặt phòng này rồi!";
-					}
-				}
-			}
-			$listRooms = selectRooms();
-			include './Rooms/listRooms.php';
-			break;
 			// Tin tuc
 
 		case 'listNews':
@@ -516,19 +455,6 @@ if (isset($_GET['goto'])) {
 		}
 	}else if (isset($_GET['search'])) {
 		switch ($_GET['search']) {
-			case 'cate':
-				$roomsFilter = isset($_POST['keyw']) ? $_POST['keyw'] : '';
-
-				$listFiltered = roomsFiltered($roomsFilter);
-				$listCates = selectCates();
-				include './View/roomsSearch.php';
-				break;
-			case 'price':
-				$roomsByPrice = isset($_POST['price_chose']) ? $_POST['price_chose'] : '';
-				$listRoomsByPrice = roomsByPrice($roomsByPrice);
-				$listCates = selectCates();
-				include './View/roomsPrice.php';
-				break;
 			case 'rooms':
 				if (isset($_POST['searchRooms']) && $_POST['searchRooms']) {
 					$keyw = $_POST['keyw'];
@@ -549,7 +475,8 @@ if (isset($_GET['goto'])) {
 		}
 	} else {
 		$listCates = selectCates();
-		$listRooms = selectRooms();
+		// $listRooms = selectRooms();
+		$list8rooms = selectEightRooms();
 		include './View/body.php';
 	}
 

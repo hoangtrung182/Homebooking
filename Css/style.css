@@ -35,7 +35,7 @@
     text-transform: uppercase;
     padding: 10px 10px;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .menu ul li a:hover {
@@ -163,7 +163,7 @@
     top: 30%;
     left: 100px;
     width: 1000px;
-    height: 415px;
+    height: 490px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);

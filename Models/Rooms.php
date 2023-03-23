@@ -23,6 +23,12 @@ function selectRooms() {
 	return $listRooms;
 }
 
+function selectEightRooms() {
+	$sql = "SELECT * FROM phong WHERE 1 order by gia asc limit 0,8";
+	$list8room = pdo_query($sql);
+	return $list8room;
+}
+
 
 function select_items_search($keyw, $ma_loai)
 {
@@ -39,25 +45,70 @@ function select_items_search($keyw, $ma_loai)
 }
 
 
-function bothFilter($id, $price) {
+function bothFilter($id, $sort, $min, $max) {
+	$sql = "SELECT * FROM phong";
+
+	// Sap xep theo min, max
+	if(!empty($min)) {
+		$sql = "SELECT * FROM phong WHERE gia >= '$min'";
+	}
+
+	if(!empty($max)) {
+		$sql = "SELECT * FROM phong WHERE gia <= '$max'";
+	}
+
+	if((!empty($min)) && (!empty($max))) {
+		$sql = "SELECT * FROM phong WHERE gia BETWEEN '$min' AND '$max'";
+	}
+
+
+	// Sap xep the loai vs gia tri min, max
 	if(!empty($id)) {
-		if(!empty($price)) {
-			if($price === 'desc') {
-				$sql = "SELECT * FROM phong WHERE ma_lp = '$id' order by gia desc";
-			}
-			
-			if($price === 'asc') {
-				$sql = "SELECT * FROM phong WHERE ma_lp = '$id' order by gia asc";
-			}
-		}else {
-			$sql = "SELECT * FROM phong WHERE ma_lp =" . $id;
+		$sql = "SELECT * FROM phong WHERE ma_lp = '$id'";
+
+		if(!empty($min)) {
+			$sql = "SELECT * FROM phong WHERE gia > '$min' AND ma_lp = '$id' order by gia asc";
 		}
-	}else {
-		if(!empty($price)) {
-			if($price === 'desc') {
-				$sql = "SELECT * FROM phong order by gia desc ";
-			}else {
-				$sql = "SELECT * FROM phong order by gia asc ";
+
+		if(!empty($max)) {
+			$sql = "SELECT * FROM phong WHERE ma_lp = '$id' AND gia <= '$max' order by gia asc";
+		}
+
+		if(!empty($min) && !empty($max)) {
+			$sql = "SELECT * FROM phong WHERE ma_lp = '$id' AND gia BETWEEN '$min' AND '$max' order by gia asc";
+		}
+	}
+
+	// Sap xep theo tang, giam dan voi min,max
+	if(!empty($sort)) {
+		if($sort == 'asc') {
+			$sql = "SELECT * FROM phong order by gia asc ";
+
+			if(!empty($min)) {
+				$sql = "SELECT * FROM phong WHERE gia >= '$min' order by gia asc";
+			}
+
+			if(!empty($max)) {
+				$sql = "SELECT * FROM phong WHERE gia <= '$max' order by gia asc";
+			}
+
+			if(!empty($min) && !empty($max)) {
+				$sql = "SELECT * FROM phong WHERE gia BETWEEN '$min' AND '$max' order by gia asc";
+			}
+
+		}else {
+			$sql = "SELECT * FROM phong order by gia desc ";
+
+			if(!empty($min)) {
+				$sql = "SELECT * FROM phong WHERE gia >= '$min' order by gia desc";
+			}
+
+			if(!empty($max)) {
+				$sql = "SELECT * FROM phong WHERE gia <= '$max' order by gia desc";
+			}
+
+			if(!empty($min) && !empty($max)) {
+				$sql = "SELECT * FROM phong WHERE gia BETWEEN '$min' AND '$max' order by gia desc";
 			}
 		}
 	}
@@ -65,6 +116,7 @@ function bothFilter($id, $price) {
 	$Filter = pdo_query($sql);
 	return $Filter;
 }
+
 
 
 function deleteRoom($id) {
@@ -103,5 +155,3 @@ function updateRoom($id, $ten_sp, $gia_sp, $giam_gia, $image, $mota, $ma_loai)
 
 
 
-
-?>
