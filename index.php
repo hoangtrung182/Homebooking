@@ -475,7 +475,8 @@ if (isset($_GET['goto'])) {
 		}
 	} else {
 		$listCates = selectCates();
-		$listRooms = selectRooms();
+		// $listRooms = selectRooms();
+		$list8rooms = selectEightRooms();
 		include './View/body.php';
 	}
 
