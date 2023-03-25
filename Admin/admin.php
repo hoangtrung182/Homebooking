@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../Css/tables.css">
     <link rel="stylesheet" href="../Css/button.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>Trang Chủ | Agoda</title>
+    <title>Trang Chủ | ADMIN</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
                     <li><a href="index.php?goto=listRooms">Phòng Ở</a></li>
                     <li><a href="index.php?goto=listNews">Tin Tức</a></li>
                     <li><a href="index.php?goto=listRooms_booking">Đặt Phòng</a></li>
-                    <li><a href="index.php?goto=add_pay">Thông Tin Phòng Đặt</a></li>
+                    <!-- <li><a href="index.php?goto=add_pay">Thông Tin Phòng Đặt</a></li> -->
                     <li><a href="#">Tài Khoản</a></li>
                     <li><a href="#">Bình luận</a></li>
                 </ul>

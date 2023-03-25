@@ -1,7 +1,7 @@
 <?php
-function insertNews($tieu_de,$hinh_anh,$mo_ta,$noi_dung,$ngay_dang) {
+function insertNews($tieu_de,$hinh_anh,$mo_ta,$noi_dung,$ngay_dang, $ma_tk) {
 	
-    $sql = "INSERT INTO tintuc(tieu_de, hinh_anh, mo_ta, noi_dung, ngay_dang) VALUES ('$tieu_de', '$hinh_anh', '$mo_ta', '$noi_dung', '$ngay_dang')";
+    $sql = "INSERT INTO tintuc(tieu_de, hinh_anh, mo_ta, noi_dung, ngay_dang, ma_tk) VALUES ('$tieu_de', '$hinh_anh', '$mo_ta', '$noi_dung', '$ngay_dang', $ma_tk)";
 	pdo_execute($sql); 	
 }
 
