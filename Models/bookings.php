@@ -1,15 +1,27 @@
 <?php
+function check_client($email, $pass)
+{
+    $sql = "SELECT * FROM taikhoan WHERE email = '$email' AND pass = '$pass'";
+    $result = pdo_query_one($sql);
+    return $result;
+}
 function selectRooms_booking()
 {
     $sql = "SELECT * FROM phong INNER JOIN loaiphong ON phong.ma_lp=loaiphong.ma_lp  order by ma_phong";
     $listRooms = pdo_query($sql);
     return $listRooms;
 }
-function Test()
+function select_Sale($id)
 {
-    $sql = "SELECT * FROM datphong INNER JOIN phong ON phong.ma_phong=datphong.ma_phong  order by ma_dp";
-    $listRooms = pdo_query($sql);
-    return $listRooms;
+    $sql = "SELECT * FROM taikhoan  INNER JOIN khuyenmai ON taikhoan.ma_km=khuyenmai.ma_km  WHERE ma_tk=$id";
+    $result = pdo_query_one($sql);
+    return $result;
+}
+function Client_loyal($id)
+{
+    $sql = "SELECT * FROM datphong  WHERE ma_tk=$id";
+    $sl_don = pdo_query($sql);
+    return sizeof($sl_don);
 }
 function getDatesFromRange($start, $end, $format = 'm-d-Y')
 {
@@ -36,10 +48,10 @@ function check_datphong($id)
     $result = pdo_query_one($sql);
     return $result;
 }
-function insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_tk, $ma_km)
+function insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_tk, $ma_km, $ma_phong)
 {
-    $sql = "INSERT INTO datphong(ten_kh, phone, dia_chi, ngay_dat, ngay_den, ngay_ve,trang_thai,thanh_tien,ma_tk,ma_km)
-		 		VALUES ('$ten_kh', '$phone', '$dia_chi', '$ngay_dat', '$ngay_den', '$ngay_ve', '$trang_thai', '$thanh_tien', '$ma_tk', '$ma_km')";
+    $sql = "INSERT INTO datphong(ten_kh, phone, dia_chi, ngay_dat, ngay_den, ngay_ve,trang_thai,thanh_tien,ma_tk,ma_km,ma_phong)
+		 		VALUES ('$ten_kh', '$phone', '$dia_chi', '$ngay_dat', '$ngay_den', '$ngay_ve', '$trang_thai', '$thanh_tien', '$ma_tk', '$ma_km','$ma_phong')";
     pdo_execute($sql);
 }
 function show_booking($id)
@@ -48,6 +60,7 @@ function show_booking($id)
     $list = pdo_query($sql);
     return $list;
 }
+
 function delete_booking($ma_dp)
 {
     $delete_loai = "DELETE FROM datphong WHERE ma_dp='$ma_dp'";
@@ -67,13 +80,18 @@ function listBooking()
 }
 function showDetail_Clientbooking($ma_dp)
 {
-    $sql = "SELECT * FROM datphong INNER JOIN phong ON datphong.ma_hs=phong.ma_hs INNER JOIN loaiphong ON phong.ma_lp=loaiphong.ma_lp WHERE ma_dp='$ma_dp'";
+    $sql = "SELECT * FROM datphong INNER JOIN phong ON datphong.ma_phong=phong.ma_phong INNER JOIN loaiphong ON phong.ma_lp=loaiphong.ma_lp WHERE ma_dp='$ma_dp'";
     $result = pdo_query_one($sql);
     return $result;
 }
 function update_booking($trang_thai, $ma_dp)
 {
     $sql = "UPDATE datphong SET trang_thai='$trang_thai' WHERE ma_dp= '$ma_dp'";
+    pdo_execute($sql);
+}
+function update_taikhoan($id, $ma_km)
+{
+    $sql = "UPDATE taikhoan SET ma_km ='$ma_km' WHERE ma_tk ='$id'";
     pdo_execute($sql);
 }
 ?>

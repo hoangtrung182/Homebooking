@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <link rel="stylesheet" href="../Css/style.css">
-    <link rel="stylesheet" href="../../Css/booking.css">
-    <title>Admin</title>
+    <link rel="stylesheet" href="../Css/booking.css">
+    <title>Document</title>
 </head>
+
 
 <body>
     <div class="container">
@@ -18,18 +19,17 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="">QUẢN LÝ LOẠI PHÒNG</a></li>
-                    <li><a href="">QUẢN LÝ PHÒNG</a></li>
-                    <li><a href="bookings/listBookings.php">QUẢN LÝ ĐẶT PHÒNG</a></li>
-                    <li><a href="#">QUẢN LÝ BÌNH LUẬN</a></li>
-                    <li><a href="#">QUẢN LÝ TÀI KHOẢN</a></li>
-                    <li><a href="">QUẢN LÝ TIN TỨC</a></li>
+                    <li><a href="bookings/listRooms.php">ĐẶT PHÒNG</a></li>
+                    <li><a href="bookings/add_pay.php">THÔNG TIN PHÒNG ĐẶT</a></li>
+                    <li><a href="#">TIN TỨC</a></li>
+                    <li><a href="#">TÀI KHOẢN</a></li>
+                    <li><a href="#">Apartments</a></li>
                 </ul>
             </div>
             <div class="login">
                 <ul>
-                    <li><a href="#"><button class="btn5-hover btn5">ĐĂNG NHẬP</button></a></li>
-                    <li><a href="#"><button class="btn5-hover btn5">ĐĂNG XUẤT</button></a></li>
+                    <li><a href="../Account/login.php"><button class="btn5-hover btn5">ĐĂNG NHẬP</button></a></li>
+                    <li><a href="#"><button class="btn5-hover btn5">ĐĂNG KÝ</button></a></li>
                 </ul>
             </div>
         </header>
