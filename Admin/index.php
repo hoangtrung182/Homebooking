@@ -7,7 +7,7 @@ include '../Models/pdo.php';
 include '../Models/Categories.php';
 include '../Models/Rooms.php';
 include '../Models/bookings.php';
-include '../Models/news.php';
+include '../Models/News.php';
 include '../Models/accounts.php';
 
 if (isset($_GET['goto'])) {
