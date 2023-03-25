@@ -76,4 +76,3 @@ function update_booking($trang_thai, $ma_dp)
     $sql = "UPDATE datphong SET trang_thai='$trang_thai' WHERE ma_dp= '$ma_dp'";
     pdo_execute($sql);
 }
-?>
