@@ -6,7 +6,13 @@ function insertAcc($ten_tk, $email, $pass, $phone)
 }
 function checkAccount($ten_tk, $pass)
 {
-    $sql = "SELECT * FROM taikhoan WHERE ten_tk='$ten_tk' AND pass <>" . $pass;
-    $check = pdo_query($sql);
+    $sql = "SELECT * FROM taikhoan WHERE ten_tk='" . $ten_tk . "' AND pass ='" . $pass . "'";
+    $check = pdo_query_one($sql);
+    return $check;
+}
+function checkPass($ten_tk)
+{
+    $sql = "SELECT * FROM taikhoan WHERE ten_tk='" . $ten_tk . "'";
+    $check = pdo_query_one($sql);
     return $check;
 }
