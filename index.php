@@ -312,10 +312,7 @@ if (isset($_GET['goto'])) {
 						$save_url = $url;
 					}
 				}
-
 				// var_dump($hinh_anh); 
-
-
 				insertNews($tieu_de, $save_url, $mo_ta, $noi_dung, $ngay_dang);
 
 				$thongbao = "Thêm mới phong thành công !";
@@ -446,10 +443,10 @@ if (isset($_GET['goto'])) {
 			break;
 	}
 } else {
-	  $listCates = selectCates();
-		// $listRooms = selectRooms();
-		$list8rooms = selectEightRooms();
-		include './View/body.php';
+	$listCates = selectCates();
+	// $listRooms = selectRooms();
+	$list8rooms = selectEightRooms();
+	include './View/body.php';
 }
 
 include './View/footer.php';
