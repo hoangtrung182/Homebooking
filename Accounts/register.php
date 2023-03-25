@@ -16,7 +16,7 @@
             Số điện thoại <br>
             <input type="text" name="phone">
         </div>
-        <input type="submit" value="Đăng ký" name="register">
+        <input type="submit" value="Đăng ký" name="btn_register">
         <button><a style="text-decoration: none;" href="index.php?goto=login">Đăng nhập</a></button>
     </form>
     <?= isset($thongbao) ? $thongbao : '' ?>

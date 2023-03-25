@@ -1,6 +1,7 @@
 
 <?php
 session_start();
+ob_start();
 include './View/header.php';
 include './Models/pdo.php';
 include './Models/Categories.php';
@@ -279,7 +280,7 @@ if (isset($_GET['goto'])) {
 			$listRooms = selectRooms();
 			include './Rooms/listRooms.php';
 			break;
-	
+
 			// Tin tuc
 
 		case 'listNews':
@@ -373,30 +374,34 @@ if (isset($_GET['goto'])) {
 			// Chi tiết phòng
 			// abc thu nghiem
 		case 'register':
-			if (isset($_POST['register']) && ($_POST['register'])) {
+			if (isset($_POST['btn_register']) && ($_POST['btn_register'])) {
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
 				$phone = $_POST['phone'];
 				insertAcc($ten_tk, $email, $pass, $phone);
-				$thongbao = "Bạn đã đăng ký thành công";
+				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
+				// header("Location: index.php?act=login");
 			}
 			include './Accounts/register.php';
 			break;
 			//End register
-    case 'login':
-        if (isset($_POST['login']) && ($_POST['login'])) {
-          $ten_tk = $_POST['ten_tk'];
-          $pass = $_POST['pass'];
-          $checkAccount = checkAccount($ten_tk, $pass);
-          if (is_array($checkAccount)) {
-            $_SESSION['ten_tk'] = $checkAccount;
-            header('location: index.php');
-            // $thongbao = "Bạn đã đăng nhập";
-          } else {
-            $thongbao = "Tài khoản không tồn tại";
-          }
-        }
+		case 'login':
+			if (isset($_POST['login']) && ($_POST['login'])) {
+				$ten_tk = $_POST['ten_tk'];
+				$pass = $_POST['pass'];
+				$checkAcc = checkAccount($ten_tk, $pass);
+				if (is_array($checkAcc)) {
+					// header('location: index.php');
+					$_SESSION['ten_tk'] = $checkAcc;
+					header('location:index.php');
+					// echo '<script> alert("Đăng nhập thành công!") </script>';
+				} else {
+					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
+					// $thongbao = "Tai khoan khong ton tai";
+					include './view/body.php';
+				}
+			}
 			include './Accounts/login.php';
 			break;
 			//End login
@@ -405,8 +410,21 @@ if (isset($_GET['goto'])) {
 			header('location: index.php');
 			break;
 			//End logout
+		case 'forgetPass':
+			if (isset($_POST['forgetPass']) && ($_POST['forgetPass'])) {
+				$ten_tk = $_POST['ten_tk'];
+				$checkPass = checkPass($ten_tk);
+				if (is_array($checkPass)) {
+					$thongbao = "Mật khẩu của bạn là " . $checkPass['pass'];
+				} else {
+					$thongbao = "Tài khoản không tồn tại";
+				}
+			}
+			include './Accounts/ForgetPass.php';
+			break;
 		default:
 			# code...
+			// break;
 	}
 } else if (isset($_GET['search'])) {
 	switch ($_GET['search']) {
@@ -426,9 +444,9 @@ if (isset($_GET['goto'])) {
 		default:
 			# code...
 			break;
-	} 
+	}
 } else {
-	$listCates = selectCates();
+	  $listCates = selectCates();
 		// $listRooms = selectRooms();
 		$list8rooms = selectEightRooms();
 		include './View/body.php';

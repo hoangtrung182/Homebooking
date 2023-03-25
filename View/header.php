@@ -34,8 +34,26 @@
             </div>
             <div class="login">
                 <ul>
-                    <li><a href="index.php?goto=login"><button class="btn5-hover btn5">ĐĂNG NHẬP</button></a></li>
-                    <li><a href="index.php?goto=register"><button class="btn5-hover btn5">ĐĂNG KÝ</button></a></li>
+                    <?php
+                    if (isset($_SESSION['ten_tk'])) {
+                        extract($_SESSION['ten_tk']);
+                    ?>
+                        <li><a href="index.php?goto=login"><button class="btn5-hover btn5">
+                                    <?= $ten_tk ?>
+                                </button>
+                            </a>
+                        </li>
+                        <li><a href="index.php?goto=logout"><button class="btn5-hover btn5">Thoát</button></a></li>
+                    <?php
+                    } else {
+                    ?>
+                        <li><a href="index.php?goto=login"><button class="btn5-hover btn5">
+                                    Đăng nhập
+                                </button>
+                            </a>
+                        </li>
+                        <li><a href="index.php?goto=register"><button class="btn5-hover btn5">ĐĂNG KÝ</button></a></li>
+                    <?php  } ?>
                 </ul>
             </div>
         </header>
