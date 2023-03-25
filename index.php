@@ -9,7 +9,7 @@ include './Models/news.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
-		// Categories - Loại Phòng
+			// Categories - Loại Phòng
 		case 'listCates':
 			$listCates = selectCates();
 			include './Categories/listCates.php';
@@ -51,7 +51,7 @@ if (isset($_GET['goto'])) {
 			$listCates = selectCates();
 			include './Categories/listCates.php';
 			break;
-		// Rooms -- Phòng Ở
+			// Rooms -- Phòng Ở
 		case 'listRooms':
 			$listRooms = selectRooms();
 			$listCates = selectCates();
@@ -136,7 +136,7 @@ if (isset($_GET['goto'])) {
 			$listRooms = selectRooms();
 			include './Rooms/listRooms.php';
 			break;
-		// Đặt phòng
+			// Đặt phòng
 		case 'listRooms_booking':
 			$listRooms_booking = selectRooms_booking();
 			$test1 = Test();
@@ -187,7 +187,6 @@ if (isset($_GET['goto'])) {
 							'ten_phong' => $chitiet['ten_phong'],
 							'ma_hs' => $_GET['id'],
 						];
-
 					} else {
 						$gia = $chitiet['giam_gia'];
 						$tong_tien = $gia * ($so_ngay - 1);
@@ -267,7 +266,6 @@ if (isset($_GET['goto'])) {
 					} else if ($resert != '') {
 						if ($result['ngay_ve'] < $date) {
 							$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_tk, $ma_km);
-
 						} else {
 							$thongbao = "Bạn đang ở phòng này!";
 						}
@@ -363,13 +361,13 @@ if (isset($_GET['goto'])) {
 
 		case 'listNews':
 			$listNews = selectNews();
-			
+
 			include './News/listNews.php';
 			break;
-		case 'addNews1': 
+		case 'addNews1':
 			include './News/addNews.php';
 			break;
-		case 'addNews2': 
+		case 'addNews2':
 			if (isset($_POST['addNewNews']) && $_POST['addNewNews']) {
 				$tieu_de = $_POST['tieu_de'];
 				$gioi_thieu = $_POST['mo_ta'];
@@ -388,21 +386,21 @@ if (isset($_GET['goto'])) {
 
 					if (move_uploaded_file($file_se_luu, $url)) {
 						$save_url = $url;
-					} 	
+					}
 				}
 
 				// var_dump($hinh_anh); 
 
-				
-				insertNews($tieu_de,$save_url,$mo_ta,$noi_dung,$ngay_dang);
-				
+
+				insertNews($tieu_de, $save_url, $mo_ta, $noi_dung, $ngay_dang);
+
 				$thongbao = "Thêm mới phong thành công !";
 			}
-			
+
 			$listNews = selectNews();
 			include './News/listNews.php';
 			break;
-		case 'editNews': 
+		case 'editNews':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 				$news = getOneNews($_GET['id']);
 			}
@@ -411,7 +409,7 @@ if (isset($_GET['goto'])) {
 			include './News/editNews.php';
 			// include './Product/list.php';
 			break;
-		case 'editedNews': 
+		case 'editedNews':
 			if (isset($_POST['updateNews']) && $_POST['updateNews']) {
 				$id = $_POST['id'];
 				$tieu_de = $_POST['tieu_de'];
@@ -431,7 +429,7 @@ if (isset($_GET['goto'])) {
 						$save_url = $url;
 					}
 				}
-			updateNews($id,$tieu_de,$save_url,$mo_ta,$noi_dung,$ngay_dang);
+				updateNews($id, $tieu_de, $save_url, $mo_ta, $noi_dung, $ngay_dang);
 				$thongbao_update = "Cập nhật lại phòng thành công!";
 			}
 
@@ -439,45 +437,45 @@ if (isset($_GET['goto'])) {
 			include './Rooms/listRooms.php';
 			break;
 
-			case 'deleteNews': 
-				if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-					deleteNews($_GET['id']);
-					$thongbao_delete = "Xóa thành công !!";
-				}
+		case 'deleteNews':
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				deleteNews($_GET['id']);
+				$thongbao_delete = "Xóa thành công !!";
+			}
 
-				$listNews = selectNews();
-				include './News/listNews.php';
-				break;
-				// End News
-			
-			default:
-				# code...
-		}
-	}else if (isset($_GET['search'])) {
-		switch ($_GET['search']) {
-			case 'rooms':
-				if (isset($_POST['searchRooms']) && $_POST['searchRooms']) {
-					$keyw = $_POST['keyw'];
-					$ma_lp = $_POST['ma_lp'];
-				} else {
-					$keyw = "";
-					$ma_lp = 0;
-				}
-
-				$listRooms = select_items_search($keyw, $ma_lp);
-				$listCates = selectCates();
-				include './Rooms/listRooms.php';
-				break;
-
-			default:
-				# code...
-				break;
-		}
-	} else {
-		$listCates = selectCates();
-		// $listRooms = selectRooms();
-		$list8rooms = selectEightRooms();
-		include './View/body.php';
+			$listNews = selectNews();
+			include './News/listNews.php';
+			break;
+			// End News
+			// Chi tiết phòng
+		default:
+			# code...
 	}
+} else if (isset($_GET['search'])) {
+	switch ($_GET['search']) {
+		case 'rooms':
+			if (isset($_POST['searchRooms']) && $_POST['searchRooms']) {
+				$keyw = $_POST['keyw'];
+				$ma_lp = $_POST['ma_lp'];
+			} else {
+				$keyw = "";
+				$ma_lp = 0;
+			}
 
-	include './View/footer.php';
+			$listRooms = select_items_search($keyw, $ma_lp);
+			$listCates = selectCates();
+			include './Rooms/listRooms.php';
+			break;
+
+		default:
+			# code...
+			break;
+	}
+} else {
+	$listCates = selectCates();
+	// $listRooms = selectRooms();
+	$list8rooms = selectEightRooms();
+	include './View/body.php';
+}
+
+include './View/footer.php';
