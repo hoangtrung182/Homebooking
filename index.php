@@ -448,6 +448,7 @@ if (isset($_GET['goto'])) {
 			break;
 			// End News
 			// Chi tiết phòng
+			// abc thu nghiem
 		default:
 			# code...
 	}
