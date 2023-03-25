@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Css/table.css">
-    <link rel="stylesheet" href="./Css/button.css">
+    <!-- <link rel="stylesheet" href="./Css/table.css"> -->
+    <!-- <link rel="stylesheet" href="./Css/button.css"> -->
+    <!-- <link rel="stylesheet" href="./Css/style.css"> -->
     <link rel="stylesheet" href="./Css/style.css">
+    <link rel="stylesheet" href="./Css/tables.css">
+    <link rel="stylesheet" href="./Css/button.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Trang Chủ | Agoda</title>
 </head>
@@ -22,14 +25,14 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="index.php?goto=listCates">Loại Phòng</a></li>
-                    <li><a href="index.php?goto=listRooms">Phòng Ở</a></li>
+                    <!-- <li><a href="index.php?goto=listCates">Loại Phòng</a></li> -->
+                    <!-- <li><a href="index.php?goto=listRooms">Danh sách phòng</a></li> -->
                     <li><a href="index.php?goto=listNews">Tin Tức</a></li>
                     <li><a href="index.php?goto=listRooms_booking">Đặt Phòng</a></li>
                     <li><a href="index.php?goto=add_pay">Thông Tin Phòng Đặt</a></li>
-                    <li><a href="#">Tin Tức</a></li>
-                    <li><a href="#">Tài Khoản</a></li>
-                    <li><a href="#">Bình luận</a></li>
+                    <!-- <li><a href="#">Tin Tức</a></li> -->
+                    <!-- <li><a href="#">Tài Khoản</a></li> -->
+                    <!-- <li><a href="#">Bình luận</a></li> -->
                 </ul>
             </div>
             <div class="login">
