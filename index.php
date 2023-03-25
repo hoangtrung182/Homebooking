@@ -381,19 +381,19 @@ if (isset($_GET['goto'])) {
 			include './Accounts/register.php';
 			break;
 			//End register
-    case 'login':
-        if (isset($_POST['login']) && ($_POST['login'])) {
-          $ten_tk = $_POST['ten_tk'];
-          $pass = $_POST['pass'];
-          $checkAccount = checkAccount($ten_tk, $pass);
-          if (is_array($checkAccount)) {
-            $_SESSION['ten_tk'] = $checkAccount;
-            header('location: index.php');
-            // $thongbao = "Bạn đã đăng nhập";
-          } else {
-            $thongbao = "Tài khoản không tồn tại";
-          }
-        }
+	    case 'login':
+	        if (isset($_POST['login']) && ($_POST['login'])) {
+	          $ten_tk = $_POST['ten_tk'];
+	          $pass = $_POST['pass'];
+	          $checkAccount = checkAccount($ten_tk, $pass);
+	          if (is_array($checkAccount)) {
+	            $_SESSION['ten_tk'] = $checkAccount;
+	            header('location: index.php');
+	            // $thongbao = "Bạn đã đăng nhập";
+	          } else {
+	            $thongbao = "Tài khoản không tồn tại";
+	          }
+	        }
 			include './Accounts/login.php';
 			break;
 			//End login
@@ -423,15 +423,11 @@ if (isset($_GET['goto'])) {
 		default:
 			# code...
 			break;
-	} else {
-		$listCates = selectCates();
-		// $listRooms = selectRooms();
-		$list8rooms = selectEightRooms();
-		include './View/body.php';
 	}
 } else {
 	$listCates = selectCates();
-	$listRooms = selectRooms();
+	// $listRooms = selectRooms();
+	$list8rooms = selectEightRooms();
 	include './View/body.php';
 }
 
