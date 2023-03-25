@@ -2,23 +2,23 @@
 <?php
 session_start();
 ob_start();
-include './View/header.php';
-include './Models/pdo.php';
-include './Models/Categories.php';
-include './Models/Rooms.php';
-include './Models/bookings.php';
-include './Models/news.php';
-include './Models/accounts.php';
+include './admin.php';
+include '../Models/pdo.php';
+include '../Models/Categories.php';
+include '../Models/Rooms.php';
+include '../Models/bookings.php';
+include '../Models/news.php';
+include '../Models/accounts.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
 			// Categories - Loại Phòng
 		case 'listCates':
 			$listCates = selectCates();
-			include './Categories/listCates.php';
+			include '../Categories/listCates.php';
 			break;
 		case 'addCate1':
-			include './Categories/addCate.php';
+			include '../Categories/addCate.php';
 			break;
 		case 'addCate2':
 			if (isset($_POST['addNewCate']) && $_POST['addNewCate']) {
@@ -27,7 +27,7 @@ if (isset($_GET['goto'])) {
 				$thongbao = "Thêm mới loại phòng thành công!";
 			}
 			$listCates = selectCates();
-			include './Categories/listCates.php';
+			include '../Categories/listCates.php';
 			break;
 		case 'deleteCate':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -36,13 +36,13 @@ if (isset($_GET['goto'])) {
 			}
 
 			$listCates = selectCates();
-			include './Categories/listCates.php';
+			include '../Categories/listCates.php';
 			break;
 		case 'editCate':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 				$item = getOneItem($_GET['id']);
 			}
-			include './Categories/updateCate.php';
+			include '../Categories/updateCate.php';
 			break;
 		case 'editedCate':
 			if (isset($_POST['updateCate']) && $_POST['updateCate']) {
@@ -52,17 +52,17 @@ if (isset($_GET['goto'])) {
 				$thongbao = "Cập nhật loại phòng thành công!";
 			}
 			$listCates = selectCates();
-			include './Categories/listCates.php';
+			include '../Categories/listCates.php';
 			break;
 			// Rooms -- Phòng Ở
 		case 'listRooms':
 			$listRooms = selectRooms();
 			$listCates = selectCates();
-			include './Rooms/listRooms.php';
+			include '../Rooms/listRooms.php';
 			break;
 		case 'addRooms1':
 			$listCates = selectCates();
-			include './Rooms/addRoom.php';
+			include '../Rooms/addRoom.php';
 			break;
 		case 'addRoom':
 			if (isset($_POST['addNewRoom']) && $_POST['addNewRoom']) {
@@ -91,7 +91,7 @@ if (isset($_GET['goto'])) {
 			}
 			$cate = getOneItem($ma_loai);
 			$listRooms = selectRooms();
-			include './Rooms/listRooms.php';
+			include '../Rooms/listRooms.php';
 			break;
 		case 'deleteRoom':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -100,7 +100,7 @@ if (isset($_GET['goto'])) {
 			}
 
 			$listRooms = selectRooms();
-			include './Rooms/listRooms.php';
+			include '../Rooms/listRooms.php';
 			break;
 		case 'editRoom':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -108,7 +108,7 @@ if (isset($_GET['goto'])) {
 			}
 
 			$listCates = selectCates();
-			include './Rooms/updateRoom.php';
+			include '../Rooms/updateRoom.php';
 			// include './Product/list.php';
 			break;
 		case 'editedRoom':
@@ -137,7 +137,7 @@ if (isset($_GET['goto'])) {
 				$thongbao_update = "Cập nhật lại phòng thành công!";
 			}
 			$listRooms = selectRooms();
-			include './Rooms/listRooms.php';
+			include '../Rooms/listRooms.php';
 			break;
 			// Đặt phòng
 		case 'listRooms_booking':
@@ -146,7 +146,7 @@ if (isset($_GET['goto'])) {
 			//var_dump($test1);
 			date_default_timezone_set('ASIA/HO_CHI_MINH');
 			$date = date('Y-m-d H:i:s');
-			include './Client/bookings/listRooms.php';
+			include '../Client/bookings/listRooms.php';
 			break;
 		case 'detailRooms':
 			session_start();
@@ -218,7 +218,7 @@ if (isset($_GET['goto'])) {
 					}
 				}
 			}
-			include './Client/bookings/detailRooms.php';
+			include '../Client/bookings/detailRooms.php';
 			break;
 		case 'pays':
 			if (isset($_SESSION['user'])) {
@@ -278,18 +278,16 @@ if (isset($_GET['goto'])) {
 				}
 			}
 			$listRooms = selectRooms();
-			include './Rooms/listRooms.php';
+			include '../Rooms/listRooms.php';
 			break;
 
 			// Tin tuc
-
 		case 'listNews':
 			$listNews = selectNews();
-
-			include './News/listNews.php';
+			include '../News/listNews.php';
 			break;
 		case 'addNews1':
-			include './News/addNews.php';
+			include '../News/addNews.php';
 			break;
 		case 'addNews2':
 			if (isset($_POST['addNewNews']) && $_POST['addNewNews']) {
@@ -319,7 +317,7 @@ if (isset($_GET['goto'])) {
 			}
 
 			$listNews = selectNews();
-			include './News/listNews.php';
+			include '../News/listNews.php';
 			break;
 		case 'editNews':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -327,7 +325,7 @@ if (isset($_GET['goto'])) {
 			}
 
 			$listNews = selectNews();
-			include './News/editNews.php';
+			include '../News/editNews.php';
 			// include './Product/list.php';
 			break;
 		case 'editedNews':
@@ -355,7 +353,7 @@ if (isset($_GET['goto'])) {
 			}
 
 			$listRooms = selectRooms();
-			include './Rooms/listRooms.php';
+			include '../Rooms/listRooms.php';
 			break;
 
 		case 'deleteNews':
@@ -365,21 +363,22 @@ if (isset($_GET['goto'])) {
 			}
 
 			$listNews = selectNews();
-			include './News/listNews.php';
+			include '../News/listNews.php';
 			break;
 			// End News
 			// Chi tiết phòng
 			// abc thu nghiem
 		case 'register':
-			if (isset($_POST['register']) && ($_POST['register'])) {
+			if (isset($_POST['btn_register']) && ($_POST['btn_register'])) {
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
 				$phone = $_POST['phone'];
 				insertAcc($ten_tk, $email, $pass, $phone);
 				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
+				// header("Location: index.php?act=login");
 			}
-			include './Accounts/register.php';
+			include '../Accounts/register.php';
 			break;
 			//End register
 		case 'login':
@@ -390,30 +389,20 @@ if (isset($_GET['goto'])) {
 				if (is_array($checkAcc)) {
 					// header('location: index.php');
 					$_SESSION['ten_tk'] = $checkAcc;
-
-					header('location:index.php');
-					echo '<script> alert("Đăng nhập thành công!") </script>';
-
-					if ($_SESSION['ten_tk']['vai_tro'] === 1) {
-						header('location: Admin/index.php');
-						echo '<script> alert("Đăng nhập thành công!") </script>';
-					} else {
-						header('location:index.php');
-						echo '<script> alert("Đăng nhập thành công!") </script>';
-					}
+					header('location:../Admin/index.php');
 					// echo '<script> alert("Đăng nhập thành công!") </script>';
 				} else {
 					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
 					// $thongbao = "Tai khoan khong ton tai";
-					header('location:index.php');
+					include './view/body.php';
 				}
 			}
-			include './Accounts/login.php';
+			include '../Accounts/login.php';
 			break;
 			//End login
 		case 'logout':
 			session_unset();
-			header('location: index.php');
+			header('location: ../index.php');
 			break;
 			//End logout
 		case 'forgetPass':
@@ -426,7 +415,7 @@ if (isset($_GET['goto'])) {
 					$thongbao = "Tài khoản không tồn tại";
 				}
 			}
-			include './Accounts/ForgetPass.php';
+			include '../Accounts/ForgetPass.php';
 			break;
 		default:
 			# code...
@@ -445,17 +434,17 @@ if (isset($_GET['goto'])) {
 
 			$listRooms = select_items_search($keyw, $ma_lp);
 			$listCates = selectCates();
-			include './Rooms/listRooms.php';
+			include '../Rooms/listRooms.php';
 			break;
 		default:
 			# code...
 			break;
 	}
 } else {
-	$listCates = selectCates();
-	// $listRooms = selectRooms();
-	$list8rooms = selectEightRooms();
-	include './View/body.php';
+	// $listCates = selectCates();
+	// // $listRooms = selectRooms();
+	// $list8rooms = selectEightRooms();
+	// include './admin.php';
 }
 
-include './View/footer.php';
+include '../View/footer.php';
