@@ -371,14 +371,14 @@ if (isset($_GET['goto'])) {
 			break;
 			// End News
 		case 'register':
-			if (isset($_POST['btn_register']) && ($_POST['btn_register'])) {
+			if (isset($_POST['register']) && ($_POST['register'])) {
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
 				$phone = $_POST['phone'];
 				insertAcc($ten_tk, $email, $pass, $phone);
 				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
-				// header("Location: index.php?act=login");
+				header('location: index.php');
 			}
 			include './Accounts/register.php';
 			break;
@@ -392,11 +392,11 @@ if (isset($_GET['goto'])) {
 					// header('location: index.php');
 					$_SESSION['ten_tk'] = $checkAcc;
 					header('location:index.php');
-					// echo '<script> alert("Đăng nhập thành công!") </script>';
+					echo '<script> alert("Đăng nhập thành công!") </script>';
 				} else {
 					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
 					// $thongbao = "Tai khoan khong ton tai";
-					include './view/body.php';
+					header('location:index.php');
 				}
 			}
 			include './Accounts/login.php';

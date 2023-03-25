@@ -20,7 +20,7 @@
 <?php } else { ?>
     <form action="index.php?goto=login" method="post">
         <div class="form-info">
-            email <br>
+            Tên đăng nhập <br>
             <input type="text" name="ten_tk">
         </div>
         <div class="form-info">
@@ -30,10 +30,15 @@
         <div class="form-info">
             <input type="checkbox"> Ghi nhớ tài khoản <br>
         </div>
-        <input type="submit" value="Đăng nhập" name="login">
+        <input type="submit" value="Đăng nhập" name="login" class="btn5-hover btn5">
 
     </form>
-    <li><a href="index.php?goto=forgetPass">Quên mật khẩu</a></li>
+    <li style="list-style: none;">
+        <a href="index.php?goto=register">
+            <button class="btn5-hover btn5">Tạo tài khoản</button>
+        </a>
+    </li>
+    <li class="pass"><a href="index.php?goto=forgetPass">Quên mật khẩu</a></li>
     <?= isset($thongbao) ? $thongbao : '' ?>
 <?php } ?>
 
