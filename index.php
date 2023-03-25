@@ -366,10 +366,13 @@ if (isset($_GET['goto'])) {
 				deleteNews($_GET['id']);
 				$thongbao_delete = "Xóa thành công !!";
 			}
+
 			$listNews = selectNews();
 			include './News/listNews.php';
 			break;
 			// End News
+			// Chi tiết phòng
+			// abc thu nghiem
 		case 'register':
 			if (isset($_POST['btn_register']) && ($_POST['btn_register'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -443,10 +446,10 @@ if (isset($_GET['goto'])) {
 			break;
 	}
 } else {
-	$listCates = selectCates();
-	// $listRooms = selectRooms();
-	$list8rooms = selectEightRooms();
-	include './View/body.php';
+	  $listCates = selectCates();
+		// $listRooms = selectRooms();
+		$list8rooms = selectEightRooms();
+		include './View/body.php';
 }
 
 include './View/footer.php';
