@@ -7,7 +7,6 @@
         ?>
             <div>
                 <!-- sin ttao <br> -->
-
             </div>
             <ul>
                 <div>
@@ -20,7 +19,7 @@
 <?php } else { ?>
     <form action="index.php?goto=login" method="post">
         <div class="form-info">
-            email <br>
+            Tên đăng nhập <br>
             <input type="text" name="ten_tk">
         </div>
         <div class="form-info">

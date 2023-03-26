@@ -177,11 +177,12 @@ if (isset($_GET['goto'])) {
 			break;
 		case 'register':
 			if (isset($_POST['btn_register']) && ($_POST['btn_register'])) {
+				$hoten = $_POST['ho_ten'];
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
 				$phone = $_POST['phone'];
-				insertAcc($ten_tk, $email, $pass, $phone);
+				insertAcc($hoten, $ten_tk, $email, $pass, $phone);
 				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
 				// header("Location: index.php?act=login");
 			}
