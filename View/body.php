@@ -26,7 +26,7 @@
         </div>
         <!-- Form -->
          <form action="search.php?" method="get" class="form_search">
-            <label class="form_label" for="">Loại phòng</label><br>
+            <!-- <label class="form_label" for="">Loại phòng</label><br> -->
             <select name="loaiphong" id="" class="input_third">
                 <option value="">Chọn loại phòng</option>
                 <?php foreach ($listCates as $loaiphong) {
@@ -37,36 +37,32 @@
                     </option>
                 <?php } ?>
             </select><br>
-            <label class="form_label" for="">Tăng, giảm dần</label><br>
+            <!-- <label class="form_label" for="">Tăng, giảm dần</label><br> -->
             <select name="price_chose" id="" class="input_third">
                 <option value="" selected>Sắp xếp giá theo</option>
                 <option value="desc">Giá từ cao đến thấp</option>
                 <option value="asc">Giá từ thấp đến cao</option>
             </select><br>
-            <label class="form_label">Khoảng giá</label>
+            <!-- <label class="form_label">Khoảng giá</label> -->
             <div class="input_search-form">
                 <input type="number" name="price-min" class="input_search-price min-1" placeholder="Nhập giá thấp nhất">
                 <input type="number" name="price-max" class="input_search-price max-1" placeholder="Nhập giá cao nhất">
             </div>
-
             <button class="tk">Tìm Kiếm</button>
-            <!-- <button class="button-search">Tìm Kiếm</button> -->
         </form>
     </div>
 </div>
 
-
-
 <!-- Slideshow -->
 <div class="slideshow-container">
-    <div class="slideShoww" style="max-width:800px">
+    <div class="slideShoww" style="max-width:1000px">
         <div class="slideshow-title">
             <p>chương trình khuyến mại</p>
         </div>
-        <img class="mySlides" src="https://picsum.photos/601/250" style="width:100%">
-        <img class="mySlides" src="https://picsum.photos/599/250" style="width:100%">
-        <img class="mySlides" src="https://picsum.photos/600/250" style="width:100%">
-        <img class="mySlides" src="https://picsum.photos/598/250" style="width:100%">
+        <img class="mySlides" src="https://picsum.photos/1000/351" style="width:100%">
+        <img class="mySlides" src="https://picsum.photos/1000/352" style="width:100%">
+        <img class="mySlides" src="https://picsum.photos/1000/349" style="width:100%">
+        <img class="mySlides" src="https://picsum.photos/1000/348" style="width:100%">
     </div>
     <div class="w3-center slideshow-btn">
         <div class="button-container">
@@ -122,9 +118,9 @@
                 foreach ($list8rooms as $phong) {
                     extract($phong);
                  ?>
-                    <div class="room-item">
+                    <div class="body-item">
                         <img src="<?= $avatar ?>" alt="">
-                        <div class="room-info">
+                        <div class="">
                             <h3><?= $ten_phong ?></h3>
                             <em>Giá mỗi đêm rẻ từ</em>
                             <p><?= number_format($gia,0,',','.')?> VND</p>

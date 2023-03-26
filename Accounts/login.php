@@ -114,6 +114,16 @@
                         <li><a href="index.php?goto=forgetPass">Quên mật khẩu</a></li>
                     </div>
                 </ul>
+    </div>
+<?php } else { ?>
+    <form action="index.php?goto=login" method="post">
+        <div class="form-info">
+            Tên đăng nhập <br>
+            <input type="text" name="ten_tk">
+        </div>
+        <div class="form-info">
+            Mật khẩu <br>
+            <input type="password" name="pass">
         </div>
     <?php } else { ?>
         <div class="form-main">

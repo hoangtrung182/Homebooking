@@ -26,8 +26,8 @@
             <div class="menu">
                 <ul>
                     <!-- <li><a href="index.php?goto=listCates">Loại Phòng</a></li> -->
-                    <!-- <li><a href="index.php?goto=listRooms">Danh sách phòng</a></li> -->
-                    <li><a href="index.php?goto=listNews">Tin Tức</a></li>
+                    <li><a href="index.php?goto=viewRooms">Hotel & Rooms</a></li>
+                    <li><a href="index.php?goto=viewNews">Tin Tức</a></li>
                     <li><a href="index.php?goto=listRooms_booking">Đặt Phòng</a></li>
                     <li><a href="index.php?goto=add_pay">Thông Tin Phòng Đặt</a></li>
                     <!-- <li><a href="#">Tin Tức</a></li> -->

@@ -14,6 +14,9 @@ function loadAll_acc()
 function insertAcc($ten_tk, $email, $pass, $phone)
 {
     $sql = "INSERT INTO taikhoan(ten_tk,email,pass,phone) VALUES ('$ten_tk','$email','$pass','$phone')";
+    
+function insertAcc($hoten, $ten_tk, $email, $pass, $phone) {
+    $sql = "INSERT INTO taikhoan(Ho_ten, ten_tk, email, pass, phone) VALUES ('$hoten','$ten_tk','$email','$pass','$phone')";
     pdo_execute($sql);
 }
 function checkAccount($ten_tk, $pass)
@@ -51,4 +54,10 @@ function load_taikhoan()
     $sql = "SELECT * from taikhoan order by ma_tk asc";
     $listUsers = pdo_query($sql);
     return $listUsers;
+}
+
+function getOneAccount($id) {
+	$sql = "SELECT * FROM taikhoan WHERE ma_tk = '$id'";
+	$user = pdo_query_one($sql);
+	return $user;
 }

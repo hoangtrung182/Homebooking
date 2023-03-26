@@ -12,9 +12,9 @@
 	$Price_max = isset($_GET['price-max']) ? $_GET['price-max'] : 0;
 
 	$BothFiltered = bothFilter($id, $Price, $Price_min, $Price_max);
-	// $BothFiltered = bothFilter($Price_min, $Price_max);
 	$listCates = selectCates();
-	include './View/roomsSearch.php';
+	// include './View/roomsSearch.php';
+	include './Rooms/roomsSearch.php';
 
 	include './View/footer.php';
 
