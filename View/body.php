@@ -1,3 +1,4 @@
+
  <nav class="nav">
     <div class="icon1">
         <img src="https://img.agoda.net/images/INTTRV-45/default/Bags-heart_2021-09-30.svg" alt="">
@@ -25,8 +26,7 @@
             </div>
         </div>
         <!-- Form -->
-         <form action="search.php?" method="get" class="form_search">
-            <!-- <label class="form_label" for="">Loại phòng</label><br> -->
+         <form action="index.php?search=typerooms" method="post" class="form_search">
             <select name="loaiphong" id="" class="input_third">
                 <option value="">Chọn loại phòng</option>
                 <?php foreach ($listCates as $loaiphong) {
@@ -37,13 +37,11 @@
                     </option>
                 <?php } ?>
             </select><br>
-            <!-- <label class="form_label" for="">Tăng, giảm dần</label><br> -->
             <select name="price_chose" id="" class="input_third">
                 <option value="" selected>Sắp xếp giá theo</option>
                 <option value="desc">Giá từ cao đến thấp</option>
                 <option value="asc">Giá từ thấp đến cao</option>
             </select><br>
-            <!-- <label class="form_label">Khoảng giá</label> -->
             <div class="input_search-form">
                 <input type="number" name="price-min" class="input_search-price min-1" placeholder="Nhập giá thấp nhất">
                 <input type="number" name="price-max" class="input_search-price max-1" placeholder="Nhập giá cao nhất">

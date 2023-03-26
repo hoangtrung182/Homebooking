@@ -197,15 +197,17 @@ if (isset($_GET['goto'])) {
 					// header('location: index.php');
 					$_SESSION['ten_tk'] = $checkAcc;
 
-					header('location:index.php');
+					// header('location:index.php');
 					echo '<script> alert("Đăng nhập thành công!") </script>';
 
 					if ($_SESSION['ten_tk']['vai_tro'] === 1) {
 						header('location: Admin/index.php');
-						echo '<script> alert("Đăng nhập thành công!") </script>';
+						return $_SESSION['ten_tk'];
+						// echo '<script> alert("Đăng nhập thành công!") </script>';
 					} else {
 						header('location:index.php');
-						echo '<script> alert("Đăng nhập thành công!") </script>';
+						return $_SESSION['ten_tk'];
+						// echo '<script> alert("Đăng nhập thành công!") </script>';
 					}
 					// echo '<script> alert("Đăng nhập thành công!") </script>';
 				} else {
@@ -238,11 +240,58 @@ if (isset($_GET['goto'])) {
 			# code...
 			// break;
 	}
+}else if(isset($_GET['search'])) {
+	switch ($_GET['search']) {
+		case 'rooms':
+			if (isset($_POST['searchRooms']) && $_POST['searchRooms']) {
+				$keyw = $_POST['keyw'];
+				$ma_lp = $_POST['ma_lp'];
+			} else {
+				$keyw = "";
+				$ma_lp = 0;
+			}
+
+			$listRooms = select_items_search($keyw, $ma_lp);
+			$listCates = selectCates();
+			include '../Rooms/listRooms.php';
+			break;
+		case 'typerooms':
+			$id = isset($_POST['loaiphong']) ? $_POST['loaiphong'] : 0;
+			$Price = isset($_POST['price_chose']) ? $_POST['price_chose'] : '';
+			$err = array();
+
+			if(!empty($_POST['price-min']) && ($_POST['price-min'] < 0)) {
+				$err['min'] = "Giá trị phải nhập số dương !!";
+			}else {
+				isset($_POST['price-min']) ? $_POST['price-min'] : 0;
+			}
+
+			if(!empty($_POST['price-max']) && ($_POST['price-max'] < 0)) {
+				$err['max'] = "Giá trị phải nhập số dương !!";
+			}else {
+				isset($_POST['price-max']) ? $_POST['price-max'] : 0;
+			}
+			$Price_min = isset($_POST['price-min']) ? $_POST['price-min'] : 0;
+			$Price_max = isset($_POST['price-max']) ? $_POST['price-max'] : 0;
+
+			if(empty($err)) {
+				$BothFiltered = bothFilter($id, $Price, $Price_min, $Price_max);
+			}
+
+			$listCates = selectCates();
+
+			include './Rooms/roomsSearch.php';
+			break;
+		default:
+			# code...
+			break;
+	}
 }else {
 	$listCates = selectCates();
 	// $listRooms = selectRooms();
 	$list8rooms = selectEightRooms();
 	include './View/body.php';
 }
+
 
 include './View/footer.php';
