@@ -184,7 +184,6 @@ if (isset($_GET['goto'])) {
 				$phone = $_POST['phone'];
 				insertAcc($hoten, $ten_tk, $email, $pass, $phone);
 				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
-				// header("Location: index.php?act=login");
 			}
 			include './Accounts/register.php';
 			break;
@@ -198,10 +197,13 @@ if (isset($_GET['goto'])) {
 					// header('location: index.php');
 					$_SESSION['ten_tk'] = $checkAcc;
 
-					if($_SESSION['ten_tk']['vai_tro'] === 1) {
+					header('location:index.php');
+					echo '<script> alert("Đăng nhập thành công!") </script>';
+
+					if ($_SESSION['ten_tk']['vai_tro'] === 1) {
 						header('location: Admin/index.php');
 						echo '<script> alert("Đăng nhập thành công!") </script>';
-					}else {
+					} else {
 						header('location:index.php');
 						echo '<script> alert("Đăng nhập thành công!") </script>';
 					}
@@ -209,7 +211,7 @@ if (isset($_GET['goto'])) {
 				} else {
 					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
 					// $thongbao = "Tai khoan khong ton tai";
-					include './view/body.php';
+					header('location:index.php');
 				}
 			}
 			include './Accounts/login.php';

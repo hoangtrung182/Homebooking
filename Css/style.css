@@ -422,6 +422,11 @@
     font-weight: 700;
 }
 
+.row-rooms {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
 .room-item {
     display: flex;
     /*align-items: center;*/
@@ -431,6 +436,7 @@
     border: 1px solid #ccc;
     border-radius: 3px;
 }
+
 .room-info {
     margin: 0px 20px;
 }
@@ -447,11 +453,13 @@
     font-weight: 500;
     color: black;
 }
-.room-item p{
+
+.room-item p {
     color: #df2629;
     font-size: 18px;
 }
-.room-item em{
+
+.room-item em {
     color: #5a4f4f;
 }
 
@@ -489,7 +497,8 @@
     height: 200px;
     background-color: #5a4f4f;
 }
-.footer-content p{
+
+.footer-content p {
     padding: 70px;
     margin: 100px;
     text-align: center;
