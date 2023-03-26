@@ -1,24 +1,25 @@
 <?php
+
 function selectAcc()
 {
     $sql = "SELECT * FROM taikhoan order by ma_tk asc";
     $listRooms = pdo_query($sql);
     return $listRooms;
 }
+
 function loadAll_acc()
 {
     $sql = "SELECT *FROM taikhoan order by ma_tk desc";
     $listAcc = pdo_query($sql);
     return $listAcc;
 }
-function insertAcc($ten_tk, $email, $pass, $phone)
-{
-    $sql = "INSERT INTO taikhoan(ten_tk,email,pass,phone) VALUES ('$ten_tk','$email','$pass','$phone')";
+
     
 function insertAcc($hoten, $ten_tk, $email, $pass, $phone) {
     $sql = "INSERT INTO taikhoan(Ho_ten, ten_tk, email, pass, phone) VALUES ('$hoten','$ten_tk','$email','$pass','$phone')";
     pdo_execute($sql);
 }
+
 function checkAccount($ten_tk, $pass)
 {
     $sql = "SELECT * FROM taikhoan WHERE ten_tk='" . $ten_tk . "' AND pass ='" . $pass . "'";
