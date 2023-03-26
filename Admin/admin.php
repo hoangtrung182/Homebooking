@@ -27,7 +27,7 @@
                     <li><a href="index.php?goto=listNews">Tin Tức</a></li>
                     <li><a href="index.php?goto=listRooms_booking">Đặt Phòng</a></li>
                     <li><a href="index.php?goto=add_pay">Thông Tin Phòng Đặt</a></li>
-                    <li><a href="#">Tài Khoản</a></li>
+                    <li><a href="index.php?goto=listAcc">Tài Khoản</a></li>
                     <li><a href="#">Bình luận</a></li>
                 </ul>
             </div>
