@@ -1,6 +1,10 @@
 <div class="form-register">
     <form action="index.php?goto=register" method="post">
         <div class="form-info">
+            Họ Tên <br>
+        <input type="text" name="ho_ten" required>
+        </div>
+        <div class="form-info">
             Tên đăng nhập <br>
             <input type="text" name="ten_tk" required>
         </div>

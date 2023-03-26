@@ -309,8 +309,12 @@ if (isset($_GET['goto'])) {
 						$save_url = $url;
 					}
 				}
+
+				if($_SESSION['ten_tk']) {
+					extract($_SESSION['ten_tk']);
+				}
 				// var_dump($hinh_anh); 
-				insertNews($tieu_de, $save_url, $gioi_thieu, $noi_dung, $ngay_dang, '03');
+				insertNews($tieu_de, $save_url, $gioi_thieu, $noi_dung, $ngay_dang, $ma_tk);
 
 				$thongbao = "Thêm mới phong thành công !";
 			}

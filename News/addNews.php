@@ -18,11 +18,13 @@
 			</div>
 			<div class="text_input">
 				<p class="form_label">Mô tả</p>
-				<input type="text" name="desc" class="input_second"><br>
+				<!-- <input type="text" name="desc" class="input_second"><br> -->
+				<textarea name="desc" class="input_second"></textarea>
 			</div>
 			<div class="text_input">
 				<p class="form_label">Nội dung</p>
-				<input type="text" name="content" class="input_second"><br>
+				<!-- <input type="text" name="content" class="input_second"><br> -->
+				<textarea name="content" class="input_second"></textarea>
 			</div>
 			<div class="text_input">
 				<p class="form_label">ngày đăng</p>
