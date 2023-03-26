@@ -13,3 +13,9 @@ function checkPass($ten_tk) {
     $check = pdo_query_one($sql);
     return $check;
 }
+
+
+
+function abc {
+    
+}
