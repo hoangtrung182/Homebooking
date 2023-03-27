@@ -7,17 +7,18 @@
         $user = getOneAccount($ma_tk); 
         extract($user);
 		?>
-		<li class="room-item">
+		<li class="new-item">
 			<a href="index.php?goto=detailnew&id=<?= $ma_tin ?>">
              	<img src=".//<?= $hinh_anh ?>" alt="">
 			</a>
-            <div class="room-info">
-             	<a href="index.php?goto=detailnew&id=<?= $ma_tin ?>">
-                 	<h3><?= $tieu_de ?></h3>
-             	</a>
+            <div class="new-info">
                 <div class="">
-                 	<p><?= $noi_dung ?></p>
-                     <em><?= $mo_ta ?></em>
+                 	<a href="index.php?goto=detailnew&id=<?= $ma_tin ?>">
+                     	<h3><?= $tieu_de ?></h3>
+                 	</a>
+                    <em><?= $mo_ta ?></em>                    
+                </div>
+                <div class="">
                      <p>Tác giả: <?= $Ho_ten ?></p>
                 </div>
             </div>

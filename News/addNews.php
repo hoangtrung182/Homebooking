@@ -14,17 +14,16 @@
 			</div>
 			<div class="text_input">
 				<p class="form_label">Hình ảnh</p>
-				<input type="file" name="image" class="input_second">
+				<input type="file" name="image" multiple="true" class="input_second">
 			</div>
 			<div class="text_input">
 				<p class="form_label">Mô tả</p>
-				<!-- <input type="text" name="desc" class="input_second"><br> -->
-				<textarea name="desc" class="input_second"></textarea>
+				<textarea name="desc" cols="96" rows="4" class="text-area"></textarea>
 			</div>
 			<div class="text_input">
 				<p class="form_label">Nội dung</p>
 				<!-- <input type="text" name="content" class="input_second"><br> -->
-				<textarea name="content" class="input_second"></textarea>
+				<textarea name="content" cols="96" rows="4" class="text-area"></textarea>
 			</div>
 			<div class="text_input">
 				<p class="form_label">ngày đăng</p>

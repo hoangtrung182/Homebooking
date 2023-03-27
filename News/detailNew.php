@@ -13,26 +13,20 @@
 	<title>Document</title>
 </head>
 <body>
-	<div class="box-news">
-		<h1><?= $tieu_de ?></h1>
-		<p><?= $mo_ta ?></p>
-
-		<img src=".//<?= $hinh_anh ?>" width="800px" alt="">
-		<p><?= $noi_dung ?></p>
-		<span>Tác giả: <?= $Ho_ten ?></span>
-	</div>
-
-	<!-- Comments -->
-	<div class="row_product">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-		<script>
-			$(document).ready(function () {
-				$("#comment").load("../Binhluan/formBinhLuan.php", { idpro:} )
-			});
-		</script>
-		<div>
-			<span id="comment"></span>
-		</div>
+	<div class="new-container">
+		<header class="new-header">
+			<h1><?= $tieu_de ?></h1>
+		</header>
+		<section class="new-main">
+			<p class="main-desc"><?= $mo_ta ?></p>
+			<div class="main-image">
+				<img src=".//<?= $hinh_anh ?>" alt="">
+			</div>
+			<p class="main-desc"><?= $noi_dung ?></p>
+		</section>
+		<footer class="new-footer">
+			<span>Tác giả: <?= $Ho_ten ?></span>
+		</footer>
 	</div>
 </body>
 </html>

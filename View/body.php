@@ -33,14 +33,14 @@
                     extract($loaiphong);
                      ?>
                     <option value="<?= $ma_lp ?>">
-                        <?= $ten_lp ?>
+                       ` <?= $ten_lp ?> `
                     </option>
                 <?php } ?>
             </select><br>
             <select name="price_chose" id="" class="input_third">
                 <option value="" selected>Sắp xếp giá theo</option>
-                <option value="desc">Giá từ cao đến thấp</option>
-                <option value="asc">Giá từ thấp đến cao</option>
+                <option value="desc">` Cao đến Thấp `</option>
+                <option value="asc">` Thấp đến Cao `</option>
             </select><br>
             <div class="input_search-form">
                 <input type="number" name="price-min" class="input_search-price min-1" placeholder="Nhập giá thấp nhất">
@@ -70,8 +70,6 @@
     </div>
 </div>
 
-
-
 <!-- Main Location -->
 <section class="location-container">
     <div class="location">
@@ -82,28 +80,26 @@
             <div class="location-img">
                 <img src="./img/image6.png" alt="">
                 <h3>Hồ Chí Minh</h3>
-                <p>14.320 chỗ ở</p>
+                <p>14.320 <span>Chỗ nghỉ</span> </p>
             </div>
             <div class="location-img">
                 <img src="./img/image7.png" alt="">
                 <h3>Vũng Tàu</h3>
-                <p>14.320 chỗ ở</p>
+                <p>14.320 <span>Chỗ nghỉ</span> </p>
             </div>
             <div class="location-img">
                 <img src="./img/image8.png" alt="">
                 <h3>Đà Lạt</h3>
-                <p>14.320 chỗ ở</p>
+                <p>14.320 <span>Chỗ nghỉ</span> </p>
             </div>
             <div class="location-img">
                 <img src="./img/image9.png" alt="">
                 <h3>Hà Nội</h3>
-                <p>14.320 chỗ ở</p>
+                <p>14.320 <span>Chỗ nghỉ</span> </p>
             </div>
         </div>
     </div> 
 </section>
-
-
 
 <!-- Main Products -->
 <section class="list-rooms">
@@ -128,6 +124,47 @@
              ?>
         </div>
     </div>
+</section>
+
+<!-- Plus Location  -->
+<section class="location-container">
+    <div class="location">
+        <div class="location-1">
+            <p>các địa điểm thu hút ở ngoài Việt Nam</p>
+        </div>
+        <div class="location-content">
+            <div class="location-img">
+                <img src="./img/image6.png" alt="">
+                <h3 class="location-title">Kuala Lumpur</h3>
+                <p>17,404 <span>Chỗ nghỉ</span> </p>
+            </div>
+            <div class="location-img">
+                <img src="./img/image7.png" alt="">
+                <h3 class="location-title">Malila</h3>
+                <p>11,257 <span>Chỗ nghỉ</span> </p>
+            </div>
+            <div class="location-img">
+                <img src="./img/image8.png" alt="">
+                <h3 class="location-title">Las Vegas</h3>
+                <p>828 <span>Chỗ nghỉ</span> </p>
+            </div>
+            <div class="location-img">
+                <img src="./img/image9.png" alt="">
+                <h3 class="location-title">Penang</h3>
+                <p>4681 <span>Chỗ nghỉ</span> </p>
+            </div>
+             <div class="location-img">
+                <img src="./img/image9.png" alt="">
+                <h3 class="location-title">Jakarta</h3>
+                <p>4681 <span>Chỗ nghỉ</span> </p>
+            </div>
+             <div class="location-img">
+                <img src="./img/image9.png" alt="">
+                <h3 class="location-title">Bangkok</h3>
+                <p>10,342 <span>Chỗ nghỉ</span> </p>
+            </div>
+        </div>
+    </div> 
 </section>
 
 <script>

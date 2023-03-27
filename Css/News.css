@@ -1,0 +1,52 @@
+
+.new-container {
+	width: 1000px;
+	max-width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	font-size: 18px;
+}
+
+.new-header h1{
+	font-size: 48px;
+    text-align: center;
+    font-weight: 400;
+    color: #000;
+    opacity: 0.8;
+}
+
+.main-desc {
+	margin: 15px;
+}
+.main-image {
+	text-align: center;
+}
+
+.main-image img{
+	width: 70%;
+	/*width: 600px;*/
+	/*height: 400px;*/
+}
+
+.new-footer span {
+	display: block;
+	float: right;
+	color: red;
+	font-style: italic;
+}
+
+
+
+
+
+/*=========== Form Add =======*/
+
+.text-area {
+	margin-left: 30px;
+	border: 1px solid #40b52be0;
+	font-size: 16px;
+	outline: none;
+	padding-left: 10px;
+	background-color: transparent;
+	border-radius: 3px;
+}

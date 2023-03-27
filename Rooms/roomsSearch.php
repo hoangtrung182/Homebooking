@@ -30,12 +30,12 @@
                  </select><br>
                  <?php 
                     if(isset($err['min'])) { ?>
-                        <p class="notify_min"><?= $err['min'] ?></p>
+                        <p class="notify notify_min"><?= $err['min'] ?></p>
                     <?php } 
                  ?>
                  <?php 
                     if(isset($err['max'])) { ?>
-                        <p class="notify_max"><?= $err['max'] ?></p>
+                        <p class="notify notify_max"><?= $err['max'] ?></p>
                     <?php } 
                  ?>
                  <div class="input_search-form">
