@@ -6,7 +6,7 @@ include './Models/pdo.php';
 include './Models/bookings.php';
 include './Models/Categories.php';
 include './Models/Rooms.php';
-include './Models/news.php';
+include './Models/News.php';
 include './Models/accounts.php';
 
 if (isset($_GET['goto'])) {
@@ -55,88 +55,10 @@ if (isset($_GET['goto'])) {
 			break;
 		// Rooms -- Phòng Ở
 		case 'listRooms':
+		case 'viewRooms': 
 			$listRooms = selectRooms();
 			$listCates = selectCates();
-			include './Rooms/listRooms.php';
-			break;
-		case 'addRooms1':
-			$listCates = selectCates();
-			include './Rooms/addRoom.php';
-			break;
-		case 'addRoom':
-			if (isset($_POST['addNewRoom']) && $_POST['addNewRoom']) {
-				$ten_loai = $_POST['name'];
-				$gia = $_POST['price'];
-				$discount = $_POST['discount'];
-				$mota = $_POST['desc'];
-				$ma_loai = $_POST['maloai'];
-
-				$anh_dai_dien = isset($_FILES['avatar']) ? $_FILES['avatar'] : '';
-				$save_url = '';
-				if ($anh_dai_dien['size'] > 0 && $anh_dai_dien['size'] < 500000) {
-					$photo_folder = 'img/';
-					$photo_file = uniqid() . $anh_dai_dien['name'];
-
-					$file_se_luu = $anh_dai_dien['tmp_name'];
-					$url = $photo_folder . $photo_file;
-
-					if (move_uploaded_file($file_se_luu, $url)) {
-						$save_url = $url;
-					}
-				}
-
-				insertRoom($ten_loai, $gia, $discount, $save_url, $mota, $ma_loai);
-				$thongbao = "Thêm mới phong thành công !";
-			}
-			$cate = getOneItem($ma_loai);
-			$listRooms = selectRooms();
-			include './Rooms/listRooms.php';
-			break;
-		case 'deleteRoom':
-			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-				deleteRoom($_GET['id']);
-				$thongbao_delete = "Xóa thành công !!";
-			}
-
-			$listRooms = selectRooms();
-			include './Rooms/listRooms.php';
-			break;
-		case 'editRoom':
-			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-				$room = getOneRoom($_GET['id']);
-			}
-
-			$listCates = selectCates();
-			include './Rooms/updateRoom.php';
-			// include './Product/list.php';
-			break;
-		case 'editedRoom':
-			if (isset($_POST['updateRoom']) && $_POST['updateRoom']) {
-				$id = $_POST['id'];
-				$ten_loai = $_POST['name'];
-				$gia = $_POST['price'];
-				$discount = $_POST['discount'];
-				$mota = $_POST['desc'];
-				$ma_loai = $_POST['maloai'];
-
-				$anh_dai_dien = isset($_FILES['avatar']) ? $_FILES['avatar'] : '';
-				$save_url = '';
-				if ($anh_dai_dien['size'] > 0 && $anh_dai_dien['size'] < 500000) {
-					$photo_folder = 'img/';
-					$photo_file = uniqid() . $anh_dai_dien['name'];
-
-					$file_se_luu = $anh_dai_dien['tmp_name'];
-					$url = $photo_folder . $photo_file;
-
-					if (move_uploaded_file($file_se_luu, $url)) {
-						$save_url = $url;
-					}
-				}
-				updateRoom($id, $ten_loai, $gia, $discount, $save_url, $mota, $ma_loai);
-				$thongbao_update = "Cập nhật lại phòng thành công!";
-			}
-			$listRooms = selectRooms();
-			include './Rooms/listRooms.php';
+			include './Rooms/viewRooms.php';
 			break;
 		// Login
 		case 'login':
@@ -240,37 +162,86 @@ if (isset($_GET['goto'])) {
 
 			$listRooms = selectRooms();
 			include './Rooms/listRooms.php';
-			break;
-
-		case 'deleteNews':
-			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-				deleteNews($_GET['id']);
-				$thongbao_delete = "Xóa thành công !!";
-			}
-
+      break;
+			// Tin tuc
+		case 'viewNews': 
 			$listNews = selectNews();
-			include './News/listNews.php';
+			include './News/viewNews.php';
+			break;
+		case 'detailnew': 
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				$new = getOneNews($_GET['id']);
+			}
+			include './News/detailnew.php';
 			break;
 		// End News
 
+		case 'register':
+			if (isset($_POST['btn_register']) && ($_POST['btn_register'])) {
+				$hoten = $_POST['ho_ten'];
+				$ten_tk = $_POST['ten_tk'];
+				$email = $_POST['email'];
+				$pass = $_POST['pass'];
+				$phone = $_POST['phone'];
+				insertAcc($hoten, $ten_tk, $email, $pass, $phone);
+				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
+			}
+			include './Accounts/register.php';
+			break;
+			//End register
+		case 'login':
+			if (isset($_POST['login']) && ($_POST['login'])) {
+				$ten_tk = $_POST['ten_tk'];
+				$pass = $_POST['pass'];
+				$checkAcc = checkAccount($ten_tk, $pass);
+				if (is_array($checkAcc)) {
+					// header('location: index.php');
+					$_SESSION['ten_tk'] = $checkAcc;
+
+					// header('location:index.php');
+					echo '<script> alert("Đăng nhập thành công!") </script>';
+
+					if ($_SESSION['ten_tk']['vai_tro'] === 1) {
+						header('location: Admin/index.php');
+						return $_SESSION['ten_tk'];
+						// echo '<script> alert("Đăng nhập thành công!") </script>';
+					} else {
+						header('location:index.php');
+						return $_SESSION['ten_tk'];
+						// echo '<script> alert("Đăng nhập thành công!") </script>';
+					}
+					// echo '<script> alert("Đăng nhập thành công!") </script>';
+				} else {
+					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
+					// $thongbao = "Tai khoan khong ton tai";
+					header('location:index.php');
+				}
+			}
+			include './Accounts/login.php';
+			break;
+			//End login
+		case 'logout':
+			session_unset();
+			header('location: index.php');
+			break;
+			//End logout
+		case 'forgetPass':
+			if (isset($_POST['forgetPass']) && ($_POST['forgetPass'])) {
+				$ten_tk = $_POST['ten_tk'];
+				$checkPass = checkPass($ten_tk);
+				if (is_array($checkPass)) {
+					$thongbao = "Mật khẩu của bạn là " . $checkPass['pass'];
+				} else {
+					$thongbao = "Tài khoản không tồn tại";
+				}
+			}
+			include './Accounts/ForgetPass.php';
+			break;
 		default:
 		# code...
 	}
-} else if (isset($_GET['search'])) {
+}else if(isset($_GET['search'])) {
 	switch ($_GET['search']) {
-		case 'cate':
-			$roomsFilter = isset($_POST['keyw']) ? $_POST['keyw'] : '';
-
-			$listFiltered = roomsFiltered($roomsFilter);
-			$listCates = selectCates();
-			include './View/roomsSearch.php';
-			break;
-		case 'price':
-			$roomsByPrice = isset($_POST['price_chose']) ? $_POST['price_chose'] : '';
-			$listRoomsByPrice = roomsByPrice($roomsByPrice);
-			$listCates = selectCates();
-			include './View/roomsPrice.php';
-			break;
 		case 'rooms':
 			if (isset($_POST['searchRooms']) && $_POST['searchRooms']) {
 				$keyw = $_POST['keyw'];
@@ -282,13 +253,40 @@ if (isset($_GET['goto'])) {
 
 			$listRooms = select_items_search($keyw, $ma_lp);
 			$listCates = selectCates();
-			include './Rooms/listRooms.php';
+			include '../Rooms/listRooms.php';
+			break;
+		case 'typerooms':
+			$id = isset($_POST['loaiphong']) ? $_POST['loaiphong'] : 0;
+			$Price = isset($_POST['price_chose']) ? $_POST['price_chose'] : '';
+			$err = array();
+
+			if(!empty($_POST['price-min']) && ($_POST['price-min'] < 0)) {
+				$err['min'] = "Giá trị phải nhập số dương !!";
+			}else {
+				isset($_POST['price-min']) ? $_POST['price-min'] : 0;
+			}
+
+			if(!empty($_POST['price-max']) && ($_POST['price-max'] < 0)) {
+				$err['max'] = "Giá trị phải nhập số dương !!";
+			}else {
+				isset($_POST['price-max']) ? $_POST['price-max'] : 0;
+			}
+			$Price_min = isset($_POST['price-min']) ? $_POST['price-min'] : 0;
+			$Price_max = isset($_POST['price-max']) ? $_POST['price-max'] : 0;
+
+			if(empty($err)) {
+				$BothFiltered = bothFilter($id, $Price, $Price_min, $Price_max);
+			}
+
+			$listCates = selectCates();
+
+			include './Rooms/roomsSearch.php';
 			break;
 		default:
 			# code...
 			break;
 	}
-} else {
+}else {
 	$listCates = selectCates();
 	$listRooms = selectRooms();
 	include './View/body.php';

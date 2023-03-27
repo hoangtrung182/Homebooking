@@ -7,7 +7,7 @@ include '../Models/pdo.php';
 include '../Models/Categories.php';
 include '../Models/Rooms.php';
 include '../Models/bookings.php';
-include '../Models/news.php';
+include '../Models/News.php';
 include '../Models/accounts.php';
 
 if (isset($_GET['goto'])) {
@@ -291,16 +291,15 @@ if (isset($_GET['goto'])) {
 			break;
 		case 'addNews2':
 			if (isset($_POST['addNewNews']) && $_POST['addNewNews']) {
-				$tieu_de = $_POST['tieu_de'];
-				$gioi_thieu = $_POST['mo_ta'];
-				$ngay_dang = $_POST['ngay_dang'];
+				$tieu_de = $_POST['title'];
+				$gioi_thieu = $_POST['desc'];
+				$ngay_dang = $_POST['timeupload'];
 				// $ma_tk = $_POST['ma_tk'];
-				$mo_ta = $_POST['mo_ta'];
-				$noi_dung = $_POST['noi_dung'];
-				$hinh_anh = isset($_FILES['hinh_anh']) ? $_FILES['hinh_anh'] : '';
+				$noi_dung = $_POST['content'];
+				$hinh_anh = isset($_FILES['image']) ? $_FILES['image'] : '';
 				$save_url = '';
 				if ($hinh_anh['size'] > 0 && $hinh_anh['size'] < 500000) {
-					$photo_folder = 'img/';
+					$photo_folder = '../img/';
 					$photo_file = uniqid() . $hinh_anh['name'];
 
 					$file_se_luu = $hinh_anh['tmp_name'];
@@ -310,8 +309,12 @@ if (isset($_GET['goto'])) {
 						$save_url = $url;
 					}
 				}
+
+				if($_SESSION['ten_tk']) {
+					extract($_SESSION['ten_tk']);
+				}
 				// var_dump($hinh_anh); 
-				insertNews($tieu_de, $save_url, $mo_ta, $noi_dung, $ngay_dang);
+				insertNews($tieu_de, $save_url, $gioi_thieu, $noi_dung, $ngay_dang, $ma_tk);
 
 				$thongbao = "Thêm mới phong thành công !";
 			}
@@ -389,7 +392,7 @@ if (isset($_GET['goto'])) {
 				if (is_array($checkAcc)) {
 					// header('location: index.php');
 					$_SESSION['ten_tk'] = $checkAcc;
-					header('location:index.php');
+					header('location:../Admin/index.php');
 					// echo '<script> alert("Đăng nhập thành công!") </script>';
 				} else {
 					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
@@ -416,6 +419,40 @@ if (isset($_GET['goto'])) {
 				}
 			}
 			include '../Accounts/ForgetPass.php';
+			break;
+			//End forget
+		case 'listAcc':
+			$listAcc = loadAll_acc();
+			include '../Admin/accounts.php';
+			break;
+			//end listAcc
+		case 'editAcc':
+			if (isset($_POST['editAcc']) && $_POST['editAcc']) {
+				$ma_tk = $_POST['ma_tk'];
+				$ten_tk = $_POST['ten_tk'];
+				$email = $_POST['email'];
+				$phone = $_POST['phone'];
+				$vai_tro = $_POST['vai_tro'];
+			}
+			update_acc($ma_tk, $ten_tk, $email, $phone, $vai_tro);
+			// $_SESSION['user'] = check_khachhang($email, $password);
+			$thongbao = "Chỉnh sửa tài khoản thành công!";
+			// header('location:index.php');
+			$listAcc = loadAll_acc();
+			include '../Admin/accounts.php';
+			break;
+		case 'exit':
+			session_unset();
+			header('location:../Admin/index.php');
+			break;
+		case 'deleteAcc':
+			if (isset($_GET['ma_tk']) && ($_GET['ma_tk'] > 0)) {
+				delete_acc($_GET['ma_tk']);
+				$thongbao_delete = "Xóa thành công !!";
+			}
+
+			$listAcc = load_taikhoan();
+			include '../Admin/accounts.php';
 			break;
 		default:
 			# code...
