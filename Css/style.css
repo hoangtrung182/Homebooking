@@ -438,6 +438,9 @@
 }
 
 
+.room-item {
+    text-align: center;
+}
 /*========== News ===========*/
 .new-item {
     display: flex;
@@ -447,6 +450,10 @@
     border-radius: 3px;
 }
 
+.room-info {
+    text-align: left;
+    margin-left: 5px;
+ }
 .new-info {
     margin: 0px 20px;
     display: flex;
@@ -471,6 +478,17 @@
     color: black;
 }
 
+.room-item p {
+    color: #df2629;
+    font-size: 18px;
+}
+
+.room-item em {
+    color: #5a4f4f;
+}
+
+.footer {
+=======
 .new-item p {
     color: #df2629;
     font-size: 18px;
@@ -548,6 +566,19 @@
     margin-right: 30px;
 }
 
+/* show thanh toán */
+.container_pay {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid red;
+}
+
+.content-ticket2 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-top: 20px;
+}
 
 /*============= List-rooms-search===========*/
 .list_rooms-form {

@@ -5,9 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="./Css/table.css"> -->
-    <!-- <link rel="stylesheet" href="./Css/button.css"> -->
-    <!-- <link rel="stylesheet" href="./Css/style.css"> -->
     <link rel="stylesheet" href="./Css/style.css">
     <link rel="stylesheet" href="./Css/tables.css">
     <link rel="stylesheet" href="./Css/News.css">
@@ -26,6 +23,10 @@
             </div>
             <div class="menu">
                 <ul>
+                    <!-- <li><a href="index.php?goto=listCates">Loại Phòng</a></li> -->
+                    <!-- <li><a href="index.php?goto=listRooms">Danh sách phòng</a></li> -->
+                    <li><a href="index.php?goto=listNews">Tin Tức</a></li>
+                    <li><a href="Client/bookings/listRooms.php">Đặt Phòng</a></li>
                     <li><a href="index.php?goto=viewRooms">Hotel & Rooms</a></li>
                     <li><a href="index.php?goto=viewNews">Tin Tức</a></li>
                     <li><a href="index.php?goto=listRooms_booking">Đặt Phòng</a></li>
@@ -34,7 +35,10 @@
             </div>
             <div class="login">
                 <ul>
-                    <?php
+                    <li><a href="./Account/login.php"><button class="btn5-hover btn5">ĐĂNG NHẬP</button></a>
+                    </li>
+                    <li><a href="#"><button class="btn5-hover btn5">ĐĂNG KÝ</button></a></li>
+                   <?php
                     if (isset($_SESSION['ten_tk'])) {
                         extract($_SESSION['ten_tk']);
                     ?>
