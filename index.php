@@ -1,10 +1,13 @@
 <?php
+session_start();
+ob_start();
 include './View/header.php';
 include './Models/pdo.php';
 include './Models/bookings.php';
 include './Models/Categories.php';
 include './Models/Rooms.php';
 include './Models/news.php';
+include './Models/accounts.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
@@ -190,8 +193,8 @@ if (isset($_GET['goto'])) {
 						$save_url = $url;
 					}
 				}
-
 				// var_dump($hinh_anh); 
+				insertNews($tieu_de, $save_url, $mo_ta, $noi_dung, $ngay_dang);
 
 
 				insertNews($tieu_de, $save_url, $mo_ta, $noi_dung, $ngay_dang);
@@ -281,7 +284,6 @@ if (isset($_GET['goto'])) {
 			$listCates = selectCates();
 			include './Rooms/listRooms.php';
 			break;
-
 		default:
 			# code...
 			break;
