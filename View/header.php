@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Css/table.css">
-    <link rel="stylesheet" href="./Css/button.css">
-    <link rel="stylesheet" href="./Css/style.css">
-    <link rel="stylesheet" href="./Css/tables.css">
-    <link rel="stylesheet" href="./Css/button.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="./Css/style.css">
+    <link rel="stylesheet" href="./Css/button.css">
+    <link rel="stylesheet" href="./Css/tables.css">
+    <link rel="stylesheet" href="./Css/News.css">
+    <link rel="stylesheet" href="./Css/booking.css">
     <title>Trang Chủ | Agoda</title>
 </head>
 
@@ -24,14 +24,10 @@
             </div>
             <div class="menu">
                 <ul>
-                    <!-- <li><a href="index.php?goto=listCates">Loại Phòng</a></li> -->
-                    <!-- <li><a href="index.php?goto=listRooms">Danh sách phòng</a></li> -->
-                    <li><a href="index.php?goto=listNews">Tin Tức</a></li>
-                    <li><a href="Client/bookings/listRooms.php">Đặt Phòng</a></li>
-                    <li><a href="Client/bookings/add_pay.php">Thông Tin Phòng Đặt</a></li>
-                    <!-- <li><a href="#">Tin Tức</a></li> -->
-                    <!-- <li><a href="#">Tài Khoản</a></li> -->
-                    <!-- <li><a href="#">Bình luận</a></li> -->
+                    <li><a href="index.php?goto=listRooms_booking">Đặt Phòng</a></li>
+                    <li><a href="index.php?goto=viewRooms">Hotel & Rooms</a></li>
+                    <li><a href="index.php?goto=viewNews">Tin Tức</a></li>
+                    <li><a href="index.php?goto=add_pay">Thông Tin Phòng Đặt</a></li>
                 </ul>
             </div>
             <div class="login">
@@ -40,7 +36,9 @@
                     if (isset($_SESSION['ten_tk'])) {
                         extract($_SESSION['ten_tk']);
                         ?>
-                        <li><a href="index.php?goto=login"><button class="btn5-hover btn5">
+                        <li>
+                            <a href="index.php?goto=login">
+                                <button class="btn5-hover btn5">
                                     <?= $ten_tk ?>
                                 </button>
                             </a>
@@ -49,7 +47,8 @@
                         <?php
                     } else {
                         ?>
-                        <li><a href="index.php?goto=login"><button class="btn5-hover btn5">
+                        <li><a href="index.php?goto=login">
+                                <button class="btn5-hover btn5">
                                     Đăng nhập
                                 </button>
                             </a>

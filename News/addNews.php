@@ -3,8 +3,6 @@
 	<section class="main">
 		<h2 class="form_title">Form thêm mới tin tức</h2>
 		<form action="index.php?goto=addNews2" method="post" enctype="multipart/form-data">
-			
-			
 			</select><br>
 			<div class="text_input">
 				<input type="hidden" name="ma_tin" disabled placeholder="Không thay đổi mã tin tức"
@@ -12,23 +10,24 @@
 			</div>
 			<div class="text_input">
 				<p class="form_label">Tiêu đề</p>
-				<input type="text" name="tieu_de" class="input_second"><br>
+				<input type="text" name="title" class="input_second"><br>
 			</div>
 			<div class="text_input">
 				<p class="form_label">Hình ảnh</p>
-				<input type="file" name="hinh_anh" class="input_second">
+				<input type="file" name="image" multiple="true" class="input_second">
 			</div>
 			<div class="text_input">
 				<p class="form_label">Mô tả</p>
-				<input type="text" name="mo_ta" class="input_second"><br>
+				<textarea name="desc" cols="96" rows="4" class="text-area"></textarea>
 			</div>
 			<div class="text_input">
 				<p class="form_label">Nội dung</p>
-				<input type="text" name="noi_dung" class="input_second"><br>
+				<!-- <input type="text" name="content" class="input_second"><br> -->
+				<textarea name="content" cols="96" rows="4" class="text-area"></textarea>
 			</div>
 			<div class="text_input">
 				<p class="form_label">ngày đăng</p>
-				<input type="date" name="ngay_dang" class="input_second"><br>
+				<input type="date" name="timeupload" class="input_second"><br>
 			</div>
 			<br>
 			
