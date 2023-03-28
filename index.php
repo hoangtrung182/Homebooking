@@ -449,7 +449,6 @@ if (isset($_GET['goto'])) {
 			// End News
 			// Chi tiết phòng
 			// abc thu nghiem
-		default:
 			# code...
 	}
 } else if (isset($_GET['search'])) {
