@@ -1,81 +1,3 @@
-<?php
-session_start();
-include '../../Models/pdo.php';
-include '../../Models/bookings.php';
-if (isset($_SESSION['user'])) {
-    $ten_kh = $_SESSION['user']['ten_tk'];
-    $phone = $_SESSION['user']['phone'];
-    $dia_chi = $_SESSION['user']['dia_chi'];
-    //$khuyen_mai = $_SESSION['user']['ma_km'];
-    $khuyen_mai = select_Sale($_SESSION['user']['ma_tk'])['ten_km'];
-} else {
-    $ten_kh = '';
-    $phone = '';
-    $dia_chi = '';
-
-}
-
-if (isset($_SESSION['user'])) {
-    if (isset($_POST['dat_phong'])) {
-        $ma_kh = $_SESSION['user']['ma_tk'];
-        $ngay_dat = $_SESSION['datphong']['ngay_dat'];
-        $ngay_den = $_SESSION['datphong']['ngay_den'];
-        $ngay_ve = $_SESSION['datphong']['ngay_ve'];
-        $ma_lp = $_SESSION['datphong']['ma_lp'];
-        $ma_phong = $_SESSION['datphong']['ma_phong'];
-        $ten_phong = $_SESSION['datphong']['ten_phong'];
-        $ten_lp = $_SESSION['datphong']['ten_lp'];
-        $thanh_tien = $_SESSION['datphong']['tong_tien'];
-        $ten_kh = $_POST['ten_kh'];
-        $phone = $_POST['sdt'];
-        $dia_chi = $_POST['dia_chi'];
-        $ma_km = select_Sale($_SESSION['user']['ma_tk'])['ma_km'];
-        $trang_thai = 0;
-        $_SESSION['thanhtoan'] = [
-            'ma_tk' => $ma_kh,
-            'ngay_dat' => $ngay_dat,
-            'ngay_den' => $ngay_den,
-            'ngay_ve' => $ngay_ve,
-            'ma_lp' => $ma_lp,
-            'ten_phong' => $ten_phong,
-            'ten_lp' => $ten_lp,
-            'thanh_tien' => $thanh_tien,
-            'ten_kh' => $ten_kh,
-            'phone' => $phone,
-            'dia_chi' => $dia_chi,
-            'ma_km' => $ma_km,
-            'ma_phong' => $ma_phong,
-        ];
-        //var_dump($result);
-        date_default_timezone_set('ASIA/HO_CHI_MINH');
-        $date = date('Y-m-d');
-
-        $result = check_datphong($ma_phong);
-
-        if ($result == '') {
-            $resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
-            $thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
-        } else if ($result != '') {
-
-            if ($result['ngay_ve'] < $date && $result['ngay_den'] < $date) {
-                $resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
-                $thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
-            } else if ($result['ngay_ve'] > $date && $result['ngay_den'] < $date) {
-                $thongbao = "BẠN ĐANG Ở PHÒNG NÀY!";
-            } else if ($result['ngay_den'] > $date && $result['trang_thai'] != '') {
-                $resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
-                $thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
-
-            } else if ($result['ngay_den'] > $date && $result['trang_thai'] >= 1) {
-                $thongbao = "PHÒNG ĐÃ ĐƯỢC ĐẶT TRƯỚC!";
-            }
-        }
-        $listRooms = selectRooms_booking();
-    }
-    // 
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,26 +13,7 @@ if (isset($_SESSION['user'])) {
 
 <body>
     <div class="container">
-        <header class="header">
-            <div class="logo">
-                <a href="#"><img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt=""></a>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="listRooms.php">ĐẶT PHÒNG</a></li>
-                    <li><a href="add_pay.php">THÔNG TIN PHÒNG ĐẶT</a></li>
-                    <li><a href="#">TIN TỨC</a></li>
-                    <li><a href="#">TÀI KHOẢN</a></li>
-                    <li><a href="#">Apartments</a></li>
-                </ul>
-            </div>
-            <div class="login">
-                <ul>
-                    <li><a href="../Account/login.php"><button class="btn5-hover btn5">ĐĂNG NHẬP</button></a></li>
-                    <li><a href="#"><button class="btn5-hover btn5">ĐĂNG KÝ</button></a></li>
-                </ul>
-            </div>
-        </header>
+
         <div class="main_pay">
             <div class="column1">
                 <h2 class="form_title">Thông tin đặt phòng</h2>
@@ -173,14 +76,14 @@ if (isset($_SESSION['user'])) {
                         <input type="text" name="dia_chi" value="<?= $dia_chi ?>">
                     </div>
                     <div class="form-group">
-                        <?php if (isset($_SESSION['user'])) { ?>
+                        <?php if (isset($_SESSION['ten_tk'])) { ?>
                             <label>Khuyến mãi</label>
                             <input type="text" name="ma_km" value="<?= $khuyen_mai ?>" readonly>
                             <?php
-                            $sl = Client_loyal($_SESSION['user']['ma_tk']);
+                            $sl = Client_loyal($_SESSION['ten_tk']['ma_tk']);
                             if ($sl > 10) {
                                 $ma_km = 2;
-                                update_taikhoan($_SESSION['user']['ma_tk'], $ma_km);
+                                update_taikhoan($_SESSION['ten_tk']['ma_tk'], $ma_km);
                             } ?>
                         <?php } else { ?>
 
@@ -207,7 +110,7 @@ if (isset($_SESSION['user'])) {
                             </h4>
                         </div>
                         <div class="img-homestay">
-                            <img src="../../<?= $_SESSION['datphong']['avatar'] ?>" alt="" width="200px">
+                            <img src="<?= $_SESSION['datphong']['avatar'] ?>" alt="" width="200px">
                         </div>
                     </div>
 

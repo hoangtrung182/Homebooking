@@ -24,7 +24,7 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="index.php?goto=pays">Đặt Phòng</a></li>
+                    <li><a href="index.php?goto=listRooms_booking">Đặt Phòng</a></li>
                     <li><a href="index.php?goto=viewRooms">Hotel & Rooms</a></li>
                     <li><a href="index.php?goto=viewNews">Tin Tức</a></li>
                     <li><a href="index.php?goto=add_pay">Thông Tin Phòng Đặt</a></li>
@@ -32,10 +32,10 @@
             </div>
             <div class="login">
                 <ul>
-                   <?php
+                    <?php
                     if (isset($_SESSION['ten_tk'])) {
                         extract($_SESSION['ten_tk']);
-                    ?>
+                        ?>
                         <li>
                             <a href="index.php?goto=login">
                                 <button class="btn5-hover btn5">
@@ -44,9 +44,9 @@
                             </a>
                         </li>
                         <li><a href="index.php?goto=logout"><button class="btn5-hover btn5">Thoát</button></a></li>
-                    <?php
+                        <?php
                     } else {
-                    ?>
+                        ?>
                         <li><a href="index.php?goto=login">
                                 <button class="btn5-hover btn5">
                                     Đăng nhập
@@ -54,7 +54,7 @@
                             </a>
                         </li>
                         <li><a href="index.php?goto=register"><button class="btn5-hover btn5">ĐĂNG KÝ</button></a></li>
-                    <?php  } ?>
+                    <?php } ?>
                 </ul>
             </div>
         </header>

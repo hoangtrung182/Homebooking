@@ -1,13 +1,3 @@
-<?php
-include '../../Models/pdo.php';
-include '../../Models/bookings.php';
-session_start();
-if (isset($_GET['id_ct'])) {
-    $ma_dp = $_GET['id_ct'];
-    $listPay = show_bookingDetail($ma_dp);
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,26 +26,7 @@ if (isset($_GET['id_ct'])) {
 
 <body>
     <div class="container">
-        <header class="header">
-            <div class="logo">
-                <a href="#"><img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt=""></a>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="listRooms.php">ĐẶT PHÒNG</a></li>
-                    <li><a href="add_pay.php">THÔNG TIN PHÒNG ĐẶT</a></li>
-                    <li><a href="#">TIN TỨC</a></li>
-                    <li><a href="#">TÀI KHOẢN</a></li>
-                    <li><a href="#">Apartments</a></li>
-                </ul>
-            </div>
-            <div class="login">
-                <ul>
-                    <li><a href="../Account/login.php"><button class="btn5-hover btn5">ĐĂNG NHẬP</button></a></li>
-                    <li><a href="#"><button class="btn5-hover btn5">ĐĂNG KÝ</button></a></li>
-                </ul>
-            </div>
-        </header>
+
         <div class="container_pay">
             <div class="content-ticket1">
                 <div class="title-item">
