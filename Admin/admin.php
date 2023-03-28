@@ -17,7 +17,7 @@
     <div class="container">
         <header class="header">
             <div class="logo">
-                <a href="./">
+                <a href="./index.php">
                     <img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt="">
                 </a>
             </div>
@@ -43,7 +43,7 @@
                                 </button>
                             </a>
                         </li>
-                        <li>    
+                        <li>
                             <a href="index.php?goto=exit">
                                 <button class="btn5-hover btn5">Thoát</button>
                             </a>
@@ -52,7 +52,7 @@
                     } else {
                         ?>
                         <li><a href="index.php?goto=login"><button class="btn5-hover btn5">
-                                    Đăng nhập
+                                    ĐĂNG NHẬP
                                 </button>
                             </a>
                         </li>

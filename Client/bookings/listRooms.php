@@ -1,17 +1,3 @@
-
-<?php
-// session_start();
-// include '../../Models/pdo.php';
-// include '../../Models/bookings.php';
-// // $listRooms_booking = selectRooms_booking();
-// $listRooms = selectRooms_booking();
-
-
-// date_default_timezone_set('ASIA/HO_CHI_MINH');
-// $date = date('Y-m-d H:i:s');
-?>
-
-
 <body>
     <div class="container">
         <!-- <header class="header">
@@ -31,8 +17,26 @@
             </div>
             <div class="login">
                 <ul>
-                    <li><a href="../Account/login.php"><button class="btn5-hover btn5">ĐĂNG NHẬP</button></a></li>
-                    <li><a href="#"><button class="btn5-hover btn5">ĐĂNG KÝ</button></a></li>
+                    <?php
+                    if (isset($_SESSION['ten_tk'])) {
+                        extract($_SESSION['ten_tk']);
+                        ?>
+                        <li><a href="index.php?goto=login"><button class="btn5-hover btn5">
+                                    <?= $ten_tk ?>
+                                </button>
+                            </a>
+                        </li>
+                        <li><a href="../../index.php?goto=logout"><button class="btn5-hover btn5">Thoát</button></a></li>
+                        <?php
+                    } else {
+                        ?>
+                        <li><a href="index.php?goto=login"><button class="btn5-hover btn5">
+                                    Đăng nhập
+                                </button>
+                            </a>
+                        </li>
+                        <li><a href="index.php?goto=register"><button class="btn5-hover btn5">ĐĂNG KÝ</button></a></li>
+                    <?php } ?>
                 </ul>
             </div>
         </header> -->
@@ -74,7 +78,7 @@
                         } ?>
                     </span>
                     <div>
-                        <a href="detailRooms.php?id=<?= $ma_phong ?>">
+                        <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>">
                             <button class="btn-order1" type="submit">
                                 Đặt ngay
                             </button>
