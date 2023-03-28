@@ -171,13 +171,13 @@ table {
 .notify_min {
     color: red;
     position: absolute;
-    top: 73%;
+    top: 85%;
     left: 250px;
 }
 
 .notify_max {
     color: red;
     position: absolute;
-    top: 73%;
+    top: 85%;
     left: 58%;
 }

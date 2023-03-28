@@ -11,164 +11,79 @@ include './Models/accounts.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
-		// Categories - Loại Phòng
-		case 'listCates':
-			$listCates = selectCates();
-			include './Categories/listCates.php';
-			break;
-		case 'addCate1':
-			include './Categories/addCate.php';
-			break;
-		case 'addCate2':
-			if (isset($_POST['addNewCate']) && $_POST['addNewCate']) {
-				$ten_lp = $_POST['tenloai'];
-				insertCate($ten_lp);
-				$thongbao = "Thêm mới loại phòng thành công!";
+		// Dat phong
+		case 'pays':
+			if (isset($_SESSION['ten_tk'])) {
+				$ten_kh = $_SESSION['ten_tk']['ten_tk'];
+				$phone = $_SESSION['ten_tk']['phone'];
+				// $dia_chi = $_SESSION['ten_tk']['dia_chi'];
+			} else {
+				$ten_kh = '';
+				$phone = '';
+				$dia_chi = '';
 			}
-			$listCates = selectCates();
-			include './Categories/listCates.php';
-			break;
-		case 'deleteCate':
-			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-				deleteCate($_GET['id']);
-				$thongbao_xoa = "Xóa thành công !!";
+			if (isset($_SESSION['ten_tk'])) {
+				if (isset($_POST['dat_phong'])) {
+					$ma_kh = $_SESSION['ten_tk']['ma_kh'];
+					$ngay_dat = $_SESSION['datphong']['ngay_dat'];
+					$ngay_den = $_SESSION['datphong']['ngay_den'];
+					$ngay_ve = $_SESSION['datphong']['ngay_ve'];
+					$ma_lp = $_SESSION['datphong']['ma_lp'];
+					$ma_phong = $_SESSION['datphong']['ma_phong'];
+					$ten_phong = $_SESSION['datphong']['ten_phong'];
+					$ten_lp = $_SESSION['datphong']['ten_lp'];
+					$thanh_tien = $_SESSION['datphong']['thanh_tien'];
+					$ten_kh = $_POST['ten_kh'];
+					$phone = $_POST['phone'];
+					$dia_chi = $_POST['dia_chi'];
+					$ma_km = '1';
+					$trang_thai = 0;
+					$_SESSION['thanhtoan'] = [
+						'ma_kh' => $ma_kh,
+						'ngay_dat' => $ngay_dat,
+						'ngay_den' => $ngay_den,
+						'ngay_ve' => $ngay_ve,
+						'ma_lp' => $ma_lp,
+						'ten_phong' => $ten_phong,
+						'ten_lp' => $ten_lp,
+						'thanh_tien' => $thanh_tien,
+						'ten_kh' => $ten_kh,
+						'phone' => $sdt,
+						'dia_chi' => $dia_chi,
+						'ma_km' => $ma_km,
+					];
+					$result = check_datphong($ma_phong);
+					//var_dump($result);
+					date_default_timezone_set('ASIA/HO_CHI_MINH');
+					$date = date('Y-m-d');
+					if ($result == '') {
+						$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_tk, $ma_km);
+					} else if ($resert != '') {
+						if ($result['ngay_ve'] < $date) {
+							$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_tk, $ma_km);
+						} else {
+							$thongbao = "Bạn đang ở phòng này!";
+						}
+					} else {
+						$thongbao = "Bạn đã đặt phòng này rồi!";
+					}
+				}
 			}
-
-			$listCates = selectCates();
-			include './Categories/listCates.php';
-			break;
-		case 'editCate':
-			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-				$item = getOneItem($_GET['id']);
-			}
-			include './Categories/updateCate.php';
-			break;
-		case 'editedCate':
-			if (isset($_POST['updateCate']) && $_POST['updateCate']) {
-				$id = $_POST['id'];
-				$ten_lp = $_POST['tenloai'];
-				updateCate($id, $ten_lp);
-				$thongbao = "Cập nhật loại phòng thành công!";
-			}
-			$listCates = selectCates();
-			include './Categories/listCates.php';
-			break;
-		// Rooms -- Phòng Ở
-		case 'listRooms':
-		case 'viewRooms': 
 			$listRooms = selectRooms();
+			include './Client/bookings/listRooms.php';
+			break;
+		case 'viewRooms':
 			$listCates = selectCates();
+			$listRooms = selectRooms();
+
 			include './Rooms/viewRooms.php';
 			break;
-		// Login
-		case 'login':
-
-			if (isset($_POST['click'])) {
-				$email = $_POST['email'];
-				$pass = $_POST['mat_khau'];
-				$user = check_client($email, $pass);
-
-				if (is_array($user)) {
-					$_SESSION['user'] = $user;
-
-					if ($_SESSION['user']['vai_tro'] == 1) {
-						header("Location:../Admin/admin.php");
-					} else if ($_SESSION['user']['vai_tro'] == 0) {
-						//$_SESSION['success'] = "";
-						var_dump($_SESSION['user']);
-						//include 'Client/index1.php';
-						header("Location:Client/index1.php");
-						exit();
-					}
-				}
-			}
-			include './Account/login.php';
-			break;
-		// Tin tuc
-
-		case 'listNews':
-			$listNews = selectNews();
-
-			include './News/listNews.php';
-			break;
-		case 'addNews1':
-			include './News/addNews.php';
-			break;
-		case 'addNews2':
-			if (isset($_POST['addNewNews']) && $_POST['addNewNews']) {
-				$tieu_de = $_POST['tieu_de'];
-				$gioi_thieu = $_POST['mo_ta'];
-				$ngay_dang = $_POST['ngay_dang'];
-				// $ma_tk = $_POST['ma_tk'];
-				$mo_ta = $_POST['mo_ta'];
-				$noi_dung = $_POST['noi_dung'];
-				$hinh_anh = isset($_FILES['hinh_anh']) ? $_FILES['hinh_anh'] : '';
-				$save_url = '';
-				if ($hinh_anh['size'] > 0 && $hinh_anh['size'] < 500000) {
-					$photo_folder = 'img/';
-					$photo_file = uniqid() . $hinh_anh['name'];
-
-					$file_se_luu = $hinh_anh['tmp_name'];
-					$url = $photo_folder . $photo_file;
-
-					if (move_uploaded_file($file_se_luu, $url)) {
-						$save_url = $url;
-					}
-				}
-				// var_dump($hinh_anh); 
-				insertNews($tieu_de, $save_url, $mo_ta, $noi_dung, $ngay_dang);
-
-
-				insertNews($tieu_de, $save_url, $mo_ta, $noi_dung, $ngay_dang);
-
-				$thongbao = "Thêm mới phong thành công !";
-			}
-
-			$listNews = selectNews();
-			include './News/listNews.php';
-			break;
-		case 'editNews':
-			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-				$news = getOneNews($_GET['id']);
-			}
-
-			$listNews = selectNews();
-			include './News/editNews.php';
-			// include './Product/list.php';
-			break;
-		case 'editedNews':
-			if (isset($_POST['updateNews']) && $_POST['updateNews']) {
-				$id = $_POST['id'];
-				$tieu_de = $_POST['tieu_de'];
-				$ngay_dang = $_POST['ngay_dang'];
-				$mo_ta = $_POST['mo_ta'];
-				$noi_dung = $_POST['noi_dung'];
-				$hinh_anh = isset($_FILES['hinh_anh']) ? $_FILES['hinh_anh'] : '';
-				$save_url = '';
-				if ($hinh_anh['size'] > 0 && $hinh_anh['size'] < 500000) {
-					$photo_folder = 'img/';
-					$photo_file = uniqid() . $hinh_anh['name'];
-
-					$file_se_luu = $hinh_anh['tmp_name'];
-					$url = $photo_folder . $photo_file;
-
-					if (move_uploaded_file($file_se_luu, $url)) {
-						$save_url = $url;
-					}
-				}
-				updateNews($id, $tieu_de, $save_url, $mo_ta, $noi_dung, $ngay_dang);
-				$thongbao_update = "Cập nhật lại phòng thành công!";
-			}
-
-			$listRooms = selectRooms();
-			include './Rooms/listRooms.php';
-      break;
 			// Tin tuc
 		case 'viewNews': 
 			$listNews = selectNews();
 			include './News/viewNews.php';
 			break;
-		case 'detailnew': 
+		case 'detailnew':  	
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 				$new = getOneNews($_GET['id']);
 			}
@@ -184,7 +99,7 @@ if (isset($_GET['goto'])) {
 				$pass = $_POST['pass'];
 				$phone = $_POST['phone'];
 				insertAcc($hoten, $ten_tk, $email, $pass, $phone);
-				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
+				echo '<script> alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập") </script>';
 			}
 			include './Accounts/register.php';
 			break;
@@ -261,13 +176,13 @@ if (isset($_GET['goto'])) {
 			$err = array();
 
 			if(!empty($_POST['price-min']) && ($_POST['price-min'] < 0)) {
-				$err['min'] = "Giá trị phải nhập số dương !!";
+				$err['min'] = "Nhap gia tri khong hop ly !!";
 			}else {
 				isset($_POST['price-min']) ? $_POST['price-min'] : 0;
 			}
 
 			if(!empty($_POST['price-max']) && ($_POST['price-max'] < 0)) {
-				$err['max'] = "Giá trị phải nhập số dương !!";
+				$err['max'] = "Nhap gia tri khong hop ly !!";
 			}else {
 				isset($_POST['price-max']) ? $_POST['price-max'] : 0;
 			}
@@ -288,7 +203,8 @@ if (isset($_GET['goto'])) {
 	}
 }else {
 	$listCates = selectCates();
-	$listRooms = selectRooms();
+	// $listRooms = selectRooms();
+	$list8rooms = selectEightRooms();
 	include './View/body.php';
 }
 
