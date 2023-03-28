@@ -138,30 +138,6 @@ if (isset($_GET['goto'])) {
 			$listRooms = selectRooms();
 			include './Rooms/listRooms.php';
 			break;
-		// Login
-		case 'login':
-
-			if (isset($_POST['click'])) {
-				$email = $_POST['email'];
-				$pass = $_POST['mat_khau'];
-				$user = check_client($email, $pass);
-
-				if (is_array($user)) {
-					$_SESSION['user'] = $user;
-
-					if ($_SESSION['user']['vai_tro'] == 1) {
-						header("Location:../Admin/admin.php");
-					} else if ($_SESSION['user']['vai_tro'] == 0) {
-						//$_SESSION['success'] = "";
-						var_dump($_SESSION['user']);
-						//include 'Client/index1.php';
-						header("Location:Client/index1.php");
-						exit();
-					}
-				}
-			}
-			include './Account/login.php';
-			break;
 		// Tin tuc
 
 		case 'listNews':
@@ -252,19 +228,75 @@ if (isset($_GET['goto'])) {
 			include './News/listNews.php';
 			break;
 		// End News
+		case 'register':
+			if (isset($_POST['btn_register']) && ($_POST['btn_register'])) {
+				$hoten = $_POST['ho_ten'];
+				$ten_tk = $_POST['ten_tk'];
+				$email = $_POST['email'];
+				$pass = $_POST['pass'];
+				$phone = $_POST['phone'];
+				insertAcc($hoten, $ten_tk, $email, $pass, $phone);
+				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
+			}
+			include './Accounts/register.php';
+			break;
+		//End register
+		case 'login':
+			if (isset($_POST['login']) && ($_POST['login'])) {
+				$ten_tk = $_POST['ten_tk'];
+				$pass = $_POST['pass'];
+				$checkAcc = checkAccount($ten_tk, $pass);
 
+				if (is_array($checkAcc)) {
+					// header('location: index.php');
+					$_SESSION['ten_tk'] = $checkAcc;
+
+					// header('location:index.php');
+					echo '<script> alert("Đăng nhập thành công!") </script>';
+
+					if ($_SESSION['ten_tk']['vai_tro'] == 1) {
+						header('location: Admin/index.php');
+						return $_SESSION['ten_tk'];
+						// echo '<script> alert("Đăng nhập thành công!") </script>';
+					} else {
+						header("location:index.php");
+
+						return $_SESSION['ten_tk'];
+						// echo '<script> alert("Đăng nhập thành công!") </script>';
+					}
+					// echo '<script> alert("Đăng nhập thành công!") </script>';
+				} else {
+					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
+					// $thongbao = "Tai khoan khong ton tai";
+					header('location:index.php');
+				}
+			}
+			include './Accounts/login.php';
+			break;
+		//End login
+		case 'logout':
+			session_unset();
+			header('location: index.php');
+			break;
+		//End logout
+		case 'forgetPass':
+			if (isset($_POST['forgetPass']) && ($_POST['forgetPass'])) {
+				$ten_tk = $_POST['ten_tk'];
+				$checkPass = checkPass($ten_tk);
+				if (is_array($checkPass)) {
+					$thongbao = "Mật khẩu của bạn là " . $checkPass['pass'];
+				} else {
+					$thongbao = "Tài khoản không tồn tại";
+				}
+			}
+			include './Accounts/ForgetPass.php';
+			break;
 		default:
 		# code...
 	}
 } else if (isset($_GET['search'])) {
 	switch ($_GET['search']) {
-		case 'cate':
-			$roomsFilter = isset($_POST['keyw']) ? $_POST['keyw'] : '';
 
-			$listFiltered = roomsFiltered($roomsFilter);
-			$listCates = selectCates();
-			include './View/roomsSearch.php';
-			break;
 		case 'price':
 			$roomsByPrice = isset($_POST['price_chose']) ? $_POST['price_chose'] : '';
 			$listRoomsByPrice = roomsByPrice($roomsByPrice);
@@ -291,6 +323,7 @@ if (isset($_GET['goto'])) {
 } else {
 	$listCates = selectCates();
 	$listRooms = selectRooms();
+
 	include './View/body.php';
 }
 

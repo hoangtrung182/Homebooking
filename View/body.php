@@ -1,4 +1,4 @@
- <nav class="nav">
+<nav class="nav">
     <div class="icon1">
         <img src="https://img.agoda.net/images/INTTRV-45/default/Bags-heart_2021-09-30.svg" alt="">
     </div>
@@ -25,13 +25,13 @@
             </div>
         </div>
         <!-- Form -->
-         <form action="search.php?" method="get" class="form_search">
+        <form action="search.php?" method="get" class="form_search">
             <label class="form_label" for="">Loại phòng</label><br>
             <select name="loaiphong" id="" class="input_third">
                 <option value="">Chọn loại phòng</option>
                 <?php foreach ($listCates as $loaiphong) {
                     extract($loaiphong);
-                     ?>
+                    ?>
                     <option value="<?= $ma_lp ?>">
                         <?= $ten_lp ?>
                     </option>
@@ -72,7 +72,7 @@
         <div class="button-container">
             <button class="w3-button w3-light-grey" onclick="plusDivs(-1)">❮❮</button>
             <button class="w3-button w3-light-grey" onclick="plusDivs(1)">❯❯</button>
-        </div>  
+        </div>
     </div>
 </div>
 
@@ -106,7 +106,7 @@
                 <p>14.320 chỗ ở</p>
             </div>
         </div>
-    </div> 
+    </div>
 </section>
 
 
@@ -118,20 +118,24 @@
             <h2 class="">NHỮNG PHÒNG Ở TỐT GỢI Ý CHO BẠN</h2>
         </div>
         <div class="row-rooms">
-            <?php 
-                foreach ($list8rooms as $phong) {
-                    extract($phong);
-                 ?>
-                    <div class="room-item">
-                        <img src="<?= $avatar ?>" alt="">
-                        <div class="room-info">
-                            <h3><?= $ten_phong ?></h3>
-                            <em>Giá mỗi đêm rẻ từ</em>
-                            <p><?= number_format($gia,0,',','.')?> VND</p>
-                        </div>
+            <?php
+            foreach ($listRooms as $phong) {
+                extract($phong);
+                ?>
+                <div class="room-item">
+                    <img src="<?= $avatar ?>" alt="">
+                    <div class="room-info">
+                        <h3>
+                            <?= $ten_phong ?>
+                        </h3>
+                        <em>Giá mỗi đêm rẻ từ</em>
+                        <p>
+                            <?= number_format($gia, 0, ',', '.') ?> VND
+                        </p>
                     </div>
-                <?php }
-             ?>
+                </div>
+            <?php }
+            ?>
         </div>
     </div>
 </section>
@@ -141,26 +145,26 @@
     showDivs(slideIndex);
 
     function plusDivs(n) {
-      showDivs(slideIndex += n);
+        showDivs(slideIndex += n);
     }
 
     function currentDiv(n) {
-      showDivs(slideIndex = n);
+        showDivs(slideIndex = n);
     }
 
     function showDivs(n) {
-      var i;
-      var x = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("demo");
-      if (n > x.length) {slideIndex = 1}    
-      if (n < 1) {slideIndex = x.length}
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";  
-      }
-      for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" w3-red", "");
-      }
-      x[slideIndex-1].style.display = "block";  
-      dots[slideIndex-1].className += " w3-red";
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        if (n > x.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = x.length }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" w3-red", "");
+        }
+        x[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " w3-red";
     }
 </script>

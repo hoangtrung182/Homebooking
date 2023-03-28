@@ -4,7 +4,7 @@
         if (isset($_SESSION['ten_tk'])) {
             extract($_SESSION['ten_tk']);
             // $ten_tk = $_POST['ten_tk'];
-        ?>
+            ?>
             <div>
                 <!-- sin ttao <br> -->
 
@@ -16,25 +16,28 @@
                     <li><a href="index.php?goto=forgetPass">Quên mật khẩu</a></li>
                 </div>
             </ul>
-    </div>
-<?php } else { ?>
-    <form action="index.php?goto=login" method="post">
-        <div class="form-info">
-            email <br>
-            <input type="text" name="ten_tk">
         </div>
-        <div class="form-info">
-            Mật khẩu <br>
-            <input type="password" name="pass">
+    <?php } else { ?>
+        <div class="form-main">
+            <form action="index.php?goto=login" method="post">
+                <h3>Đăng nhập</h3>
+                <div class="form-info">
+                    Tên đăng nhập<br>
+                    <input class="input" type="text" name="ten_tk" placeholder="Tên đăng nhập" required>
+                </div>
+                <div class="form-info">
+                    Mật khẩu <br>
+                    <input class="input" type="password" name="pass" placeholder="Mật khẩu" required>
+                </div>
+                <input type="submit" value="Đăng nhập" name="login" class="btn6-hover btn5">
+            </form>
+            <div class="extra">
+                <a href="index.php?goto=register">Tạo tài khoản </a>
+                <a href="index.php?goto=forgetPass">Quên mật khẩu</a>
+            </div>
+            <?= isset($thongbao) ? $thongbao : '' ?>
+        <?php } ?>
         </div>
-        <div class="form-info">
-            <input type="checkbox"> Ghi nhớ tài khoản <br>
-        </div>
-        <input type="submit" value="Đăng nhập" name="login">
-
-    </form>
-    <li><a href="index.php?goto=forgetPass">Quên mật khẩu</a></li>
-    <?= isset($thongbao) ? $thongbao : '' ?>
-<?php } ?>
+    
 
 </div>
