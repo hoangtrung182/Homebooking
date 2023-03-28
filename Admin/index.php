@@ -287,7 +287,7 @@ if (isset($_GET['goto'])) {
 				// $ma_tk = $_POST['ma_tk'];
 				$noi_dung = $_POST['content'];
 				$hinh_anh = isset($_FILES['image']) ? $_FILES['image'] : '';
-				$save_url = '';
+				$save_url = array ();
 				if ($hinh_anh['size'] > 0 && $hinh_anh['size'] < 500000) {
 					$photo_folder = '../img/';
 					$photo_file = uniqid() . $hinh_anh['name'];

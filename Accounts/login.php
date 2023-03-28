@@ -110,7 +110,7 @@
                 <ul>
                     <div>
                         <!-- <li><a href="#">Admin</a></li> -->
-                        <li><a href="index.php?goto=logout">Thoát</a></li>
+                        <li><a href="index.php?goto=exit">Thoát</a></li>
                         <li><a href="index.php?goto=forgetPass">Quên mật khẩu</a></li>
                     </div>
                 </ul>

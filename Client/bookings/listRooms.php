@@ -74,7 +74,7 @@
                         } ?>
                     </span>
                     <div>
-                        <a href="detailRooms.php?id=<?= $ma_phong ?>">
+                        <a href="index.php?goto=detailroom&id=<?= $ma_phong ?>">
                             <button class="btn-order1" type="submit">
                                 Đặt ngay
                             </button>

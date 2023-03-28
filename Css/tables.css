@@ -105,9 +105,9 @@ table {
 
 
 .form_title {
+    text-align: center;
     font-size: 32px;
     color: #23958fd4;
-    text-align: center;
     margin: 30px;
     font-weight: 700;
 }

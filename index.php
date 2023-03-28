@@ -105,6 +105,8 @@ if (isset($_GET['goto'])) {
 			break;
 			//End register
 		case 'login':
+			include './Accounts/login.php';
+
 			if (isset($_POST['login']) && ($_POST['login'])) {
 				$ten_tk = $_POST['ten_tk'];
 				$pass = $_POST['pass'];
@@ -114,28 +116,28 @@ if (isset($_GET['goto'])) {
 					$_SESSION['ten_tk'] = $checkAcc;
 
 					// header('location:index.php');
-					echo '<script> alert("Đăng nhập thành công!") </script>';
+					// echo '<script> alert("Đăng nhập thành công!") </script>';
 
 					if ($_SESSION['ten_tk']['vai_tro'] === 1) {
 						header('location: Admin/index.php');
 						return $_SESSION['ten_tk'];
-						// echo '<script> alert("Đăng nhập thành công!") </script>';
+						echo '<script> alert("Đăng nhập thành công!") </script>';
 					} else {
-						header('location:index.php');
+						header('location: index.php');
 						return $_SESSION['ten_tk'];
-						// echo '<script> alert("Đăng nhập thành công!") </script>';
+						echo '<script> alert("Đăng nhập thành công!") </script>';
 					}
 					// echo '<script> alert("Đăng nhập thành công!") </script>';
 				} else {
 					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
 					// $thongbao = "Tai khoan khong ton tai";
-					header('location:index.php');
+					header('location: index.php');
 				}
 			}
-			include './Accounts/login.php';
+			// include './Accounts/login.php';
 			break;
 			//End login
-		case 'logout':
+		case 'exit':
 			session_unset();
 			header('location: index.php');
 			break;
