@@ -45,6 +45,7 @@ function select_items_search($keyw, $ma_loai)
 }
 
 
+
 function bothFilter($id, $sort, $min, $max) {
 	$sql = "SELECT * FROM phong";
 
@@ -60,7 +61,6 @@ function bothFilter($id, $sort, $min, $max) {
 	if((!empty($min)) && (!empty($max))) {
 		$sql = "SELECT * FROM phong WHERE gia BETWEEN '$min' AND '$max'";
 	}
-
 
 	// Sap xep the loai vs gia tri min, max
 	if(!empty($id)) {
@@ -82,7 +82,11 @@ function bothFilter($id, $sort, $min, $max) {
 	// Sap xep theo tang, giam dan voi min,max
 	if(!empty($sort)) {
 		if($sort == 'asc') {
+
 			$sql = "SELECT * FROM phong order by gia asc ";
+			if($id) {
+				$sql = "SELECT * FROM phong WHERE ma_lp = '$id' order by gia asc";
+			}
 
 			if(!empty($min)) {
 				$sql = "SELECT * FROM phong WHERE gia >= '$min' order by gia asc";
@@ -96,8 +100,14 @@ function bothFilter($id, $sort, $min, $max) {
 				$sql = "SELECT * FROM phong WHERE gia BETWEEN '$min' AND '$max' order by gia asc";
 			}
 
+			if(!empty($min) && !empty($max) && $id) {
+				$sql = "SELECT * FROM phong WHERE ma_lp = '$id' AND gia BETWEEN '$min' AND '$max' order by gia asc";
+			}
 		}else {
 			$sql = "SELECT * FROM phong order by gia desc ";
+			if($id) {
+				$sql = "SELECT * FROM phong WHERE ma_lp = '$id' order by gia desc";
+			}
 
 			if(!empty($min)) {
 				$sql = "SELECT * FROM phong WHERE gia >= '$min' order by gia desc";
@@ -109,6 +119,10 @@ function bothFilter($id, $sort, $min, $max) {
 
 			if(!empty($min) && !empty($max)) {
 				$sql = "SELECT * FROM phong WHERE gia BETWEEN '$min' AND '$max' order by gia desc";
+			}
+
+			if(!empty($min) && !empty($max) && $id) {
+				$sql = "SELECT * FROM phong WHERE ma_lp = '$id' AND gia BETWEEN '$min' AND '$max' order by gia desc";
 			}
 		}
 	}
