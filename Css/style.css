@@ -440,6 +440,12 @@
 
 .room-item {
     text-align: center;
+     display: flex;
+    margin-bottom: 24px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
 }
 /*========== News ===========*/
 .new-item {
@@ -487,8 +493,7 @@
     color: #5a4f4f;
 }
 
-.footer {
-=======
+
 .new-item p {
     color: #df2629;
     font-size: 18px;
@@ -550,7 +555,7 @@
     /*margin-top: 20%;*/
 }
 
-.slideshow-title {
+.slideshow-title p{
     font-size: 32px;
     font-weight: 700;
     text-align: center;

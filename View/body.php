@@ -18,7 +18,7 @@
     </div>
     <div class="box">
         <div class="box-button">
-            <div class="box-1">
+            <div class="box-0">
                 <button class="box-2">Nghỉ qua Đêm </button>
             </div>
             <div class="box-3">

@@ -12,7 +12,7 @@ include '../Models/accounts.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
-			// Categories - Loại Phòng
+	// Categories - Loại Phòng
 		case 'listCates':
 			$listCates = selectCates();
 			include '../Categories/listCates.php';
@@ -54,7 +54,7 @@ if (isset($_GET['goto'])) {
 			$listCates = selectCates();
 			include '../Categories/listCates.php';
 			break;
-			// Rooms -- Phòng Ở
+	// Rooms -- Phòng Ở
 		case 'listRooms':
 			$listRooms = selectRooms();
 			$listCates = selectCates();
@@ -139,15 +139,7 @@ if (isset($_GET['goto'])) {
 			$listRooms = selectRooms();
 			include '../Rooms/listRooms.php';
 			break;
-			// Đặt phòng
-		case 'listRooms_booking':
-			$listRooms_booking = selectRooms_booking();
-			$test1 = Test();
-			//var_dump($test1);
-			date_default_timezone_set('ASIA/HO_CHI_MINH');
-			$date = date('Y-m-d H:i:s');
-			include '../Client/bookings/listRooms.php';
-			break;
+	// Đặt phòng
 		case 'detailRooms':
 			session_start();
 			if (isset($_SESSION['user'])) {
@@ -173,8 +165,7 @@ if (isset($_GET['goto'])) {
 						$ma_kh = $_SESSION['user']['ma_kh'];
 					}
 					$so_ngay = getDatesFromRange($_POST['ngay_den'], $_POST['ngay_ve']);
-					//var_dump($so_ngay);
-					if ($chitiet['giam_gia'] == 0) {
+					//var_dump($so_ngay); 0) {
 						$gia = $chitiet['gia'];
 						$tong_tien = $gia * ($so_ngay - 1);
 
@@ -217,7 +208,6 @@ if (isset($_GET['goto'])) {
 						die();
 					}
 				}
-			}
 			include '../Client/bookings/detailRooms.php';
 			break;
 		case 'pays':
@@ -281,7 +271,7 @@ if (isset($_GET['goto'])) {
 			include '../Rooms/listRooms.php';
 			break;
 
-			// Tin tuc
+	// Tin tuc
 		case 'listNews':
 			$listNews = selectNews();
 			include '../News/listNews.php';
@@ -369,8 +359,6 @@ if (isset($_GET['goto'])) {
 			include '../News/listNews.php';
 			break;
 			// End News
-			// Chi tiết phòng
-			// abc thu nghiem
 		case 'register':
 			if (isset($_POST['btn_register']) && ($_POST['btn_register'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -402,12 +390,8 @@ if (isset($_GET['goto'])) {
 			}
 			include '../Accounts/login.php';
 			break;
-			//End login
-		case 'logout':
-			session_unset();
-			header('location: ../index.php');
-			break;
-			//End logout
+				
+	//End Login
 		case 'forgetPass':
 			if (isset($_POST['forgetPass']) && ($_POST['forgetPass'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -420,7 +404,7 @@ if (isset($_GET['goto'])) {
 			}
 			include '../Accounts/ForgetPass.php';
 			break;
-			//End forget
+	//End forget
 		case 'listAcc':
 			$listAcc = loadAll_acc();
 			include '../Admin/accounts.php';
@@ -443,7 +427,7 @@ if (isset($_GET['goto'])) {
 			break;
 		case 'exit':
 			session_unset();
-			header('location:../Admin/index.php');
+			header('location: ../index.php');
 			break;
 		case 'deleteAcc':
 			if (isset($_GET['ma_tk']) && ($_GET['ma_tk'] > 0)) {

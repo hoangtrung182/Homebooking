@@ -23,12 +23,12 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="">QUẢN LÝ LOẠI PHÒNG</a></li>
-                    <li><a href="">QUẢN LÝ PHÒNG</a></li>
+                    <li><a href="index.php?goto=listCates">QUẢN LÝ LOẠI PHÒNG</a></li>
+                    <li><a href="index.php?goto=listRooms">QUẢN LÝ PHÒNG</a></li>
                     <li><a href="bookings/listBookings.php">QUẢN LÝ ĐẶT PHÒNG</a></li>
                     <li><a href="#">QUẢN LÝ BÌNH LUẬN</a></li>
-                    <li><a href="#">QUẢN LÝ TÀI KHOẢN</a></li>
-                    <li><a href="">QUẢN LÝ TIN TỨC</a></li>
+                    <li><a href="index.php?goto=listAcc">QUẢN LÝ TÀI KHOẢN</a></li>
+                    <li><a href="index.php?goto=listNews">QUẢN LÝ TIN TỨC</a></li>
                 </ul>
             </div>
             <div class="login">
@@ -37,12 +37,17 @@
                     if (isset($_SESSION['ten_tk'])) {
                         extract($_SESSION['ten_tk']);
                         ?>
-                        <li><a href="index.php?goto=login"><button class="btn5-hover btn5">
+                        <li><a href="index.php?goto=login">
+                                <button class="btn5-hover btn5">
                                     <?= $ten_tk ?>
                                 </button>
                             </a>
                         </li>
-                        <li><a href="index.php?goto=logout"><button class="btn5-hover btn5">Thoát</button></a></li>
+                        <li>    
+                            <a href="index.php?goto=exit">
+                                <button class="btn5-hover btn5">Thoát</button>
+                            </a>
+                        </li>
                         <?php
                     } else {
                         ?>
