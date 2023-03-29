@@ -61,8 +61,8 @@
                  foreach ($BothFiltered as $phong) {
                     extract($phong); ?>
                 <!-- Show sản phẩm tìm kiếm -->
-                 <li class="room-item">
-                         <img src="<?= $avatar ?>" alt="">
+                 <li class="new-item">
+                         <img src=".//<?= $avatar ?>" alt="">
                          <div class="new-info">
                              <h3><?= $ten_phong ?></h3>
                              <div class="">
@@ -74,7 +74,7 @@
                 <?php }
              }else { ?>
                 <!--  Trả về ko tồn tại nếu array rỗng -->
-                <div class="item-resolved">
+                <div class="">
                     <h3>Phòng tìm kiếm không tồn tại !!!</h3>
                 </div>
             <?php }  ?>

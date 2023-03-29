@@ -8,7 +8,7 @@ function insertNews($tieu_de, $hinh_anh, $mo_ta, $noi_dung, $ngay_dang, $ma_tk)
 
 function selectNews()
 {
-	$sql = "SELECT * FROM tintuc order by ma_tt desc";
+	$sql = "SELECT * FROM tintuc order by ma_tin desc";
 	$News = pdo_query($sql);
 	return $News;
 }

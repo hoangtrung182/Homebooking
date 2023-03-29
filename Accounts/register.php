@@ -106,9 +106,10 @@
                     <input class="input" type="text" name="phone" placeholder="Số điện thoại">
                 </div>
                 <div class="submit">
-                    <input class="btn6-hover btn5" type="submit" value="Đăng ký" name="register">
-                    <button class="btn6-hover btn5"><a style="text-decoration: none;" href="index.php?goto=login">Đăng nhập</a></button>
-
+                    <input class="btn6-hover btn5" type="submit" value="Đăng ký" name="btn-register">
+                    <button class="btn6-hover btn5">
+                        <a style="text-decoration: none;" href="index.php?goto=login">Đăng nhập</a>
+                    </button>
                 </div>
             </form>
             <?= isset($thongbao) ? $thongbao : '' ?>
