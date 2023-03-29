@@ -372,14 +372,15 @@ if (isset($_GET['goto'])) {
 			// Chi tiết phòng
 			// abc thu nghiem
 		case 'register':
-			if (isset($_POST['btn_register']) && ($_POST['btn_register'])) {
+			if (isset($_POST['register']) && ($_POST['register'])) {
+				$hoten = $_POST['Ho_ten'];
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
 				$phone = $_POST['phone'];
-				insertAcc($hoten, $ten_tk, $email, $pass, $phone);
+				$address = $_POST['dia_chi'];
+				insertAcc($hoten, $ten_tk, $email, $pass, $phone, $address);
 				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
-				// header("Location: index.php?act=login");
 			}
 			include '../Accounts/register.php';
 			break;
@@ -442,8 +443,41 @@ if (isset($_GET['goto'])) {
 				$role = $_POST['vaitro'];
 				update_acc($ma_tk, $ten_tk, $email, $phone, $vai_tro);
 				$_SESSION['user'] = checkAccount($ten_tk, $pass);
+				header('location: index.php?goto=listAcc');
 			}
 			include '../Accounts/listAcc.php';
+			break;
+		case 'editUser':
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				$user = getOneAccount($_GET['id']);
+			}
+			include '../Users/updateUser.php';
+			break;
+		case 'updateUser':
+			if (isset($_POST['updateUser']) && $_POST['updateUser']) {
+				$ma_tk = $_POST['ma_tk'];
+				$ten_tk = $_POST['ten_tk'];
+				$email = $_POST['email'];
+				$phone = $_POST['phone'];
+				$dia_chi = $_POST['dia_chi'];
+				$anh_dai_dien = isset($_FILES['avatar']) ? $_FILES['avatar'] : '';
+				$save_url = '';
+				if ($anh_dai_dien['size'] > 0 && $anh_dai_dien['size'] < 500000) {
+					$photo_folder = '../img/';
+					$photo_file = uniqid() . $anh_dai_dien['name'];
+
+					$file_se_luu = $anh_dai_dien['tmp_name'];
+					$url = $photo_folder . $photo_file;
+
+					if (move_uploaded_file($file_se_luu, $url)) {
+						$save_url = $url;
+					}
+				}
+				update_user($ma_tk, $ten_tk, $email, $phone, $dia_chi, $save_url);
+				$_SESSION['ten_tk'] = checkAccount($ten_tk, $pass);
+				header('location: index.php?goto=login');
+			}
+			include '../Users/updateUser.php';
 			break;
 		case 'deleteAcc':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {

@@ -182,7 +182,8 @@ if (isset($_GET['goto'])) {
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
 				$phone = $_POST['phone'];
-				insertAcc($hoten, $ten_tk, $email, $pass, $phone);
+				$address = $_POST['dia_chi'];
+				insertAcc($hoten, $ten_tk, $email, $pass, $phone, $address);
 				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
 			}
 			include './Accounts/register.php';
@@ -237,15 +238,29 @@ if (isset($_GET['goto'])) {
 			}
 			include './Users/updateUser.php';
 			break;
-		case 'privateUsers':
+		case 'updateUser':
 			if (isset($_POST['updateUser']) && $_POST['updateUser']) {
 				$ma_tk = $_POST['ma_tk'];
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$phone = $_POST['phone'];
-				update_user($ma_tk, $ten_tk, $email, $phone);
+				$dia_chi = $_POST['dia_chi'];
+				$anh_dai_dien = isset($_FILES['avatar']) ? $_FILES['avatar'] : '';
+				$save_url = '';
+				if ($anh_dai_dien['size'] > 0 && $anh_dai_dien['size'] < 500000) {
+					$photo_folder = './img/';
+					$photo_file = uniqid() . $anh_dai_dien['name'];
+
+					$file_se_luu = $anh_dai_dien['tmp_name'];
+					$url = $photo_folder . $photo_file;
+
+					if (move_uploaded_file($file_se_luu, $url)) {
+						$save_url = $url;
+					}
+				}
+				update_user($ma_tk, $ten_tk, $email, $phone, $dia_chi, $save_url);
 				$_SESSION['ten_tk'] = checkAccount($ten_tk, $pass);
-				header('locaitn: ./Accounts/login.php');
+				header('location: index.php?goto=login');
 			}
 			include './Users/updateUser.php';
 			break;
