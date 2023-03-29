@@ -45,6 +45,11 @@
                     <input type="number" name="price-min" class="input_search-price min-1" placeholder="Nhập giá thấp nhất">
                     <input type="number" name="price-max" class="input_search-price max-1" placeholder="Nhập giá cao nhất">
                 </div>
+                <div class="time1">
+                    <input type="date" name="ngay_den" id="" class="first">
+                    <span>đến</span>
+                    <input type="date" name="ngay_ve" id="" class="last">
+                </div>
                 <button class="tk">Tìm Kiếm</button>
             </form>
         </div>

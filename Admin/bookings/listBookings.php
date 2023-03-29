@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../.././Css/booking.css">
     <link rel="stylesheet" href="../../Css/style.css">
+    <link rel="stylesheet" href="../../Css/tables.css">
 </head>
 <?php
 
