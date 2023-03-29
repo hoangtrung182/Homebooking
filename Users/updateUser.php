@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="./Css/account.css">
 
 <body>
-    <div class="form-main">
+    <div class="form-main12">
         <div class="form-register">
             <?php
             if (isset($_SESSION['ten_tk']) && is_array($_SESSION['ten_tk'])) {
@@ -10,10 +10,10 @@
             // extract($listUsers);
             ?>
             <form action="index.php?goto=updateUser" method="post" enctype="multipart/form-data">
-                <h3>Hồ sơ của tôi</h3>
+                <h3 style="font-weight: bold;text-align:center;">Hồ sơ của tôi</h3>
                 <div class="form-info">
-                    Tên đăng nhập <br>
-                    <input class="input" type="text" name="ten_tk" value="<?= $ten_tk ?>" required placeholder="Tên đăng nhập">
+                    Họ tên <br>
+                    <input class="input" type="text" name="ten_tk" value="<?= $ho_ten ?>" required placeholder="Tên đăng nhập">
                 </div>
                 <div class="form-info">
                     Email <br>

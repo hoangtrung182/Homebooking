@@ -8,6 +8,7 @@ include './Models/Categories.php';
 include './Models/Rooms.php';
 include './Models/accounts.php';
 include './Models/news.php';
+include './Models/contact.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
@@ -231,19 +232,17 @@ if (isset($_GET['goto'])) {
 			break;
 			// End News
 		case 'register':
-			if (isset($_POST['btn-register']) && ($_POST['btn-register'])) {
-				// $hoten = $_POST['ho_ten'];
+			if (isset($_POST['register']) && ($_POST['register'])) {
+				$hoten = $_POST['Ho_ten'];
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
 				$phone = $_POST['phone'];
 				$address = $_POST['dia_chi'];
 				insertAcc($hoten, $ten_tk, $email, $pass, $phone, $address);
-				insertAcc($ten_tk, $email, $pass, $phone);
 				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
 			}
 			include './Accounts/register.php';
-
 			break;
 			//End register
 		case 'login':
@@ -326,6 +325,24 @@ if (isset($_GET['goto'])) {
 			}
 			include './Users/updateUser.php';
 			break;
+		case 'btn_contact':
+			include './Contact/contact.php';
+			break;
+		case 'btnContact':
+			if (isset($_POST['btn_contact']) && ($_POST['btn_contact'])) {
+				$ten_ht = $_POST['ten_ht'];
+				$ma_tk = $_POST['ma_tk'];
+				$noi_dung = $_POST['noi_dung'];
+				$email = $_POST['email'];
+				$phone = $_POST['phone'];
+				insertContact($ten_ht, $ma_tk, $email, $noi_dung, $phone);
+				echo '<script>alert("Cảm ơn bạn đã góp ý")</script>';
+				// $thongbao = "Them"
+
+			}
+			include './Contact/contact.php';
+			break;
+
 		default:
 			# code...
 	}

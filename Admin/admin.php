@@ -32,6 +32,7 @@
                     <li><a href="#">QUẢN LÝ BÌNH LUẬN</a></li>
                     <li><a href="index.php?goto=listAcc">QUẢN LÝ TÀI KHOẢN</a></li>
                     <li><a href="index.php?goto=listNews">QUẢN LÝ TIN TỨC</a></li>
+                    <li><a href="index.php?goto=listContact">QUẢN LÝ Hỗ trợ</a></li>
                 </ul>
             </div>
             <div class="login">
