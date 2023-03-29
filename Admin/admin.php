@@ -6,13 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Css/style.css">
+    <link rel="stylesheet" href="../Css/tables.css">
     <link rel="stylesheet" href="../Css/button.css">
     <link rel="stylesheet" href="../Css/News.css">
-    <link rel="stylesheet" href="../Css/tables.css">
-    <link rel="stylesheet" href="../Css/bookings.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="../Css/account.css">
-
     <title>Trang Chủ | ADMIN</title>
 </head>
 
@@ -40,7 +37,7 @@
                     <?php
                     if (isset($_SESSION['ten_tk'])) {
                         extract($_SESSION['ten_tk']);
-                    ?>
+                        ?>
                         <li><a href="index.php?goto=login">
                                 <button class="btn5-hover btn5">
                                     <?= $ten_tk ?>
@@ -52,9 +49,9 @@
                                 <button class="btn5-hover btn5">Thoát</button>
                             </a>
                         </li>
-                    <?php
+                        <?php
                     } else {
-                    ?>
+                        ?>
                         <li><a href="index.php?goto=login"><button class="btn5-hover btn5">
                                     ĐĂNG NHẬP
                                 </button>
