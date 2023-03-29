@@ -33,4 +33,3 @@ function deleteNews($id)
 	$sql = "DELETE FROM tintuc WHERE ma_tin ='$id'";
 	pdo_execute($sql);
 }
-?>

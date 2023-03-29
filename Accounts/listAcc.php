@@ -1,11 +1,9 @@
 <link rel="stylesheet" href="../Css/account.css">
 
 <body>
-
     <h2>Danh sách tài khoản</h2>
     <table border="1" cellspacing="0">
         <tr class="row">
-            <!-- <th class="type"></th> -->
             <th class="type">Mã khách hàng</th>
             <th class="type">Tên đăng nhập</th>
             <th class="type">Email</th>
@@ -57,6 +55,5 @@
                 </tr>
         <?php }
         } ?>
-    </table>
     </table>
 </body>

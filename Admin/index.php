@@ -11,7 +11,7 @@ include '../Models/accounts.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
-		// Categories - Loại Phòng
+			// Categories - Loại Phòng
 		case 'listCates':
 			$listCates = selectCates();
 			include '../Categories/listCates.php';
@@ -53,7 +53,7 @@ if (isset($_GET['goto'])) {
 			$listCates = selectCates();
 			include '../Categories/listCates.php';
 			break;
-		// Rooms -- Phòng Ở
+			// Rooms -- Phòng Ở
 		case 'listRooms':
 			$listRooms = selectRooms();
 			$listCates = selectCates();
@@ -138,8 +138,8 @@ if (isset($_GET['goto'])) {
 			$listRooms = selectRooms();
 			include '../Rooms/listRooms.php';
 			break;
-		
-		// Tin tuc
+
+			// Tin tuc
 		case 'listNews':
 			$listNews = selectNews();
 			include '../News/listNews.php';
@@ -199,7 +199,7 @@ if (isset($_GET['goto'])) {
 				$hinh_anh = isset($_FILES['hinh_anh']) ? $_FILES['hinh_anh'] : '';
 				$save_url = '';
 				if ($hinh_anh['size'] > 0 && $hinh_anh['size'] < 500000) {
-					$photo_folder = 'img/';
+					$photo_folder = '../img/';
 					$photo_file = uniqid() . $hinh_anh['name'];
 
 					$file_se_luu = $hinh_anh['tmp_name'];
@@ -213,8 +213,8 @@ if (isset($_GET['goto'])) {
 				$thongbao_update = "Cập nhật lại phòng thành công!";
 			}
 
-			$listRooms = selectRooms();
-			include '../Rooms/listRooms.php';
+			$listNews = selectNews();
+			include '../News/listNews.php';
 			break;
 
 		case 'deleteNews':
@@ -226,9 +226,9 @@ if (isset($_GET['goto'])) {
 			$listNews = selectNews();
 			include '../News/listNews.php';
 			break;
-		// End News
-		// Chi tiết phòng
-		// abc thu nghiem
+			// End News
+			// Chi tiết phòng
+			// abc thu nghiem
 		case 'register':
 			if (isset($_POST['register']) && ($_POST['register'])) {
 				$hoten = $_POST['Ho_ten'];
@@ -242,7 +242,7 @@ if (isset($_GET['goto'])) {
 			}
 			include '../Accounts/register.php';
 			break;
-		//End register
+			//End register
 		case 'login':
 			if (isset($_POST['login']) && ($_POST['login'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -258,15 +258,12 @@ if (isset($_GET['goto'])) {
 					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
 					include '../../view/body.php';
 					// $thongbao = "Tai khoan khong ton tai";
-<<<<<<< HEAD
 					include '../view/body.php';
-=======
->>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 				}
 			}
 			include '../Accounts/login.php';
 			break;
-		//End login
+			//End login
 		case 'forgetPass':
 			if (isset($_POST['forgetPass']) && ($_POST['forgetPass'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -279,9 +276,8 @@ if (isset($_GET['goto'])) {
 			}
 			include '../Accounts/ForgetPass.php';
 			break;
-		//End forget
+			//End forget
 		case 'listAcc':
-<<<<<<< HEAD
 			$listUsers = load_taikhoan();
 			include '../Accounts/listAcc.php';
 			break;
@@ -294,13 +290,12 @@ if (isset($_GET['goto'])) {
 			break;
 		case 'manageUsers':
 			// include './taikhoan/edit.php';
-=======
+			header('location: index.php?goto=listAcc');
 			$listAcc = loadAll_acc();
-			include '../Accounts/listAccounts.php';
+			include '../Accounts/listAcc.php';
 			break;
-		//end listAcc
+			//end listAcc
 		case 'editAcc':
->>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 			if (isset($_POST['editAcc']) && $_POST['editAcc']) {
 				$ma_tk = $_POST['ma_tk'];
 				$ten_tk = $_POST['ten_tk'];
@@ -311,7 +306,6 @@ if (isset($_GET['goto'])) {
 				$_SESSION['user'] = checkAccount($ten_tk, $pass);
 				header('location: index.php?goto=listAcc');
 			}
-<<<<<<< HEAD
 			include '../Accounts/listAcc.php';
 			break;
 		case 'editUser':
@@ -345,7 +339,6 @@ if (isset($_GET['goto'])) {
 				header('location: index.php?goto=login');
 			}
 			include '../Users/updateUser.php';
-=======
 			update_acc($ma_tk, $ten_tk, $email, $phone, $vai_tro);
 			// $_SESSION['user'] = check_khachhang($email, $password);
 			$thongbao = "Chỉnh sửa tài khoản thành công!";
@@ -356,7 +349,6 @@ if (isset($_GET['goto'])) {
 		case 'exit':
 			session_unset();
 			header('location: ../index.php');
->>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 			break;
 		case 'deleteAcc':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -372,8 +364,8 @@ if (isset($_GET['goto'])) {
 			// include '../Admin/index.php';
 			break;
 		default:
-		# code...
-		// break;
+			# code...
+			// break;
 	}
 } else if (isset($_GET['search'])) {
 	switch ($_GET['search']) {

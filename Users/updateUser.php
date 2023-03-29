@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../Css/account.css">
+<link rel="stylesheet" href="./Css/account.css">
 
 <body>
     <div class="form-main">

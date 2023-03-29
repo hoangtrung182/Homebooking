@@ -20,15 +20,9 @@
                 <input type="text" name="ten_tk" class="input_second" placeholder="ví du: king"><br>
             </div>
             <div class="button">
-<<<<<<< HEAD
                 <input type="submit" value="Lấy lại" name="forgetPass" class="btn6-hover btn5">
                 <input type="reset" class="btn6-hover btn5" value="Nhập lại">
                 <button class="btn6-hover btn5"><a href="index.php?goto=exit">Tiếp tục</a></button>
-=======
-                <input type="submit" value="Lấy lại" name="forgetPass" class="input_button btn">
-                <input type="reset" class="btn" value="Nhập lại">
-                <button class="btn"><a class="btn" href="index.php?goto=exit">Tiếp tục</a></button>
->>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
             </div>
             <span style="color:red;">
                 <?= isset($thongbao) ? $thongbao : '' ?>
