@@ -19,7 +19,7 @@
                     <em><?= $mo_ta ?></em>                    
                 </div>
                 <div class="">
-                     <p>Tác giả: <?= $Ho_ten ?></p>
+                     <p>Tác giả: <?= $ten_tk ?></p>
                 </div>
             </div>
         </li>

@@ -112,7 +112,7 @@
                 extract($phong);
                 ?>
                 <div class="body-item">
-                    <img src="<?= $avatar ?>" alt="">
+                    <img src=".//<?= $avatar ?>" alt="">
                     <div class="">
                         <h3>
                             <?= $ten_phong ?>
@@ -123,10 +123,9 @@
                         </p>
                     </div>
                 </div>
-            </div>
         <?php }
             ?>
-    </div>
+        </div>
     </div>
 </section>
 

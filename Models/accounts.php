@@ -15,9 +15,9 @@ function loadAll_acc()
 }
 
 
-function insertAcc($hoten, $ten_tk, $email, $pass, $phone)
+function insertAcc($ten_tk, $email, $pass, $phone)
 {
-    $sql = "INSERT INTO taikhoan(Ho_ten, ten_tk, email, pass, phone) VALUES ('$hoten','$ten_tk','$email','$pass','$phone')";
+    $sql = "INSERT INTO taikhoan(ten_tk, email, pass, phone) VALUES ('$ten_tk','$email','$pass','$phone')";
     pdo_execute($sql);
 }
 
@@ -33,12 +33,12 @@ function checkPass($ten_tk)
     $check = pdo_query_one($sql);
     return $check;
 }
-function getOneAcc($ma_tk)
-{
+function getOneAcc($ma_tk) {
     $sql = "SELECT * FROM phong WHERE ma_tk =" . $ma_tk;
     $acc = pdo_query_one($sql);
     return $acc;
 }
+
 function update_acc($ma_tk, $ten_tk, $email, $phone, $vai_tro)
 {
     $sql = "UPDATE taikhoan SET ten_tk ='$ten_tk', email = '$email',
