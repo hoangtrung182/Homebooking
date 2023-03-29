@@ -20,7 +20,7 @@
     <div class="container">
         <header class="header">
             <div class="logo">
-                <a href="../index.php">
+                <a href="./index.php">
                     <img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt="">
                 </a>
             </div>
@@ -39,7 +39,7 @@
                     <?php
                     if (isset($_SESSION['ten_tk'])) {
                         extract($_SESSION['ten_tk']);
-                        ?>
+                    ?>
                         <li><a href="index.php?goto=login">
                                 <button class="btn5-hover btn5">
                                     <?= $ten_tk ?>
@@ -51,9 +51,9 @@
                                 <button class="btn5-hover btn5">Thoát</button>
                             </a>
                         </li>
-                        <?php
+                    <?php
                     } else {
-                        ?>
+                    ?>
                         <li><a href="index.php?goto=login"><button class="btn5-hover btn5">
                                     ĐĂNG NHẬP
                                 </button>

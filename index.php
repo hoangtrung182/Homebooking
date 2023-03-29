@@ -11,34 +11,9 @@ include './Models/news.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
-<<<<<<< HEAD
 			// Categories - Loại Phòng
-		case 'listCates':
-			$listCates = selectCates();
-			include './Categories/listCates.php';
-			break;
-		case 'viewRooms':
-			$listRooms = selectRooms();
-			$listCates = selectCates();
-			include './Rooms/viewRooms.php';
-			break;
-			// Đặt phòng
-		case 'listRooms_booking':
-			$listRooms_booking = selectRooms_booking();
-			$test1 = Test();
-			//var_dump($test1);
-			date_default_timezone_set('ASIA/HO_CHI_MINH');
-			$date = date('Y-m-d H:i:s');
-			include './Client/bookings/listRooms.php';
-			break;
-		case 'detailRooms':
-			session_start();
-			if (isset($_SESSION['user'])) {
-				$ten_kh = $_SESSION['user']['ten_kh'];
-				$phone = $_SESSION['user']['phone'];
-				$dia_chi = $_SESSION['user']['dia_chi'];
-=======
-		// Dat phong
+
+			// Dat phong
 		case 'pays':
 			if (isset($_SESSION['ten_tk'])) {
 				$ten_kh = $_SESSION['ten_tk']['ten_tk'];
@@ -46,7 +21,6 @@ if (isset($_GET['goto'])) {
 				$dia_chi = $_SESSION['ten_tk']['dia_chi'];
 				//$khuyen_mai = $_SESSION['ten_tk']['ma_km'];
 				$khuyen_mai = select_Sale($_SESSION['ten_tk']['ma_tk'])['ten_km'];
->>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 			} else {
 				$ten_kh = '';
 				$phone = '';
@@ -104,7 +78,6 @@ if (isset($_GET['goto'])) {
 						} else if ($result['ngay_den'] > $date && $result['trang_thai'] == 0) {
 							$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
 							$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
-
 						} else if ($result['ngay_den'] > $date && $result['trang_thai'] >= 1) {
 							$thongbao = "PHÒNG ĐÃ ĐƯỢC ĐẶT TRƯỚC!";
 						}
@@ -139,7 +112,6 @@ if (isset($_GET['goto'])) {
 				$ten_kh = '';
 				$phone = '';
 				$dia_chi = '';
-
 			}
 
 			if (isset($_GET['id'])) {
@@ -180,7 +152,6 @@ if (isset($_GET['goto'])) {
 							'ten_phong' => $chitiet['ten_phong'],
 							'ma_hs' => $_GET['id'],
 						];
-
 					} else {
 						$gia = $chitiet['giam_gia'];
 						if (isset($_SESSION['ten_tk'])) {
@@ -216,9 +187,7 @@ if (isset($_GET['goto'])) {
 				}
 			}
 
-<<<<<<< HEAD
 			// Tin tuc
-=======
 			include './Bookings/detailRooms.php';
 			break;
 		case 'pay':
@@ -237,7 +206,6 @@ if (isset($_GET['goto'])) {
 						}
 					}
 				}
-
 			} else {
 				$shows = '';
 			}
@@ -250,8 +218,7 @@ if (isset($_GET['goto'])) {
 			}
 			include './Bookings/show_pay.php';
 			break;
-		// Tin tuc
->>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
+			// Tin tuc
 		case 'viewNews':
 			$listNews = selectNews();
 			include './News/viewNews.php';
@@ -262,31 +229,23 @@ if (isset($_GET['goto'])) {
 			}
 			include './News/detailnew.php';
 			break;
-		// End News
+			// End News
 		case 'register':
-<<<<<<< HEAD
-			if (isset($_POST['register']) && ($_POST['register'])) {
-				$hoten = $_POST['Ho_ten'];
-=======
 			if (isset($_POST['btn-register']) && ($_POST['btn-register'])) {
 				// $hoten = $_POST['ho_ten'];
->>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
 				$phone = $_POST['phone'];
-<<<<<<< HEAD
 				$address = $_POST['dia_chi'];
 				insertAcc($hoten, $ten_tk, $email, $pass, $phone, $address);
-=======
 				insertAcc($ten_tk, $email, $pass, $phone);
->>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
 			}
 			include './Accounts/register.php';
 
 			break;
-		//End register
+			//End register
 		case 'login':
 			if (isset($_POST['login']) && ($_POST['login'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -296,12 +255,8 @@ if (isset($_GET['goto'])) {
 				if (is_array($checkAcc)) {
 					// header('location: index.php');
 					$_SESSION['ten_tk'] = $checkAcc;
-<<<<<<< HEAD
 					header('location:index.php');
-=======
-
 					// header('location:index.php');
->>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 					echo '<script> alert("Đăng nhập thành công!") </script>';
 
 					if ($_SESSION['ten_tk']['vai_tro'] == 1) {
@@ -310,11 +265,8 @@ if (isset($_GET['goto'])) {
 						// echo '<script> alert("Đăng nhập thành công!") </script>';
 					} else {
 						header('location:index.php');
-<<<<<<< HEAD
-=======
 						return $_SESSION['ten_tk'];
 						// echo '<script> alert("Đăng nhập thành công!") </script>';
->>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 					}
 					// echo '<script> alert("Đăng nhập thành công!") </script>';
 				} else {
@@ -324,12 +276,12 @@ if (isset($_GET['goto'])) {
 			}
 			include './Accounts/login.php';
 			break;
-		//End login
+			//End login
 		case 'exit':
 			session_unset();
 			header('location: index.php');
 			break;
-		//End logout
+			//End logout
 		case 'forgetPass':
 			if (isset($_POST['forgetPass']) && ($_POST['forgetPass'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -375,10 +327,8 @@ if (isset($_GET['goto'])) {
 			include './Users/updateUser.php';
 			break;
 		default:
-		# code...
+			# code...
 	}
-<<<<<<< HEAD
-=======
 } else if (isset($_GET['search'])) {
 	switch ($_GET['search']) {
 		case 'rooms':
@@ -425,16 +375,10 @@ if (isset($_GET['goto'])) {
 			# code...
 			break;
 	}
->>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 } else {
 	$listCates = selectCates();
 	// $listRooms = selectRooms();
 	$list8rooms = selectEightRooms();
 	include './View/body.php';
 }
-<<<<<<< HEAD
 include './View/footer.php';
-=======
-
-include './View/footer.php';
->>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6

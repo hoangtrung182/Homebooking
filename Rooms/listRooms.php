@@ -1,4 +1,3 @@
-
 <body>
 	<h2 class="form_title">Danh sách căn phòng</h2>
 	<p class="form_label">Tìm kiếm sản phẩm</p>
@@ -16,9 +15,9 @@
 		<input type="submit" id="btn-submit_product" class="btn" value="Tìm Kiếm" name="searchRooms">
 	</form>
 	<?php
-		$thongbao = isset($thongbao) ? $thongbao : '';
-		$thongbao_xoa = isset($thongbao_delete) ? $thongbao_delete : '';
-		$thongbao_sua = isset($thongbao_update) ? $thongbao_update : '';
+	$thongbao = isset($thongbao) ? $thongbao : '';
+	$thongbao_xoa = isset($thongbao_delete) ? $thongbao_delete : '';
+	$thongbao_sua = isset($thongbao_update) ? $thongbao_update : '';
 	?>
 	<p class="">
 		<?= $thongbao ?>
@@ -31,7 +30,7 @@
 	</p>
 	<!-- Thêm mới -->
 	<button class="btn">
-		<a  href="index.php?goto=addRooms1">Thêm mới</a>
+		<a href="index.php?goto=addRooms1">Thêm mới</a>
 	</button>
 
 	<!-- Table list products -->
@@ -51,7 +50,7 @@
 			extract($phong);
 			$editRoom = "index.php?goto=editRoom&id=" . $ma_phong;
 			$deleteRoom = "index.php?goto=deleteRoom&id=" . $ma_phong;
-			?>
+		?>
 			<tr class="row1">
 				<td>
 					<?= $ma_phong ?>
@@ -66,9 +65,9 @@
 					<?= $giam_gia ?>
 				</td>
 				<td><img src="<?= $avatar ?>" style="width: 150px; height: 150px"></td>
-				<?php 
-					$cate = getOneItem($ma_lp);
-					extract($cate); 
+				<?php
+				$cate = getOneItem($ma_lp);
+				extract($cate);
 				?>
 				<td>
 					<?= $ten_lp ?>
@@ -80,8 +79,7 @@
 				</td>
 				<td class="thaotac">
 					<a href="<?= $deleteRoom ?>">
-						<input type="button" value="Xóa" class="btn btn_delete"
-							onclick="return confirm('Bạn có chắc chắn muốn xóa không!')">
+						<input type="button" value="Xóa" class="btn btn_delete" onclick="return confirm('Bạn có chắc chắn muốn xóa không!')">
 					</a>
 				</td>
 			</tr>
