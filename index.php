@@ -11,6 +11,33 @@ include './Models/news.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
+<<<<<<< HEAD
+			// Categories - Loại Phòng
+		case 'listCates':
+			$listCates = selectCates();
+			include './Categories/listCates.php';
+			break;
+		case 'viewRooms':
+			$listRooms = selectRooms();
+			$listCates = selectCates();
+			include './Rooms/viewRooms.php';
+			break;
+			// Đặt phòng
+		case 'listRooms_booking':
+			$listRooms_booking = selectRooms_booking();
+			$test1 = Test();
+			//var_dump($test1);
+			date_default_timezone_set('ASIA/HO_CHI_MINH');
+			$date = date('Y-m-d H:i:s');
+			include './Client/bookings/listRooms.php';
+			break;
+		case 'detailRooms':
+			session_start();
+			if (isset($_SESSION['user'])) {
+				$ten_kh = $_SESSION['user']['ten_kh'];
+				$phone = $_SESSION['user']['phone'];
+				$dia_chi = $_SESSION['user']['dia_chi'];
+=======
 		// Dat phong
 		case 'pays':
 			if (isset($_SESSION['ten_tk'])) {
@@ -19,6 +46,7 @@ if (isset($_GET['goto'])) {
 				$dia_chi = $_SESSION['ten_tk']['dia_chi'];
 				//$khuyen_mai = $_SESSION['ten_tk']['ma_km'];
 				$khuyen_mai = select_Sale($_SESSION['ten_tk']['ma_tk'])['ten_km'];
+>>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 			} else {
 				$ten_kh = '';
 				$phone = '';
@@ -188,6 +216,9 @@ if (isset($_GET['goto'])) {
 				}
 			}
 
+<<<<<<< HEAD
+			// Tin tuc
+=======
 			include './Bookings/detailRooms.php';
 			break;
 		case 'pay':
@@ -220,6 +251,7 @@ if (isset($_GET['goto'])) {
 			include './Bookings/show_pay.php';
 			break;
 		// Tin tuc
+>>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 		case 'viewNews':
 			$listNews = selectNews();
 			include './News/viewNews.php';
@@ -232,13 +264,23 @@ if (isset($_GET['goto'])) {
 			break;
 		// End News
 		case 'register':
+<<<<<<< HEAD
+			if (isset($_POST['register']) && ($_POST['register'])) {
+				$hoten = $_POST['Ho_ten'];
+=======
 			if (isset($_POST['btn-register']) && ($_POST['btn-register'])) {
 				// $hoten = $_POST['ho_ten'];
+>>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
 				$phone = $_POST['phone'];
+<<<<<<< HEAD
+				$address = $_POST['dia_chi'];
+				insertAcc($hoten, $ten_tk, $email, $pass, $phone, $address);
+=======
 				insertAcc($ten_tk, $email, $pass, $phone);
+>>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
 			}
 			include './Accounts/register.php';
@@ -254,8 +296,12 @@ if (isset($_GET['goto'])) {
 				if (is_array($checkAcc)) {
 					// header('location: index.php');
 					$_SESSION['ten_tk'] = $checkAcc;
+<<<<<<< HEAD
+					header('location:index.php');
+=======
 
 					// header('location:index.php');
+>>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 					echo '<script> alert("Đăng nhập thành công!") </script>';
 
 					if ($_SESSION['ten_tk']['vai_tro'] == 1) {
@@ -264,14 +310,16 @@ if (isset($_GET['goto'])) {
 						// echo '<script> alert("Đăng nhập thành công!") </script>';
 					} else {
 						header('location:index.php');
+<<<<<<< HEAD
+=======
 						return $_SESSION['ten_tk'];
 						// echo '<script> alert("Đăng nhập thành công!") </script>';
+>>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 					}
 					// echo '<script> alert("Đăng nhập thành công!") </script>';
 				} else {
 					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
 					// $thongbao = "Tai khoan khong ton tai";
-					header('location:index.php');
 				}
 			}
 			include './Accounts/login.php';
@@ -294,9 +342,43 @@ if (isset($_GET['goto'])) {
 			}
 			include './Accounts/ForgetPass.php';
 			break;
+		case 'editUser':
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				$user = getOneAccount($_GET['id']);
+			}
+			include './Users/updateUser.php';
+			break;
+		case 'updateUser':
+			if (isset($_POST['updateUser']) && $_POST['updateUser']) {
+				$ma_tk = $_POST['ma_tk'];
+				$ten_tk = $_POST['ten_tk'];
+				$email = $_POST['email'];
+				$phone = $_POST['phone'];
+				$dia_chi = $_POST['dia_chi'];
+				$anh_dai_dien = isset($_FILES['avatar']) ? $_FILES['avatar'] : '';
+				$save_url = '';
+				if ($anh_dai_dien['size'] > 0 && $anh_dai_dien['size'] < 500000) {
+					$photo_folder = './img/';
+					$photo_file = uniqid() . $anh_dai_dien['name'];
+
+					$file_se_luu = $anh_dai_dien['tmp_name'];
+					$url = $photo_folder . $photo_file;
+
+					if (move_uploaded_file($file_se_luu, $url)) {
+						$save_url = $url;
+					}
+				}
+				update_user($ma_tk, $ten_tk, $email, $phone, $dia_chi, $save_url);
+				$_SESSION['ten_tk'] = checkAccount($ten_tk, $pass);
+				header('location: index.php?goto=login');
+			}
+			include './Users/updateUser.php';
+			break;
 		default:
 		# code...
 	}
+<<<<<<< HEAD
+=======
 } else if (isset($_GET['search'])) {
 	switch ($_GET['search']) {
 		case 'rooms':
@@ -343,11 +425,16 @@ if (isset($_GET['goto'])) {
 			# code...
 			break;
 	}
+>>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
 } else {
 	$listCates = selectCates();
 	// $listRooms = selectRooms();
 	$list8rooms = selectEightRooms();
 	include './View/body.php';
 }
+<<<<<<< HEAD
+include './View/footer.php';
+=======
 
 include './View/footer.php';
+>>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6

@@ -13,11 +13,17 @@ function loadAll_acc()
     $listAcc = pdo_query($sql);
     return $listAcc;
 }
+<<<<<<< HEAD
+function insertAcc($hoten, $ten_tk, $email, $pass, $phone, $address)
+{
+    $sql = "INSERT INTO taikhoan(ho_ten, ten_tk, email, pass, phone,dia_chi) VALUES ('$hoten','$ten_tk','$email','$pass','$phone','$address')";
+=======
 
 
 function insertAcc($ten_tk, $email, $pass, $phone)
 {
     $sql = "INSERT INTO taikhoan(ten_tk, email, pass, phone) VALUES ('$ten_tk','$email','$pass','$phone')";
+>>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
     pdo_execute($sql);
 }
 
@@ -41,8 +47,17 @@ function getOneAcc($ma_tk) {
 
 function update_acc($ma_tk, $ten_tk, $email, $phone, $vai_tro)
 {
-    $sql = "UPDATE taikhoan SET ten_tk ='$ten_tk', email = '$email',
-		phone = '$phone', vai_tro = '$vai_tro'  
+    $sql = "UPDATE taikhoan SET ten_tk ='$ten_tk', email = '$email',phone = '$phone', vai_tro = '$vai_tro'  
+		 WHERE ma_tk ='$ma_tk'";
+    pdo_execute($sql);
+}
+function update_user($ma_tk, $ten_tk, $email, $phone, $dia_chi, $hinh_anh)
+{
+    if ($hinh_anh != "")
+        $sql = "UPDATE taikhoan SET ten_tk ='$ten_tk', email = '$email',phone = '$phone',dia_chi='$dia_chi',avatar='$hinh_anh'  
+    WHERE ma_tk ='$ma_tk'";
+    else
+        $sql = "UPDATE taikhoan SET ten_tk ='$ten_tk', email = '$email',phone = '$phone',dia_chi='$dia_chi'  
 		 WHERE ma_tk ='$ma_tk'";
     pdo_execute($sql);
 }
@@ -63,4 +78,8 @@ function getOneAccount($id)
     $sql = "SELECT * FROM taikhoan WHERE ma_tk = '$id'";
     $user = pdo_query_one($sql);
     return $user;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
