@@ -27,6 +27,7 @@
                     <li><a href="index.php?goto=viewRooms">Hotel & Rooms</a></li>
                     <li><a href="index.php?goto=viewNews">Tin Tức</a></li>
                     <li><a href="index.php?goto=add_pay">Thông Tin Phòng Đặt</a></li>
+                    <li><a href="index.php?goto=btn_contact">Liên hệ</a></li>
                 </ul>
             </div>
             <div class="login">

@@ -4,11 +4,10 @@
     <h2>Danh sách tài khoản</h2>
     <table border="1" cellspacing="0">
         <tr class="row">
-            <th class="type">Mã khách hàng</th>
-            <th class="type">Tên đăng nhập</th>
-            <th class="type">Họ tên</th>
+            <th class="type">Mã hỗ trợ</th>
+            <th class="type">Tên người hỗ trợ</th>
+            <th class="type">Nội dung</th>
             <th class="type">Email</th>
-            <th class="type">Địa chỉ</th>
             <th class="type">Số điện thoại</th>
             <th class="type">Vai trò</th>
             <th class="type"></th>
@@ -16,39 +15,31 @@
         </tr>
 
         <?php
-        if (!empty($listUsers)) {
-            foreach ($listUsers as $account) {
-                extract($account);
-                $editAcc = "index.php?goto=editUsers&id=" . $ma_tk;
-                $deleteAcc = "index.php?goto=deleteAcc&id=" . $ma_tk;
+        if (!empty($listContact)) {
+            foreach ($listContact as $contact) {
+                extract($contact);
+                $feedback = "index.php?goto=Feedback&id=" . $ma_ht;
+                $deleteAcc = "index.php?goto=deleteAcc&id=" . $ma_ht;
         ?>
                 <tr class="row1">
                     <td>
-                        <?= $ma_tk ?>
+                        <?= $ma_ht ?>
                     </td>
                     <td>
-                        <?= $ten_tk ?>
+                        <?= $ten_ht ?>
                     </td>
                     <td>
-                        <?= $ho_ten ?>
+                        <?= $noi_dung ?>
                     </td>
-
                     <td>
                         <?= $email ?>
-                    </td>
-
-                    <td>
-                        <?= $dia_chi ?>
                     </td>
                     <td>
                         <?= $phone ?>
                     </td>
                     <td>
-                        <?= $vai_tro ?>
-                    </td>
-                    <td>
-                        <a href="<?= $editAcc ?>">
-                            <input type="button" value="Edit" class="btn-hover btn5">
+                        <a href="<?= $feedback ?>">
+                            <input type="button" value="feedback" class="btn-hover btn5">
                         </a>
                     </td>
                     <td>

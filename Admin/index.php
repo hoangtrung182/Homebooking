@@ -8,6 +8,7 @@ include '../Models/Rooms.php';
 include '../Models/bookings.php';
 include '../Models/news.php';
 include '../Models/accounts.php';
+include '../Models/contact.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
@@ -204,7 +205,6 @@ if (isset($_GET['goto'])) {
 				if ($hinh_anh['size'] > 0 && $hinh_anh['size'] < 500000) {
 					$photo_folder = '../img/';
 					$photo_file = uniqid() . $hinh_anh['name'];
-
 					$file_se_luu = $hinh_anh['tmp_name'];
 					$url = $photo_folder . $photo_file;
 
@@ -297,12 +297,13 @@ if (isset($_GET['goto'])) {
 			//end listAcc
 		case 'editAcc':
 			if (isset($_POST['editAcc']) && $_POST['editAcc']) {
+				$ho_ten = $_POST['ho_ten'];
 				$ma_tk = $_POST['ma_tk'];
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$phone = $_POST['phone'];
 				$role = $_POST['vaitro'];
-				update_acc($ma_tk, $ten_tk, $email, $phone, $vai_tro);
+				update_accs($ma_tk, $ten_tk, $ho_ten, $email, $phone, $vai_tro);
 				$_SESSION['user'] = checkAccount($ten_tk, $pass);
 				header('location: index.php?goto=listAcc');
 			}
@@ -353,11 +354,26 @@ if (isset($_GET['goto'])) {
 		case 'deleteAcc':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 				delete_acc($_GET['id']);
-				$thongbao_xoa = "Xóa user thành công !!";
+				echo '<script>alert("Bạn đã chắc chắn với quyết định của mình?")</script>';
 			}
-
 			$listUsers = load_taikhoan();
 			include '../Accounts/listAcc.php';
+			break;
+		case 'exit':
+			header('index.php');
+			// include '../Admin/index.php';
+			break;
+		case 'listContact':
+			$listContact = load_contact();
+			include '../Accounts/listContact.php';
+			break;
+		case 'Feedback':
+			include '../Contact/formFeedback.php';
+			break;
+		case 'btnFeedBack':
+			if (isset($_POST['btn_feedBack']) && $_POST['btn_feedBack']) {
+				echo '<script>alert("Phản hồi đã gửi")</script>';
+			}
 			break;
 		default:
 			# code...
