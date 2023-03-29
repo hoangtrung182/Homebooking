@@ -1,21 +1,32 @@
 <?php
+
 function selectAcc()
 {
     $sql = "SELECT * FROM taikhoan order by ma_tk asc";
     $listRooms = pdo_query($sql);
     return $listRooms;
 }
+
 function loadAll_acc()
 {
     $sql = "SELECT *FROM taikhoan order by ma_tk desc";
     $listAcc = pdo_query($sql);
     return $listAcc;
 }
+<<<<<<< HEAD
 function insertAcc($hoten, $ten_tk, $email, $pass, $phone, $address)
 {
     $sql = "INSERT INTO taikhoan(ho_ten, ten_tk, email, pass, phone,dia_chi) VALUES ('$hoten','$ten_tk','$email','$pass','$phone','$address')";
+=======
+
+
+function insertAcc($ten_tk, $email, $pass, $phone)
+{
+    $sql = "INSERT INTO taikhoan(ten_tk, email, pass, phone) VALUES ('$ten_tk','$email','$pass','$phone')";
+>>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6
     pdo_execute($sql);
 }
+
 function checkAccount($ten_tk, $pass)
 {
     $sql = "SELECT * FROM taikhoan WHERE ten_tk='" . $ten_tk . "' AND pass ='" . $pass . "'";
@@ -28,12 +39,12 @@ function checkPass($ten_tk)
     $check = pdo_query_one($sql);
     return $check;
 }
-function getOneAcc($ma_tk)
-{
+function getOneAcc($ma_tk) {
     $sql = "SELECT * FROM phong WHERE ma_tk =" . $ma_tk;
     $acc = pdo_query_one($sql);
     return $acc;
 }
+
 function update_acc($ma_tk, $ten_tk, $email, $phone, $vai_tro)
 {
     $sql = "UPDATE taikhoan SET ten_tk ='$ten_tk', email = '$email',phone = '$phone', vai_tro = '$vai_tro'  
@@ -67,4 +78,8 @@ function getOneAccount($id)
     $sql = "SELECT * FROM taikhoan WHERE ma_tk = '$id'";
     $user = pdo_query_one($sql);
     return $user;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3d909804100fb22cbd4128b6ffe3e515359824b6

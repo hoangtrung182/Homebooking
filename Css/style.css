@@ -387,19 +387,28 @@
 }
 
 .location-img h3 {
-    margin: 20px 0;
-    font-size: 20px;
+    margin: 16px 0;
+    font-size: 18px;
     text-transform: uppercase;
     text-align: center;
     font-weight: 600;
 }
 
+.location-img .location-title {
+    font-size: 16px;
+}
+
+
 .location-img p {
     font-size: 16px;
     text-align: center;
     font-weight: 500;
+    opacity: .6;
 }
 
+.location-img span {
+    display: block;
+}
 
 /*=============List rooms Main============*/
 .sub_container {
@@ -407,7 +416,7 @@
     max-width: 100%;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 20%;
+    margin-top: 50px;
 }
 
 .list-rooms {
@@ -427,10 +436,20 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
 }
+
+
 .room-item {
+    text-align: center;
+     display: flex;
+    margin-bottom: 24px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+}
+/*========== News ===========*/
+.new-item {
     display: flex;
-    /*align-items: center;*/
-    /*text-align: center;*/
     margin-bottom: 24px;
     padding: 5px;
     border: 1px solid #ccc;
@@ -438,16 +457,27 @@
 }
 
 .room-info {
+    text-align: left;
+    margin-left: 5px;
+ }
+.new-info {
     margin: 0px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.new-info a {
+    text-decoration: none;
+    color: #ccc;
 }
 
-.room-item img {
+.new-item img {
     height: 210px;
     width: 230px;
     border-radius: 3px;
 }
 
-.room-info h3 {
+.new-info h3 {
     margin: 10px 0;
     font-size: 20px;
     font-weight: 500;
@@ -460,6 +490,16 @@
 }
 
 .room-item em {
+    color: #5a4f4f;
+}
+
+
+.new-item p {
+    color: #df2629;
+    font-size: 18px;
+}
+
+.new-item em {
     color: #5a4f4f;
 }
 
@@ -515,7 +555,7 @@
     /*margin-top: 20%;*/
 }
 
-.slideshow-title {
+.slideshow-title p{
     font-size: 32px;
     font-weight: 700;
     text-align: center;
@@ -531,6 +571,19 @@
     margin-right: 30px;
 }
 
+/* show thanh toán */
+.container_pay {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid red;
+}
+
+.content-ticket2 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-top: 20px;
+}
 
 /*============= List-rooms-search===========*/
 .list_rooms-form {

@@ -1,4 +1,4 @@
- <nav class="nav">
+<nav class="nav">
     <div class="icon1">
         <img src="https://img.agoda.net/images/INTTRV-45/default/Bags-heart_2021-09-30.svg" alt="">
     </div>
@@ -17,7 +17,7 @@
     </div>
     <div class="box">
         <div class="box-button">
-            <div class="box-1">
+            <div class="box-0">
                 <button class="box-2">Nghỉ qua Đêm </button>
             </div>
             <div class="box-3">
@@ -25,25 +25,22 @@
             </div>
         </div>
         <!-- Form -->
-         <form action="search.php?" method="get" class="form_search">
-            <!-- <label class="form_label" for="">Loại phòng</label><br> -->
+        <form action="index.php?search=typerooms" method="post" class="form_search">
             <select name="loaiphong" id="" class="input_third">
                 <option value="">Chọn loại phòng</option>
                 <?php foreach ($listCates as $loaiphong) {
                     extract($loaiphong);
-                     ?>
+                    ?>
                     <option value="<?= $ma_lp ?>">
-                        <?= $ten_lp ?>
+                        ` <?= $ten_lp ?> `
                     </option>
                 <?php } ?>
             </select><br>
-            <!-- <label class="form_label" for="">Tăng, giảm dần</label><br> -->
             <select name="price_chose" id="" class="input_third">
                 <option value="" selected>Sắp xếp giá theo</option>
-                <option value="desc">Giá từ cao đến thấp</option>
-                <option value="asc">Giá từ thấp đến cao</option>
+                <option value="desc">` Cao đến Thấp `</option>
+                <option value="asc">` Thấp đến Cao `</option>
             </select><br>
-            <!-- <label class="form_label">Khoảng giá</label> -->
             <div class="input_search-form">
                 <input type="number" name="price-min" class="input_search-price min-1" placeholder="Nhập giá thấp nhất">
                 <input type="number" name="price-max" class="input_search-price max-1" placeholder="Nhập giá cao nhất">
@@ -68,11 +65,9 @@
         <div class="button-container">
             <button class="w3-button w3-light-grey" onclick="plusDivs(-1)">❮❮</button>
             <button class="w3-button w3-light-grey" onclick="plusDivs(1)">❯❯</button>
-        </div>  
+        </div>
     </div>
 </div>
-
-
 
 <!-- Main Location -->
 <section class="location-container">
@@ -84,28 +79,26 @@
             <div class="location-img">
                 <img src="./img/image6.png" alt="">
                 <h3>Hồ Chí Minh</h3>
-                <p>14.320 chỗ ở</p>
+                <p>14.320 <span>Chỗ nghỉ</span> </p>
             </div>
             <div class="location-img">
                 <img src="./img/image7.png" alt="">
                 <h3>Vũng Tàu</h3>
-                <p>14.320 chỗ ở</p>
+                <p>14.320 <span>Chỗ nghỉ</span> </p>
             </div>
             <div class="location-img">
                 <img src="./img/image8.png" alt="">
                 <h3>Đà Lạt</h3>
-                <p>14.320 chỗ ở</p>
+                <p>14.320 <span>Chỗ nghỉ</span> </p>
             </div>
             <div class="location-img">
                 <img src="./img/image9.png" alt="">
                 <h3>Hà Nội</h3>
-                <p>14.320 chỗ ở</p>
+                <p>14.320 <span>Chỗ nghỉ</span> </p>
             </div>
         </div>
-    </div> 
+    </div>
 </section>
-
-
 
 <!-- Main Products -->
 <section class="list-rooms">
@@ -114,20 +107,65 @@
             <h2 class="">NHỮNG PHÒNG Ở TỐT GỢI Ý CHO BẠN</h2>
         </div>
         <div class="row-rooms">
-            <?php 
-                foreach ($list8rooms as $phong) {
-                    extract($phong);
-                 ?>
-                    <div class="body-item">
-                        <img src="<?= $avatar ?>" alt="">
-                        <div class="">
-                            <h3><?= $ten_phong ?></h3>
-                            <em>Giá mỗi đêm rẻ từ</em>
-                            <p><?= number_format($gia,0,',','.')?> VND</p>
-                        </div>
+            <?php
+            foreach ($list8rooms as $phong) {
+                extract($phong);
+                ?>
+                <div class="body-item">
+                    <img src=".//<?= $avatar ?>" alt="">
+                    <div class="">
+                        <h3>
+                            <?= $ten_phong ?>
+                        </h3>
+                        <em>Giá mỗi đêm rẻ từ</em>
+                        <p>
+                            <?= number_format($gia, 0, ',', '.') ?> VND
+                        </p>
                     </div>
-                <?php }
-             ?>
+                </div>
+        <?php }
+            ?>
+        </div>
+    </div>
+</section>
+
+<!-- Plus Location  -->
+<section class="location-container">
+    <div class="location">
+        <div class="location-1">
+            <p>các địa điểm thu hút ở ngoài Việt Nam</p>
+        </div>
+        <div class="location-content">
+            <div class="location-img">
+                <img src="./img/image6.png" alt="">
+                <h3 class="location-title">Kuala Lumpur</h3>
+                <p>17,404 <span>Chỗ nghỉ</span> </p>
+            </div>
+            <div class="location-img">
+                <img src="./img/image7.png" alt="">
+                <h3 class="location-title">Malila</h3>
+                <p>11,257 <span>Chỗ nghỉ</span> </p>
+            </div>
+            <div class="location-img">
+                <img src="./img/image8.png" alt="">
+                <h3 class="location-title">Las Vegas</h3>
+                <p>828 <span>Chỗ nghỉ</span> </p>
+            </div>
+            <div class="location-img">
+                <img src="./img/image9.png" alt="">
+                <h3 class="location-title">Penang</h3>
+                <p>4681 <span>Chỗ nghỉ</span> </p>
+            </div>
+            <div class="location-img">
+                <img src="./img/image9.png" alt="">
+                <h3 class="location-title">Jakarta</h3>
+                <p>4681 <span>Chỗ nghỉ</span> </p>
+            </div>
+            <div class="location-img">
+                <img src="./img/image9.png" alt="">
+                <h3 class="location-title">Bangkok</h3>
+                <p>10,342 <span>Chỗ nghỉ</span> </p>
+            </div>
         </div>
     </div>
 </section>
@@ -137,26 +175,26 @@
     showDivs(slideIndex);
 
     function plusDivs(n) {
-      showDivs(slideIndex += n);
+        showDivs(slideIndex += n);
     }
 
     function currentDiv(n) {
-      showDivs(slideIndex = n);
+        showDivs(slideIndex = n);
     }
 
     function showDivs(n) {
-      var i;
-      var x = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("demo");
-      if (n > x.length) {slideIndex = 1}    
-      if (n < 1) {slideIndex = x.length}
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";  
-      }
-      for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" w3-red", "");
-      }
-      x[slideIndex-1].style.display = "block";  
-      dots[slideIndex-1].className += " w3-red";
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        if (n > x.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = x.length }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" w3-red", "");
+        }
+        x[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " w3-red";
     }
 </script>

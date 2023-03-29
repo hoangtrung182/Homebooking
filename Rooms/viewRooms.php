@@ -1,10 +1,9 @@
 
 <body>
-	<h2 class="form_title">Danh sách căn phòng</h2>
 	<p class="form_label">Tìm kiếm sản phẩm</p>
 	 <div class="list_rooms-form">
         <div class="box-button">
-            <div class="box-1">
+            <div class="box-0">
                 <button class="box-2">Nghỉ qua Đêm </button>
             </div>
             <div class="box-3">
@@ -12,7 +11,7 @@
             </div>
         </div>
         <!-- Form -->
-         <form action="search.php?" method="get" class="form_search">
+         <form action="index.php?search=typerooms" method="post" class="form_search">
             <!-- <label class="form_label" for="">Loại phòng</label><br> -->
             <select name="loaiphong" id="" class="input_third">
                 <option value="">Chọn loại phòng</option>
@@ -38,7 +37,40 @@
             <button class="tk">Tìm Kiếm</button>
         </form>
     </div>
-	
-</body>
+
+   <section class="list-rooms">
+         <div class="sub_container">
+             <div class="">
+                 <h2 class="form_title">Danh sách tất cả các phòng</h2>
+             </div>
+            <?php
+                if(!isset($listRooms)) {
+                    return '';
+                }
+             ?>
+            <?php 
+             if(count($listRooms) > 0) {
+                 foreach ($listRooms as $phong) {
+                    extract($phong); ?>
+                <!-- Show sản phẩm tìm kiếm -->
+                 <li class="new-item">
+                         <img src=".//<?= $avatar ?>" alt="">
+                         <div class="new-info">
+                             <h3><?= $ten_phong ?></h3>
+                             <div class="">
+                                 <em>Giá mỗi đêm rẻ từ</em>
+                                 <p><?= number_format($gia, 0, ',', '.') ?> VND</p>
+                             </div>
+                         </div>
+                    </li>
+                <?php }
+             }else { ?>
+                <!--  Trả về ko tồn tại nếu array rỗng -->
+                <div class="">
+                    <h3>Phòng tìm kiếm không tồn tại !!!</h3>
+                </div>
+            <?php }  ?>
+         </div>
+     </section></body>
 
 </html>

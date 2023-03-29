@@ -109,14 +109,13 @@ table {
     color: #23958fd4;
     text-align: center;
     margin: 30px;
+    font-weight: 700;
 }
 
 .form_label {
-    font-size: 22px;
+    font-size: 20px;
     color: #000;
-    /*margin: 30px 56px;*/
-    margin-right: 90px;
-    margin-left: 90px;
+    margin: 10px 34px;
     font-style: italic;
 }
 
@@ -130,7 +129,7 @@ table {
 .slideShoww {
     margin-right: auto;
     margin-left: auto;
-    max-width: 800px;
+    max-width: 1000px;
     margin-top: 20%;
     border-radius: 4px;
 }
@@ -147,7 +146,7 @@ table {
     margin: 0px 100px;
     padding: 0 10px;
     border-radius: 3px;
-
+    position: relative;
 }
 
 .input_search-price {
@@ -157,8 +156,28 @@ table {
     border: none;
     background-color: transparent;
     border: 1px solid #40b52be0;
-    margin: 15px 20px;
+    margin: 30px 20px 15px;
     padding-left: 10px;
     border-radius: 4px;
     outline: none;
+}
+
+/*========= Thong bao loc gia========*/
+.notify {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.notify_min {
+    color: red;
+    position: absolute;
+    top: 74%;
+    left: 250px;
+}
+
+.notify_max {
+    color: red;
+    position: absolute;
+    top: 74%;
+    left: 58%;
 }
