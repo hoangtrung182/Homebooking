@@ -17,7 +17,7 @@ if (isset($_GET['goto'])) {
 			$listCates = selectCates();
 			include './Categories/listCates.php';
 			break;
-		case 'viewRooms': 
+		case 'viewRooms':
 			$listRooms = selectRooms();
 			$listCates = selectCates();
 			include './Rooms/viewRooms.php';
@@ -165,19 +165,19 @@ if (isset($_GET['goto'])) {
 			break;
 
 			// Tin tuc
-		case 'viewNews': 
+		case 'viewNews':
 			$listNews = selectNews();
 			include './News/viewNews.php';
 			break;
-		case 'detailnew': 
+		case 'detailnew':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 				$new = getOneNews($_GET['id']);
 			}
 			include './News/detailnew.php';
 			break;
 		case 'register':
-			if (isset($_POST['btn_register']) && ($_POST['btn_register'])) {
-				$hoten = $_POST['ho_ten'];
+			if (isset($_POST['register']) && ($_POST['register'])) {
+				$hoten = $_POST['Ho_ten'];
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
@@ -196,7 +196,6 @@ if (isset($_GET['goto'])) {
 				if (is_array($checkAcc)) {
 					// header('location: index.php');
 					$_SESSION['ten_tk'] = $checkAcc;
-
 					header('location:index.php');
 					echo '<script> alert("Đăng nhập thành công!") </script>';
 
@@ -205,13 +204,11 @@ if (isset($_GET['goto'])) {
 						echo '<script> alert("Đăng nhập thành công!") </script>';
 					} else {
 						header('location:index.php');
-						echo '<script> alert("Đăng nhập thành công!") </script>';
 					}
 					// echo '<script> alert("Đăng nhập thành công!") </script>';
 				} else {
 					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
 					// $thongbao = "Tai khoan khong ton tai";
-					header('location:index.php');
 				}
 			}
 			include './Accounts/login.php';
@@ -234,15 +231,32 @@ if (isset($_GET['goto'])) {
 			}
 			include './Accounts/ForgetPass.php';
 			break;
+		case 'editUser':
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				$user = getOneAccount($_GET['id']);
+			}
+			include './Users/updateUser.php';
+			break;
+		case 'privateUsers':
+			if (isset($_POST['updateUser']) && $_POST['updateUser']) {
+				$ma_tk = $_POST['ma_tk'];
+				$ten_tk = $_POST['ten_tk'];
+				$email = $_POST['email'];
+				$phone = $_POST['phone'];
+				update_user($ma_tk, $ten_tk, $email, $phone);
+				$_SESSION['ten_tk'] = checkAccount($ten_tk, $pass);
+				header('locaitn: ./Accounts/login.php');
+			}
+			include './Users/updateUser.php';
+			break;
 		default:
 			# code...
 			// break;
 	}
-}else {
+} else {
 	$listCates = selectCates();
 	// $listRooms = selectRooms();
 	$list8rooms = selectEightRooms();
 	include './View/body.php';
 }
-
 include './View/footer.php';

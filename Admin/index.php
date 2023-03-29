@@ -310,7 +310,7 @@ if (isset($_GET['goto'])) {
 					}
 				}
 
-				if($_SESSION['ten_tk']) {
+				if ($_SESSION['ten_tk']) {
 					extract($_SESSION['ten_tk']);
 				}
 				// var_dump($hinh_anh); 
@@ -377,7 +377,7 @@ if (isset($_GET['goto'])) {
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
 				$phone = $_POST['phone'];
-				insertAcc($ten_tk, $email, $pass, $phone);
+				insertAcc($hoten, $ten_tk, $email, $pass, $phone);
 				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
 				// header("Location: index.php?act=login");
 			}
@@ -397,7 +397,7 @@ if (isset($_GET['goto'])) {
 				} else {
 					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
 					// $thongbao = "Tai khoan khong ton tai";
-					include './view/body.php';
+					include '../view/body.php';
 				}
 			}
 			include '../Accounts/login.php';
@@ -422,37 +422,41 @@ if (isset($_GET['goto'])) {
 			break;
 			//End forget
 		case 'listAcc':
-			$listAcc = loadAll_acc();
-			include '../Admin/accounts.php';
+			$listUsers = load_taikhoan();
+			include '../Accounts/listAcc.php';
 			break;
 			//end listAcc
-		case 'editAcc':
+		case 'editUsers':
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				$listUsers = getOneAccount($_GET['id']);
+			}
+			include '../Accounts/editAcc.php';
+			break;
+		case 'manageUsers':
+			// include './taikhoan/edit.php';
 			if (isset($_POST['editAcc']) && $_POST['editAcc']) {
 				$ma_tk = $_POST['ma_tk'];
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$phone = $_POST['phone'];
-				$vai_tro = $_POST['vai_tro'];
+				$role = $_POST['vaitro'];
+				update_acc($ma_tk, $ten_tk, $email, $phone, $vai_tro);
+				$_SESSION['user'] = checkAccount($ten_tk, $pass);
 			}
-			update_acc($ma_tk, $ten_tk, $email, $phone, $vai_tro);
-			// $_SESSION['user'] = check_khachhang($email, $password);
-			$thongbao = "Chỉnh sửa tài khoản thành công!";
-			// header('location:index.php');
-			$listAcc = loadAll_acc();
-			include '../Admin/accounts.php';
-			break;
-		case 'exit':
-			session_unset();
-			header('location:../Admin/index.php');
+			include '../Accounts/listAcc.php';
 			break;
 		case 'deleteAcc':
-			if (isset($_GET['ma_tk']) && ($_GET['ma_tk'] > 0)) {
-				delete_acc($_GET['ma_tk']);
-				$thongbao_delete = "Xóa thành công !!";
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				delete_acc($_GET['id']);
+				$thongbao_xoa = "Xóa user thành công !!";
 			}
 
-			$listAcc = load_taikhoan();
-			include '../Admin/accounts.php';
+			$listUsers = load_taikhoan();
+			include '../Accounts/listAcc.php';
+			break;
+		case 'exit':
+			header('index.php');
+			// include '../Admin/index.php';
 			break;
 		default:
 			# code...

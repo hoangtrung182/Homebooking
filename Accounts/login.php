@@ -9,6 +9,7 @@
     <title>Document</title>
     <style>
         .form-main {
+            margin-top: 60px;
             margin-left: 25%;
             width: 524px;
             background: #fff;
@@ -103,50 +104,50 @@
                 extract($_SESSION['ten_tk']);
                 // $ten_tk = $_POST['ten_tk'];
             ?>
-                <div>
-                    <!-- sin ttao <br> -->
-
-                </div>
-                <ul>
-                    <div>
-                        <!-- <li><a href="#">Admin</a></li> -->
-                        <li><a href="index.php?goto=logout">Thoát</a></li>
-                        <li><a href="index.php?goto=forgetPass">Quên mật khẩu</a></li>
+                <div class="form-main">
+                    <form action="index.php?goto=editUser" method="post">
+                        <h3>Hồ sơ của tôi</h3>
+                        <div class="form-info">
+                            Tên đăng nhập<br>
+                            <input class="input" type="text" disabled name="ten_tk" value="<?= $ten_tk ?>" placeholder="Tên đăng nhập" required>
+                        </div>
+                        <div class="form-info">
+                            Email <br>
+                            <input class="input" type="email" disabled name="pass" value="<?= $email ?>" placeholder="Mật khẩu" required>
+                        </div>
+                        <div class="form-info">
+                            Số điện thoại <br>
+                            <input class="input" type="text" disabled name="pass" value="<?= $phone ?>" placeholder="Mật khẩu" required>
+                        </div>
+                        <input type="submit" value="Chỉnh sửa hồ sơ" name="editUser" class="btn6-hover btn5">
+                    </form>
+                    <div class="extra">
+                        <a href="index.php?goto=register">Tạo tài khoản </a>
+                        <a href="index.php?goto=forgetPass">Quên mật khẩu</a>
                     </div>
-                </ul>
-    </div>
-<?php } else { ?>
-    <form action="index.php?goto=login" method="post">
-        <div class="form-info">
-            Tên đăng nhập <br>
-            <input type="text" name="ten_tk">
-        </div>
-        <div class="form-info">
-            Mật khẩu <br>
-            <input type="password" name="pass">
-        </div>
-    <?php } else { ?>
-        <div class="form-main">
-            <form action="index.php?goto=login" method="post">
-                <h3>Đăng nhập</h3>
-                <div class="form-info">
-                    Tên đăng nhập<br>
-                    <input class="input" type="text" name="ten_tk" placeholder="Tên đăng nhập" required>
                 </div>
-                <div class="form-info">
-                    Mật khẩu <br>
-                    <input class="input" type="password" name="pass" placeholder="Mật khẩu" required>
+            <?php } else { ?>
+                <div class="form-main">
+                    <form action="index.php?goto=login" method="post">
+                        <h3>Đăng nhập</h3>
+                        <div class="form-info">
+                            Tên đăng nhập<br>
+                            <input class="input" type="text" name="ten_tk" placeholder="Tên đăng nhập" required>
+                        </div>
+                        <div class="form-info">
+                            Mật khẩu <br>
+                            <input class="input" type="password" name="pass" placeholder="Mật khẩu" required>
+                        </div>
+                        <input type="submit" value="Đăng nhập" name="login" class="btn6-hover btn5">
+                    </form>
+                    <div class="extra">
+                        <a href="index.php?goto=register">Tạo tài khoản </a>
+                        <a href="index.php?goto=forgetPass">Quên mật khẩu</a>
+                    </div>
+                    <?= isset($thongbao) ? $thongbao : '' ?>
+                <?php } ?>
                 </div>
-                <input type="submit" value="Đăng nhập" name="login" class="btn6-hover btn5">
-            </form>
-            <div class="extra">
-                <a href="index.php?goto=register">Tạo tài khoản </a>
-                <a href="index.php?goto=forgetPass">Quên mật khẩu</a>
-            </div>
-            <?= isset($thongbao) ? $thongbao : '' ?>
-        <?php } ?>
         </div>
-    </div>
 </body>
 
 </html>

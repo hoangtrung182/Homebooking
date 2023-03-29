@@ -8,6 +8,7 @@
     <title>Document</title>
     <style>
         .form-main {
+            margin-top: 60px;
             margin-left: 25%;
             width: 524px;
             background: #fff;
@@ -89,6 +90,10 @@
         <div class="form-register">
             <form action="index.php?goto=register" method="post">
                 <h3>Đăng ký</h3>
+                <div class="form-info">
+                    Họ tên <br>
+                    <input class="input" type="text" name="Ho_ten" required placeholder="Họ tên">
+                </div>
                 <div class="form-info">
                     Tên đăng nhập <br>
                     <input class="input" type="text" name="ten_tk" required placeholder="Tên đăng nhập">
