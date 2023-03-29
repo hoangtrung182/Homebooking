@@ -213,8 +213,8 @@ if (isset($_GET['goto'])) {
 				$thongbao_update = "Cập nhật lại phòng thành công!";
 			}
 
-			$listRooms = selectRooms();
-			include '../Rooms/listRooms.php';
+			$listNews = selectNews();
+			include '../News/listNews.php';
 			break;
 
 		case 'deleteNews':
@@ -227,8 +227,6 @@ if (isset($_GET['goto'])) {
 			include '../News/listNews.php';
 			break;
 		// End News
-		// Chi tiết phòng
-		// abc thu nghiem
 		case 'register':
 			if (isset($_POST['btn_register']) && ($_POST['btn_register'])) {
 				$ten_tk = $_POST['ten_tk'];
