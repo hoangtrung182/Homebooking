@@ -51,7 +51,7 @@ function check_datphong($id)
 function insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_tk, $ma_km, $ma_phong)
 {
     $sql = "INSERT INTO datphong(ten_kh, phone, dia_chi, ngay_dat, ngay_den, ngay_ve,trang_thai,thanh_tien,ma_tk,ma_km,ma_phong)
-		 		VALUES ('$ten_kh', '$phone', '$dia_chi', '$ngay_dat', '$ngay_den', '$ngay_ve', '$trang_thai', '$thanh_tien', '$ma_tk', '$ma_km','$ma_phong')";
+                VALUES ('$ten_kh', '$phone', '$dia_chi', '$ngay_dat', '$ngay_den', '$ngay_ve', '$trang_thai', '$thanh_tien', '$ma_tk', '$ma_km','$ma_phong')";
     pdo_execute($sql);
 }
 function show_booking($id)

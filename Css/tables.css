@@ -129,7 +129,7 @@ table {
 .slideShoww {
     margin-right: auto;
     margin-left: auto;
-    max-width: 800px;
+    max-width: 1000px;
     margin-top: 20%;
     border-radius: 4px;
 }
@@ -171,13 +171,13 @@ table {
 .notify_min {
     color: red;
     position: absolute;
-    top: 85%;
+    top: 74%;
     left: 250px;
 }
 
 .notify_max {
     color: red;
     position: absolute;
-    top: 85%;
+    top: 74%;
     left: 58%;
 }

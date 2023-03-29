@@ -25,7 +25,7 @@
 			<p class="main-desc"><?= $noi_dung ?></p>
 		</section>
 		<footer class="new-footer">
-			<span>Tác giả: <?= $Ho_ten ?></span>
+			<span>Tác giả: <?= $ten_tk ?></span>
 		</footer>
 	</div>
 </body>
