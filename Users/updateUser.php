@@ -4,13 +4,12 @@
     <div class="form-main">
         <div class="form-register">
             <?php
-            if (isset($_SESSION['ten_tk']) && is_array($_SESSION['ten_tk'])) {
-                extract($_SESSION['ten_tk']);
-            }
-            // extract($listUsers);
+                if (isset($_SESSION['ten_tk']) && is_array($_SESSION['ten_tk'])) {
+                    extract($_SESSION['ten_tk']);
+                }
             ?>
             <form action="index.php?goto=updateUser" method="post" enctype="multipart/form-data">
-                <h3>Hồ sơ của tôi</h3>
+                <h3>Thông tin cá nhân</h3>
                 <div class="form-info">
                     Tên đăng nhập <br>
                     <input class="input" type="text" name="ten_tk" value="<?= $ten_tk ?>" required placeholder="Tên đăng nhập">

@@ -138,8 +138,11 @@ if (isset($_GET['goto'])) {
 			$listRooms = selectRooms();
 			include '../Rooms/listRooms.php';
 			break;
-
-			// Tin tuc
+	// List bookings
+		case 'listBookings': 
+			include './bookings/listBookings';
+			break;
+	// Tin tuc
 		case 'listNews':
 			$listNews = selectNews();
 			include '../News/listNews.php';
@@ -226,9 +229,7 @@ if (isset($_GET['goto'])) {
 			$listNews = selectNews();
 			include '../News/listNews.php';
 			break;
-			// End News
-			// Chi tiết phòng
-			// abc thu nghiem
+	// Login
 		case 'register':
 			if (isset($_POST['register']) && ($_POST['register'])) {
 				$hoten = $_POST['Ho_ten'];
@@ -242,7 +243,6 @@ if (isset($_GET['goto'])) {
 			}
 			include '../Accounts/register.php';
 			break;
-			//End register
 		case 'login':
 			if (isset($_POST['login']) && ($_POST['login'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -358,10 +358,6 @@ if (isset($_GET['goto'])) {
 
 			$listUsers = load_taikhoan();
 			include '../Accounts/listAcc.php';
-			break;
-		case 'exit':
-			header('index.php');
-			// include '../Admin/index.php';
 			break;
 		default:
 			# code...
