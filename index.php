@@ -191,9 +191,6 @@ if (isset($_GET['goto'])) {
 
 			include './Client/bookings/detailRooms.php';
 			break;
-		case 'pay':
-			include './Client/bookings/pay.php';
-			break;
 		case 'add_pay':
 			if (isset($_SESSION['ten_tk'])) {
 				$ma_kh = $_SESSION['ten_tk']['ma_tk'];
