@@ -11,8 +11,9 @@ include './Models/news.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
-		// Dat phong
+			// Dat phong
 		case 'pays':
+		// var_dump($_SESSION['ten_tk']); die;
 			if (isset($_SESSION['ten_tk'])) {
 				$ten_kh = $_SESSION['ten_tk']['ten_tk'];
 				$phone = $_SESSION['ten_tk']['phone'];
@@ -23,7 +24,7 @@ if (isset($_GET['goto'])) {
 				$ten_kh = '';
 				$phone = '';
 				$dia_chi = '';
-				$khuyen_mai = 0;
+				$khuyen_mai = '';
 			}
 
 			if (isset($_SESSION['ten_tk'])) {
@@ -76,7 +77,6 @@ if (isset($_GET['goto'])) {
 						} else if ($result['ngay_den'] > $date && $result['trang_thai'] == 0) {
 							$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
 							$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
-
 						} else if ($result['ngay_den'] > $date && $result['trang_thai'] >= 1) {
 							$thongbao = "PHÒNG ĐÃ ĐƯỢC ĐẶT TRƯỚC!";
 						}
@@ -86,6 +86,7 @@ if (isset($_GET['goto'])) {
 				// 
 			} else {
 				echo '<script>alert("Vui lòng đăng nhập để đặt phòng và nhận khuyến mãi hấp dẫn!")</script>';
+				// header('location: index.php?goto=login');
 			}
 			include './Bookings/pay.php';
 			break;
@@ -95,6 +96,7 @@ if (isset($_GET['goto'])) {
 
 			include './Rooms/viewRooms.php';
 			break;
+	//  Xem phòng đặt
 		case 'listRooms_booking':
 			$listRooms = selectRooms_booking();
 			date_default_timezone_set('ASIA/HO_CHI_MINH');
@@ -102,7 +104,6 @@ if (isset($_GET['goto'])) {
 			include './Bookings/listRooms.php';
 			break;
 		case 'detaiRooms_booking':
-
 			if (isset($_SESSION['ten_tk'])) {
 				$ten_kh = $_SESSION['ten_tk']['ten_tk'];
 				$phone = $_SESSION['ten_tk']['phone'];
@@ -111,7 +112,6 @@ if (isset($_GET['goto'])) {
 				$ten_kh = '';
 				$phone = '';
 				$dia_chi = '';
-
 			}
 
 			if (isset($_GET['id'])) {
@@ -152,7 +152,6 @@ if (isset($_GET['goto'])) {
 							'ten_phong' => $chitiet['ten_phong'],
 							'ma_hs' => $_GET['id'],
 						];
-
 					} else {
 						$gia = $chitiet['giam_gia'];
 						if (isset($_SESSION['ten_tk'])) {
@@ -206,7 +205,6 @@ if (isset($_GET['goto'])) {
 						}
 					}
 				}
-
 			} else {
 				$shows = '';
 			}
@@ -219,7 +217,7 @@ if (isset($_GET['goto'])) {
 			}
 			include './Bookings/show_pay.php';
 			break;
-		// Tin tuc
+	// Tin tuc
 		case 'viewNews':
 			$listNews = selectNews();
 			include './News/viewNews.php';
@@ -230,7 +228,7 @@ if (isset($_GET['goto'])) {
 			}
 			include './News/detailnew.php';
 			break;
-		// End News
+			// End News
 		case 'register':
 			if (isset($_POST['btn-register']) && ($_POST['btn-register'])) {
 				// $hoten = $_POST['ho_ten'];
@@ -238,13 +236,14 @@ if (isset($_GET['goto'])) {
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
 				$phone = $_POST['phone'];
+				$address = $_POST['dia_chi'];
 				insertAcc($ten_tk, $email, $pass, $phone);
 				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
 			}
 			include './Accounts/register.php';
 
 			break;
-		//End register
+			//End register
 		case 'login':
 			if (isset($_POST['login']) && ($_POST['login'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -252,10 +251,8 @@ if (isset($_GET['goto'])) {
 				$checkAcc = checkAccount($ten_tk, $pass);
 
 				if (is_array($checkAcc)) {
-					// header('location: index.php');
 					$_SESSION['ten_tk'] = $checkAcc;
-
-					// header('location:index.php');
+					header('location:index.php');
 					echo '<script> alert("Đăng nhập thành công!") </script>';
 
 					if ($_SESSION['ten_tk']['vai_tro'] == 1) {
@@ -267,21 +264,19 @@ if (isset($_GET['goto'])) {
 						return $_SESSION['ten_tk'];
 						// echo '<script> alert("Đăng nhập thành công!") </script>';
 					}
-					// echo '<script> alert("Đăng nhập thành công!") </script>';
 				} else {
 					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
 					// $thongbao = "Tai khoan khong ton tai";
-					header('location:index.php');
 				}
 			}
 			include './Accounts/login.php';
 			break;
-		//End login
+			//End login
 		case 'exit':
 			session_unset();
 			header('location: index.php');
 			break;
-		//End logout
+			//End logout
 		case 'forgetPass':
 			if (isset($_POST['forgetPass']) && ($_POST['forgetPass'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -294,8 +289,41 @@ if (isset($_GET['goto'])) {
 			}
 			include './Accounts/ForgetPass.php';
 			break;
+		case 'editUser':
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				$user = getOneAccount($_GET['id']);
+			}
+
+			include './Users/updateUser.php';
+			break;
+		case 'updateUser':
+			if (isset($_POST['updateUser']) && $_POST['updateUser']) {
+				$ma_tk = $_POST['ma_tk'];
+				$ten_tk = $_POST['ten_tk'];
+				$email = $_POST['email'];
+				$phone = $_POST['phone'];
+				$dia_chi = $_POST['dia_chi'];
+				$anh_dai_dien = isset($_FILES['avatar']) ? $_FILES['avatar'] : '';
+				$save_url = '';
+				if ($anh_dai_dien['size'] > 0 && $anh_dai_dien['size'] < 500000) {
+					$photo_folder = './img/';
+					$photo_file = uniqid() . $anh_dai_dien['name'];
+
+					$file_se_luu = $anh_dai_dien['tmp_name'];
+					$url = $photo_folder . $photo_file;
+
+					if (move_uploaded_file($file_se_luu, $url)) {
+						$save_url = $url;
+					}
+				}
+				update_user($ma_tk, $ten_tk, $email, $phone, $dia_chi, $save_url);
+				$_SESSION['ten_tk'] = checkAccount($ten_tk, $pass);
+				header('location: index.php?goto=login');
+			}
+			include './Users/updateUser.php';
+			break;
 		default:
-		# code...
+			# code...
 	}
 } else if (isset($_GET['search'])) {
 	switch ($_GET['search']) {
@@ -349,5 +377,4 @@ if (isset($_GET['goto'])) {
 	$list8rooms = selectEightRooms();
 	include './View/body.php';
 }
-
 include './View/footer.php';

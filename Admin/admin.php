@@ -6,10 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Css/style.css">
+    <link rel="stylesheet" href="../Css/tables.css">
     <link rel="stylesheet" href="../Css/button.css">
     <link rel="stylesheet" href="../Css/News.css">
-    <link rel="stylesheet" href="../Css/tables.css">
-    <link rel="stylesheet" href="../Css/bookings.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Trang Chủ | ADMIN</title>
 </head>
@@ -18,7 +17,7 @@
     <div class="container">
         <header class="header">
             <div class="logo">
-                <a href="../index.php">
+                <a href="./index.php">
                     <img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt="">
                 </a>
             </div>

@@ -4,13 +4,12 @@
     <div class="form-main">
         <div class="form-register">
             <?php
-            if (isset($_SESSION['ten_tk']) && is_array($_SESSION['ten_tk'])) {
-                extract($_SESSION['ten_tk']);
-            }
-            extract($listUsers);
+                if (isset($_SESSION['ten_tk']) && is_array($_SESSION['ten_tk'])) {
+                    extract($_SESSION['ten_tk']);
+                }
             ?>
-            <form action="index.php?goto=editAcc" method="post">
-                <h3>Đăng ký</h3>
+            <form action="index.php?goto=updateUser" method="post" enctype="multipart/form-data">
+                <h3>Thông tin cá nhân</h3>
                 <div class="form-info">
                     Tên đăng nhập <br>
                     <input class="input" type="text" name="ten_tk" value="<?= $ten_tk ?>" required placeholder="Tên đăng nhập">
@@ -24,14 +23,19 @@
                     <input class="input" type="text" name="phone" value="<?= $phone ?>" required placeholder="Mật khẩu">
                 </div>
                 <div class="form-info">
-                    Vai trò <br>
-                    <input class="input" type="text" name="vaitro" value="<?= $vai_tro ?>" placeholder="Mật khẩu" required>
+                    Ảnh đại diện <br>
+                    <input class="input" type="file" name="avatar" value="<?= $anh_dai_dien ?>">
+                </div>
+                <div class="form-info">
+                    Địa chỉ <br>
+                    <input class="input" type="text" name="dia_chi" value="<?= $dia_chi ?>" required placeholder="Mật khẩu">
                 </div>
                 <div class="submit">
                     <input type="hidden" name="ma_tk" value="<?= $ma_tk ?>">
-                    <input class="btn2-hover btn5" type="submit" value="Cập nhật" name="editAcc">
+                    <input class="btn6-hover btn5" type="submit" value="Cập nhật" name="updateUser">
                 </div>
             </form>
             <?= isset($thongbao) ? $thongbao : '' ?>
         </div>
     </div>
+</body>
