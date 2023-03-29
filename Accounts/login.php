@@ -16,15 +16,10 @@
                 <div class="pane">
                     <div class="left-pane">
                         <ul>
-                            <img src="<?= $avatar ?>" style="width: 450px; height: 500px;margin-top:60px;
-            text-align:center;" alt="">
-
-                            <!-- <li><a href="">Thông tin tài khoản</a></li>
-                            <li><a href=""></a></li>
-                            <li><a href=""></a></li> -->
+                            <img src="<?= $avatar ?>" style="width: 450px; height: 500px;text-align:center;" alt="">
                         </ul>
                     </div>
-                    <div class="form-main">
+                    <div class="form-main1">
                         <form action="index.php?goto=editUser" method="post">
                             <h3>Hồ sơ của tôi</h3>
                             <div class="form-info">
@@ -49,9 +44,9 @@
                     </div>
                 </div>
             <?php } else { ?>
-                <div class="form-main1">
+                <div class="form-main">
                     <form action="index.php?goto=login" method="post">
-                        <h3>Đăng nhập</h3>
+                        <h2 style="font-weight: bold;text-align:center;">Đăng nhập</h2>
                         <div class="form-info">
                             Tên đăng nhập<br>
                             <input class="input" type="text" name="ten_tk" placeholder="Tên đăng nhập" required>

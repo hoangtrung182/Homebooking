@@ -1,5 +1,16 @@
 .form-main {
-    margin-top: 60px;
+    margin: 60px;
+    margin-left: 25%;
+    width: 524px;
+    background: #fff;
+    padding: 16px 24px 24px 24px;
+    border: 1px solid #fff;
+    box-shadow: 5px 5px 5px 5px grey;
+}
+
+.form-main12 {
+    margin: 60px;
+    margin-left: 25%;
     width: 524px;
     background: #fff;
     padding: 16px 24px 24px 24px;
@@ -8,8 +19,7 @@
 }
 
 .form-main1 {
-    margin-top: 60px;
-    margin-left: 25%;
+    margin: 60px;
     width: 524px;
     background: #fff;
     padding: 16px 24px 24px 24px;
