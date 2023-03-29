@@ -12,33 +12,32 @@
 <body>
     <div class="form-main">
         <div class="form-register">
-            <form action="index.php?goto=register" method="post">
+            <?php
+            if (isset($_SESSION['ten_tk'])) {
+                extract($_SESSION['ten_tk']);
+            }
+            ?>
+            <form action="index.php?goto=btnContact" method="post">
                 <h2 style="font-weight: bold;text-align:center;">Đăng ký</h2>
                 <div class=" form-info">
                     Họ tên <br>
-                    <input class="input" type="text" name="Ho_ten" required placeholder="Họ tên">
+                    <input class="input" type="text" name="ten_ht" required placeholder="Họ tên">
                 </div>
                 <div class="form-info">
-                    Tên đăng nhập <br>
-                    <input class="input" type="text" name="ten_tk" required placeholder="Tên đăng nhập">
+                    Nội dung <br>
+                    <input class="input" type="text" name="noi_dung" required placeholder="Tên đăng nhập">
                 </div>
                 <div class="form-info">
                     Email <br>
                     <input class="input" type="email" name="email" required placeholder="Email">
                 </div>
                 <div class="form-info">
-                    Mật khẩu <br>
-                    <input class="input" type="password" name="pass" required placeholder="Mật khẩu">
-                </div>
-                <div class="form-info">
                     Số điện thoại <br>
                     <input class="input" type="text" name="phone" placeholder="Số điện thoại">
                 </div>
                 <div class="submit">
-                    <input class="btn6-hover btn5" type="submit" value="Đăng ký" name="btn-register">
-                    <button class="btn6-hover btn5">
-                        <a style="text-decoration: none;" href="index.php?goto=login">Đăng nhập</a>
-                    </button>
+                    <input type="hidden" name="ma_tk" value="<?= $ma_tk ?>">
+                    <input class="btn6-hover btn5" type="submit" value="Gửi hỗ trợ" name="btn_contact">
                 </div>
             </form>
             <?= isset($thongbao) ? $thongbao : '' ?>

@@ -28,6 +28,7 @@
                     <li><a href="index.php?goto=viewRooms">Hotel & Rooms</a></li>
                     <li><a href="index.php?goto=viewNews">Tin Tức</a></li>
                     <li><a href="index.php?goto=add_pay">Thông Tin Phòng Đặt</a></li>
+                    <li><a href="index.php?goto=btn_contact">Liên hệ</a></li>
                 </ul>
             </div>
             <div class="login">
@@ -35,7 +36,7 @@
                     <?php
                     if (isset($_SESSION['ten_tk'])) {
                         extract($_SESSION['ten_tk']);
-                        ?>
+                    ?>
                         <li>
                             <a href="index.php?goto=login">
                                 <button class="btn5-hover btn5">
@@ -43,10 +44,10 @@
                                 </button>
                             </a>
                         </li>
-                        <li><a href="index.php?goto=logout"><button class="btn5-hover btn5">Thoát</button></a></li>
-                        <?php
+                        <li><a href="index.php?goto=exit"><button class="btn5-hover btn5">Thoát</button></a></li>
+                    <?php
                     } else {
-                        ?>
+                    ?>
                         <li><a href="index.php?goto=login">
                                 <button class="btn5-hover btn5">
                                     Đăng nhập
