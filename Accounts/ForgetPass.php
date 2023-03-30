@@ -21,7 +21,7 @@
             <div class="button">
                 <input type="submit" value="Lấy lại" name="forgetPass" class="input_button btn">
                 <input type="reset" class="btn" value="Nhập lại">
-                <button class="btn"><a class="btn" href="index.php?target=exit">Tiếp tục</a></button>
+                <button class="btn"><a class="btn" href="index.php?goto=exit">Tiếp tục</a></button>
             </div>
             <span style="color:red;">
                 <?= isset($thongbao) ? $thongbao : '' ?>

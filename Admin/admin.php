@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Css/style.css">
-    <link rel="stylesheet" href="../Css/tables.css">
     <link rel="stylesheet" href="../Css/button.css">
     <link rel="stylesheet" href="../Css/News.css">
+    <link rel="stylesheet" href="../Css/tables.css">
+    <link rel="stylesheet" href="../Css/bookings.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Trang Chủ | ADMIN</title>
 </head>
@@ -25,10 +26,12 @@
                 <ul>
                     <li><a href="index.php?goto=listCates">QUẢN LÝ LOẠI PHÒNG</a></li>
                     <li><a href="index.php?goto=listRooms">QUẢN LÝ PHÒNG</a></li>
-                    <li><a href="bookings/listBookings.php">QUẢN LÝ ĐẶT PHÒNG</a></li>
+                    <li><a href="index.php?goto=listBooking">QUẢN LÝ ĐẶT PHÒNG</a></li>
                     <li><a href="#">QUẢN LÝ BÌNH LUẬN</a></li>
                     <li><a href="index.php?goto=listAcc">QUẢN LÝ TÀI KHOẢN</a></li>
                     <li><a href="index.php?goto=listNews">QUẢN LÝ TIN TỨC</a></li>
+                    <li><a href="index.php?goto=listContact">QUẢN LÝ HỖ TRỢ</a></li>
+                    <li><a href="index.php?goto=thongke">THỐNG KÊ</a></li>
                 </ul>
             </div>
             <div class="login">

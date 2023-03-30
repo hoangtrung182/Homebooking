@@ -45,13 +45,19 @@ function showRoom_tm($ma_phong)
 function check_datphong($id)
 {
     $sql = "SELECT * FROM datphong WHERE ma_phong=$id";
-    $result = pdo_query_one($sql);
-    return $result;
+    $list = pdo_query($sql);
+    return $list;
+}
+function check_datphong1($id)
+{
+    $sql = "SELECT ngay_den,ngay_ve FROM datphong WHERE ma_phong=$id";
+    $list = pdo_query($sql);
+    return $list;
 }
 function insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_tk, $ma_km, $ma_phong)
 {
     $sql = "INSERT INTO datphong(ten_kh, phone, dia_chi, ngay_dat, ngay_den, ngay_ve,trang_thai,thanh_tien,ma_tk,ma_km,ma_phong)
-		 		VALUES ('$ten_kh', '$phone', '$dia_chi', '$ngay_dat', '$ngay_den', '$ngay_ve', '$trang_thai', '$thanh_tien', '$ma_tk', '$ma_km','$ma_phong')";
+                VALUES ('$ten_kh', '$phone', '$dia_chi', '$ngay_dat', '$ngay_den', '$ngay_ve', '$trang_thai', '$thanh_tien', '$ma_tk', '$ma_km','$ma_phong')";
     pdo_execute($sql);
 }
 function show_booking($id)

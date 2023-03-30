@@ -11,16 +11,39 @@
 </head>
 <style>
     .container_pay {
-        max-width: 800px;
+        max-width: 700px;
         margin: auto;
         padding: 20px;
-        border: 1px solid red;
+        border: 2px solid #23958fd4;
+        border-radius: 10px;
+        margin-top: 80px;
+        box-shadow: 6px 8px 7px #24232329;
     }
 
     .content-ticket2 {
         display: grid;
         grid-template-columns: 2fr 1fr;
         margin-top: 20px;
+    }
+
+    .title-item h5 {
+        font-size: 20px;
+        font-weight: 500;
+        color: black;
+        line-height: 0;
+        padding: 10px 0;
+    }
+
+    .details-item h3 {
+        font-size: 20px;
+        font-weight: 500;
+        color: red;
+        /* padding: 0 20px; */
+
+    }
+
+    .money h3 {
+        color: red;
     }
 </style>
 
@@ -92,16 +115,15 @@
                         <div class="title-item">
                             <h5>Tổng tiền</h5>
                         </div>
-                    </div>
-                    <!-- End item-ticket -->
-                    <div class="item-ticket">
-                        <div class="details-item">
+                        <div class="money">
                             <h3>
                                 <?php $format_number_4 = number_format($listPay['thanh_tien'], 0, ',', '.');
                                 echo $format_number_4 . 'vnđ'; ?>
                             </h3>
                         </div>
                     </div>
+                    <!-- End item-ticket -->
+
                     <!-- End item-ticket -->
                 </div>
             </div>

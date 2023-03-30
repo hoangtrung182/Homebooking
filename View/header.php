@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./Css/tables.css">
     <link rel="stylesheet" href="./Css/News.css">
     <link rel="stylesheet" href="./Css/booking.css">
+    <link rel="stylesheet" href="./Css/detail.css">
     <title>Trang Chủ | Agoda</title>
 </head>
 
@@ -28,6 +29,7 @@
                     <li><a href="index.php?goto=viewRooms">Hotel & Rooms</a></li>
                     <li><a href="index.php?goto=viewNews">Tin Tức</a></li>
                     <li><a href="index.php?goto=add_pay">Thông Tin Phòng Đặt</a></li>
+                    <li><a href="index.php?goto=btn_contact">Liên hệ</a></li>
                 </ul>
             </div>
             <div class="login">
@@ -43,7 +45,7 @@
                                 </button>
                             </a>
                         </li>
-                        <li><a href="index.php?goto=logout"><button class="btn5-hover btn5">Thoát</button></a></li>
+                        <li><a href="index.php?goto=exit"><button class="btn5-hover btn5">Thoát</button></a></li>
                         <?php
                     } else {
                         ?>

@@ -2,22 +2,42 @@
 
 
 table {
-    border: 0.5px solid #f3eeee;
-    width: 98%;
+    /* border: 0.5px solid #f3eeee; */
+    width: 90%;
     margin: auto;
+    box-shadow: 6px 8px 7px #24232329;
+    border-radius: 10px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+table tr {
+    border-radius: 10px;
+
 }
 
 .row1 {
-    color: #000;
     font-size: 18px;
     text-align: center;
-    /*height: 100px;*/
+    padding: 20px;
+    border: none;
+    margin-top: 80px;
+}
+
+.row1 td {
+    border: none;
+    padding: 10px 0;
 }
 
 
 .type {
+
+    margin-top: 10px;
     padding: 10px 10px;
-    background-color: rgb(227 227 227);
+    background-color: #23958fd4;
+    color: white;
+    border: none;
 }
 
 .input_submit {
@@ -26,7 +46,7 @@ table {
 
 .input_submit a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 
@@ -129,7 +149,7 @@ table {
 .slideShoww {
     margin-right: auto;
     margin-left: auto;
-    max-width: 800px;
+    max-width: 1000px;
     margin-top: 20%;
     border-radius: 4px;
 }
@@ -171,13 +191,13 @@ table {
 .notify_min {
     color: red;
     position: absolute;
-    top: 85%;
+    top: 74%;
     left: 250px;
 }
 
 .notify_max {
     color: red;
     position: absolute;
-    top: 85%;
+    top: 74%;
     left: 58%;
 }

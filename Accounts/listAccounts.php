@@ -1,6 +1,6 @@
 <body>
 
-    <h2>Danh sách tài khoản</h2>
+    <h2 class="form_title">DANH SÁCH TÀI KHOẢN</h2>
     <table border="1" cellspacing="0">
         <tr class="row">
             <!-- <th class="type"></th> -->
@@ -19,7 +19,7 @@
             extract($account);
             $editAcc = "index.php?goto=editAcc&id=" . $ma_tk;
             $deleteAcc = "index.php?goto=deleteAcc&id=" . $ma_tk;
-        ?>
+            ?>
             <tr class="row1">
                 <td>
                     <?= $ma_tk ?>
