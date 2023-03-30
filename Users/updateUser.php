@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="./Css/account.css">
+<link rel="stylesheet" href="../Css/account.css">
 
 <body>
     <div class="form-main12">
@@ -15,7 +16,7 @@
 
                 <div class="form-info">
                     Họ tên <br>
-                    <input class="input" type="text" name="ten_tk" value="<?= $ho_ten ?>" required placeholder="Tên đăng nhập">
+                    <input class="input" type="text" name="ho_ten" value="<?= $ho_ten ?>" required placeholder="Họ và tên">
                 </div>
                 <div class="form-info">
                     Email <br>

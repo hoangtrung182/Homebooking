@@ -23,6 +23,14 @@ function selectRooms() {
 	return $listRooms;
 }
 
+
+function sameRoom($id)
+{
+	$sql = "SELECT * FROM phong WHERE ma_lp = '$id'";
+	$listSameRooms = pdo_query($sql);
+	return $listSameRooms;
+}
+
 function selectEightRooms() {
 	$sql = "SELECT * FROM phong WHERE 1 order by gia asc limit 0,8";
 	$list8room = pdo_query($sql);

@@ -12,6 +12,16 @@ include './Models/contact.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
+		case 'detail_rooms':
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				$oneRoom = getOneRoom($_GET['id']);
+				// $thongbao_xoa = "Xóa thành công !!";
+				extract($oneRoom);
+			}
+			
+			$listSameRooms = sameRoom($ma_lp);
+			include './View/view_detail.php';
+			break;
 			// Dat phong
 		case 'pays':
 		// var_dump($_SESSION['ten_tk']); die;
@@ -232,13 +242,12 @@ if (isset($_GET['goto'])) {
 			// End News
 		case 'register':
 			if (isset($_POST['register']) && ($_POST['register'])) {
-				$hoten = $_POST['Ho_ten'];
+				// $hoten = $_POST['Ho_ten'];
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
 				$phone = $_POST['phone'];
-				$address = $_POST['dia_chi'];
-				insertAcc($hoten, $ten_tk, $email, $pass, $phone, $address);
+				// $address = $_POST['dia_chi'];
 				insertAcc($ten_tk, $email, $pass, $phone);
 				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
 			}
@@ -300,6 +309,7 @@ if (isset($_GET['goto'])) {
 		case 'updateUser':
 			if (isset($_POST['updateUser']) && $_POST['updateUser']) {
 				$ma_tk = $_POST['ma_tk'];
+				$ho_ten = $_POST['ho_ten'];
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$phone = $_POST['phone'];
@@ -317,7 +327,7 @@ if (isset($_GET['goto'])) {
 						$save_url = $url;
 					}
 				}
-				update_user($ma_tk, $ten_tk, $email, $phone, $dia_chi, $save_url);
+				update_user($ma_tk, $ho_ten, $ten_tk, $email, $phone, $dia_chi, $save_url);
 				$_SESSION['ten_tk'] = checkAccount($ten_tk, $pass);
 				header('location: index.php?goto=login');
 			}

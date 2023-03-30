@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Css/account.css">
+    <link rel="stylesheet" href="../Css/account.css">
     <title>Document</title>
 </head>
 
@@ -23,16 +23,16 @@
                         <form action="index.php?goto=editUser" method="post">
                             <h3>Hồ sơ của tôi</h3>
                             <div class="form-info">
-                                Tên đăng nhập<br>
-                                <input class="input" type="text" disabled name="ten_tk" value="<?= $ten_tk ?>" placeholder="Tên đăng nhập" required>
+                                Họ và tên<br>
+                                <input class="input" type="text" disabled name="ho_ten" value="<?= $ho_ten ?>" placeholder="Họ tên" required>
                             </div>
                             <div class="form-info">
                                 Email <br>
-                                <input class="input" type="email" disabled name="pass" value="<?= $email ?>" placeholder="Mật khẩu" required>
+                                <input class="input" type="email" disabled name="pass" value="<?= $email ?>" placeholder="Email" required>
                             </div>
                             <div class="form-info">
                                 Số điện thoại <br>
-                                <input class="input" type="text" disabled name="phone" value="<?= $phone ?>" placeholder="Mật khẩu" required>
+                                <input class="input" type="text" disabled name="phone" value="<?= $phone ?>" placeholder="SĐT" required>
                             </div>
                             <div class="form-info">
                                 Địa chỉ <br>

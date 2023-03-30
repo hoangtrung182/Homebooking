@@ -9,6 +9,7 @@ include '../Models/bookings.php';
 include '../Models/news.php';
 include '../Models/accounts.php';
 include '../Models/contact.php';
+include '../Models/thongke.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
@@ -299,11 +300,11 @@ if (isset($_GET['goto'])) {
 			if (isset($_POST['editAcc']) && $_POST['editAcc']) {
 				$ho_ten = $_POST['ho_ten'];
 				$ma_tk = $_POST['ma_tk'];
-				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$phone = $_POST['phone'];
+				$dia_chi = $_POST['dia_chi'];
 				$role = $_POST['vaitro'];
-				update_accs($ma_tk, $ten_tk, $ho_ten, $email, $phone, $vai_tro);
+				update_accs($ma_tk, $ho_ten, $email, $phone, $dia_chi, $vai_tro);
 				$_SESSION['user'] = checkAccount($ten_tk, $pass);
 				header('location: index.php?goto=listAcc');
 			}
@@ -318,14 +319,14 @@ if (isset($_GET['goto'])) {
 		case 'updateUser':
 			if (isset($_POST['updateUser']) && $_POST['updateUser']) {
 				$ma_tk = $_POST['ma_tk'];
-				$ten_tk = $_POST['ten_tk'];
+				$ho_ten = $_POST['ho_ten'];
 				$email = $_POST['email'];
 				$phone = $_POST['phone'];
 				$dia_chi = $_POST['dia_chi'];
 				$anh_dai_dien = isset($_FILES['avatar']) ? $_FILES['avatar'] : '';
 				$save_url = '';
 				if ($anh_dai_dien['size'] > 0 && $anh_dai_dien['size'] < 500000) {
-					$photo_folder = '../img/';
+					$photo_folder = './img/';
 					$photo_file = uniqid() . $anh_dai_dien['name'];
 
 					$file_se_luu = $anh_dai_dien['tmp_name'];
@@ -335,17 +336,11 @@ if (isset($_GET['goto'])) {
 						$save_url = $url;
 					}
 				}
-				update_user($ma_tk, $ten_tk, $email, $phone, $dia_chi, $save_url);
+				update_user($ma_tk, $ho_ten, $email, $phone, $dia_chi, $save_url);
 				$_SESSION['ten_tk'] = checkAccount($ten_tk, $pass);
 				header('location: index.php?goto=login');
 			}
-			include '../Users/updateUser.php';
-			update_acc($ma_tk, $ten_tk, $email, $phone, $vai_tro);
-			// $_SESSION['user'] = check_khachhang($email, $password);
-			$thongbao = "Chỉnh sửa tài khoản thành công!";
-			// header('location:index.php');
-			$listAcc = loadAll_acc();
-			include '../Accounts/listAccounts.php';
+			include './Users/updateUser.php';
 			break;
 		case 'exit':
 			session_unset();
@@ -375,8 +370,17 @@ if (isset($_GET['goto'])) {
 				echo '<script>alert("Phản hồi đã gửi")</script>';
 			}
 			break;
+
+		case 'thongke':
+			$listtk = loadAll_thongke();
+			include '../thongke/list.php';
+			break;
+		case 'chart':
+			$listtk = loadAll_thongke();
+			include '../thongke/chart.php';
+			break;
 		default:
-			# code...
+			# code...q
 			// break;
 	}
 } else if (isset($_GET['search'])) {

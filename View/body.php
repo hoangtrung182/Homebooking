@@ -112,10 +112,11 @@
                 <h2 class="">NHỮNG PHÒNG Ở TỐT GỢI Ý CHO BẠN</h2>
             </div>
             <div class="row-rooms">
-                <?php
-                foreach ($list8rooms as $phong) {
-                    extract($phong);
-                    ?>
+            <?php
+            foreach ($list8rooms as $phong) {
+                extract($phong);
+            ?>
+                <a href="./index.php?goto=detail_rooms&id=<?= $ma_phong ?>" style="text-decoration: none;">
                     <div class="body-item">
                         <img src=".//<?= $avatar ?>" alt="">
                         <div class="">
@@ -128,9 +129,10 @@
                             </p>
                         </div>
                     </div>
+                </a>
             <?php }
-                ?>
-            </div>
+            ?>
+        </div>
         </div>
     </section>
 
