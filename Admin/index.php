@@ -249,9 +249,8 @@ if (isset($_GET['goto'])) {
 				$hinh_anh = isset($_FILES['hinh_anh']) ? $_FILES['hinh_anh'] : '';
 				$save_url = '';
 				if ($hinh_anh['size'] > 0 && $hinh_anh['size'] < 500000) {
-					$photo_folder = 'img/';
+					$photo_folder = '../img/';
 					$photo_file = uniqid() . $hinh_anh['name'];
-
 					$file_se_luu = $hinh_anh['tmp_name'];
 					$url = $photo_folder . $photo_file;
 
@@ -263,8 +262,8 @@ if (isset($_GET['goto'])) {
 				$thongbao_update = "Cập nhật lại phòng thành công!";
 			}
 
-			$listRooms = selectRooms();
-			include '../Rooms/listRooms.php';
+			$listNews = selectNews();
+			include '../News/listNews.php';
 			break;
 
 		case 'deleteNews':
@@ -280,14 +279,15 @@ if (isset($_GET['goto'])) {
 		// Chi tiết phòng
 		// abc thu nghiem
 		case 'register':
-			if (isset($_POST['btn_register']) && ($_POST['btn_register'])) {
+			if (isset($_POST['register']) && ($_POST['register'])) {
+				$hoten = $_POST['Ho_ten'];
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
 				$phone = $_POST['phone'];
-				insertAcc($ten_tk, $email, $pass, $phone);
+				$address = $_POST['dia_chi'];
+				insertAcc($hoten, $ten_tk, $email, $pass, $phone, $address);
 				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
-				// header("Location: index.php?act=login");
 			}
 			include '../Accounts/register.php';
 			break;
@@ -307,6 +307,7 @@ if (isset($_GET['goto'])) {
 					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
 					include '../../view/body.php';
 					// $thongbao = "Tai khoan khong ton tai";
+					include '../view/body.php';
 				}
 			}
 			include '../Accounts/login.php';
@@ -326,18 +327,68 @@ if (isset($_GET['goto'])) {
 			break;
 		//End forget
 		case 'listAcc':
+			$listUsers = load_taikhoan();
+			include '../Accounts/listAcc.php';
+			break;
+		//end listAcc
+		case 'editUsers':
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				$listUsers = getOneAccount($_GET['id']);
+			}
+			include '../Accounts/editAcc.php';
+			break;
+		case 'manageUsers':
+			// include './taikhoan/edit.php';
+			header('location: index.php?goto=listAcc');
 			$listAcc = loadAll_acc();
-			include '../Accounts/listAccounts.php';
+			include '../Accounts/listAcc.php';
 			break;
 		//end listAcc
 		case 'editAcc':
 			if (isset($_POST['editAcc']) && $_POST['editAcc']) {
+				$ho_ten = $_POST['ho_ten'];
 				$ma_tk = $_POST['ma_tk'];
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$phone = $_POST['phone'];
-				$vai_tro = $_POST['vai_tro'];
+				$role = $_POST['vaitro'];
+				update_accs($ma_tk, $ten_tk, $ho_ten, $email, $phone, $vai_tro);
+				$_SESSION['user'] = checkAccount($ten_tk, $pass);
+				header('location: index.php?goto=listAcc');
 			}
+			include '../Accounts/listAcc.php';
+			break;
+		case 'editUser':
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				$user = getOneAccount($_GET['id']);
+			}
+			include '../Users/updateUser.php';
+			break;
+		case 'updateUser':
+			if (isset($_POST['updateUser']) && $_POST['updateUser']) {
+				$ma_tk = $_POST['ma_tk'];
+				$ten_tk = $_POST['ten_tk'];
+				$email = $_POST['email'];
+				$phone = $_POST['phone'];
+				$dia_chi = $_POST['dia_chi'];
+				$anh_dai_dien = isset($_FILES['avatar']) ? $_FILES['avatar'] : '';
+				$save_url = '';
+				if ($anh_dai_dien['size'] > 0 && $anh_dai_dien['size'] < 500000) {
+					$photo_folder = '../img/';
+					$photo_file = uniqid() . $anh_dai_dien['name'];
+
+					$file_se_luu = $anh_dai_dien['tmp_name'];
+					$url = $photo_folder . $photo_file;
+
+					if (move_uploaded_file($file_se_luu, $url)) {
+						$save_url = $url;
+					}
+				}
+				update_user($ma_tk, $ten_tk, $email, $phone, $dia_chi, $save_url);
+				$_SESSION['ten_tk'] = checkAccount($ten_tk, $pass);
+				header('location: index.php?goto=login');
+			}
+			include '../Users/updateUser.php';
 			update_acc($ma_tk, $ten_tk, $email, $phone, $vai_tro);
 			// $_SESSION['user'] = check_khachhang($email, $password);
 			$thongbao = "Chỉnh sửa tài khoản thành công!";
@@ -350,13 +401,28 @@ if (isset($_GET['goto'])) {
 			header('location: ../index.php');
 			break;
 		case 'deleteAcc':
-			if (isset($_GET['ma_tk']) && ($_GET['ma_tk'] > 0)) {
-				delete_acc($_GET['ma_tk']);
-				$thongbao_delete = "Xóa thành công !!";
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				delete_acc($_GET['id']);
+				echo '<script>alert("Bạn đã chắc chắn với quyết định của mình?")</script>';
 			}
-
-			$listAcc = load_taikhoan();
-			include '../Admin/accounts.php';
+			$listUsers = load_taikhoan();
+			include '../Accounts/listAcc.php';
+			break;
+		case 'exit':
+			header('index.php');
+			// include '../Admin/index.php';
+			break;
+		case 'listContact':
+			$listContact = load_contact();
+			include '../Accounts/listContact.php';
+			break;
+		case 'Feedback':
+			include '../Contact/formFeedback.php';
+			break;
+		case 'btnFeedBack':
+			if (isset($_POST['btn_feedBack']) && $_POST['btn_feedBack']) {
+				echo '<script>alert("Phản hồi đã gửi")</script>';
+			}
 			break;
 		case 'listContact':
 			$listContact = load_contact();

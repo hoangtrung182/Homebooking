@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="./Css/account.css">
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,17 +12,17 @@
 </head>
 
 <body>
-    <section class="main">
-        <h2>Form lấy lại mật khẩu</h2>
+    <section class="form-main">
+        <h3>Form lấy lại mật khẩu</h3>
         <form action="index.php?goto=forgetPass" method="post" enctype="multipart/form-data">
             <div class="text_input">
-                <p class="input_title">Nhập lại địa chỉ Gmail</p>
-                <input type="text" name="ten_tk" class="input_second" placeholder="ví du: abc@com.vn"><br>
+                <p class="input_title">Nhập tài khoản của bạn</p>
+                <input type="text" name="ten_tk" class="input_second" placeholder="ví du: king"><br>
             </div>
             <div class="button">
-                <input type="submit" value="Lấy lại" name="forgetPass" class="input_button btn">
-                <input type="reset" class="btn" value="Nhập lại">
-                <button class="btn"><a class="btn" href="index.php?goto=exit">Tiếp tục</a></button>
+                <input type="submit" value="Lấy lại" name="forgetPass" class="btn6-hover btn5">
+                <input type="reset" class="btn6-hover btn5" value="Nhập lại">
+                <button class="btn6-hover btn5"><a href="index.php?goto=exit">Tiếp tục</a></button>
             </div>
             <span style="color:red;">
                 <?= isset($thongbao) ? $thongbao : '' ?>

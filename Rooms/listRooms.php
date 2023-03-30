@@ -50,7 +50,7 @@
 			extract($phong);
 			$editRoom = "index.php?goto=editRoom&id=" . $ma_phong;
 			$deleteRoom = "index.php?goto=deleteRoom&id=" . $ma_phong;
-			?>
+		?>
 			<tr class="row1">
 				<td>
 					<?= $ma_phong ?>
@@ -79,8 +79,7 @@
 				</td>
 				<td class="thaotac">
 					<a href="<?= $deleteRoom ?>">
-						<input type="button" value="Xóa" class="btn btn_delete"
-							onclick="return confirm('Bạn có chắc chắn muốn xóa không!')">
+						<input type="button" value="Xóa" class="btn btn_delete" onclick="return confirm('Bạn có chắc chắn muốn xóa không!')">
 					</a>
 				</td>
 			</tr>

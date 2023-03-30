@@ -27,6 +27,6 @@ foreach ($listNews as $News) {
 			</div>
 		</div>
 	</li>
-<?php
+	<?php
 }
 ?>

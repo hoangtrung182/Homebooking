@@ -13,15 +13,6 @@ include './Models/contact.php';
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
 		// Dat phong
-		case 'detail_rooms':
-			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-				$oneRoom = getOneRoom($_GET['id']);
-				// $thongbao_xoa = "Xóa thành công !!";
-				extract($oneRoom);
-			}
-			$listSameRooms = sameRoom($_GET['id']);
-			include './View/view_detail.php';
-			break;
 		case 'pays':
 			if (isset($_SESSION['ten_tk'])) {
 				$ten_kh = $_SESSION['ten_tk']['ten_tk'];
@@ -150,7 +141,6 @@ if (isset($_GET['goto'])) {
 				$ten_kh = '';
 				$phone = '';
 				$dia_chi = '';
-
 			}
 
 			if (isset($_GET['id'])) {
@@ -191,7 +181,6 @@ if (isset($_GET['goto'])) {
 							'ten_phong' => $chitiet['ten_phong'],
 							'ma_hs' => $_GET['id'],
 						];
-
 					} else {
 						$gia = $chitiet['giam_gia'];
 						if (isset($_SESSION['ten_tk'])) {
@@ -227,6 +216,7 @@ if (isset($_GET['goto'])) {
 				}
 			}
 
+			// Tin tuc
 			include './Bookings/detailRooms.php';
 			break;
 		case 'pay':
@@ -245,7 +235,6 @@ if (isset($_GET['goto'])) {
 						}
 					}
 				}
-
 			} else {
 				$shows = '';
 			}
@@ -271,17 +260,17 @@ if (isset($_GET['goto'])) {
 			break;
 		// End News
 		case 'register':
-			if (isset($_POST['btn-register']) && ($_POST['btn-register'])) {
-				// $hoten = $_POST['ho_ten'];
+			if (isset($_POST['register']) && ($_POST['register'])) {
+				$hoten = $_POST['Ho_ten'];
 				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
 				$phone = $_POST['phone'];
-				insertAcc($ten_tk, $email, $pass, $phone);
+				$address = $_POST['dia_chi'];
+				insertAcc($hoten, $ten_tk, $email, $pass, $phone, $address);
 				echo '<script>alert("Đăng ký tài khoản thành công! Vui lòng đăng nhập")</script>';
 			}
 			include './Accounts/register.php';
-
 			break;
 		//End register
 		case 'login':
@@ -293,7 +282,7 @@ if (isset($_GET['goto'])) {
 				if (is_array($checkAcc)) {
 					// header('location: index.php');
 					$_SESSION['ten_tk'] = $checkAcc;
-
+					header('location:index.php');
 					// header('location:index.php');
 					echo '<script> alert("Đăng nhập thành công!") </script>';
 
@@ -310,7 +299,6 @@ if (isset($_GET['goto'])) {
 				} else {
 					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
 					// $thongbao = "Tai khoan khong ton tai";
-					header('location:index.php');
 				}
 			}
 			include './Accounts/login.php';
@@ -437,5 +425,4 @@ if (isset($_GET['goto'])) {
 	$list8rooms = selectEightRooms();
 	include './View/body.php';
 }
-
 include './View/footer.php';
