@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../Css/tables.css">
     <link rel="stylesheet" href="../Css/button.css">
     <link rel="stylesheet" href="../Css/News.css">
+    <link rel="stylesheet" href="../Css/account.php">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Trang Chủ | ADMIN</title>
 </head>
@@ -30,6 +31,7 @@
                     <li><a href="index.php?goto=listAcc">QUẢN LÝ TÀI KHOẢN</a></li>
                     <li><a href="index.php?goto=listNews">QUẢN LÝ TIN TỨC</a></li>
                     <li><a href="index.php?goto=listContact">QUẢN LÝ Hỗ trợ</a></li>
+                    <li><a href="index.php?goto=thongke">Thống kê</a></li>
                 </ul>
             </div>
             <div class="login">

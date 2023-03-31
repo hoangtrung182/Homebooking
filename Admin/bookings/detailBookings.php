@@ -27,6 +27,8 @@ if (isset($_GET['xacnhan'])) {
         exit();
     }
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -183,11 +185,8 @@ if (isset($_GET['xacnhan'])) {
                     </div>
                     <div class="details-item">
                         <h3>
-                            <a
-                                href="?xacnhan=<?php echo $show['ma_dp'] ?>&update_trangthai=<?php echo $show['ma_dp'] ?>">Xác
-                                nhận</a>
-                            <!-- <a
-                                href="?huy=<?php echo $show['ma_dp'] ?>&update_trangthai=<?php echo $show['ma_dp'] ?>">Hủy</a> -->
+                            <a href="?xacnhan=<?php echo $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?>">
+                                Xác nhận</a>
                         </h3>
                     </div>
                 </div>

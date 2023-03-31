@@ -45,6 +45,11 @@
                     <input type="number" name="price-min" class="input_search-price min-1" placeholder="Nhập giá thấp nhất">
                     <input type="number" name="price-max" class="input_search-price max-1" placeholder="Nhập giá cao nhất">
                 </div>
+                <div class="time1">
+                    <input type="date" name="ngay_den" id="" class="first">
+                    <span>đến</span>
+                    <input type="date" name="ngay_ve" id="" class="last">
+                </div>
                 <button class="tk">Tìm Kiếm</button>
             </form>
         </div>
@@ -107,10 +112,11 @@
                 <h2 class="">NHỮNG PHÒNG Ở TỐT GỢI Ý CHO BẠN</h2>
             </div>
             <div class="row-rooms">
-                <?php
-                foreach ($list8rooms as $phong) {
-                    extract($phong);
-                    ?>
+            <?php
+            foreach ($list8rooms as $phong) {
+                extract($phong);
+            ?>
+                <a href="./index.php?goto=detail_rooms&id=<?= $ma_phong ?>" style="text-decoration: none;">
                     <div class="body-item">
                         <img src=".//<?= $avatar ?>" alt="">
                         <div class="">
@@ -123,9 +129,10 @@
                             </p>
                         </div>
                     </div>
+                </a>
             <?php }
-                ?>
-            </div>
+            ?>
+        </div>
         </div>
     </section>
 
