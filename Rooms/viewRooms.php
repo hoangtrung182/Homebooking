@@ -53,7 +53,8 @@
                  foreach ($listRooms as $phong) {
                     extract($phong); ?>
                 <!-- Show sản phẩm tìm kiếm -->
-                 <li class="new-item">
+                <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>">
+                     <li class="new-item">
                          <img src=".//<?= $avatar ?>" alt="">
                          <div class="new-info">
                              <h3><?= $ten_phong ?></h3>
@@ -63,6 +64,7 @@
                              </div>
                          </div>
                     </li>
+                </a>
                 <?php }
              }else { ?>
                 <!--  Trả về ko tồn tại nếu array rỗng -->

@@ -8,12 +8,12 @@ include '../Models/Rooms.php';
 include '../Models/bookings.php';
 include '../Models/news.php';
 include '../Models/accounts.php';
-include '../Models/contact.php';
 include '../Models/thongke.php';
+include '../Models/contact.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
-			// Categories - Loại Phòng
+		// Categories - Loại Phòng
 		case 'listCates':
 			$listCates = selectCates();
 			include '../Categories/listCates.php';
@@ -55,7 +55,7 @@ if (isset($_GET['goto'])) {
 			$listCates = selectCates();
 			include '../Categories/listCates.php';
 			break;
-			// Rooms -- Phòng Ở
+		// Rooms -- Phòng Ở
 		case 'listRooms':
 			$listRooms = selectRooms();
 			$listCates = selectCates();
@@ -140,11 +140,56 @@ if (isset($_GET['goto'])) {
 			$listRooms = selectRooms();
 			include '../Rooms/listRooms.php';
 			break;
-	// List bookings
-		case 'listBookings': 
-			include './bookings/listBookings';
+		// Dat phong
+		case 'listBooking':
+			date_default_timezone_set('ASIA/HO_CHI_MINH');
+			$date = date('Y-m-d H:i:s');
+			$list = listBooking();
+			include './bookings/listBookings.php';
 			break;
-	// Tin tuc
+		case 'detailBookings':
+			date_default_timezone_set('ASIA/HO_CHI_MINH');
+			$date = date('Y-m-d H:i:s');
+			if (isset($_GET['update_trangthai'])) {
+				$ma_dp = $_GET['update_trangthai'];
+				$show = showDetail_Clientbooking($ma_dp);
+				date_default_timezone_set('ASIA/HO_CHI_MINH');
+				$date = date('Y-m-d');
+			}
+
+			if (isset($_GET['xacnhan'])) {
+
+				if ($show['trang_thai'] == 1) {
+					header("Location:index.php?goto=listBooking");
+				} elseif ($show['trang_thai'] == 2) {
+					header("Location:index.php?goto=listBooking");
+				} elseif ($show['trang_thai'] == 0 && $show['ngay_den'] <= $date) {
+					header("Location:index.php?goto=listBooking");
+				} else {
+					$trang_thai = 1;
+					$ma_dp = $_GET['xacnhan'];
+					update_booking($trang_thai, $ma_dp);
+					header("Location:index.php?goto=listBooking");
+					exit();
+				}
+
+			}
+			if (isset($_GET['huy'])) {
+				if ($show['trang_thai'] == 1 && $show['ngay_den'] <= $date) {
+					header("Location:index.php?goto=listBooking");
+				} elseif ($show['trang_thai'] == 0 && $show['ngay_den'] <= $date) {
+					header("Location:index.php?goto=listBooking");
+				} else {
+					$trang_thai = '2';
+					$ma_dp = $_GET['huy'];
+					update_booking($trang_thai, $ma_dp);
+					header("Location:index.php?goto=listBooking");
+				}
+			}
+			include './bookings/detailBookings.php';
+			break;
+
+		// Tin tuc
 		case 'listNews':
 			$listNews = selectNews();
 			include '../News/listNews.php';
@@ -230,7 +275,9 @@ if (isset($_GET['goto'])) {
 			$listNews = selectNews();
 			include '../News/listNews.php';
 			break;
-	// Login
+		// End News
+		// Chi tiết phòng
+		// abc thu nghiem
 		case 'register':
 			if (isset($_POST['register']) && ($_POST['register'])) {
 				$hoten = $_POST['Ho_ten'];
@@ -244,6 +291,7 @@ if (isset($_GET['goto'])) {
 			}
 			include '../Accounts/register.php';
 			break;
+		//End register
 		case 'login':
 			if (isset($_POST['login']) && ($_POST['login'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -264,7 +312,7 @@ if (isset($_GET['goto'])) {
 			}
 			include '../Accounts/login.php';
 			break;
-			//End login
+		//End login
 		case 'forgetPass':
 			if (isset($_POST['forgetPass']) && ($_POST['forgetPass'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -277,12 +325,12 @@ if (isset($_GET['goto'])) {
 			}
 			include '../Accounts/ForgetPass.php';
 			break;
-			//End forget
+		//End forget
 		case 'listAcc':
 			$listUsers = load_taikhoan();
 			include '../Accounts/listAcc.php';
 			break;
-			//end listAcc
+		//end listAcc
 		case 'editUsers':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 				$listUsers = getOneAccount($_GET['id']);
@@ -295,16 +343,16 @@ if (isset($_GET['goto'])) {
 			$listAcc = loadAll_acc();
 			include '../Accounts/listAcc.php';
 			break;
-			//end listAcc
+		//end listAcc
 		case 'editAcc':
 			if (isset($_POST['editAcc']) && $_POST['editAcc']) {
 				$ho_ten = $_POST['ho_ten'];
 				$ma_tk = $_POST['ma_tk'];
+				$ten_tk = $_POST['ten_tk'];
 				$email = $_POST['email'];
 				$phone = $_POST['phone'];
-				$dia_chi = $_POST['dia_chi'];
 				$role = $_POST['vaitro'];
-				update_accs($ma_tk, $ho_ten, $email, $phone, $dia_chi, $vai_tro);
+				update_accs($ma_tk, $ten_tk, $ho_ten, $email, $phone, $vai_tro);
 				$_SESSION['user'] = checkAccount($ten_tk, $pass);
 				header('location: index.php?goto=listAcc');
 			}
@@ -326,7 +374,7 @@ if (isset($_GET['goto'])) {
 				$anh_dai_dien = isset($_FILES['avatar']) ? $_FILES['avatar'] : '';
 				$save_url = '';
 				if ($anh_dai_dien['size'] > 0 && $anh_dai_dien['size'] < 500000) {
-					$photo_folder = './img/';
+					$photo_folder = '../img/';
 					$photo_file = uniqid() . $anh_dai_dien['name'];
 
 					$file_se_luu = $anh_dai_dien['tmp_name'];
@@ -370,7 +418,18 @@ if (isset($_GET['goto'])) {
 				echo '<script>alert("Phản hồi đã gửi")</script>';
 			}
 			break;
-
+		case 'listContact':
+			$listContact = load_contact();
+			include '../Accounts/listContact.php';
+			break;
+		case 'Feedback':
+			include '../Contact/formFeedback.php';
+			break;
+		case 'btnFeedBack':
+			if (isset($_POST['btn_feedBack']) && $_POST['btn_feedBack']) {
+				echo '<script>alert("Phản hồi đã gửi")</script>';
+			}
+			break;
 		case 'thongke':
 			$listtk = loadAll_thongke();
 			include '../thongke/list.php';
@@ -380,8 +439,8 @@ if (isset($_GET['goto'])) {
 			include '../thongke/chart.php';
 			break;
 		default:
-			# code...q
-			// break;
+		# code...
+		// break;
 	}
 } else if (isset($_GET['search'])) {
 	switch ($_GET['search']) {

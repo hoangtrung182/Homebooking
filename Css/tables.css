@@ -30,6 +30,10 @@ table {
 }
 
 
+.form_search {
+    margin: 20px 30px;
+}
+
 
 .notify_success {
     height: 40px;

@@ -1,11 +1,7 @@
 <?php
-if (isset($oneRoom)) {
-    extract($oneRoom);
-}
-// die;
-// $listSameRooms = sameRoom($ma_lp);
-
-// var_dump($listSameRoom);
+    if (isset($oneRoom)) {
+        extract($oneRoom);
+    }
 
 ?>
 

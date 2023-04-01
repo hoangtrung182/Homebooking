@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="../Css/account.css">
+<link rel="stylesheet" href="../Css/list.css">
+
 
 <body>
     <h2>Danh sách tài khoản</h2>

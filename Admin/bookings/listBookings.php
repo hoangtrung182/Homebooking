@@ -6,68 +6,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../.././Css/booking.css">
-    <link rel="stylesheet" href="../../Css/style.css">
-    <link rel="stylesheet" href="../../Css/tables.css">
-</head>
-<?php
 
-session_start();
-include '../../Models/pdo.php';
-include '../../Models/bookings.php';
-date_default_timezone_set('ASIA/HO_CHI_MINH');
-$date = date('Y-m-d H:i:s');
-$list = listBooking();
-?>
+</head>
+<style>
+    .content-table {
+        border-collapse: collapse;
+        margin: auto;
+        font-size: 0.9em;
+        width: 90%;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .content-table thead tr {
+        background-color: #23958fd4;
+        color: #ffffff;
+        text-align: center;
+        font-weight: bold;
+        padding: 20px 30px;
+        font-size: 18px;
+    }
+
+    .content-table th,
+    .content-table td {
+        padding: 12px 15px;
+        font-size: 18px;
+    }
+
+    .edit a {
+        text-decoration: none;
+        color: #fff;
+        padding: 10px 15px;
+        background-color: #23958fd4;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .list td {
+        text-align: center;
+    }
+
+    .ron1 h5,
+    .ron3 h5 {
+        color: red;
+    }
+
+    .ron2 h5 {
+        color: blue;
+    }
+
+    .ron4 h5 {
+        color: #009879;
+    }
+</style>
 
 <body>
     <div class="container">
-        <header class="header">
-            <div class="logo">
-                <a href="#"><img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt=""></a>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="../index.php?goto=listCates">QUẢN LÝ LOẠI PHÒNG</a></li>
-                    <li><a href="../index.php?goto=listRooms">QUẢN LÝ PHÒNG</a></li>
-                    <li><a href="listBookings.php">QUẢN LÝ ĐẶT PHÒNG</a></li>
-                    <li><a href="#">QUẢN LÝ BÌNH LUẬN</a></li>
-                    <li><a href="#">QUẢN LÝ TÀI KHOẢN</a></li>
-                    <li><a href="">QUẢN LÝ TIN TỨC</a></li>
-                </ul>
-            </div>
-            <div class="login">
-                <ul>
-                    <?php
-                    if (isset($_SESSION['ten_tk'])) {
-                        extract($_SESSION['ten_tk']);
-                        ?>
-                        <li><a href="../index.php?goto=login"><button class="btn5-hover btn5">
-                                    <?= $ten_tk ?>
-                                </button>
-                            </a>
-                        </li>
-                        <li><a href="../index.php?goto=logout"><button class="btn5-hover btn5">THOÁT</button></a></li>
-                        <?php
-                    } else {
-                        ?>
-                        <li><a href="../index.php?goto=login"><button class="btn5-hover btn5">
-                                    ĐĂNG NHẬP
-                                </button>
-                            </a>
-                        </li>
-                        <li><a href="../index.php?goto=register"><button class="btn5-hover btn5">ĐĂNG KÝ</button></a></li>
-                    <?php } ?>
-                </ul>
-            </div>
-        </header>
         <div>
             <h2 class="form_title">DANH SÁCH ĐẶT PHÒNG</h2>
         </div>
         <table class="content-table">
             <thead>
                 <tr>
-                    <th style="width=300px;">Tên khách hàng</th>
+                    <th>Tên khách hàng</th>
                     <th>Tên loại phòng</th>
                     <th>Ngày đặt</th>
                     <!-- <th>Ngày đến</th>
@@ -81,7 +83,8 @@ $list = listBooking();
                 <?php foreach ($list as $listBookings) {
                     extract($listBookings); ?>
 
-                    <tr>
+                    <tr class="list">
+
                         <td>
                             <?= $listBookings['ten_kh'] ?>
                         </td>
@@ -91,24 +94,26 @@ $list = listBooking();
                         <td>
                             <?= $listBookings['ngay_dat'] ?>
                         </td>
-                        <td><a href="./detailBookings.php?update_trangthai=<?= $listBookings['ma_dp'] ?>"><button
-                                    class="btn-order1">Chi tiết</button></a></td>
+                        <td class="edit">
+                            <a href="index.php?goto=detailBookings&update_trangthai=<?= $listBookings['ma_dp'] ?>">Chi
+                                tiết</a>
+                        </td>
                         <td>
                             <?php
                             if ($listBookings['trang_thai'] == 0) {
                                 if ($listBookings['ngay_den'] < $date) {
-                                    echo "<div class='ron1'><h4>Quá thời gian xác nhận!</h4></div>";
+                                    echo "<div class='ron1'><h5>Quá thời gian xác nhận!</h5></div>";
                                 } else {
-                                    echo "<div class='ron1'><h4>Chưa xác nhận!</h4></div>";
+                                    echo "<div class='ron1'><h5>Chưa xác nhận!</h5></div>";
                                 }
                             } else if ($listBookings['trang_thai'] == 1 && $listBookings['ngay_ve'] < $date) {
-                                echo "<div class='ron2'><h4>Đã kết thúc!</h4></div>";
+                                echo "<div class='ron3'><h5>Đã kết thúc!</h5></div>";
                             } else if ($listBookings['trang_thai'] == 1 && $listBookings['ngay_den'] > $date) {
-                                echo "<div class='ron2'><h4>Chưa diễn ra!</h4></div>";
+                                echo "<div class='ron2'><h5>Chưa diễn ra!</h5></div>";
                             } else if ($listBookings['trang_thai'] == 2) {
-                                echo "<div class='ron1'><h4>Đã hủy!</h4></div>";
+                                echo "<div class='ron1'><h5>Đã hủy!</h5></div>";
                             } else {
-                                echo "<div class='ron1'><h4>Đang diễn ra!</h4></div>";
+                                echo "<div class='ron4'><h5>Đang diễn ra!</h5></div>";
                             }
                             ?>
                         </td>

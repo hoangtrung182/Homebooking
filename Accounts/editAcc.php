@@ -11,10 +11,10 @@
             ?>
             <form action="index.php?goto=editAcc" method="post">
                 <h3 style="font-weight: bold;text-align:center;">Form chỉnh sửa</h3>
-                <!-- <div class="form-info">
+                <div class="form-info">
                     Tên đăng nhập <br>
                     <input class="input" type="text" name="ten_tk" value="<?= $ten_tk ?>" required>
-                </div> -->
+                </div>
                 <div class="form-info">
                     Họ tên <br>
                     <input class="input" type="text" name="ho_ten" value="<?= $ho_ten ?>" required>
