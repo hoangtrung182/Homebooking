@@ -2,14 +2,14 @@
 <body>
 	<p class="form_label">Tìm kiếm sản phẩm</p>
 	 <div class="list_rooms-form">
-        <div class="box-button">
+        <!-- <div class="box-button">
             <div class="box-0">
                 <button class="box-2">Nghỉ qua Đêm </button>
             </div>
             <div class="box-3">
                 <button class="box-4">Lưu trú sửa dụng trong ngày</button>
             </div>
-        </div>
+        </div> -->
         <!-- Form -->
          <form action="index.php?search=typerooms" method="post" class="form_search">
             <!-- <label class="form_label" for="">Loại phòng</label><br> -->
@@ -53,7 +53,8 @@
                  foreach ($listRooms as $phong) {
                     extract($phong); ?>
                 <!-- Show sản phẩm tìm kiếm -->
-                 <li class="new-item">
+                <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>">
+                     <li class="new-item">
                          <img src=".//<?= $avatar ?>" alt="">
                          <div class="new-info">
                              <h3><?= $ten_phong ?></h3>
@@ -63,6 +64,7 @@
                              </div>
                          </div>
                     </li>
+                </a>
                 <?php }
              }else { ?>
                 <!--  Trả về ko tồn tại nếu array rỗng -->

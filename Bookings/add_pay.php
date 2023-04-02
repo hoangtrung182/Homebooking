@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="../../Css/style.css">
     <link rel="stylesheet" href="../../Css/booking.css">
 </head>
+<style>
+    .add_pay td {
+        text-align: center;
+    }
+</style>
 
 <body>
     <div class="container">
@@ -27,8 +32,8 @@
                 if (isset($_SESSION['ten_tk'])) { ?>
                     <?php foreach ($shows as $show) {
                         extract($show); ?>
-                        <tr>
-                            <td><img src="../../<?= $show['avatar'] ?>" alt="" width="200px"></td>
+                        <tr class="add_pay">
+                            <td><img src="../<?= $show['avatar'] ?>" alt="" width="200px"></td>
                             <td>
                                 <?= $show['ten_phong'] ?>
                             </td>
@@ -42,17 +47,17 @@
                             <td>
                                 <?php
                                 if ($show['trang_thai'] == 0) {
-                                    echo "Chưa xác nhận!";
+                                    echo "<div class='ron1'><h5>Chưa xác nhận!</h5></div>";
                                 } else if ($show['trang_thai'] == 1) {
                                     if ($show['ngay_den'] > $date) {
-                                        echo "Sắp diễn ra!";
+                                        echo "<div class='ron2'><h5>Sắp diễn ra!</h5></div>";
                                     } else if ($show['ngay_den'] <= $date && $date <= $show['ngay_ve']) {
-                                        echo "Đang diễn ra!";
+                                        echo "<div class='ron3'><h5>Đang diễn ra!</h5></div>";
                                     } else if ($date > $show['ngay_ve']) {
-                                        echo "Đã kết thúc!";
+                                        echo "<div class='ron1'><h5>Đã kết thúc!</h5></div>";
                                     }
                                 } else if ($show['trang_thai'] == 2) {
-                                    echo "Đã hủy!";
+                                    echo "<div class='ron1'><h5>Đã hủy!</h5></div>";
                                 }
                                 ?>
                             </td>
