@@ -5,6 +5,7 @@ include './admin.php';
 include '../Models/pdo.php';
 include '../Models/Categories.php';
 include '../Models/Rooms.php';
+// include '../Models/bookings.php';
 include '../Models/bookings.php';
 include '../Models/news.php';
 include '../Models/accounts.php';
@@ -144,7 +145,7 @@ if (isset($_GET['goto'])) {
 		case 'listBooking':
 			date_default_timezone_set('ASIA/HO_CHI_MINH');
 			$date = date('Y-m-d H:i:s');
-			$list = listBooking();
+			$listBookings = listBooking();
 			include './bookings/listBookings.php';
 			break;
 		case 'detailBookings':

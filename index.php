@@ -69,37 +69,45 @@ if (isset($_GET['goto'])) {
 
 					if ($result == []) {
 						$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $_SESSION['datphong']['ngay_den'], $_SESSION['datphong']['ngay_ve'], $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
-						$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG 1111!";
-					}
-					if(!empty($result)) {
+						$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
+					} 
+
+					if (!empty($result)) {
 						foreach ($result as $value) {
 							if ($value['ngay_ve'] < $date) {
 								$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
 								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
+							}
+
+							// Check ngày trùng
+							if(($value['ngay_den'] == $book['ngay_den']) && ($value['ngay_ve'] == $book['ngay_ve'])){
+								$thongbao = "PHÒNG ĐÃ CÓ NGƯỜI ĐẶT";
 								break;
 							}
 
-							if(($value['ngay_den'] === $book['ngay_den']) && ($value['ngay_ve'] === $book['ngay_ve'])) {
-								$thongbao = "Phong ban đã đặt rồi";
-								break;
-							}
-
+							// Check ngày đến
 							if(($book['ngay_den'] >= $value['ngay_den']) && ($book['ngay_den'] <= $value['ngay_ve'])){
-								$thongbao = "Phong hien tai khong ton tai !!";
+								$thongbao = "PHÒNG KHÔNG CÓ SẴN, VUI LÒNG CHỌN PHÒNG KHÁC";
 								break;
 							}
 
-							foreach ($check1 as $che1) {
-								if ($value['ngay_den'] > $date && $value['ngay_ve'] > $date && !in_array($book['ngay_den'], $che1) && !in_array($book['ngay_ve'], $che1)) {
-									$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $book['ngay_den'], $book['ngay_ve'], $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
-									$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG 222!";
-									break;
-								}
+							// Check ngày về
+							if(($book['ngay_ve'] >= $value['ngay_den']) && ($book['ngay_ve'] <= $value['ngay_ve'])){
+								$thongbao = "PHÒNG KHÔNG CÓ SẴN, VUI LÒNG CHỌN PHÒNG KHÁC";
+								break;
 							}
 
-							// if ($value['ngay_den'] > $date && $value['ngay_ve'] > $date && $value['trang_thai'] != '') {
-							// 	$thongbao = "PHÒNG NÀY ĐÃ ĐƯỢC ĐẶT TRƯỚC!";
-							// }
+							// Check ngày đã bị lặp
+							if(($book['ngay_den'] <= $value['ngay_den']) && ($book['ngay_ve'] >= $value['ngay_ve'])) {
+								$thongbao = "PHÒNG KHÔNG CÓ SẴN, VUI LÒNG CHỌN PHÒNG KHÁC";
+								break;
+							}
+							// Thêm phòng vs trường hợp default
+							if($book) {
+								$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $book['ngay_den'], $book['ngay_ve'], $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
+								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG !";
+								break;
+							}
 						}
 					}
 				}
@@ -127,7 +135,9 @@ if (isset($_GET['goto'])) {
 				// $thongbao_xoa = "Xóa thành công !!";
 				extract($oneRoom);
 			}
-			$listSameRooms = sameRoom($_GET['id']);
+
+			$listSameRooms = sameRoom($ma_lp);
+			// var_dump($listSameRooms);
 
 			if (isset($_SESSION['ten_tk'])) {
 				$ten_kh = $_SESSION['ten_tk']['ten_tk'];

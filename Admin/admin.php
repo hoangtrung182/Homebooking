@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="../Css/bookings.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="../Css/account.css">
+    <link rel="stylesheet" href="../Css/list.css">
+    <link rel="stylesheet" href="../Css/main.css">
+    <link rel="stylesheet" href="../Css/admin.css">
 
     <title>Trang Chủ | ADMIN</title>
 </head>
@@ -22,20 +25,25 @@
             <ion-icon name="menu-outline"></ion-icon>
             </div>
                 <ul>
-                    <li><a href="../index.php">
+                    <li><a href="./index.php">
                     <ion-icon name="home-outline"></ion-icon>
                         HOME</a></li>
-                    <li><a href="./index.php?goto=listCates">
-                    <ion-icon name="settings-outline"></ion-icon>
-                        QUẢN LÝ LOẠI PHÒNG</a></li>
-                    <li><a href="index.php?goto=listRooms">
-                    <ion-icon name="settings-outline"></ion-icon>
-                        QUẢN LÝ PHÒNG</a></li>
-                    <li><a href="bookings/listBookings.php">
+                    <li>
+                        <a href="./index.php?goto=listCates">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        QUẢN LÝ LOẠI PHÒNG
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php?goto=listRooms">
+                        <ion-icon name="settings-outline"></ion-icon>
+                        QUẢN LÝ PHÒNG</a>
+                    </li>
+                    <li><a href="index.php?goto=listBooking">
                     <ion-icon name="settings-outline"></ion-icon>
                     
                         QUẢN LÝ ĐẶT PHÒNG</a></li>
-                    <li><a href="#">
+                    <li><a href="">
                     <ion-icon name="settings-outline"></ion-icon>
                         QUẢN LÝ BÌNH LUẬN</a></li>
                    
@@ -90,6 +98,20 @@
         <div class="conten">
             <p> TRANG ADMIN </p>
         </div>
+        <script>
+            const header = document.querySelector('.header');
+            const hv_menu = document.querySelector ('.hv_menu');
+             const conten = document.querySelector ('.conten');
+
+            hv_menu.onclick = function (){
+             header.classList.toggle('hide');
+             conten.classList.toggle('expand');
+            }
+
+        </script>
+        <script src="./main.css"></script>
+        <script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" > </script> 
+        <script nomodule src="https://unpkg .com/ionicons@7.1.0/dist/ionicons/ionicons.js"> </script>
         
         
 </body>

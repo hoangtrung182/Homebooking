@@ -61,30 +61,41 @@ if (isset($oneRoom)) {
     </div>
     <div class="review_details">
         <div class="introduce">
-            <div class="nameroom">
+            <div class="">
                 <div class="icon_home">
                     <i class="fa-solid fa-heart"></i>
-                    <span>toàn bộ phòng</span>
+                    <span>Gợi ý các phòng cùng loại</span>
                 </div>
-                <?php
-                foreach ($listSameRooms as $room) {
-                    extract($room);
-                } ?>
-                <h3>
-                    <?= $ten_phong ?>
-                </h3>
-                <div class="mo_ta">
-                    <div class="hr">
-                        <div class="sider_line">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <span>
-                            <?= $mo_ta ?>
-                        </span>
-                    </div>
+                <h3>Tên phòng : <?= $ten_phong ?></h3>
+            </div>
+            <div class="nameroom">      
+                 <div class="icon_home">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Gợi ý các phòng cùng loại</span>
                 </div>
 
+                <?php
+                foreach ($listSameRooms as $room) {
+                    extract($room); 
+                    // var_dump($room);
+                    ?>
+                    <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>">
+                        <h3>
+                            <?= $ten_phong ?>
+                        </h3>
+                        <div class="mo_ta">
+                            <div class="hr">
+                               <img src=".//<?= $avatar ?>" width="200px" alt="">
+                            </div>
+                            <div class="content">
+                                <span>
+                                    <?= $mo_ta ?>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+
+                <?php } ?>
             </div>
         </div>
         <div class="bookroom">

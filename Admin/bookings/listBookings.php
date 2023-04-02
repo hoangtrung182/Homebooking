@@ -80,37 +80,38 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($list as $listBookings) {
-                    extract($listBookings); ?>
+                <?php 
+                foreach ($listBookings as $listOrders) {
+                    extract($listOrders); ?>
 
                     <tr class="list">
 
                         <td>
-                            <?= $listBookings['ten_kh'] ?>
+                            <?= $listOrders['ten_kh'] ?>
                         </td>
                         <td>
-                            <?= $listBookings['ten_phong'] ?>
+                            <?= $listOrders['ten_phong'] ?>
                         </td>
                         <td>
-                            <?= $listBookings['ngay_dat'] ?>
+                            <?= $listOrders['ngay_dat'] ?>
                         </td>
                         <td class="edit">
-                            <a href="index.php?goto=detailBookings&update_trangthai=<?= $listBookings['ma_dp'] ?>">Chi
+                            <a href="index.php?goto=detailBookings&update_trangthai=<?= $listOrders['ma_dp'] ?>">Chi
                                 tiết</a>
                         </td>
                         <td>
                             <?php
-                            if ($listBookings['trang_thai'] == 0) {
-                                if ($listBookings['ngay_den'] < $date) {
+                            if ($listOrders['trang_thai'] == 0) {
+                                if ($listOrders['ngay_den'] < $date) {
                                     echo "<div class='ron1'><h5>Quá thời gian xác nhận!</h5></div>";
                                 } else {
                                     echo "<div class='ron1'><h5>Chưa xác nhận!</h5></div>";
                                 }
-                            } else if ($listBookings['trang_thai'] == 1 && $listBookings['ngay_ve'] < $date) {
+                            } else if ($listOrders['trang_thai'] == 1 && $listOrders['ngay_ve'] < $date) {
                                 echo "<div class='ron3'><h5>Đã kết thúc!</h5></div>";
-                            } else if ($listBookings['trang_thai'] == 1 && $listBookings['ngay_den'] > $date) {
+                            } else if ($listOrders['trang_thai'] == 1 && $listOrders['ngay_den'] > $date) {
                                 echo "<div class='ron2'><h5>Chưa diễn ra!</h5></div>";
-                            } else if ($listBookings['trang_thai'] == 2) {
+                            } else if ($listOrders['trang_thai'] == 2) {
                                 echo "<div class='ron1'><h5>Đã hủy!</h5></div>";
                             } else {
                                 echo "<div class='ron4'><h5>Đang diễn ra!</h5></div>";

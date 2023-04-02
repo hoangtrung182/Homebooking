@@ -173,17 +173,29 @@ table {
 }
 
 .notify_min {
-    color: red;
+    color: #d94141;
     position: absolute;
-    top: 74%;
+    top: 59%;
+    border: 1px solid $ccc;
     left: 250px;
+    display: block;
+    border: 1px solid #ccc;
+    background: #8cc3eb;
+    border-radius: 4px;
+    padding: 1px 6px;
 }
 
 .notify_max {
-    color: red;
+    color: #d94141;
     position: absolute;
-    top: 74%;
-    left: 58%;
+    top: 59%;
+    border: 1px solid $ccc;
+    left: 250px;
+    display: block;
+    border: 1px solid #ccc;
+    background: #8cc3eb;
+    border-radius: 4px;
+    padding: 1px 6px;
 }
 
 
