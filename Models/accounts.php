@@ -31,6 +31,7 @@ function checkPass($ten_tk)
     $check = pdo_query_one($sql);
     return $check;
 }
+
 function getOneAcc($ma_tk)
 {
     $sql = "SELECT * FROM phong WHERE ma_tk =" . $ma_tk;
