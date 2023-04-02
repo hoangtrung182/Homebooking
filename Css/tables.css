@@ -9,7 +9,7 @@ table {
 
 .row1 {
     color: #000;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     /*height: 100px;*/
 }
@@ -29,6 +29,10 @@ table {
     color: black;
 }
 
+
+.form_search {
+    margin: 20px 30px;
+}
 
 
 .notify_success {
@@ -83,7 +87,7 @@ table {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid #ccc;
+    border: 1px solid #40b52be0;
     margin: 0px 100px;
     padding: 0 10px;
     border-radius: 3px;
@@ -109,14 +113,13 @@ table {
     color: #23958fd4;
     text-align: center;
     margin: 30px;
+    font-weight: 700;
 }
 
 .form_label {
-    font-size: 22px;
+    font-size: 20px;
     color: #000;
-    /*margin: 30px 56px;*/
-    margin-right: 90px;
-    margin-left: 90px;
+    margin: 10px 34px;
     font-style: italic;
 }
 
@@ -130,7 +133,7 @@ table {
 .slideShoww {
     margin-right: auto;
     margin-left: auto;
-    max-width: 800px;
+    max-width: 1000px;
     margin-top: 20%;
     border-radius: 4px;
 }
@@ -147,7 +150,7 @@ table {
     margin: 0px 100px;
     padding: 0 10px;
     border-radius: 3px;
-
+    position: relative;
 }
 
 .input_search-price {
@@ -157,8 +160,52 @@ table {
     border: none;
     background-color: transparent;
     border: 1px solid #40b52be0;
-    margin: 15px 20px;
+    margin: 30px 20px 15px;
     padding-left: 10px;
     border-radius: 4px;
     outline: none;
+}
+
+/*========= Thong bao loc gia========*/
+.notify {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.notify_min {
+    color: #d94141;
+    position: absolute;
+    top: 59%;
+    border: 1px solid $ccc;
+    left: 250px;
+    display: block;
+    border: 1px solid #ccc;
+    background: #8cc3eb;
+    border-radius: 4px;
+    padding: 1px 6px;
+}
+
+.notify_max {
+    color: #d94141;
+    position: absolute;
+    top: 59%;
+    border: 1px solid $ccc;
+    left: 250px;
+    display: block;
+    border: 1px solid #ccc;
+    background: #8cc3eb;
+    border-radius: 4px;
+    padding: 1px 6px;
+}
+
+
+.time1 {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    padding: 10px;
+    /*margin-top: 20px;*/
+    margin: 20px auto;
 }
