@@ -26,11 +26,13 @@ function checkPass($ten_tk) {
     $check = pdo_query_one($sql);
     return $check;
 }
+
 function getOneAcc($ma_tk) {
     $sql = "SELECT * FROM phong WHERE ma_tk =" . $ma_tk;
     $acc = pdo_query_one($sql);
     return $acc;
 }
+
 function update_accs($ma_tk, $ten_tk, $ho_ten, $email, $phone, $vai_tro) {
     $sql = "UPDATE taikhoan SET ten_tk ='$ten_tk',ho_ten ='$ho_ten', email = '$email',phone = '$phone', vai_tro = '$vai_tro'  
          WHERE ma_tk ='$ma_tk'";
