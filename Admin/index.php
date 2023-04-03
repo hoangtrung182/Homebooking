@@ -11,6 +11,7 @@ include '../Models/news.php';
 include '../Models/accounts.php';
 include '../Models/thongke.php';
 include '../Models/contact.php';
+include '../Models/Binhluan.php';	
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
@@ -275,6 +276,23 @@ if (isset($_GET['goto'])) {
 
 			$listNews = selectNews();
 			include '../News/listNews.php';
+			break;
+	//  Binh luan 
+		case 'listbinhluan':
+			$listBinhluan = select_comments();
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				$item = getOneroom($_GET['id']);
+			}
+			include '../Comment/commentList.php';
+			break;
+		case 'deleteBinhluan':
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				delete_comment($_GET['id']);
+				$thongbao_xoa = "Xóa thành công!";
+			}
+
+			$listBinhluan = select_comments();
+			include '../Comment/commentList.php';
 			break;
 	// Authentication
 		case 'register':
