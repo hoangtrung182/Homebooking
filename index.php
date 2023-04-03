@@ -12,7 +12,7 @@ include './Models/contact.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
-		// Dat phong
+	// Dat phong
 		case 'pays':
 			if (isset($_SESSION['ten_tk'])) {
 				$ten_kh = $_SESSION['ten_tk']['ten_tk'];
@@ -62,9 +62,6 @@ if (isset($_GET['goto'])) {
 					$date = date('Y-m-d');
 
 					$result = check_datphong($ma_phong);  // return $list;
-
-					$check1 = check_datphong1($ma_phong);
-
 					$book = $_SESSION['datphong'];
 
 					if ($result == []) {
@@ -117,12 +114,14 @@ if (isset($_GET['goto'])) {
 			}
 			include './Bookings/pay.php';
 			break;
+	// View Hotel & Rooms
 		case 'viewRooms':
 			$listCates = selectCates();
 			$listRooms = selectRooms();
 
 			include './Rooms/viewRooms.php';
 			break;
+	// List Room booked
 		case 'listRooms_booking':
 			$listRooms = selectRooms_booking();
 			date_default_timezone_set('ASIA/HO_CHI_MINH');
@@ -221,8 +220,6 @@ if (isset($_GET['goto'])) {
 					}
 				}
 			}
-
-			// Tin tuc
 			include './Bookings/detailRooms.php';
 			break;
 		case 'pay':
@@ -247,13 +244,15 @@ if (isset($_GET['goto'])) {
 			include './Bookings/add_pay.php';
 			break;
 		case 'show_pay':
+			$date = date('Y-m-d');
+
 			if (isset($_GET['id_ct'])) {
 				$ma_dp = $_GET['id_ct'];
 				$listPay = show_bookingDetail($ma_dp);
 			}
 			include './Bookings/show_pay.php';
 			break;
-		// Tin tuc
+	// Tin tuc
 		case 'viewNews':
 			$listNews = selectNews();
 			include './News/viewNews.php';
@@ -264,7 +263,7 @@ if (isset($_GET['goto'])) {
 			}
 			include './News/detailnew.php';
 			break;
-		// End News
+	// Authetication
 		case 'register':
 			if (isset($_POST['btn-register']) && ($_POST['btn-register'])) {
 				// $hoten = $_POST['Ho_ten'];
@@ -307,12 +306,10 @@ if (isset($_GET['goto'])) {
 			}
 			include './Accounts/login.php';
 			break;
-		//End login
 		case 'exit':
 			session_unset();
 			header('location: index.php');
 			break;
-		//End logout
 		case 'forgetPass':
 			if (isset($_POST['forgetPass']) && ($_POST['forgetPass'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -325,6 +322,7 @@ if (isset($_GET['goto'])) {
 			}
 			include './Accounts/ForgetPass.php';
 			break;
+	// THông tin cá nhân
 		case 'editUser':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 				$user = getOneAccount($_GET['id']);
@@ -379,19 +377,6 @@ if (isset($_GET['goto'])) {
 	}
 } else if (isset($_GET['search'])) {
 	switch ($_GET['search']) {
-		case 'rooms':
-			if (isset($_POST['searchRooms']) && $_POST['searchRooms']) {
-				$keyw = $_POST['keyw'];
-				$ma_lp = $_POST['ma_lp'];
-			} else {
-				$keyw = "";
-				$ma_lp = 0;
-			}
-
-			$listRooms = select_items_search($keyw, $ma_lp);
-			$listCates = selectCates();
-			include '../Rooms/listRooms.php';
-			break;
 		case 'typerooms':
 			$id = isset($_POST['loaiphong']) ? $_POST['loaiphong'] : 0;
 			$Price = isset($_POST['price_chose']) ? $_POST['price_chose'] : '';
@@ -425,7 +410,6 @@ if (isset($_GET['goto'])) {
 	}
 } else {
 	$listCates = selectCates();
-	// $listRooms = selectRooms();
 	$list8rooms = selectEightRooms();
 	include './View/body.php';
 }

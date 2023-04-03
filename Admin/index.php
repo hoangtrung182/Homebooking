@@ -14,7 +14,7 @@ include '../Models/contact.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
-		// Categories - Loại Phòng
+	// Categories - Loại Phòng
 		case 'listCates':
 			$listCates = selectCates();
 			include '../Categories/listCates.php';
@@ -56,7 +56,7 @@ if (isset($_GET['goto'])) {
 			$listCates = selectCates();
 			include '../Categories/listCates.php';
 			break;
-		// Rooms -- Phòng Ở
+	// Rooms -- Phòng Ở
 		case 'listRooms':
 			$listRooms = selectRooms();
 			$listCates = selectCates();
@@ -141,7 +141,7 @@ if (isset($_GET['goto'])) {
 			$listRooms = selectRooms();
 			include '../Rooms/listRooms.php';
 			break;
-		// Dat phong
+	// Quản lí đặt phòng
 		case 'listBooking':
 			date_default_timezone_set('ASIA/HO_CHI_MINH');
 			$date = date('Y-m-d H:i:s');
@@ -190,7 +190,7 @@ if (isset($_GET['goto'])) {
 			include './bookings/detailBookings.php';
 			break;
 
-		// Tin tuc
+	// Quản lí tin tức
 		case 'listNews':
 			$listNews = selectNews();
 			include '../News/listNews.php';
@@ -276,9 +276,7 @@ if (isset($_GET['goto'])) {
 			$listNews = selectNews();
 			include '../News/listNews.php';
 			break;
-		// End News
-		// Chi tiết phòng
-		// abc thu nghiem
+	// Authentication
 		case 'register':
 			if (isset($_POST['register']) && ($_POST['register'])) {
 				$hoten = $_POST['Ho_ten'];
@@ -292,23 +290,16 @@ if (isset($_GET['goto'])) {
 			}
 			include '../Accounts/register.php';
 			break;
-		//End register
 		case 'login':
 			if (isset($_POST['login']) && ($_POST['login'])) {
 				$ten_tk = $_POST['ten_tk'];
 				$pass = $_POST['pass'];
 				$checkAcc = checkAccount($ten_tk, $pass);
+
 				if (is_array($checkAcc)) {
-					// header('location: index.php');
 					$_SESSION['ten_tk'] = $checkAcc;
-					//var_dump($_SESSION['ten_tk']);
-					header('location:index.php');
+					return $_SESSION['ten_tk'];
 					// echo '<script> alert("Đăng nhập thành công!") </script>';
-				} else {
-					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
-					include '../../view/body.php';
-					// $thongbao = "Tai khoan khong ton tai";
-					include '../view/body.php';
 				}
 			}
 			include '../Accounts/login.php';
@@ -326,12 +317,20 @@ if (isset($_GET['goto'])) {
 			}
 			include '../Accounts/ForgetPass.php';
 			break;
-		//End forget
+	// Quản lí User
 		case 'listAcc':
 			$listUsers = load_taikhoan();
 			include '../Accounts/listAcc.php';
 			break;
 		//end listAcc
+		case 'deleteAcc':
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				delete_acc($_GET['id']);
+				echo '<script>alert("Bạn đã chắc chắn với quyết định của mình?")</script>';
+			}
+			$listUsers = load_taikhoan();
+			include '../Accounts/listAcc.php';
+			break;
 		case 'editUsers':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 				$listUsers = getOneAccount($_GET['id']);
@@ -359,6 +358,7 @@ if (isset($_GET['goto'])) {
 			}
 			include '../Accounts/listAcc.php';
 			break;
+	// Quản lí hồ sơ admin
 		case 'editUser':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 				$user = getOneAccount($_GET['id']);
@@ -395,18 +395,7 @@ if (isset($_GET['goto'])) {
 			session_unset();
 			header('location: ../index.php');
 			break;
-		case 'deleteAcc':
-			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-				delete_acc($_GET['id']);
-				echo '<script>alert("Bạn đã chắc chắn với quyết định của mình?")</script>';
-			}
-			$listUsers = load_taikhoan();
-			include '../Accounts/listAcc.php';
-			break;
-		case 'exit':
-			header('index.php');
-			// include '../Admin/index.php';
-			break;
+	// Quản lí phản hồi
 		case 'listContact':
 			$listContact = load_contact();
 			include '../Accounts/listContact.php';
@@ -431,6 +420,7 @@ if (isset($_GET['goto'])) {
 				echo '<script>alert("Phản hồi đã gửi")</script>';
 			}
 			break;
+	// Thống kê
 		case 'thongke':
 			$listtk = loadAll_thongke();
 			include '../thongke/list.php';

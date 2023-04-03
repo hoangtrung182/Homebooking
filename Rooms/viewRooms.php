@@ -53,7 +53,7 @@
                  foreach ($listRooms as $phong) {
                     extract($phong); ?>
                 <!-- Show sản phẩm tìm kiếm -->
-                <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>">
+                <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>" target="_blank">
                      <li class="new-item">
                          <img src=".//<?= $avatar ?>" alt="">
                          <div class="new-info">
