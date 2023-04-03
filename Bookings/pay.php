@@ -5,15 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Thanh toán</title>
     <link rel="stylesheet" href="../../Css/style.css">
     <link rel="stylesheet" href="../../Css/booking.css">
 </head>
 
-
 <body>
     <div class="container">
-
         <div class="main_pay">
             <div class="column1">
                 <h2 class="form_title">Thông tin đặt phòng</h2>

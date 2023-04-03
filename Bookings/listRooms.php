@@ -1,45 +1,5 @@
 <body>
     <div class="container">
-        <!-- <header class="header">
-            <div class="logo">
-                <a href="./">
-                    <img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt="">
-                </a>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="listRooms.php">ĐẶT PHÒNG</a></li>
-                    <li><a href="add_pay.php">THÔNG TIN PHÒNG ĐẶT</a></li>
-                    <li><a href="index.php?goto=viewNews">TIN TỨC</a></li>
-                    <li><a href="#">TÀI KHOẢN</a></li>
-                    <li><a href="#">Apartments</a></li>
-                </ul>
-            </div>
-            <div class="login">
-                <ul>
-                    <?php
-                    if (isset($_SESSION['ten_tk'])) {
-                        extract($_SESSION['ten_tk']);
-                        ?>
-                        <li><a href="index.php?goto=login"><button class="btn5-hover btn5">
-                                    <?= $ten_tk ?>
-                                </button>
-                            </a>
-                        </li>
-                        <li><a href="../../index.php?goto=logout"><button class="btn5-hover btn5">Thoát</button></a></li>
-                        <?php
-                    } else {
-                        ?>
-                        <li><a href="index.php?goto=login"><button class="btn5-hover btn5">
-                                    Đăng nhập
-                                </button>
-                            </a>
-                        </li>
-                        <li><a href="index.php?goto=register"><button class="btn5-hover btn5">ĐĂNG KÝ</button></a></li>
-                    <?php } ?>
-                </ul>
-            </div>
-        </header> -->
         <h2 class="form_title">DANH SÁCH PHÒNG</h2>
         <div class="rows">
 

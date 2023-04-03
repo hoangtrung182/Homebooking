@@ -5,16 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Css/admin.css">
+    <link rel="stylesheet" href="../Css/style.css">
     <link rel="stylesheet" href="../Css/button.css">
     <link rel="stylesheet" href="../Css/News.css">
     <link rel="stylesheet" href="../Css/tables.css">
     <link rel="stylesheet" href="../Css/bookings.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="../Css/account.css">
     <link rel="stylesheet" href="../Css/list.css">
     <link rel="stylesheet" href="../Css/main.css">
-    <link rel="stylesheet" href="../Css/admin.css">
-
     <title>Trang Chủ | ADMIN</title>
 </head>
 
@@ -59,14 +57,14 @@
                     <li><a href="index.php?goto=thongke">
                     <ion-icon name="settings-outline"></ion-icon>
                         Thống kế</a></li>
-                        <div class="login">
             
                     <?php
                     
                     if (isset($_SESSION['ten_tk'])) {
                         extract($_SESSION['ten_tk']);
                     ?>
-                        <li><a href="index.php?goto=login">
+                        <li>
+                            <a href="index.php?goto=login">
                                 <button class="btn5-hover btn5">
                                     <?= $ten_tk ?>
                                 </button>
@@ -90,15 +88,9 @@
                
                     </div>
                 </ul>
-                
-        
             </div>
-        
         </header>
-        <div class="conten">
-            <p> TRANG ADMIN </p>
-        </div>
-        <script>
+        <!-- <script>
             const header = document.querySelector('.header');
             const hv_menu = document.querySelector ('.hv_menu');
              const conten = document.querySelector ('.conten');
@@ -108,7 +100,7 @@
              conten.classList.toggle('expand');
             }
 
-        </script>
+        </script> -->
         <script src="./main.css"></script>
         <script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" > </script> 
         <script nomodule src="https://unpkg .com/ionicons@7.1.0/dist/ionicons/ionicons.js"> </script>

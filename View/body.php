@@ -3,7 +3,7 @@
         <img src="https://img.agoda.net/images/INTTRV-45/default/Bags-heart_2021-09-30.svg" alt="">
     </div>
     <div class="nav-content">
-        <p>Traveling internationally? Get updated information on COVID-19 travel guidance and restrictions.</p>
+        <p>Traveling internationally? Get updated information on travel guidance and restrictions.</p>
     </div>
     <div class="learn-more">
         <a href=""><button class="btn1">Learn more</button></a>
@@ -30,8 +30,8 @@
             </select><br>
             <select name="price_chose" id="" class="input_third">
                 <option value="" selected>Sắp xếp giá theo</option>
-                <option value="desc">` Cao đến Thấp `</option>
-                <option value="asc">` Thấp đến Cao `</option>
+                <option value="desc">` Cao -> Thấp `</option>
+                <option value="asc">` Thấp -> Cao `</option>
             </select><br>
             <div class="input_search-form">
                 <input type="number" name="price-min" class="input_search-price min-1" placeholder="Nhập giá thấp nhất">
@@ -104,16 +104,18 @@
                 extract($phong);
                 ?>
                 <div class="body-item">
-                    <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>"><img src=".//<?= $avatar ?>" alt=""></a>
-                    <div class="">
-                        <h3>
-                            <?= $ten_phong ?>
-                        </h3>
-                        <em>Giá mỗi đêm rẻ từ</em>
-                        <p>
-                            <?= number_format($gia, 0, ',', '.') ?> VND
-                        </p>
-                    </div>
+                    <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>" target="_blank">
+                        <img src=".//<?= $avatar ?>" alt="">
+                        <div class="">
+                            <h3>
+                                <?= $ten_phong ?>
+                            </h3>
+                            <em>Giá mỗi đêm rẻ từ</em>
+                            <p>
+                                <?= number_format($gia, 0, ',', '.') ?> VND
+                            </p>
+                        </div>
+                    </a>
                 </div>
             <?php }
             ?>

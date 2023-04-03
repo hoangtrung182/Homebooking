@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 * {
@@ -210,4 +211,37 @@ textarea {
     width: 100%;
     border-bottom: 1px solid rgb(233, 235, 238);
 
+}
+
+
+/*=========== List sp cùng loại =========*/
+
+.nameroom-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.detail-room_header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.detail-room_title{
+    font-style: italic;
+    font-style: 20px;
+}
+
+.detail-room_name {
+    text-align: center;
+    
+}
+
+.detail-room_image {
+    width: 200px;
+    max-width: 100%;
 }

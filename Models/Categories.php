@@ -29,9 +29,9 @@ function updateCate($id, $name) {
 function getNameItem($id) {
 	if ($id > 0) {
 		$sql = "SELECT * FROM loaiphong WHERE ma_lp =" . $id;
-		$dm = pdo_query_one($sql);
-		extract($dm);
-		return $ten_lp;
+		$cateName = pdo_query_one($sql);
+		// extract($dm);
+		return $cateName;
 	}
 }
 

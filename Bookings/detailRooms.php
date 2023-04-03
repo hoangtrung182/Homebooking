@@ -2,11 +2,8 @@
 if (isset($oneRoom)) {
     extract($oneRoom);
 }
-// die;
-// $listSameRooms = sameRoom($ma_lp);
-
-// var_dump($listSameRoom);
-
+    $nameCate = getNameItem($ma_lp);
+    extract($nameCate);
 ?>
 
 <div class="detail_room">
@@ -38,54 +35,34 @@ if (isset($oneRoom)) {
                 <li class="navbar_menu"><a href="">Chính sách</a></li>
             </ul>
         </div>
-        <!-- <div class="show_price">
-            <div class="show_price_right">
-                <div class="navbar_backtotopnav">
-                    <div class="sticky_nav_price">
-                        <span class="span_style">
-                            từ
-                        </span>
-                        <span class="span_price">
-                            <?= number_format($gia, 0, ',', '.') ?>
-                        </span>
-                        <span class="span_price_detail">₫</span>
-                    </div>
-                    <div class="sticky_nav_price_button">
-                        <button class="btn_showgia">
-                            <span class="btn_span_showgia">xem giá</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
     <div class="review_details">
         <div class="introduce">
-            <div class="">
-                <div class="icon_home">
-                    <i class="fa-solid fa-heart"></i>
-                    <span>Gợi ý các phòng cùng loại</span>
-                </div>
-                <h3>Tên phòng : <?= $ten_phong ?></h3>
+            <div class="icon_home">
+                <i class="fa-solid fa-heart"></i>
+                <span>Thông tin chi tiết phòng</span>
             </div>
-            <div class="nameroom">      
-                 <div class="icon_home">
-                    <i class="fa-solid fa-heart"></i>
-                    <span>Gợi ý các phòng cùng loại</span>
-                </div>
-
+            <div class="detail-room_header">
+                <h4 class="detail-room_title">Thể loại: <?= $ten_lp ?></h4>
+                <h4 class="detail-room_title">Tên gọi: <?= $ten_phong ?></h4>
+            </div>
+            <div class="icon_home">
+                <i class="fa-solid fa-heart"></i>
+                <span>Gợi ý các phòng cùng loại</span>
+            </div>
+            <div class="nameroom-list">      
                 <?php
                 foreach ($listSameRooms as $room) {
                     extract($room); 
                     // var_dump($room);
                     ?>
-                    <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>">
-                        <h3>
+                    <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>" >
+                        <h3 class="detail-room_name">
                             <?= $ten_phong ?>
                         </h3>
                         <div class="mo_ta">
                             <div class="hr">
-                               <img src=".//<?= $avatar ?>" width="200px" alt="">
+                               <img src=".//<?= $avatar ?>" class="detail-room_image"  alt="<?= $ten_phong ?>">
                             </div>
                             <div class="content">
                                 <span>
@@ -152,22 +129,6 @@ if (isset($oneRoom)) {
         </form>
         <div class="item-comment">
             <h4>Khách hàng bình luận</h4>
-            <!-- <?php
-            $ma_hs = $_GET['chitiet_dp'];
-            $allbl = $usermodel->show_binhluan($ma_hs);
-            foreach ($allbl as $row) { ?>
-
-                <div class="avatar-and-name">
-                    <i class="fas fa-user-tie"></i>
-                    <h5><?php echo $row['ten_kh'] ?> </h5>
-
-                </div>
-                <div class="detail-comment">
-                    <p><?php echo $row['ngay_bl'] ?></p>
-                    <p><?php echo $row['noi_dung'] ?></p>
-                </div>
-
-            <?php } ?> -->
         </div>
     </div>
 </div>

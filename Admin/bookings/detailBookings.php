@@ -5,46 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./Css/booking.css">
+    <title>Detail booking</title>
+    <link rel="stylesheet" href="../../../Css/booking.css">
 </head>
-<style>
-    .line-bot {
-        max-width: 700px;
-        margin: auto;
-        padding: 20px;
-        border: 2px solid #23958fd4;
-        border-radius: 10px;
-        margin-top: 80px;
-        box-shadow: 6px 8px 7px #24232329;
-    }
-
-    .edit a {
-        text-decoration: none;
-        color: #fff;
-        padding: 10px 15px;
-        background-color: #23958fd4;
-        border-radius: 5px;
-        transition: all 0.3s ease-in-out;
-    }
-
-    .title-item h5 {
-        font-size: 20px;
-        font-weight: 500;
-        color: black;
-        line-height: 0;
-    }
-
-    .details-item h3 {
-        font-size: 20px;
-        font-weight: 500;
-        color: red;
-    }
-</style>
 
 <body>
     <div class="line-bot">
-
         <div class="content-ticket1">
             <div class="title-item">
                 <h5>Tên phòng</h5>

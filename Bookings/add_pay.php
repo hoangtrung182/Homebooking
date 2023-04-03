@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Booking</title>
     <link rel="stylesheet" href="../../Css/style.css">
     <link rel="stylesheet" href="../../Css/booking.css">
 </head>
@@ -17,7 +17,6 @@
 
 <body>
     <div class="container">
-
         <table class="content-table">
             <thead>
                 <tr>
@@ -46,19 +45,19 @@
                             </td>
                             <td>
                                 <?php
-                                if ($show['trang_thai'] == 0) {
-                                    echo "<div class='ron1'><h5>Chưa xác nhận!</h5></div>";
-                                } else if ($show['trang_thai'] == 1) {
-                                    if ($show['ngay_den'] > $date) {
-                                        echo "<div class='ron2'><h5>Sắp diễn ra!</h5></div>";
-                                    } else if ($show['ngay_den'] <= $date && $date <= $show['ngay_ve']) {
-                                        echo "<div class='ron3'><h5>Đang diễn ra!</h5></div>";
-                                    } else if ($date > $show['ngay_ve']) {
-                                        echo "<div class='ron1'><h5>Đã kết thúc!</h5></div>";
+                                    if ($show['trang_thai'] == 0) {
+                                        echo "<div class='ron1'><h5>Chưa xác nhận!</h5></div>";
+                                    } else if ($show['trang_thai'] == 1) {
+                                        if ($show['ngay_den'] > $date) {
+                                            echo "<div class='ron2'><h5>Sắp diễn ra!</h5></div>";
+                                        } else if ($show['ngay_den'] <= $date && $date <= $show['ngay_ve']) {
+                                            echo "<div class='ron3'><h5>Đang diễn ra!</h5></div>";
+                                        } else if ($date > $show['ngay_ve']) {
+                                            echo "<div class='ron1'><h5>Đã kết thúc!</h5></div>";
+                                        }
+                                    } else if ($show['trang_thai'] == 2) {
+                                        echo "<div class='ron1'><h5>Đã hủy!</h5></div>";
                                     }
-                                } else if ($show['trang_thai'] == 2) {
-                                    echo "<div class='ron1'><h5>Đã hủy!</h5></div>";
-                                }
                                 ?>
                             </td>
                         </tr>
@@ -66,7 +65,6 @@
                 <?php } else {
                     echo "Đăng nhập để xem thông tin chi tiết!";
                 } ?>
-
             </tbody>
         </table>
     </div>
