@@ -46,6 +46,19 @@ if (isset($oneRoom)) {
                 <h4 class="detail-room_title">Thể loại: <?= $ten_lp ?></h4>
                 <h4 class="detail-room_title">Tên gọi: <?= $ten_phong ?></h4>
             </div>
+            <!-- Comments -->
+            <div class="row_product">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $("#binhluan").load("./Comment/commentForm.php", { ma_lp:<?= $ma_phong ?>})
+                    });
+                </script>
+                <div>
+                    <span id="binhluan"></span>
+                </div>
+            </div>
+
             <div class="icon_home">
                 <i class="fa-solid fa-heart"></i>
                 <span>Gợi ý các phòng cùng loại</span>
@@ -115,7 +128,7 @@ if (isset($oneRoom)) {
             </div>
         </div>
     </div>
-    <div class="box-comment">
+   <!--  <div class="box-comment">
         <h4>Bình luận </h4>
         <form action="" method="post">
             <div class="comment">
@@ -130,5 +143,5 @@ if (isset($oneRoom)) {
         <div class="item-comment">
             <h4>Khách hàng bình luận</h4>
         </div>
-    </div>
+    </div> -->
 </div>

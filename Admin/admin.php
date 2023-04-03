@@ -41,7 +41,7 @@
                     <ion-icon name="settings-outline"></ion-icon>
                     
                         QUẢN LÝ ĐẶT PHÒNG</a></li>
-                    <li><a href="">
+                    <li><a href="index.php?goto=listbinhluan">
                     <ion-icon name="settings-outline"></ion-icon>
                         QUẢN LÝ BÌNH LUẬN</a></li>
                    
@@ -90,7 +90,7 @@
                 </ul>
             </div>
         </header>
-        <!-- <script>
+        <script>
             const header = document.querySelector('.header');
             const hv_menu = document.querySelector ('.hv_menu');
              const conten = document.querySelector ('.conten');
@@ -100,7 +100,7 @@
              conten.classList.toggle('expand');
             }
 
-        </script> -->
+        </script>
         <script src="./main.css"></script>
         <script  type = "module"  src = "https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" > </script> 
         <script nomodule src="https://unpkg .com/ionicons@7.1.0/dist/ionicons/ionicons.js"> </script>
