@@ -3,7 +3,7 @@
         <img src="https://img.agoda.net/images/INTTRV-45/default/Bags-heart_2021-09-30.svg" alt="">
     </div>
     <div class="nav-content">
-        <p>Traveling internationally? Get updated information on COVID-19 travel guidance and restrictions.</p>
+        <p>Traveling internationally? Get updated information on travel guidance and restrictions.</p>
     </div>
     <div class="learn-more">
         <a href=""><button class="btn1">Learn more</button></a>
@@ -16,38 +16,40 @@
         <p>Nhận giá tốt nhất trên hơn 2.000.000 tài sản, trên toàn thế giới</p>
     </div>
     <div class="box">
-        <!-- <div class="box-button">
+        <<<<<<< HEAD <!-- <div class="box-button">
             <div class="box-0">
                 <button class="box-2">Nghỉ qua Đêm </button>
             </div>
             <div class="box-3">
                 <button class="box-4">Lưu trú sửa dụng trong ngày</button>
             </div>
-        </div> -->
-        <!-- Form -->
-        <form action="index.php?search=typerooms" method="post" class="form_search">
-            <select name="loaiphong" id="" class="input_third">
-                <option value="">Chọn loại phòng</option>
-                <?php foreach ($listCates as $loaiphong) {
-                    extract($loaiphong);
-                    ?>
-                    <option value="<?= $ma_lp ?>">
-                        ` <?= $ten_lp ?> `
-                    </option>
-                <?php } ?>
-            </select><br>
-            <select name="price_chose" id="" class="input_third">
-                <option value="" selected>Sắp xếp giá theo</option>
-                <option value="desc">` Cao đến Thấp `</option>
-                <option value="asc">` Thấp đến Cao `</option>
-            </select><br>
-            <div class="input_search-form">
-                <input type="number" name="price-min" class="input_search-price min-1" placeholder="Nhập giá thấp nhất">
-                <input type="number" name="price-max" class="input_search-price max-1" placeholder="Nhập giá cao nhất">
-            </div>
-            <button class="tk">Tìm Kiếm</button>
-        </form>
-    </div>
+    </div> -->
+    =======
+    >>>>>>> 60c366168059af8333499057cd1f8501c189b388
+    <!-- Form -->
+    <form action="index.php?search=typerooms" method="post" class="form_search">
+        <select name="loaiphong" id="" class="input_third">
+            <option value="">Chọn loại phòng</option>
+            <?php foreach ($listCates as $loaiphong) {
+                extract($loaiphong);
+                ?>
+                <option value="<?= $ma_lp ?>">
+                    ` <?= $ten_lp ?> `
+                </option>
+            <?php } ?>
+        </select><br>
+        <select name="price_chose" id="" class="input_third">
+            <option value="" selected>Sắp xếp giá theo</option>
+            <option value="desc">` Cao -> Thấp `</option>
+            <option value="asc">` Thấp -> Cao `</option>
+        </select><br>
+        <div class="input_search-form">
+            <input type="number" name="price-min" class="input_search-price min-1" placeholder="Nhập giá thấp nhất">
+            <input type="number" name="price-max" class="input_search-price max-1" placeholder="Nhập giá cao nhất">
+        </div>
+        <button class="tk">Tìm Kiếm</button>
+    </form>
+</div>
 </div>
 
 <!-- Slideshow -->

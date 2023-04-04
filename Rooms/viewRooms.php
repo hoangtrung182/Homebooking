@@ -1,14 +1,20 @@
 <body>
+<<<<<<< HEAD
     <p class="form_label">Tìm kiếm sản phẩm</p>
     <div class="list_rooms-form">
         <div class="box-button">
+=======
+	<p class="form_label">Tìm kiếm sản phẩm</p>
+	 <div class="list_rooms-form">
+        <!-- <div class="box-button">
+>>>>>>> 60c366168059af8333499057cd1f8501c189b388
             <div class="box-0">
                 <button class="box-2">Nghỉ qua Đêm </button>
             </div>
             <div class="box-3">
                 <button class="box-4">Lưu trú sửa dụng trong ngày</button>
             </div>
-        </div>
+        </div> -->
         <!-- Form -->
         <form action="index.php?search=typerooms" method="post" class="form_search">
             <!-- <label class="form_label" for="">Loại phòng</label><br> -->
@@ -51,6 +57,7 @@
             if (count($listRooms) > 0) {
                 foreach ($listRooms as $phong) {
                     extract($phong); ?>
+<<<<<<< HEAD
                     <!-- Show sản phẩm tìm kiếm -->
                     <li class="new-item">
                         <img src=".//<?= $avatar ?>" alt="">
@@ -65,7 +72,21 @@
                                 </p>
                             </div>
                         </div>
+=======
+                <!-- Show sản phẩm tìm kiếm -->
+                <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>" target="_blank">
+                     <li class="new-item">
+                         <img src=".//<?= $avatar ?>" alt="">
+                         <div class="new-info">
+                             <h3><?= $ten_phong ?></h3>
+                             <div class="">
+                                 <em>Giá mỗi đêm rẻ từ</em>
+                                 <p><?= number_format($gia, 0, ',', '.') ?> VND</p>
+                             </div>
+                         </div>
+>>>>>>> 60c366168059af8333499057cd1f8501c189b388
                     </li>
+                </a>
                 <?php }
             } else { ?>
                 <!--  Trả về ko tồn tại nếu array rỗng -->

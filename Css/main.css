@@ -1,0 +1,75 @@
+*{
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+a{
+    text-decoration: none;
+}
+.container{
+    max-width: 1200px;
+    margin: auto;
+
+}
+.header{
+    display: flex;
+}
+.login ul li {
+    list-style-type: none;
+}
+.login{
+    /*margin-left: 800px;*/
+}
+.logo{
+    margin: 30px;
+    width: auto;
+}
+li,a{
+    list-style: none;
+}
+
+.btn5-hover {
+    width: 150px;
+    font-size: 15px;
+    font-weight: 200px;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+    height: 25px;
+    border-radius: 3px;
+    border: #fff;
+    text-align: center;
+    background-size: 200% 100%;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn5-hover:hover {
+    background-position: 100% 0;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn5-hover:focus {
+    outline: none;
+}
+
+.btn5-hover.btn5 {
+    background-image: linear-gradient(to right,
+            #25aae1,
+            #4481eb,
+            #04befe,
+            #3f86ed);
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+}
+.menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: #3f86ed;
+}

@@ -1,0 +1,141 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.container{
+  
+    width: 100%;
+    margin: auto;
+    min-height: 0vh;
+}
+.header{
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background-color: rgb(72, 178, 207);
+    display: flex;
+    align-items: center;
+    border-right: 1px rgb(192, 151, 151);
+    z-index: 1000;
+    transform: ease-in-out 0.5s;
+}
+.header ul{
+    width: 100%;
+    list-style: none;
+    overflow: hidden;
+
+}
+.header ul a{
+    width: 100%;
+    color: rgb(35, 11, 129);
+    font-size: 1.2em;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px;
+    transform: linear 0,5s;
+    list-style: none;
+   
+}
+.header ul a ion-icon {
+    margin: 0 20px;
+    color: rgb(23, 95, 128);
+    font-size: 1.2em;
+    transform: linear 0,2s;
+}
+.header ul a:hover{
+     background-color: rgba(15, 159, 159, 0.58);
+     color: aliceblue;
+}
+.header ul a:hover ion-icon{
+    color: aliceblue;
+}
+.conten{
+    position: absolute;
+    top: 0;
+    left: 550px;
+    width: calc(100%- 250px);
+    min-height: 100;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transform: ease-in-out 0,5;
+
+}
+.conten.expand{
+    width: 100%;
+    left: 30%;
+}
+.conten p{
+    font-size: 4.5em;
+    color: rgba(15, 159, 159, 0.58);
+    text-transform: uppercase;
+}
+.header.hide{
+    width: 0;
+}
+.header .hv_menu {
+    position: absolute;
+    top: 23px;
+    right: -45px;
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(185, 181, 181);
+    border-radius: 0 10px 10px 0;
+}
+.header .hv_menu ion-icon{
+   color: rgb(29, 117, 117);
+   position: absolute;
+   font-size: 40px;
+   top: 2px;
+  
+   justify-content: center;
+   align-items: center;
+   transform: linear 0.2s;
+}
+.hv_menu:hover {
+    background-color: rgb(18, 166, 196);
+}
+.hv_menu:hover ion-icon {
+    color: rgb(48, 163, 163);
+}
+.btn5-hover {
+    width: 150px;
+    font-size: 15px;
+    font-weight: 200px;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+    height: 25px;
+    border-radius: 3px;
+    border: #fff;
+    text-align: center;
+    background-size: 200% 100%;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn5-hover:hover {
+    background-position: 100% 0;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn5-hover:focus {
+    outline: none;
+}
+
+.btn5-hover.btn5 {
+    background-image: linear-gradient(to right,
+            #25aae1,
+            #4481eb,
+            #04befe,
+            #3f86ed);
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+}

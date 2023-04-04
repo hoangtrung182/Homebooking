@@ -138,6 +138,8 @@ function bothFilter($id, $sort, $min, $max)
 		}
 	}
 
+
+
 	$Filter = pdo_query($sql);
 	return $Filter;
 }

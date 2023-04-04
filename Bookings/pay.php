@@ -5,15 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Thanh toán</title>
     <link rel="stylesheet" href="../../Css/style.css">
     <link rel="stylesheet" href="../../Css/booking.css">
 </head>
 
-
 <body>
     <div class="container">
-
         <div class="main_pay">
             <div class="column1">
                 <h2 class="form_title">Thông tin đặt phòng</h2>
@@ -61,6 +59,11 @@
                 <div class="title-your-information">
                     <h2 class="form_title">Thông tin của bạn</h2>
                 </div>
+                <?php 
+                    if(isset($_SESSION['ten_tk'])) {
+                        extract($_SESSION['ten_tk']);
+                    }
+                ?>
 
                 <form action="" method="post">
                     <div class="form-group">
@@ -86,9 +89,7 @@
                                 update_taikhoan($_SESSION['ten_tk']['ma_tk'], $ma_km);
                             } ?>
                         <?php } else { ?>
-
                             <span>Vui lòng đăng nhập để nhận khuyến mãi!</span>
-                            <!-- <input type="hidden" name="ma_km" placeholder="Vui lòng đăng nhập để nhận khuyến mãi!"> -->
                         <?php } ?>
 
                     </div>
@@ -115,6 +116,8 @@
                     </div>
 
                     <div class="box-2x">
+                        <span style="margin-left: 24px">Check in</span>
+                        <span style="margin-left: 115px">Check out</span>
                         <div class="date-book">
                             <i class="bi bi-calendar-check"></i>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -124,10 +127,13 @@
                                 <path
                                     d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
                             </svg>
+                                <!-- <span>Check in</span> -->
                             <span class="date-in">
                                 <?= $_SESSION['datphong']['ngay_den'] ?>
                             </span>
                             <span>-</span>
+                                <!-- <span>Check out</span> -->
+
                             <span class="date-out">
                                 <?= $_SESSION['datphong']['ngay_ve'] ?>
                             </span>

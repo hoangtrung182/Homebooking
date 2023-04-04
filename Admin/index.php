@@ -10,6 +10,7 @@ include '../Models/news.php';
 include '../Models/accounts.php';
 include '../Models/thongke.php';
 include '../Models/contact.php';
+include '../Models/Binhluan.php';
 
 if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
@@ -322,17 +323,11 @@ if (isset($_GET['goto'])) {
 				$ten_tk = $_POST['ten_tk'];
 				$pass = $_POST['pass'];
 				$checkAcc = checkAccount($ten_tk, $pass);
+
 				if (is_array($checkAcc)) {
-					// header('location: index.php');
 					$_SESSION['ten_tk'] = $checkAcc;
-					//var_dump($_SESSION['ten_tk']);
-					header('location:index.php');
+					return $_SESSION['ten_tk'];
 					// echo '<script> alert("Đăng nhập thành công!") </script>';
-				} else {
-					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
-					include '../../view/body.php';
-					// $thongbao = "Tai khoan khong ton tai";
-					include '../view/body.php';
 				}
 			}
 			include '../Accounts/login.php';
@@ -383,6 +378,7 @@ if (isset($_GET['goto'])) {
 			}
 			include '../Accounts/listAcc.php';
 			break;
+		// Quản lí hồ sơ admin
 		case 'editUser':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 				$user = getOneAccount($_GET['id']);
@@ -392,7 +388,7 @@ if (isset($_GET['goto'])) {
 		case 'updateUser':
 			if (isset($_POST['updateUser']) && $_POST['updateUser']) {
 				$ma_tk = $_POST['ma_tk'];
-				$ten_tk = $_POST['ten_tk'];
+				$ho_ten = $_POST['ho_ten'];
 				$email = $_POST['email'];
 				$phone = $_POST['phone'];
 				$dia_chi = $_POST['dia_chi'];
@@ -409,33 +405,28 @@ if (isset($_GET['goto'])) {
 						$save_url = $url;
 					}
 				}
-				update_user($ma_tk, $ten_tk, $email, $phone, $dia_chi, $save_url);
+				update_user($ma_tk, $ho_ten, $email, $phone, $dia_chi, $save_url);
 				$_SESSION['ten_tk'] = checkAccount($ten_tk, $pass);
 				header('location: index.php?goto=login');
 			}
-			include '../Users/updateUser.php';
-			update_acc($ma_tk, $ten_tk, $email, $phone, $vai_tro);
-			// $_SESSION['user'] = check_khachhang($email, $password);
-			$thongbao = "Chỉnh sửa tài khoản thành công!";
-			// header('location:index.php');
-			$listAcc = loadAll_acc();
-			include '../Accounts/listAccounts.php';
+			include './Users/updateUser.php';
 			break;
 		case 'exit':
 			session_unset();
 			header('location: ../index.php');
 			break;
-		case 'deleteAcc':
-			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
-				delete_acc($_GET['id']);
-				echo '<script>alert("Bạn đã chắc chắn với quyết định của mình?")</script>';
-			}
-			$listUsers = load_taikhoan();
-			include '../Accounts/listAcc.php';
+		// Quản lí phản hồi
+		case 'listContact':
+			$listContact = load_contact();
+			include '../Accounts/listContact.php';
 			break;
-		case 'exit':
-			header('index.php');
-			// include '../Admin/index.php';
+		case 'Feedback':
+			include '../Contact/formFeedback.php';
+			break;
+		case 'btnFeedBack':
+			if (isset($_POST['btn_feedBack']) && $_POST['btn_feedBack']) {
+				echo '<script>alert("Phản hồi đã gửi")</script>';
+			}
 			break;
 		case 'listContact':
 			$listContact = load_contact();

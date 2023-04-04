@@ -30,7 +30,6 @@ table tr {
     padding: 10px 0;
 }
 
-
 .type {
 
     margin-top: 10px;
@@ -49,6 +48,10 @@ table tr {
     color: white;
 }
 
+
+.form_search {
+    margin: 20px 30px;
+}
 
 
 .notify_success {
@@ -189,15 +192,39 @@ table tr {
 }
 
 .notify_min {
-    color: red;
+    color: #d94141;
     position: absolute;
-    top: 74%;
+    top: 59%;
+    border: 1px solid $ccc;
     left: 250px;
+    display: block;
+    border: 1px solid #ccc;
+    background: #8cc3eb;
+    border-radius: 4px;
+    padding: 1px 6px;
 }
 
 .notify_max {
-    color: red;
+    color: #d94141;
     position: absolute;
-    top: 74%;
-    left: 58%;
+    top: 59%;
+    border: 1px solid $ccc;
+    left: 250px;
+    display: block;
+    border: 1px solid #ccc;
+    background: #8cc3eb;
+    border-radius: 4px;
+    padding: 1px 6px;
+}
+
+
+.time1 {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    padding: 10px;
+    /*margin-top: 20px;*/
+    margin: 20px auto;
 }
