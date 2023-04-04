@@ -19,7 +19,8 @@
                 <tr>
                     <th>Tên khách hàng</th>
                     <th>Tên loại phòng</th>
-                    <th>Ngày đặt</th>
+                    <th>Ngày đến</th>
+                    <th>Ngày về</th>
                     <th>Chi tiết</th>
                     <th>Hoạt động</th>
                 </tr>
@@ -29,7 +30,6 @@
                 foreach ($listBookings as $listOrders) {
                     extract($listOrders); ?>
                     <tr class="list">
-
                         <td>
                             <?= $listOrders['ten_kh'] ?>
                         </td>
@@ -37,7 +37,10 @@
                             <?= $listOrders['ten_phong'] ?>
                         </td>
                         <td>
-                            <?= $listOrders['ngay_dat'] ?>
+                            <?= $listOrders['ngay_den'] ?>
+                        </td>
+                        <td>
+                            <?= $listOrders['ngay_ve'] ?>
                         </td>
                         <td class="edit">
                             <a href="index.php?goto=detailBookings&update_trangthai=<?= $listOrders['ma_dp'] ?>">Chi

@@ -66,8 +66,7 @@ if (isset($oneRoom)) {
             <div class="nameroom-list">      
                 <?php
                 foreach ($listSameRooms as $room) {
-                    extract($room); 
-                    // var_dump($room);
+                    extract($room);
                     ?>
                     <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>" >
                         <h3 class="detail-room_name">
@@ -101,7 +100,7 @@ if (isset($oneRoom)) {
                                 echo $format_number_3;
                             }
                             ?>
-                        </h2><span>vnđ/đêm</span>
+                        </h2><span>vnđ / đêm</span>
                     </div>
                     <div class="time">
                         <input type="date" name="ngay_den" id="" class="first">
@@ -126,22 +125,43 @@ if (isset($oneRoom)) {
                     </p>
                 </form>
             </div>
+            <?php 
+                extract($oneRoom);
+                $listBookings = getListBookings($ma_phong);
+            ?>
+            <div class="table-booking">
+                <h3 class="table-booking__title">Lịch đặt phòng</h3>
+                <table cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th width="200px">Ngày Đến</th>
+                            <th></th>
+                            <th width="200px">Ngày Về</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                <?php 
+                    if(count($listBookings) <= 0) { ?>
+                        <tr>
+                            <td>
+                                <h5>Phòng chưa có người đặt</h5>
+                            </td>
+                        </tr>
+                    <?php }else { ?>
+                        <?php 
+                            foreach ($listBookings as $tableBooking) {
+                                extract($tableBooking); ?>
+                                <tr id="table-bookings_row">
+                                    <td><?= $ngay_den ?><td>
+                                    <td><?= $ngay_ve ?></td>
+                                </tr>
+                            <?php }
+                        ?>
+                    <?php } ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-   <!--  <div class="box-comment">
-        <h4>Bình luận </h4>
-        <form action="" method="post">
-            <div class="comment">
-                <textarea title="Nội dung" name="noi_dung" id="binh_luan" placeholder="Nội dung. Tối thiểu 15 ký tự *"
-                    style="resize:none;" required></textarea>
-            </div>
-            <div class="send-comment">
-                <button type="submit" name="submit">GỬI BÌNH LUẬN
-                    <i class="fas fa-paper-plane" style="margin-right: 5px;"></i></button>
-            </div>
-        </form>
-        <div class="item-comment">
-            <h4>Khách hàng bình luận</h4>
-        </div>
-    </div> -->
+   
 </div>

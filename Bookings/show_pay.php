@@ -101,7 +101,7 @@
                         <div class="money">
                             <h3>
                                 <?php $format_number_4 = number_format($listPay['thanh_tien'], 0, ',', '.');
-                                echo $format_number_4 . 'vnđ'; ?>
+                                echo $format_number_4 . ' ' . 'vnđ'; ?>
                             </h3>
                         </div>
                     </div>

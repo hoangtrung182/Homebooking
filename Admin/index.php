@@ -5,7 +5,6 @@ include './admin.php';
 include '../Models/pdo.php';
 include '../Models/Categories.php';
 include '../Models/Rooms.php';
-// include '../Models/bookings.php';
 include '../Models/bookings.php';
 include '../Models/news.php';
 include '../Models/accounts.php';

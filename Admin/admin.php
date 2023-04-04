@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="../Css/button.css">
     <link rel="stylesheet" href="../Css/News.css">
     <link rel="stylesheet" href="../Css/tables.css">
-    <link rel="stylesheet" href="../Css/bookings.css">
     <link rel="stylesheet" href="../Css/account.css">
     <link rel="stylesheet" href="../Css/list.css">
     <link rel="stylesheet" href="../Css/main.css">
+    <link rel="stylesheet" href="../Css/booking.css">
     <title>Trang Chủ | ADMIN</title>
 </head>
 

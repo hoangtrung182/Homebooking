@@ -11,7 +11,7 @@
 }
 
 .price span {
-    padding: 15px 0 0 5px;
+    padding: 0 0 20px 5px;
     font-size: 18px;
 }
 
@@ -190,6 +190,8 @@ h5 {
 
 .total,
 .price {
+    display: flex;
+    /*align-items: center;*/
     font-weight: bold;
     font-size: 20px;
 }
@@ -416,4 +418,17 @@ h5 {
     font-size: 20px;
     font-weight: 500;
     color: red;
+}
+.table-booking {
+    margin-top: 40px;
+}
+.table-booking__title {
+    text-align: center;
+    font-weight: 600;
+    color: #df2a2a;
+    text-transform: uppercase;
+}
+
+#table-bookings_row td {
+    text-align: center;
 }
