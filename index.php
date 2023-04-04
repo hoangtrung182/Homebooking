@@ -174,10 +174,13 @@ if (isset($_GET['goto'])) {
 						$giam_gia_thanh_vien = select_Sale($id_sale)['sale-tv'];
 						$tong_tien = ($gia * ($so_ngay - 1)) - $giam_gia_thanh_vien;
 
+						date_default_timezone_set('ASIA/HO_CHI_MINH');
+						$date1 = date('14:00:00');
+                        $date2 = date('12:00:00');
 						$_SESSION['datphong'] = [
 							'ngay_dat' => $ngay_dat,
-							'ngay_den' => $_POST['ngay_den'],
-							'ngay_ve' => $_POST['ngay_ve'],
+							'ngay_den' => $_POST['ngay_den'] . ' ' .$date1,
+							'ngay_ve' => $_POST['ngay_ve'] . ' ' .$date2,
 							'tong_tien' => $tong_tien,
 							'ma_lp' => $chitiet['ma_lp'],
 							'ma_phong' => $chitiet['ma_phong'],
@@ -196,10 +199,14 @@ if (isset($_GET['goto'])) {
 						$giam_gia_thanh_vien = select_Sale($id_sale)['sale-tv'];
 						$tong_tien = ($gia * ($so_ngay - 1)) - $giam_gia_thanh_vien;
 
+						date_default_timezone_set('ASIA/HO_CHI_MINH');
+						$date1 = date('14:00:00');
+                        $date2 = date('12:00:00');
+
 						$_SESSION['datphong'] = [
 							'ngay_dat' => $ngay_dat,
-							'ngay_den' => $_POST['ngay_den'],
-							'ngay_ve' => $_POST['ngay_ve'],
+							'ngay_den' => $_POST['ngay_den'] . ' ' .$date1,
+							'ngay_ve' => $_POST['ngay_ve'] . ' ' .$date2,
 							'tong_tien' => $tong_tien,
 							'ma_lp' => $chitiet['ma_lp'],
 							'ma_phong' => $chitiet['ma_phong'],

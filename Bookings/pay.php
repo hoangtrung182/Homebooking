@@ -31,6 +31,11 @@
                     <div class="check-in-date">
                         <hr class="line-green">
                         <span>Nhận phòng</span>
+                        <?php 
+                            date_default_timezone_set('ASIA/HO_CHI_MINH');
+                            $date1 = date('14:00:00');
+                            $date2 = date('12:00:00');
+                        ?>
                         <p>
                             <?php echo $_SESSION['datphong']['ngay_den']; ?>
                         </p>
@@ -118,6 +123,8 @@
                     </div>
 
                     <div class="box-2x">
+                        <span style="margin-left: 20px">Check in</span>
+                        <span style="margin-left: 115px">Check out</span>
                         <div class="date-book">
                             <i class="bi bi-calendar-check"></i>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -127,10 +134,13 @@
                                 <path
                                     d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
                             </svg>
+                                <!-- <span>Check in</span> -->
                             <span class="date-in">
                                 <?= $_SESSION['datphong']['ngay_den'] ?>
                             </span>
                             <span>-</span>
+                                <!-- <span>Check out</span> -->
+
                             <span class="date-out">
                                 <?= $_SESSION['datphong']['ngay_ve'] ?>
                             </span>
