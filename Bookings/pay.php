@@ -65,15 +65,15 @@
                 <form action="" method="post">
                     <div class="form-group">
                         <label>Tên khách hàng <span style="color:red;">*</span></label>
-                        <input type="text" name="ten_kh" value="<?= $ten_kh ?>">
+                        <input type="text" name="ten_kh" value="<?= $_SESSION['ten_tk']['ten_tk'] ?>">
                     </div>
                     <div class="form-group">
                         <label>Số điện thoại<span style="color:red;">*</span></label>
-                        <input type="text" name="sdt" value="<?= $phone ?>">
+                        <input type="text" name="sdt" value="<?= $_SESSION['ten_tk']['phone'] ?>">
                     </div>
                     <div class="form-group">
                         <label>Địa chỉ<span style="color:red;">*</span></label>
-                        <input type="text" name="dia_chi" value="<?= $dia_chi ?>">
+                        <input type="text" name="dia_chi" value="<?= $_SESSION['ten_tk']['dia_chi'] ?>">
                     </div>
                     <div class="form-group">
                         <?php if (isset($_SESSION['ten_tk'])) { ?>

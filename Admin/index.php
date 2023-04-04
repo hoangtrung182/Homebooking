@@ -150,42 +150,67 @@ if (isset($_GET['goto'])) {
 		case 'detailBookings':
 			date_default_timezone_set('ASIA/HO_CHI_MINH');
 			$date = date('Y-m-d H:i:s');
+
 			if (isset($_GET['update_trangthai'])) {
 				$ma_dp = $_GET['update_trangthai'];
 				$show = showDetail_Clientbooking($ma_dp);
 				date_default_timezone_set('ASIA/HO_CHI_MINH');
-				$date = date('Y-m-d');
+				$date = date('Y-m-d H:i:s');
 			}
 
-			if (isset($_GET['xacnhan'])) {
+			$time_checkin = date_create($show['ngay_den']);
+			$time_checkout = date_create($show['ngay_ve']);
 
-				if ($show['trang_thai'] == 1) {
+			$gio_den = date_format($time_checkin, 'H:i:s');
+			$gio_ve = date_format($time_checkout, 'H:i:s');
+
+			$gio_hien_tai = date(' H:i:s');
+			$date_qua_gio = strtotime('+1 hour', strtotime($gio_ve));
+			$date_qua_gio1 = date('H:i:s', $date_qua_gio);
+
+			if (isset($_GET['id_checkin'])) {
+				if ($show['trang_thai'] == 0 && $show['ngay_den'] > $date) {
 					header("Location:index.php?goto=listBooking");
-				} elseif ($show['trang_thai'] == 2) {
+				} else if ($show['trang_thai'] == 3) {
 					header("Location:index.php?goto=listBooking");
-				} elseif ($show['trang_thai'] == 0 && $show['ngay_den'] <= $date) {
+				} else if ($show['trang_thai'] == 2) {
 					header("Location:index.php?goto=listBooking");
-				} else {
+				} else if ($show['trang_thai'] == 0 && $show['ngay_den'] == $date && $gio_den <= $date_qua_gio1) {
 					$trang_thai = 1;
-					$ma_dp = $_GET['xacnhan'];
+					$ma_dp = $_GET['id_checkin'];
 					update_booking($trang_thai, $ma_dp);
 					header("Location:index.php?goto=listBooking");
 					exit();
 				}
-
+			}
+			if (isset($_GET['id_checkout'])) {
+				if ($show['trang_thai'] == 0) {
+					header("Location:index.php?goto=listBooking");
+				} else if ($show['trang_thai'] == 3) {
+					header("Location:index.php?goto=listBooking");
+				} else if ($show['trang_thai'] == 1 && $show['ngay_ve'] == $date && $gio_hien_tai >= $gio_ve) {
+					$trang_thai = 2;
+					$ma_dp = $_GET['id_checkout'];
+					update_booking($trang_thai, $ma_dp);
+					header("Location:index.php?goto=listBooking");
+					exit();
+				}
 			}
 			if (isset($_GET['huy'])) {
 				if ($show['trang_thai'] == 1 && $show['ngay_den'] <= $date) {
 					header("Location:index.php?goto=listBooking");
 				} elseif ($show['trang_thai'] == 0 && $show['ngay_den'] <= $date) {
 					header("Location:index.php?goto=listBooking");
+				} else if ($show['trang_thai'] == 2) {
+					header("Location:index.php?goto=listBooking");
 				} else {
-					$trang_thai = '2';
+					$trang_thai = 3;
 					$ma_dp = $_GET['huy'];
 					update_booking($trang_thai, $ma_dp);
 					header("Location:index.php?goto=listBooking");
 				}
 			}
+
 			include './bookings/detailBookings.php';
 			break;
 

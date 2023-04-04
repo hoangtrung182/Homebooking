@@ -19,10 +19,14 @@
         box-shadow: 6px 8px 7px #24232329;
     }
 
+    .edit {
+        max-width: 500px;
+    }
+
     .edit a {
         text-decoration: none;
         color: #fff;
-        padding: 10px 15px;
+        /* padding: 10px 15px; */
         background-color: #23958fd4;
         border-radius: 5px;
         transition: all 0.3s ease-in-out;
@@ -104,6 +108,7 @@
             <!-- End item-ticket -->
         </div>
 
+        <!-- End item-ticket -->
         <div class="content-ticket2">
             <div class="item-ticket">
                 <div class="title-item">
@@ -145,9 +150,11 @@
                 </div>
                 <div class="details-item">
                     <h3 class="edit">
+
                         <a
-                            href="index.php?goto=detailBookings&xacnhan=<?= $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?> ">Xác
-                            nhận</a>
+                            href="index.php?goto=detailBookings&id_checkin=<?= $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?>">Check_in</a>
+                        <a
+                            href="index.php?goto=detailBookings&id_checkout=<?= $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?>">Check_out</a>
                         <a
                             href="index.php?goto=detailBookings&huy=<?= $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?>">Hủy</a>
                     </h3>
