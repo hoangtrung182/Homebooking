@@ -15,9 +15,7 @@ $list_bl = selectList_comments($ma_lp);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
-    <!-- <link rel="stylesheet" href="css/button.css"> -->
+    <title>Binh Luan</title>
     <link rel="stylesheet" href="../Css/detail.css">
 </head>
 <body>
@@ -26,8 +24,8 @@ $list_bl = selectList_comments($ma_lp);
         <div class="binhluan">
             <ul class="comments-list__menu">
                 <?php
-                foreach ($list_bl as $bl) {  extract($bl);
-                    ?>
+                foreach ($list_bl as $bl) {  
+                    extract($bl); ?>
                     <?php
                         $user = getOneAccount($ma_tk);
                         extract($user);
@@ -63,7 +61,7 @@ $list_bl = selectList_comments($ma_lp);
                 $noi_dung = $_POST['mess'];
                 $ma_khach_hang = $_SESSION['ten_tk']['ma_tk'];
                 date_default_timezone_set('ASIA/HO_CHI_MINH');
-                $ngay_dat = date('Y-m-d H:i:s');
+                $ngay_dat = date('H:i:s - Y-m-d');
 
                 insert_comments($noi_dung, $ma_khach_hang, $ma_lp, $ngay_dat);
             }else {

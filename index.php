@@ -66,43 +66,43 @@ if (isset($_GET['goto'])) {
 
 					if ($result == []) {
 						$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $_SESSION['datphong']['ngay_den'], $_SESSION['datphong']['ngay_ve'], $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
-						$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
+								$thongbao = "Đặt Phòng Thành Công !!";
 					} 
 
 					if (!empty($result)) {
 						foreach ($result as $value) {
 							if ($value['ngay_ve'] < $date) {
 								$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
-								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
+								$thongbao = "Đặt Phòng Thành Công !!";
 							}
 
 							// Check ngày trùng
 							if(($value['ngay_den'] == $book['ngay_den']) && ($value['ngay_ve'] == $book['ngay_ve'])){
-								$thongbao = "PHÒNG ĐÃ CÓ NGƯỜI ĐẶT";
+								$thongbao = "Phòng Đã Được Đặt Trước Đó. Vui Lòng Chọn Phòng Khác";
 								break;
 							}
 
 							// Check ngày đến
 							if(($book['ngay_den'] >= $value['ngay_den']) && ($book['ngay_den'] <= $value['ngay_ve'])){
-								$thongbao = "PHÒNG KHÔNG CÓ SẴN, VUI LÒNG CHỌN PHÒNG KHÁC";
+								$thongbao = "Phòng Không Còn Sẵn. Vui Lòng Chọn Phòng Khác";
 								break;
 							}
 
 							// Check ngày về
 							if(($book['ngay_ve'] >= $value['ngay_den']) && ($book['ngay_ve'] <= $value['ngay_ve'])){
-								$thongbao = "PHÒNG KHÔNG CÓ SẴN, VUI LÒNG CHỌN PHÒNG KHÁC";
+								$thongbao = "Phòng Không Còn Sẵn. Vui Lòng Chọn Phòng Khác";
 								break;
 							}
 
 							// Check ngày đã bị lặp
 							if(($book['ngay_den'] <= $value['ngay_den']) && ($book['ngay_ve'] >= $value['ngay_ve'])) {
-								$thongbao = "PHÒNG KHÔNG CÓ SẴN, VUI LÒNG CHỌN PHÒNG KHÁC";
+								$thongbao = "Phòng Không Còn Sẵn. Vui Lòng Chọn Phòng Khác";
 								break;
 							}
 							// Thêm phòng vs trường hợp default
 							if($book) {
 								$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $book['ngay_den'], $book['ngay_ve'], $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
-								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG !";
+								$thongbao = "Đặt Phòng Thành Công !!";
 								break;
 							}
 						}
@@ -153,7 +153,6 @@ if (isset($_GET['goto'])) {
 				$chitiet = showRoom_tm($_GET['id']);
 				//var_dump(showRoom_tm($_GET['id']));
 				if (isset($_POST['dat'])) {
-
 					$ma_kh = '';
 					$ma_km = '';
 					date_default_timezone_set('ASIA/HO_CHI_MINH');

@@ -73,7 +73,7 @@ function show_bookingDetail($ma_dp) {
     return $result;
 }
 function listBooking() {
-    $sql = "SELECT * FROM datphong INNER JOIN phong ON datphong.ma_phong=phong.ma_phong INNER JOIN loaiphong ON phong.ma_lp=loaiphong.ma_lp ORDER BY ngay_dat DESC";
+    $sql = "SELECT * FROM datphong INNER JOIN phong ON datphong.ma_phong=phong.ma_phong INNER JOIN loaiphong ON phong.ma_lp=loaiphong.ma_lp ORDER BY ten_phong DESC";
     $list = pdo_query($sql);
     return $list;
 }
@@ -91,4 +91,11 @@ function update_taikhoan($id, $ma_km) {
     $sql = "UPDATE taikhoan SET ma_km ='$ma_km' WHERE ma_tk ='$id'";
     pdo_execute($sql);
 }
+
+function getListBookings ($id) {
+    $sql = "SELECT * FROM datphong WHERE ma_phong = '$id' order by ngay_den asc";
+    $listBookings = pdo_query($sql);
+    return $listBookings;
+}
+
 ?>

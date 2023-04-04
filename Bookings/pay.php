@@ -31,11 +31,6 @@
                     <div class="check-in-date">
                         <hr class="line-green">
                         <span>Nhận phòng</span>
-                        <?php 
-                            date_default_timezone_set('ASIA/HO_CHI_MINH');
-                            $date1 = date('14:00:00');
-                            $date2 = date('12:00:00');
-                        ?>
                         <p>
                             <?php echo $_SESSION['datphong']['ngay_den']; ?>
                         </p>
@@ -86,7 +81,7 @@
                     <div class="form-group">
                         <?php if (isset($_SESSION['ten_tk'])) { ?>
                             <label>Khuyến mãi</label>
-                            <input type="text" name="ma_km" value="<?= $_SESSION['ten_tk']['ma_km'] ?>" readonly>
+                            <input type="text" name="ma_km" value="<?= $khuyen_mai ?>" readonly>
                             <?php
                             $sl = Client_loyal($_SESSION['ten_tk']['ma_tk']);
                             if ($sl > 10) {
@@ -94,9 +89,7 @@
                                 update_taikhoan($_SESSION['ten_tk']['ma_tk'], $ma_km);
                             } ?>
                         <?php } else { ?>
-
                             <span>Vui lòng đăng nhập để nhận khuyến mãi!</span>
-                            <!-- <input type="hidden" name="ma_km" placeholder="Vui lòng đăng nhập để nhận khuyến mãi!"> -->
                         <?php } ?>
 
                     </div>
@@ -123,7 +116,7 @@
                     </div>
 
                     <div class="box-2x">
-                        <span style="margin-left: 20px">Check in</span>
+                        <span style="margin-left: 24px">Check in</span>
                         <span style="margin-left: 115px">Check out</span>
                         <div class="date-book">
                             <i class="bi bi-calendar-check"></i>
