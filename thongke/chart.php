@@ -27,7 +27,11 @@
 
         // Optional; add a title and set the width and height of the chart
         var options = {
+<<<<<<< HEAD
+            'title': 'My Average Day',
+=======
             'title': 'Thống kế số phòng theo thể loại',
+>>>>>>> 60c366168059af8333499057cd1f8501c189b388
             'width': 550,
             'height': 400
         };
