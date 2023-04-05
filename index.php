@@ -14,7 +14,6 @@ if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
 		// Dat phong
 		case 'pays':
-
 			if (isset($_SESSION['ten_tk'])) {
 				$ten_kh = $_SESSION['ten_tk']['ten_tk'];
 				$phone = $_SESSION['ten_tk']['phone'];
@@ -71,23 +70,8 @@ if (isset($_GET['goto'])) {
 					}
 
 					if (!empty($result)) {
-
 						foreach ($result as $value) {
-							$time_checkin = date_create($value['ngay_den']);
-							$time_checkout = date_create($value['ngay_ve']);
-
-							$gio_den = date_format($time_checkin, 'H:i:s');
-							$gio_ve = date_format($time_checkout, 'H:i:s');
-							$date1 = date('12:00:00');
-							$gio_hien_tai = date('H:i:s');
-							$date_qua_gio = strtotime('+1 hour', strtotime($date1));
-							$date_qua_gio1 = date('H:i:s', $date_qua_gio);
-
 							if ($value['ngay_ve'] < $date) {
-								$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
-								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
-							}
-							if ($value['ngay_ve'] == $date && $gio_ve < $gio_hien_tai) {
 								$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
 								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
 							}
@@ -150,7 +134,7 @@ if (isset($_GET['goto'])) {
 				// $thongbao_xoa = "Xóa thành công !!";
 				extract($oneRoom);
 			}
-			$listSameRooms = sameRoom($_GET['id']);
+			$listSameRooms = sameRoom($ma_lp);
 
 			if (isset($_SESSION['ten_tk'])) {
 				$ten_kh = $_SESSION['ten_tk']['ten_tk'];
@@ -189,8 +173,6 @@ if (isset($_GET['goto'])) {
 
 						$giam_gia_thanh_vien = select_Sale($id_sale)['sale-tv'];
 						$tong_tien = ($gia * ($so_ngay - 1)) - $giam_gia_thanh_vien;
-
-
 
 						$_SESSION['datphong'] = [
 							'ngay_dat' => $ngay_dat,
@@ -236,7 +218,6 @@ if (isset($_GET['goto'])) {
 					if ($_POST['ngay_den'] == '' || $_POST['ngay_ve'] == '' || strtotime($_POST['ngay_den']) >= strtotime($_POST['ngay_ve']) || $_POST['ngay_den'] < $ngay_dat) {
 						$thongbao = "Vui lòng chọn lại thời gian!";
 					} else {
-						//include 'Client/bookings/pay.php';
 						header('Location: index.php?goto=pays');
 						exit();
 					}

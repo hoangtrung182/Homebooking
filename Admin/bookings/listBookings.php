@@ -18,7 +18,8 @@
             <tr>
                 <th class="type">Tên khách hàng</th>
                 <th class="type">Tên loại phòng</th>
-                <th class="type">Ngày đặt</th>
+                <th class="type">Ngày đến</th>
+                <th class="type">Ngày về</th>
                 <th class="type">Chi tiết</th>
                 <th class="type">Hoạt động</th>
             </tr>
@@ -36,7 +37,10 @@
                         <?= $listBookings['ten_phong'] ?>
                     </td>
                     <td>
-                        <?= $listBookings['ngay_dat'] ?>
+                        <?= $listBookings['ngay_den'] ?>
+                    </td>
+                    <td>
+                        <?= $listBookings['ngay_ve'] ?>
                     </td>
                     <td>
                         <a href="index.php?goto=detailBookings&update_trangthai=<?= $listBookings['ma_dp'] ?>"><button class="btn btn_edit">Chi

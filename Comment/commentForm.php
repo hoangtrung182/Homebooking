@@ -19,8 +19,8 @@ $list_bl = selectList_comments($ma_lp);
     <link rel="stylesheet" href="../Css/detail.css">
 </head>
 <body>
-    <div class="">
-        <h3>BÌNH LUẬN</h3>
+    <div class="main-comment">
+        <h3 class="main-comment__title">BÌNH LUẬN</h3>
         <div class="binhluan">
             <ul class="comments-list__menu">
                 <?php
@@ -45,8 +45,6 @@ $list_bl = selectList_comments($ma_lp);
                 ?>
             </ul>
         </div>
-
-        <br>
         <div>
             <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
                 <input type="text" name="malp" hidden value="<?= $ma_lp ?>">

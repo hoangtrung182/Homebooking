@@ -22,7 +22,7 @@
 <body>
     <!-- SIDEBAR -->
     <section id="sidebar">
-        <a href="" class="brand">
+        <a href="index.php" class="brand">
             <div class="logo"><img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt=""></div>
         </a>
         <ul class="side-menu top">
@@ -86,6 +86,11 @@
             if (isset($_SESSION['ten_tk'])) {
                 extract($_SESSION['ten_tk']);
             ?>
+                <li>
+                    <a href="index.php?goto=changepassword">
+                        <button class="btn5-hover btn5">Đổi mật khẩu</button>
+                    </a>
+                </li>
                 <li>
                     <a href="index.php?goto=login">
                         <button class="btn5-hover btn5">
