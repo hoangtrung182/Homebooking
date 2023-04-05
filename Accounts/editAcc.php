@@ -37,7 +37,7 @@
                 </div>
                 <div class="submit">
                     <input type="hidden" name="ma_tk" value="<?= $ma_tk ?>">
-                    <input class="btn2-hover btn5" type="submit" value="Cập nhật" name="editAcc">
+                    <input class="btn-6" type="submit" value="Cập nhật" name="editAcc">
                 </div>
             </form>
             <?= isset($thongbao) ? $thongbao : '' ?>
