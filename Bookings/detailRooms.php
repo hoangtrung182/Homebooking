@@ -2,8 +2,11 @@
 if (isset($oneRoom)) {
     extract($oneRoom);
 }
-    $nameCate = getNameItem($ma_lp);
-    extract($nameCate);
+// die;
+// $listSameRooms = sameRoom($ma_lp);
+
+// var_dump($listSameRoom);
+
 ?>
 
 <div class="detail_room">
@@ -35,56 +38,53 @@ if (isset($oneRoom)) {
                 <li class="navbar_menu"><a href="">Chính sách</a></li>
             </ul>
         </div>
+        <!-- <div class="show_price">
+            <div class="show_price_right">
+                <div class="navbar_backtotopnav">
+                    <div class="sticky_nav_price">
+                        <span class="span_style">
+                            từ
+                        </span>
+                        <span class="span_price">
+                            <?= number_format($gia, 0, ',', '.') ?>
+                        </span>
+                        <span class="span_price_detail">₫</span>
+                    </div>
+                    <div class="sticky_nav_price_button">
+                        <button class="btn_showgia">
+                            <span class="btn_span_showgia">xem giá</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
     </div>
     <div class="review_details">
         <div class="introduce">
-            <div class="icon_home">
-                <i class="fa-solid fa-heart"></i>
-                <span>Thông tin chi tiết phòng</span>
-            </div>
-            <div class="detail-room_header">
-                <h4 class="detail-room_title">Thể loại: <?= $ten_lp ?></h4>
-                <h4 class="detail-room_title">Tên gọi: <?= $ten_phong ?></h4>
-            </div>
-            <!-- Comments -->
-            <div class="row_product">
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-                <script>
-                    $(document).ready(function () {
-                        $("#binhluan").load("./Comment/commentForm.php", { ma_lp:<?= $ma_phong ?>})
-                    });
-                </script>
-                <div>
-                    <span id="binhluan"></span>
+            <div class="nameroom">
+                <div class="icon_home">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>toàn bộ phòng</span>
                 </div>
-            </div>
-
-            <div class="icon_home">
-                <i class="fa-solid fa-heart"></i>
-                <span>Gợi ý các phòng cùng loại</span>
-            </div>
-            <div class="nameroom-list">      
                 <?php
                 foreach ($listSameRooms as $room) {
                     extract($room);
-                    ?>
-                    <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>" >
-                        <h3 class="detail-room_name">
-                            <?= $ten_phong ?>
-                        </h3>
-                        <div class="mo_ta">
-                            <div class="hr">
-                               <img src=".//<?= $avatar ?>" class="detail-room_image"  alt="<?= $ten_phong ?>">
-                            </div>
-                            <div class="content">
-                                <span>
-                                    <?= $mo_ta ?>
-                                </span>
-                            </div>
+                } ?>
+                <h3>
+                    <?= $ten_phong ?>
+                </h3>
+                <div class="mo_ta">
+                    <div class="hr">
+                        <div class="sider_line">
                         </div>
-                    </a>
+                    </div>
+                    <div class="content">
+                        <span>
+                            <?= $mo_ta ?>
+                        </span>
+                    </div>
+                </div>
 
-                <?php } ?>
             </div>
         </div>
         <div class="bookroom">
@@ -100,7 +100,9 @@ if (isset($oneRoom)) {
                                 echo $format_number_3;
                             }
                             ?>
+
                         </h2><span>vnđ / đêm</span>
+
                     </div>
                     <div class="time">
                         <input type="date" name="ngay_den" id="" class="first">
@@ -125,43 +127,83 @@ if (isset($oneRoom)) {
                     </p>
                 </form>
             </div>
-            <?php 
-                extract($oneRoom);
-                $listBookings = getListBookings($ma_phong);
-            ?>
-            <div class="table-booking">
-                <h3 class="table-booking__title">Lịch đặt phòng</h3>
-                <table cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th width="200px">Ngày Đến</th>
-                            <th></th>
-                            <th width="200px">Ngày Về</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                <?php 
-                    if(count($listBookings) <= 0) { ?>
-                        <tr>
-                            <td>
-                                <h5>Phòng chưa có người đặt</h5>
-                            </td>
-                        </tr>
-                    <?php }else { ?>
-                        <?php 
-                            foreach ($listBookings as $tableBooking) {
-                                extract($tableBooking); ?>
-                                <tr id="table-bookings_row">
-                                    <td><?= $ngay_den ?><td>
-                                    <td><?= $ngay_ve ?></td>
-                                </tr>
-                            <?php }
-                        ?>
-                    <?php } ?>
-                    </tbody>
-                </table>
-            </div>
         </div>
     </div>
-   
+    <div class="box-comment">
+        <h4>Bình luận </h4>
+        <form action="" method="post">
+            <div class="comment">
+                <textarea title="Nội dung" name="noi_dung" id="binh_luan" placeholder="Nội dung. Tối thiểu 15 ký tự *"
+                    style="resize:none;" required></textarea>
+            </div>
+            <div class="send-comment">
+                <button type="submit" name="submit">GỬI BÌNH LUẬN
+                    <i class="fas fa-paper-plane" style="margin-right: 5px;"></i></button>
+            </div>
+        </form>
+        <div class="item-comment">
+            <h4>Khách hàng bình luận</h4>
+            <!-- <?php
+            $ma_hs = $_GET['chitiet_dp'];
+            $allbl = $usermodel->show_binhluan($ma_hs);
+            foreach ($allbl as $row) { ?>
+
+                <div class="avatar-and-name">
+                    <i class="fas fa-user-tie"></i>
+                    <h5><?php echo $row['ten_kh'] ?> </h5>
+
+                </div>
+                <div class="detail-comment">
+                    <p><?php echo $row['ngay_bl'] ?></p>
+                    <p><?php echo $row['noi_dung'] ?></p>
+                </div>
+
+            <?php } ?> -->
+        </div>
+    </div>
+    =======
+    <?php
+    extract($oneRoom);
+    $listBookings = getListBookings($ma_phong);
+    ?>
+    <div class="table-booking">
+        <h3 class="table-booking__title">Lịch đặt phòng</h3>
+        <table cellspacing="0">
+            <thead>
+                <tr>
+                    <th width="200px">Ngày Đến</th>
+                    <th></th>
+                    <th width="200px">Ngày Về</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if (count($listBookings) <= 0) { ?>
+                    <tr>
+                        <td>
+                            <h5>Phòng chưa có người đặt</h5>
+                        </td>
+                    </tr>
+                <?php } else { ?>
+                    <?php
+                    foreach ($listBookings as $tableBooking) {
+                        extract($tableBooking); ?>
+                        <tr id="table-bookings_row">
+                            <td>
+                                <?= $ngay_den ?>
+                            <td>
+                            <td>
+                                <?= $ngay_ve ?>
+                            </td>
+                        </tr>
+                    <?php }
+                    ?>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+>>>>>>> 60c366168059af8333499057cd1f8501c189b388
 </div>

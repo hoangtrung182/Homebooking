@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="./Css/News.css">
     <link rel="stylesheet" href="./Css/booking.css">
     <link rel="stylesheet" href="./Css/detail.css">
-    <link rel="stylesheet" href="./Css/account.css">
     <title>Trang Chủ | Agoda</title>
 </head>
 

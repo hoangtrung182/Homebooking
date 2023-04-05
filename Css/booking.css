@@ -3,6 +3,8 @@
     box-shadow: 0 4px 6px #00000029;
     border-radius: 10px;
     width: 400px;
+
+    border: 1px solid rgb(205, 203, 203);
 }
 
 .price {
@@ -43,20 +45,18 @@
     color: #fff;
     font-weight: bold;
     font-size: 15px;
-    background: linear-gradient(90deg, #3d91c9 35%, #2d35d7 100%);
+    background: #23958fd4;
     transition: all 0.4s ease-in-out;
 }
 
 .btn-order1 {
-
-    margin-top: 20px;
-    padding: 10px 30px;
-    border-radius: 10px;
+    margin-left: 74px;
+    padding: 10px 20px;
     border: none;
     color: #fff;
     font-weight: bold;
     font-size: 15px;
-    background: linear-gradient(90deg, #3d91c9 35%, #2d35d7 100%);
+    background: #23958fd4;
     transition: all 0.4s ease-in-out;
 }
 
@@ -92,7 +92,7 @@
 }
 
 h5 {
-    font-size: 17px;
+    font-size: 19px;
 }
 
 .rulers-text h5 {
@@ -227,7 +227,7 @@ h5 {
 
 .content-table thead tr {
 
-    background-color: #486af3;
+    background-color: #23958fd4;
     color: #ffffff;
     text-align: center;
     font-weight: bold;
@@ -274,16 +274,16 @@ h5 {
     background-color: #f3f3f3;
 }
 
-.ron1 h4 {
+.ron1 h5 {
     color: red;
 }
 
-.ron2 h4 {
+.ron2 h5 {
     color: blue;
 }
 
-.ron3 h4 {
-    color: green;
+.ron3 h5 {
+    color: #009879;
 }
 
 .container h1 {
@@ -294,7 +294,7 @@ h5 {
 
 
 /*------ Show pay ----------*/
- .container_pay {
+.container_pay {
     max-width: 700px;
     margin: auto;
     padding: 20px;
@@ -309,6 +309,7 @@ h5 {
     grid-template-columns: 2fr 1fr;
     margin-top: 20px;
 }
+
 .content-ticket2 {
     display: flex;
     flex-direction: column;
@@ -336,7 +337,7 @@ h5 {
 }
 
 /*====== List booking========*/
- .content-table {
+.content-table {
     border-collapse: collapse;
     margin: auto;
     font-size: 0.9em;
@@ -419,9 +420,11 @@ h5 {
     font-weight: 500;
     color: red;
 }
+
 .table-booking {
     margin-top: 40px;
 }
+
 .table-booking__title {
     text-align: center;
     font-weight: 600;

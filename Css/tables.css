@@ -2,30 +2,52 @@
 
 
 table {
-    border: 0.5px solid #f3eeee;
-    width: 98%;
+    /* border: 0.5px solid #f3eeee; */
+    width: 90%;
     margin: auto;
+    box-shadow: 6px 8px 7px #24232329;
+    border-radius: 10px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+table tr {
+    border-radius: 10px;
+
 }
 
 .row1 {
-    color: #000;
     font-size: 18px;
     text-align: center;
-    /*height: 100px;*/
+    padding: 20px;
+    border: none;
+    margin-top: 80px;
+}
+
+.row1 td {
+    border: none;
+    padding: 10px 0;
 }
 
 .type {
     padding: 10px 10px;
-    background-color: rgb(227 227 227);
+    background-color: #23958fd4;
+    color: white;
+    border: none;
+}
+
+.under {
+    padding: 10px 10px;
 }
 
 .input_submit {
-    margin-left: 15px;
+    margin-left: 74px;
 }
 
 .input_submit a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 
@@ -111,7 +133,7 @@ table {
     font-size: 32px;
     color: #23958fd4;
     text-align: center;
-    margin: 30px;
+    margin: 40px;
     font-weight: 700;
 }
 

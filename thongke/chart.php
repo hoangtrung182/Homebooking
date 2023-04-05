@@ -27,6 +27,9 @@
 
         // Optional; add a title and set the width and height of the chart
         var options = {
+
+            'title': 'My Average Day',
+
             'title': 'Thống kế số phòng theo thể loại',
             'width': 550,
             'height': 400

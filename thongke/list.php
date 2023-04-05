@@ -1,10 +1,8 @@
-<link rel="stylesheet" href="../Css/account.css">
-<link rel="stylesheet" href="../Css/list.css">
-
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <body>
-    <h2>Danh sách tài khoản</h2>
-    <table border="1" cellspacing="0">
+    <h2 class="form_title">THỐNG KÊ</h2>
+    <table style="text-align: center;" cellspacing="0">
         <tr class="row">
             <th class="type">STT</th>
             <th class="type">Loại phòng</th>
@@ -17,17 +15,18 @@
         <?php
         foreach ($listtk as $tk) {
             extract($tk);
-            echo '<tr>
-            <td>' . $malp . '</td>
-            <td>' . $tenlp . '</td>
-            <td>' . $countPhong . '</td>
-            <td>' . $mingia . '</td>
-            <td>' . $maxgia . '</td>
-            <td>' . $avggia . '</td>
-            </tr>';
-        } ?>
+        ?>
+            <tr>
+                <td class="under"><?= $malp  ?></td>
+                <td class="under"><?= $tenlp  ?></td>
+                <td class="under"><?= $countPhong  ?></td>
+                <td class="under"><?= $mingia  ?></td>
+                <td class="under"><?= $maxgia  ?></td>
+                <td class="under"><?= $avggia  ?></td>
+            </tr>
+        <?php } ?>
     </table>
-    <div class="chart">
-        <a href="index.php?goto=chart">Biểu đồ</a>
+    <div>
+        <a href="index.php?goto=chart" class="btn-order1">Biểu đồ</a>
     </div>
 </body>
