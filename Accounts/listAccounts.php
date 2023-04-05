@@ -10,7 +10,7 @@
             <th class="type">Mật khẩu</th>
             <th class="type">Số điện thoại</th>
             <th class="type">Vai trò</th>
-            <th class="type"></th>
+            <th class="type" colspan="2">Thao tác</th>
             <th class="type"></th>
         </tr>
 
@@ -19,7 +19,7 @@
             extract($account);
             $editAcc = "index.php?goto=editAcc&id=" . $ma_tk;
             $deleteAcc = "index.php?goto=deleteAcc&id=" . $ma_tk;
-            ?>
+        ?>
             <tr class="row1">
                 <td>
                     <?= $ma_tk ?>

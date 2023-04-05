@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 60c366168059af8333499057cd1f8501c189b388
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-
 * {
     font-family: roboto;
 }
@@ -183,12 +177,9 @@ textarea {
 .introduce {
     width: 776px;
     border-radius: 4px;
-<<<<<<< HEAD
-    border: 1px solid rgb(221, 223, 226);
-=======
-    border: 1px solid #fff;
->>>>>>> 60c366168059af8333499057cd1f8501c189b388
-    padding: 16px;
+    <<<<<<< HEAD border: 1px solid rgb(221, 223, 226);
+    =======border: 1px solid #fff;
+    >>>>>>>60c366168059af8333499057cd1f8501c189b388 padding: 16px;
 }
 
 .icon_home {
@@ -218,8 +209,9 @@ textarea {
     width: 100%;
     border-bottom: 1px solid rgb(233, 235, 238);
 
-<<<<<<< HEAD
+    <<<<<<< HEAD
 }
+
 =======
 }
 
@@ -233,6 +225,7 @@ textarea {
     justify-content: center;
     align-items: center;
 }
+
 .detail-room_header {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -241,14 +234,15 @@ textarea {
     align-items: center;
 
 }
-.detail-room_title{
+
+.detail-room_title {
     font-style: italic;
     font-style: 20px;
 }
 
 .detail-room_name {
     text-align: center;
-    
+
 }
 
 .detail-room_image {
@@ -281,6 +275,7 @@ textarea {
     grid-template-columns: 3fr 1fr;
     justify-content: space-between;
 }
+
 .row-in-comment p {
     font-size: 16px;
     color: #c51d1d;
@@ -289,4 +284,5 @@ textarea {
 .comment-name {
     margin: 0;
 }
->>>>>>> 60c366168059af8333499057cd1f8501c189b388
+
+>>>>>>>60c366168059af8333499057cd1f8501c189b388
