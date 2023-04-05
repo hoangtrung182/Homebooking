@@ -44,6 +44,9 @@
                             <input type="hidden" name="ma_tk" value="<?= $ma_tk ?>">
                             <input type="submit" value="Chỉnh sửa hồ sơ" name="editUser" class="btn6-hover btn5">
                         </form>
+                        <button class="btn6-hover btn5">
+                            <a href="index.php?goto=changepassword">Đổi mật khẩu</a>
+                        </button>
                     </div>
                 </div>
             <?php } else { ?>
