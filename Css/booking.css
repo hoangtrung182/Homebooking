@@ -94,7 +94,7 @@
 }
 
 h5 {
-    font-size: 17px;
+    font-size: 19px;
 }
 
 .rulers-text h5 {
@@ -293,13 +293,10 @@ h5 {
     /*padding: 20px 0;*/
 }
 
-<<<<<<< HEAD
-.add_pay td {
-=======
 
 
 /*------ Show pay ----------*/
- .container_pay {
+.container_pay {
     max-width: 700px;
     margin: auto;
     padding: 20px;
@@ -314,6 +311,7 @@ h5 {
     grid-template-columns: 2fr 1fr;
     margin-top: 20px;
 }
+
 .content-ticket2 {
     display: flex;
     flex-direction: column;
@@ -341,7 +339,7 @@ h5 {
 }
 
 /*====== List booking========*/
- .content-table {
+.content-table {
     border-collapse: collapse;
     margin: auto;
     font-size: 0.9em;
@@ -424,9 +422,11 @@ h5 {
     font-weight: 500;
     color: red;
 }
+
 .table-booking {
     margin-top: 40px;
 }
+
 .table-booking__title {
     text-align: center;
     font-weight: 600;
@@ -435,6 +435,5 @@ h5 {
 }
 
 #table-bookings_row td {
->>>>>>> 60c366168059af8333499057cd1f8501c189b388
     text-align: center;
 }

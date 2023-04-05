@@ -141,7 +141,7 @@ if (isset($_GET['goto'])) {
 			$listRooms = selectRooms();
 			include '../Rooms/listRooms.php';
 			break;
-		// Dat phong
+		// Quản lí đặt phòng
 		case 'listBooking':
 			date_default_timezone_set('ASIA/HO_CHI_MINH');
 			$date = date('Y-m-d H:i:s');
@@ -215,7 +215,7 @@ if (isset($_GET['goto'])) {
 			include './bookings/detailBookings.php';
 			break;
 
-		// Tin tuc
+		// Quản lí tin tức
 		case 'listNews':
 			$listNews = selectNews();
 			include '../News/listNews.php';
@@ -301,9 +301,24 @@ if (isset($_GET['goto'])) {
 			$listNews = selectNews();
 			include '../News/listNews.php';
 			break;
-		// End News
-		// Chi tiết phòng
-		// abc thu nghiem
+		//  Binh luan 
+		case 'listbinhluan':
+			$listBinhluan = select_comments();
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				$item = getOneroom($_GET['id']);
+			}
+			include '../Comment/commentList.php';
+			break;
+		case 'deleteBinhluan':
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				delete_comment($_GET['id']);
+				$thongbao_xoa = "Xóa thành công!";
+			}
+
+			$listBinhluan = select_comments();
+			include '../Comment/commentList.php';
+			break;
+		// Authentication
 		case 'register':
 			if (isset($_POST['register']) && ($_POST['register'])) {
 				$hoten = $_POST['Ho_ten'];
@@ -317,7 +332,6 @@ if (isset($_GET['goto'])) {
 			}
 			include '../Accounts/register.php';
 			break;
-		//End register
 		case 'login':
 			if (isset($_POST['login']) && ($_POST['login'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -345,12 +359,20 @@ if (isset($_GET['goto'])) {
 			}
 			include '../Accounts/ForgetPass.php';
 			break;
-		//End forget
+		// Quản lí User
 		case 'listAcc':
 			$listUsers = load_taikhoan();
 			include '../Accounts/listAcc.php';
 			break;
 		//end listAcc
+		case 'deleteAcc':
+			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+				delete_acc($_GET['id']);
+				echo '<script>alert("Bạn đã chắc chắn với quyết định của mình?")</script>';
+			}
+			$listUsers = load_taikhoan();
+			include '../Accounts/listAcc.php';
+			break;
 		case 'editUsers':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 				$listUsers = getOneAccount($_GET['id']);
@@ -440,18 +462,7 @@ if (isset($_GET['goto'])) {
 				echo '<script>alert("Phản hồi đã gửi")</script>';
 			}
 			break;
-		case 'listContact':
-			$listContact = load_contact();
-			include '../Accounts/listContact.php';
-			break;
-		case 'Feedback':
-			include '../Contact/formFeedback.php';
-			break;
-		case 'btnFeedBack':
-			if (isset($_POST['btn_feedBack']) && $_POST['btn_feedBack']) {
-				echo '<script>alert("Phản hồi đã gửi")</script>';
-			}
-			break;
+		// Thống kê
 		case 'thongke':
 			$listtk = loadAll_thongke();
 			include '../thongke/list.php';

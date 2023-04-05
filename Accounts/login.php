@@ -12,7 +12,7 @@
             <?php
             if (isset($_SESSION['ten_tk']) && (is_array($_SESSION['ten_tk']))) {
                 extract($_SESSION['ten_tk']);
-            ?>
+                ?>
                 <div class="pane">
                     <div class="left-pane">
                         <ul>
@@ -24,15 +24,18 @@
                             <h3>Hồ sơ của tôi</h3>
                             <div class="form-info">
                                 Họ và tên<br>
-                                <input class="input" type="text" disabled name="ho_ten" value="<?= $ho_ten ?>" placeholder="Họ tên" required>
+                                <input class="input" type="text" disabled name="ho_ten" value="<?= $ho_ten ?>"
+                                    placeholder="Họ tên" required>
                             </div>
                             <div class="form-info">
                                 Email <br>
-                                <input class="input" type="email" disabled name="pass" value="<?= $email ?>" placeholder="Email" required>
+                                <input class="input" type="email" disabled name="pass" value="<?= $email ?>"
+                                    placeholder="Email" required>
                             </div>
                             <div class="form-info">
                                 Số điện thoại <br>
-                                <input class="input" type="text" disabled name="phone" value="<?= $phone ?>" placeholder="SĐT" required>
+                                <input class="input" type="text" disabled name="phone" value="<?= $phone ?>"
+                                    placeholder="SĐT" required>
                             </div>
                             <div class="form-info">
                                 Địa chỉ <br>
@@ -63,6 +66,6 @@
                     </div>
                     <?= isset($thongbao) ? $thongbao : '' ?>
                 <?php } ?>
-                </div>
+            </div>
         </div>
 </body>

@@ -64,14 +64,30 @@ if (isset($_GET['goto'])) {
 					$result = check_datphong($ma_phong); // return $list;
 					$book = $_SESSION['datphong'];
 
+
 					if ($result == []) {
 						$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $_SESSION['datphong']['ngay_den'], $_SESSION['datphong']['ngay_ve'], $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
 						$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
 					}
 
 					if (!empty($result)) {
+
 						foreach ($result as $value) {
+							$time_checkin = date_create($value['ngay_den']);
+							$time_checkout = date_create($value['ngay_ve']);
+
+							$gio_den = date_format($time_checkin, 'H:i:s');
+							$gio_ve = date_format($time_checkout, 'H:i:s');
+							$date1 = date('12:00:00');
+							$gio_hien_tai = date('H:i:s');
+							$date_qua_gio = strtotime('+1 hour', strtotime($date1));
+							$date_qua_gio1 = date('H:i:s', $date_qua_gio);
+
 							if ($value['ngay_ve'] < $date) {
+								$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
+								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
+							}
+							if ($value['ngay_ve'] == $date && $gio_ve < $gio_hien_tai) {
 								$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
 								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
 							}
@@ -114,14 +130,14 @@ if (isset($_GET['goto'])) {
 			}
 			include './Bookings/pay.php';
 			break;
-	// View Hotel & Rooms
+		// View Hotel & Rooms
 		case 'viewRooms':
 			$listCates = selectCates();
 			$listRooms = selectRooms();
 
 			include './Rooms/viewRooms.php';
 			break;
-	// List Room booked
+		// List Room booked
 		case 'listRooms_booking':
 			$listRooms = selectRooms_booking();
 			date_default_timezone_set('ASIA/HO_CHI_MINH');
@@ -200,7 +216,7 @@ if (isset($_GET['goto'])) {
 
 						date_default_timezone_set('ASIA/HO_CHI_MINH');
 						$date1 = date('14:00:00');
-                        $date2 = date('12:00:00');
+						$date2 = date('12:00:00');
 
 						$_SESSION['datphong'] = [
 							'ngay_dat' => $ngay_dat,
@@ -330,7 +346,7 @@ if (isset($_GET['goto'])) {
 			}
 			include './Accounts/ForgetPass.php';
 			break;
-	// THông tin cá nhân
+		// THông tin cá nhân
 		case 'editUser':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 				$user = getOneAccount($_GET['id']);
