@@ -35,6 +35,7 @@ if (isset($oneRoom)) {
                 <li class="navbar_menu"><a href="">Chính sách</a></li>
             </ul>
         </div>
+        
     </div>
 
     <div class="review_details">
@@ -82,7 +83,6 @@ if (isset($oneRoom)) {
                             }
                             ?>
                         </h2><span>vnđ / đêm</span>
-
                     </div>
                     <div class="time">
                         <input type="date" name="ngay_den" id="" class="first">
@@ -108,71 +108,73 @@ if (isset($oneRoom)) {
                 </form>
             </div>
              <?php
-            extract($oneRoom);
-            $listBookings = getListBookings($ma_phong);
-        ?>
-        <div class="table-booking">
-            <h3 class="table-booking__title">Lịch đặt phòng</h3>
-            <table cellspacing="0">
-                <thead>
-                    <tr>
-                        <th width="200px">Ngày Đến</th>
-                        <th></th>
-                        <th width="200px">Ngày Về</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    if (count($listBookings) <= 0) { ?>
+                extract($oneRoom);
+                $listBookings = getListBookings($ma_phong);
+            ?>
+            <div class="table-booking">
+                <h3 class="table-booking__title">Lịch đặt phòng</h3>
+                <table cellspacing="0">
+                    <thead>
                         <tr>
-                            <td>
-                                <h5>Phòng chưa có người đặt</h5>
-                            </td>
+                            <th width="200px">Ngày Đến</th>
+                            <th></th>
+                            <th width="200px">Ngày Về</th>
                         </tr>
-                    <?php } else { ?>
+                    </thead>
+                    <tbody>
                         <?php
-                        foreach ($listBookings as $tableBooking) {
-                            extract($tableBooking); ?>
-                            <tr id="table-bookings_row">
+                        if (count($listBookings) <= 0) { ?>
+                            <tr>
                                 <td>
-                                    <?= $ngay_den ?>
-                                <td>
-                                <td>
-                                    <?= $ngay_ve ?>
+                                    <h5>Phòng chưa có người đặt</h5>
                                 </td>
                             </tr>
-                        <?php }
-                        ?>
-                    <?php } ?>
-                </tbody>
-            </table>
+                        <?php } else { ?>
+                            <?php
+                            foreach ($listBookings as $tableBooking) {
+                                extract($tableBooking); ?>
+                                <tr id="table-bookings_row">
+                                    <td>
+                                        <?= $ngay_den ?>
+                                    <td>
+                                    <td>
+                                        <?= $ngay_ve ?>
+                                    </td>
+                                </tr>
+                            <?php }
+                            ?>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div class="detail_sametype">
+            <div class="icon_home">
+                <i class="fa-solid fa-heart"></i>
+                <span>Các phòng cùng thể loại</span>
+            </div>
+        </div>
+        <div class="nameroom-list">            
+            <?php 
+                foreach ($listSameRooms as $listRooms) {
+                    extract($listRooms); ?>
+                    <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>">
+                        <div class="detail-room_title">
+                            <h3><?= $ten_phong ?></h3>
+                            <div class="">
+                                <img src=".//<?= $avatar ?>" class="detail-room_image" alt="">
+                            </div>
+                            <p>
+                                <?= number_format($gia, 0, ',', '.') ?> VND
+                            </p>
+                        </div>
+                    </a>
+                <?php } 
+            ?>
         </div>
     </div>
 </div>
-<div class="">
-    <div class="detail_sametype">
-        <div class="icon_home">
-            <i class="fa-solid fa-heart"></i>
-            <span>Các phòng cùng thể loại</span>
-        </div>
-    </div>
-    <div class="nameroom-list">            
-        <?php 
-            foreach ($listSameRooms as $listRooms) {
-                extract($listRooms); ?>
-                <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>">
-                    <div class="detail-room_title">
-                        <h3><?= $ten_phong ?></h3>
-                        <div class="">
-                            <img src=".//<?= $avatar ?>" class="detail-room_image" alt="">
-                        </div>
-                        <p>
-                            <?= number_format($gia, 0, ',', '.') ?> VND
-                        </p>
-                    </div>
-                </a>
-            <?php } 
-        ?>
-    </div>
 
 </div>

@@ -297,15 +297,12 @@ if (isset($_GET['goto'])) {
 					if ($_SESSION['ten_tk']['vai_tro'] == 1) {
 						header('location: Admin/index.php');
 						return $_SESSION['ten_tk'];
-						// echo '<script> alert("Đăng nhập thành công!") </script>';
 					} else {
 						header('location: index.php');
 						return $_SESSION['ten_tk'];
 					}
-					// echo '<script> alert("Đăng nhập thành công!") </script>';
 				} else {
 					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
-					// $thongbao = "Tai khoan khong ton tai";
 				}
 			}
 			include './Accounts/login.php';

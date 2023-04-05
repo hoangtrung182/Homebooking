@@ -41,7 +41,7 @@
             if (count($listRooms) > 0) {
                 foreach ($listRooms as $phong) {
                     extract($phong); ?>
-                <!-- Show sản phẩm tìm kiếm -->
+                        <!-- Show sản phẩm tìm kiếm -->
                 <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>" target="_blank">
                     <li class="new-item">
                         <img src=".//<?= $avatar ?>" alt="">
@@ -57,7 +57,7 @@
                             </div>
                         </div>
                     </li>
-                    </a>
+                </a>
                 <?php }
             } else { ?>
                 <!--  Trả về ko tồn tại nếu array rỗng -->

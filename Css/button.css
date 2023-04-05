@@ -12,6 +12,10 @@
 	margin-left: 10px;
 }
 
+.btn-add {
+	margin-left: 10px;
+}
+
 .btn:hover {
 	opacity: .5;
 }

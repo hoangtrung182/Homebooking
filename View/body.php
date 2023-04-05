@@ -16,7 +16,6 @@
         <p>Nhận giá tốt nhất trên hơn 2.000.000 tài sản, trên toàn thế giới</p>
     </div>
     <div class="box">
-
         <!-- Form -->
         <form action="index.php?search=typerooms" method="post" class="form_search">
             <select name="loaiphong" id="" class="input_third">
