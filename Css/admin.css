@@ -1,3 +1,4 @@
+/*
 *{
     padding: 0;
     margin: 0;
@@ -138,8 +139,7 @@
             #04befe,
             #3f86ed);
     box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
-}
-
+}*/
 
 
 /*========== ADMIN moi ==========*/
@@ -150,7 +150,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'roboto',sans-serif;
+    /*font-family: 'roboto',sans-serif;*/
     
 }
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
@@ -450,6 +450,7 @@ body {
     background: var(--grey);
     cursor: pointer;
     position: relative;
+    color: #fff;
 }
 #content nav .switch-mode::before {
     content: '';
@@ -461,6 +462,7 @@ body {
     background: var(--blue);
     border-radius: 50%;
     transition: all .3s ease;
+    color: #fff;
 }
 #content nav #switch-mode:checked + .switch-mode::before {
     left: calc(100% - (25px - 4px) - 2px);

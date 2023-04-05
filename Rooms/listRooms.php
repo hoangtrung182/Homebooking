@@ -1,5 +1,5 @@
 <body>
-	<h2 class="form_title">Danh sách căn phòng</h2>
+	<h2 class="form_title">DANH SÁCH PHÒNG</h2>
 	<p class="form_label">Tìm kiếm sản phẩm</p>
 	<form action="index.php?search=rooms" method="post">
 		<input type="text" name="keyw" id="filter-input" class="input_one" placeholder="Nhập tên sản phẩm.....">
@@ -15,9 +15,9 @@
 		<input type="submit" id="btn-submit_product" class="btn" value="Tìm Kiếm" name="searchRooms">
 	</form>
 	<?php
-		$thongbao = isset($thongbao) ? $thongbao : '';
-		$thongbao_xoa = isset($thongbao_delete) ? $thongbao_delete : '';
-		$thongbao_sua = isset($thongbao_update) ? $thongbao_update : '';
+	$thongbao = isset($thongbao) ? $thongbao : '';
+	$thongbao_xoa = isset($thongbao_delete) ? $thongbao_delete : '';
+	$thongbao_sua = isset($thongbao_update) ? $thongbao_update : '';
 	?>
 	<p class="">
 		<?= $thongbao ?>
@@ -29,7 +29,7 @@
 		<?= $thongbao_sua ?>
 	</p>
 	<!-- Thêm mới -->
-	<button class="btn">
+	<button class="btn btn-add">
 		<a href="index.php?goto=addRooms1">Thêm mới</a>
 	</button>
 

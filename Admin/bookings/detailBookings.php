@@ -5,12 +5,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail booking</title>
-    <link rel="stylesheet" href="../../../Css/booking.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Css/booking.css">
 </head>
+<style>
+    .line-bot {
+        max-width: 700px;
+        margin: auto;
+        padding: 20px;
+        border: 2px solid #23958fd4;
+        border-radius: 10px;
+        margin-top: 80px;
+        box-shadow: 6px 8px 7px #24232329;
+    }
+
+    .edit {
+        max-width: 500px;
+    }
+
+    .edit a {
+        text-decoration: none;
+        color: #fff;
+        /* padding: 10px 15px; */
+        background-color: #23958fd4;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .title-item h5 {
+        font-size: 20px;
+        font-weight: 500;
+        color: black;
+        line-height: 0;
+    }
+
+    .details-item h3 {
+        font-size: 20px;
+        font-weight: 500;
+        color: red;
+    }
+</style>
 
 <body>
     <div class="line-bot">
+
         <div class="content-ticket1">
             <div class="title-item">
                 <h5>Tên phòng</h5>
@@ -70,6 +108,7 @@
             <!-- End item-ticket -->
         </div>
 
+        <!-- End item-ticket -->
         <div class="content-ticket2">
             <div class="item-ticket">
                 <div class="title-item">
@@ -111,11 +150,10 @@
                 </div>
                 <div class="details-item">
                     <h3 class="edit">
-                        <a
-                            href="index.php?goto=detailBookings&xacnhan=<?= $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?> ">Xác
-                            nhận</a>
-                        <a
-                            href="index.php?goto=detailBookings&huy=<?= $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?>">Hủy</a>
+
+                        <a href="index.php?goto=detailBookings&id_checkin=<?= $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?>">Check_in</a>
+                        <a href="index.php?goto=detailBookings&id_checkout=<?= $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?>">Check_out</a>
+                        <a href="index.php?goto=detailBookings&huy=<?= $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?>">Hủy</a>
                     </h3>
                 </div>
             </div>
