@@ -2,7 +2,7 @@
 	height: 31px;
 	width: 100px;
 	color: #fff;
-	background-color: #ff6b02;
+	background-color: #23958fd4;
 	border: none;
 	border-radius: 2px;
 	cursor: pointer;
@@ -16,6 +16,7 @@
 .btn a {
 	color: #fff;
 	text-decoration: none;
+	margin: 10px 0;
 }
 
 

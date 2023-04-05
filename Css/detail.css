@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 
+>>>>>>> 60c366168059af8333499057cd1f8501c189b388
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 * {
@@ -180,7 +183,11 @@ textarea {
 .introduce {
     width: 776px;
     border-radius: 4px;
+<<<<<<< HEAD
+    border: 1px solid rgb(221, 223, 226);
+=======
     border: 1px solid #fff;
+>>>>>>> 60c366168059af8333499057cd1f8501c189b388
     padding: 16px;
 }
 
@@ -211,6 +218,9 @@ textarea {
     width: 100%;
     border-bottom: 1px solid rgb(233, 235, 238);
 
+<<<<<<< HEAD
+}
+=======
 }
 
 
@@ -279,3 +289,4 @@ textarea {
 .comment-name {
     margin: 0;
 }
+>>>>>>> 60c366168059af8333499057cd1f8501c189b388

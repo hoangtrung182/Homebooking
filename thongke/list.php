@@ -1,9 +1,7 @@
 <link rel="stylesheet" href="../Css/account.css">
-<link rel="stylesheet" href="../Css/list.css">
-
 
 <body>
-    <h2>Danh sách tài khoản</h2>
+    <h2 class="form_title">THỐNG KÊ</h2>
     <table border="1" cellspacing="0">
         <tr class="row">
             <th class="type">STT</th>
@@ -28,6 +26,6 @@
         } ?>
     </table>
     <div class="chart">
-        <a href="index.php?goto=chart">Biểu đồ</a>
+        <a href="index.php?goto=chart" class="btn-order1">Biểu đồ</a>
     </div>
 </body>

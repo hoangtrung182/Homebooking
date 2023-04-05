@@ -59,10 +59,10 @@
                 <div class="title-your-information">
                     <h2 class="form_title">Thông tin của bạn</h2>
                 </div>
-                <?php 
-                    if(isset($_SESSION['ten_tk'])) {
-                        extract($_SESSION['ten_tk']);
-                    }
+                <?php
+                if (isset($_SESSION['ten_tk'])) {
+                    extract($_SESSION['ten_tk']);
+                }
                 ?>
 
                 <form action="" method="post">
@@ -111,7 +111,7 @@
                             </h4>
                         </div>
                         <div class="img-homestay">
-                            <img src="<?= $_SESSION['datphong']['avatar'] ?>" alt="" width="200px">
+                            <img src=".//<?= $_SESSION['datphong']['avatar'] ?>" alt="" width="200px">
                         </div>
                     </div>
 
@@ -127,12 +127,12 @@
                                 <path
                                     d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
                             </svg>
-                                <!-- <span>Check in</span> -->
+                            <!-- <span>Check in</span> -->
                             <span class="date-in">
                                 <?= $_SESSION['datphong']['ngay_den'] ?>
                             </span>
                             <span>-</span>
-                                <!-- <span>Check out</span> -->
+                            <!-- <span>Check out</span> -->
 
                             <span class="date-out">
                                 <?= $_SESSION['datphong']['ngay_ve'] ?>

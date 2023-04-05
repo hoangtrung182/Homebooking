@@ -21,7 +21,7 @@
                 extract($account);
                 $editAcc = "index.php?goto=editUsers&id=" . $ma_tk;
                 $deleteAcc = "index.php?goto=deleteAcc&id=" . $ma_tk;
-        ?>
+                ?>
                 <tr class="row1">
                     <td>
                         <?= $ma_tk ?>
@@ -57,7 +57,7 @@
                         </a>
                     </td>
                 </tr>
-        <?php }
+            <?php }
         } ?>
     </table>
 </body>

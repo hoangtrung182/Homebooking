@@ -18,7 +18,7 @@
             }
             ?>
             <form action="index.php?goto=btnFeedBack" method="post">
-                <h2 style="font-weight: bold;text-align:center;">Đăng ký</h2>
+                <h2 style="font-weight: bold;text-align:center;">HÃY ĐỂ LẠI ĐIỀU BẠN CẦN HỖ TRỢ</h2>
                 <div class=" form-info">
                     Họ tên <br>
                     <input class="input" type="text" value="<?= $ho_ten ?>" name="ten_ht" required placeholder="Họ tên">
