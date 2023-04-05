@@ -94,7 +94,11 @@ function update_booking($trang_thai, $ma_dp)
     $sql = "UPDATE datphong SET trang_thai='$trang_thai' WHERE ma_dp= '$ma_dp'";
     pdo_execute($sql);
 }
-
+function update_delay($them_gio, $thanh_tien, $ma_dp)
+{
+    $sql = "UPDATE datphong SET them_gio='$them_gio',thanh_tien='$thanh_tien' WHERE ma_dp= '$ma_dp'";
+    pdo_execute($sql);
+}
 function update_taikhoan($id, $ma_km)
 {
     $sql = "UPDATE taikhoan SET ma_km ='$ma_km' WHERE ma_tk ='$id'";

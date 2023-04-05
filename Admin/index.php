@@ -148,6 +148,9 @@ if (isset($_GET['goto'])) {
 			$list = listBooking();
 			include './bookings/listBookings.php';
 			break;
+		case 'detail':
+			include './bookings/detailBookings.php';
+			break;
 		case 'detailBookings':
 			date_default_timezone_set('ASIA/HO_CHI_MINH');
 			$date = date('Y-m-d H:i:s');
@@ -209,6 +212,19 @@ if (isset($_GET['goto'])) {
 					$ma_dp = $_GET['huy'];
 					update_booking($trang_thai, $ma_dp);
 					header("Location:index.php?goto=listBooking");
+				}
+			}
+
+			if (isset($_POST['them_gio'])) {
+				if ($_POST['gio'] == '') {
+					header("Location:index.php?goto=detailBookings");
+				} else {
+					$gio = $_POST['gio'];
+					$ma_dp = $_POST['id'];
+					$tien_them = ($gio * 100000) + $show['thanh_tien'];
+					update_delay($gio, $tien_them, $ma_dp);
+
+					header("Location:index.php?goto=detailBookings");
 				}
 			}
 

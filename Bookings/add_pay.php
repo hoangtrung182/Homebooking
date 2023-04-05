@@ -60,7 +60,7 @@
                                 if ($show['trang_thai'] == 0) {
                                     if ($show['ngay_den'] > $date) {
                                         echo "<div class='ron2'><h5>Sắp diễn ra!</h5></div>";
-                                    } else if ($show['ngay_den'] == $date && $gio_den < $date_qua_gio1) {
+                                    } else if ($show['ngay_den'] == $date && $gio_den < $gio_hien_tai) {
                                         echo "<div class='ron1'><h5>Đã quá thời gian check_in, phòng sẽ tự động hủy sau 1 giờ!</h5></div>";
                                     } else if ($show['ngay_den'] == $date && $gio_hien_tai == $date_qua_gio1) {
                                         delete_booking($show['ma_dp']);
