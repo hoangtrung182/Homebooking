@@ -1,10 +1,5 @@
 <?php
-function check_client($email, $pass)
-{
-    $sql = "SELECT * FROM taikhoan WHERE email = '$email' AND pass = '$pass'";
-    $result = pdo_query_one($sql);
-    return $result;
-}
+
 function selectRooms_booking()
 {
     $sql = "SELECT * FROM phong INNER JOIN loaiphong ON phong.ma_lp=loaiphong.ma_lp  order by ma_phong";
@@ -79,9 +74,17 @@ function show_bookingDetail($ma_dp)
 }
 function listBooking()
 {
-    $sql = "SELECT * FROM datphong INNER JOIN phong ON datphong.ma_phong=phong.ma_phong INNER JOIN loaiphong ON phong.ma_lp=loaiphong.ma_lp ORDER BY ten_phong DESC";
+    $sql = "SELECT * FROM datphong INNER JOIN phong ON datphong.ma_phong=phong.ma_phong INNER JOIN loaiphong ON phong.ma_lp=loaiphong.ma_lp";
     $list = pdo_query($sql);
     return $list;
+}
+
+function getSameOrders($ma_phong)
+{
+    $sql = "SELECT * FROM datphong  WHERE ma_phong='$ma_phong' ORDER BY ma_dp DESC";
+    $list = pdo_query($sql);
+    return $list;
+
 }
 function showDetail_Clientbooking($ma_dp)
 {

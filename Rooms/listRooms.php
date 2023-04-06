@@ -15,9 +15,9 @@
 		<input type="submit" id="btn-submit_product" class="btn" value="Tìm Kiếm" name="searchRooms">
 	</form>
 	<?php
-		$thongbao = isset($thongbao) ? $thongbao : '';
-		$thongbao_xoa = isset($thongbao_delete) ? $thongbao_delete : '';
-		$thongbao_sua = isset($thongbao_update) ? $thongbao_update : '';
+	$thongbao = isset($thongbao) ? $thongbao : '';
+	$thongbao_xoa = isset($thongbao_delete) ? $thongbao_delete : '';
+	$thongbao_sua = isset($thongbao_update) ? $thongbao_update : '';
 	?>
 	<p class="">
 		<?= $thongbao ?>
@@ -29,7 +29,7 @@
 		<?= $thongbao_sua ?>
 	</p>
 	<!-- Thêm mới -->
-	<button class="btn">
+	<button class="btn btn-add">
 		<a href="index.php?goto=addRooms1">Thêm mới</a>
 	</button>
 

@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Css/account.css">
+    <link rel="stylesheet" href="./Css/account.css">
     <title>Document</title>
 </head>
 
@@ -12,7 +12,7 @@
             <?php
             if (isset($_SESSION['ten_tk']) && (is_array($_SESSION['ten_tk']))) {
                 extract($_SESSION['ten_tk']);
-                ?>
+            ?>
                 <div class="pane">
                     <div class="left-pane">
                         <ul>
@@ -24,18 +24,15 @@
                             <h3>Hồ sơ của tôi</h3>
                             <div class="form-info">
                                 Họ và tên<br>
-                                <input class="input" type="text" disabled name="ho_ten" value="<?= $ho_ten ?>"
-                                    placeholder="Họ tên" required>
+                                <input class="input" type="text" disabled name="ho_ten" value="<?= $ho_ten ?>" placeholder="Họ tên" required>
                             </div>
                             <div class="form-info">
                                 Email <br>
-                                <input class="input" type="email" disabled name="pass" value="<?= $email ?>"
-                                    placeholder="Email" required>
+                                <input class="input" type="email" disabled name="pass" value="<?= $email ?>" placeholder="Email" required>
                             </div>
                             <div class="form-info">
                                 Số điện thoại <br>
-                                <input class="input" type="text" disabled name="phone" value="<?= $phone ?>"
-                                    placeholder="SĐT" required>
+                                <input class="input" type="text" disabled name="phone" value="<?= $phone ?>" placeholder="SĐT" required>
                             </div>
                             <div class="form-info">
                                 Địa chỉ <br>
@@ -44,6 +41,9 @@
                             <input type="hidden" name="ma_tk" value="<?= $ma_tk ?>">
                             <input type="submit" value="Chỉnh sửa hồ sơ" name="editUser" class="btn6-hover btn5">
                         </form>
+                        <button class="btn6-hover btn5">
+                            <a href="index.php?goto=changepassword">Đổi mật khẩu</a>
+                        </button>
                     </div>
                 </div>
             <?php } else { ?>
@@ -66,6 +66,6 @@
                     </div>
                     <?= isset($thongbao) ? $thongbao : '' ?>
                 <?php } ?>
-            </div>
+                </div>
         </div>
 </body>

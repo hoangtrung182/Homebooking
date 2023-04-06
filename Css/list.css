@@ -1,27 +1,34 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-.container{
+
+.container {
     background-image: linear-gradient(to right,
-    #b2dff3,
-    #96a9ca,
-    #a6d8e8,
-    #0f6082);
-box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+            #b2dff3,
+            #96a9ca,
+            #a6d8e8,
+            #0f6082);
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
     max-width: 1200px;
 }
-.ten h2{
+
+.ten h2 {
     text-align: center;
     color: rgb(15, 223, 223);
 }
 
-.chart a{
-    
-    text-decoration: none;
-    border: 1px ;
+.chart {
+    margin-left: 74px;
+    margin-top: 10px;
 }
+
+.chart a {
+    text-decoration: none;
+    border: 1px;
+}
+
 .btn5-hover {
     width: 150px;
     font-size: 15px;
@@ -39,4 +46,3 @@ box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
 }
-

@@ -10,10 +10,10 @@ $thongbao_delete = isset($thongbao_xoa) ? $thongbao_xoa : '';
 </p>
 
 <h2 class="form_title">DANH SÁCH LOẠI PHÒNG</h2>
-<table border="1" cellspacing="0">
-	<tr class="row">
+<table class="table" border="1" cellspacing="0">
+	<tr class="row cart-row">
 		<th class="type">Mã phòng</th>
-		<th class="type">Tên loại phòng</th>
+		<th class="type">Tên loại Phòng</th>
 		<th class="type" colspan="2">Thao tác</th>
 	</tr>
 	<?php
@@ -21,7 +21,7 @@ $thongbao_delete = isset($thongbao_xoa) ? $thongbao_xoa : '';
 		extract($loaiphong);
 		$editCate = "index.php?goto=editCate&id=" . $ma_lp;
 		$deleteCate = "index.php?goto=deleteCate&id=" . $ma_lp;
-		?>
+	?>
 		<tr class="row1">
 			<!-- <td><input type="checkbox" name=""></td> -->
 			<td>
@@ -37,8 +37,7 @@ $thongbao_delete = isset($thongbao_xoa) ? $thongbao_xoa : '';
 			</td>
 			<td>
 				<a href="<?= $deleteCate ?>">
-					<input type="button" value="Xóa" class="btn btn_delete"
-						onclick="return confirm('Bạn có chắc chắn muốn xóa không!')">
+					<input type="button" value="Xóa" class="btn btn_delete" onclick="return confirm('Bạn có chắc chắn muốn xóa không!')">
 				</a>
 			</td>
 		</tr>

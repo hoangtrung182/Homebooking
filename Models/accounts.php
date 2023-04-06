@@ -27,6 +27,12 @@ function checkPass($ten_tk) {
     return $check;
 }
 
+function update_mk($id, $pass) {
+    $sql = "UPDATE taikhoan SET  pass = '$pass' 
+         WHERE ma_tk ='$id'";
+    pdo_execute($sql);
+}
+
 function getOneAcc($ma_tk) {
     $sql = "SELECT * FROM phong WHERE ma_tk =" . $ma_tk;
     $acc = pdo_query_one($sql);

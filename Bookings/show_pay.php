@@ -106,12 +106,12 @@
                         $time_checkin = date_create($listPay['ngay_den']);
                         $time_checkout = date_create($listPay['ngay_ve']);
 
-                        $gio_den = date_format($time_checkin, 'H:i:s');
-                        $gio_ve = date_format($time_checkout, 'H:i:s');
+                        $gio_den = date_format($time_checkin, 'Y-m-d G:i:s');
+                        $gio_ve = date_format($time_checkout, 'Y-m-d G:i:s');
                         $date1 = date('12:00:00');
-                        $gio_hien_tai = date('H:i:s');
+                        $gio_hien_tai = date('Y-m-d G:i:s');
                         $date_qua_gio = strtotime('+1 hour', strtotime($gio_den));
-                        $date_qua_gio1 = date('H:i:s', $date_qua_gio);
+                        $date_qua_gio1 = date('Y-m-d G:i:s', $date_qua_gio);
 
 
                         if ($listPay['trang_thai'] == 0) {
