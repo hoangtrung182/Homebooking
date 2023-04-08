@@ -165,15 +165,6 @@ if (isset($_GET['goto'])) {
 				$date = date('Y-m-d H:i:s');
 			}
 
-			$time_checkin = date_create($show['ngay_den']);
-			$time_checkout = date_create($show['ngay_ve']);
-
-			$gio_den = date_format($time_checkin, 'Y-m-d G:i:s');
-			$gio_ve = date_format($time_checkout, 'Y-m-d G:i:s');
-
-			$gio_hien_tai = date('Y-m-d G:i:s');
-			$date_qua_gio = strtotime('+1 hour', strtotime($gio_ve));
-			$date_qua_gio1 = date('Y-m-d G:i:s', $date_qua_gio);
 
 			if (isset($_GET['id_checkin'])) {
 				if ($show['trang_thai'] == 0 && $show['ngay_den'] > $date) {
@@ -184,7 +175,7 @@ if (isset($_GET['goto'])) {
 					header("Location:index.php?goto=listBooking&id=" . $show['ma_phong']);
 				} else if ($show['trang_thai'] == 2) {
 					header("Location:index.php?goto=listBooking&id=" . $show['ma_phong']);
-				} else if ($show['trang_thai'] == 0 && $show['ngay_den'] == $date && $gio_den <= $date_qua_gio1) {
+				} else if ($show['trang_thai'] == 0 && $show['ngay_den'] == $date) {
 					$trang_thai = 1;
 					$ma_dp = $_GET['id_checkin'];
 					update_booking($trang_thai, $ma_dp);
@@ -199,7 +190,7 @@ if (isset($_GET['goto'])) {
 					header("Location:index.php?goto=listBooking&id=" . $show['ma_phong']);
 				} else if ($show['trang_thai'] == 3) {
 					header("Location:index.php?goto=listBooking&id=" . $show['ma_phong']);
-				} else if ($show['trang_thai'] == 1 && $show['ngay_ve'] == $date && $gio_hien_tai >= $gio_ve) {
+				} else if ($show['trang_thai'] == 1 && $show['ngay_ve'] == $date) {
 					$trang_thai = 2;
 					$ma_dp = $_GET['id_checkout'];
 					update_booking($trang_thai, $ma_dp);
@@ -222,18 +213,18 @@ if (isset($_GET['goto'])) {
 				}
 			}
 
-			if (isset($_POST['them_gio'])) {
-				if ($_POST['gio'] == '') {
-					header("Location:index.php?goto=detailBookings&update_trangthai=" . $show['ma_dp']);
-				} else {
-					$gio = $_POST['gio'];
-					$ma_dp = $_POST['id'];
-					$tien_them = ($gio * 100000) + $show['thanh_tien'];
-					update_delay($gio, $tien_them, $ma_dp);
+			// if (isset($_POST['them_gio'])) {
+			// 	if ($_POST['gio'] == '') {
+			// 		header("Location:index.php?goto=detailBookings&update_trangthai=" . $show['ma_dp']);
+			// 	} else {
+			// 		$gio = $_POST['gio'];
+			// 		$ma_dp = $_POST['id'];
+			// 		$tien_them = ($gio * 100000) + $show['thanh_tien'];
+			// 		update_delay($gio, $tien_them, $ma_dp);
 
-					header("Location:index.php?goto=detailBookings&update_trangthai=" . $show['ma_dp']);
-				}
-			}
+			// 		header("Location:index.php?goto=detailBookings&update_trangthai=" . $show['ma_dp']);
+			// 	}
+			// }
 
 			include './bookings/detailBookings.php';
 			break;

@@ -107,7 +107,7 @@
             </div>
             <!-- End item-ticket -->
             <!-- End item-ticket -->
-            <div class="item-ticket">
+            <!-- <div class="item-ticket">
                 <div class="title-item">
                     <h5>Giờ đặt thêm(nếu có):</h5>
                 </div>
@@ -118,7 +118,7 @@
                         <button type="submit" name="them_gio">Xác nhận</button>
                     </form>
                 </div>
-            </div>
+            </div> -->
             <!-- End item-ticket -->
         </div>
 
@@ -165,9 +165,12 @@
                 <div class="details-item">
                     <h3 class="edit">
 
-                        <a href="index.php?goto=detailBookings&id_checkin=<?= $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?>">Check_in</a>
-                        <a href="index.php?goto=detailBookings&id_checkout=<?= $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?>">Check_out</a>
-                        <a href="index.php?goto=detailBookings&huy=<?= $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?>">Hủy</a>
+                        <a
+                            href="index.php?goto=detailBookings&id_checkin=<?= $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?>">Check_in</a>
+                        <a
+                            href="index.php?goto=detailBookings&id_checkout=<?= $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?>">Check_out</a>
+                        <a
+                            href="index.php?goto=detailBookings&huy=<?= $show['ma_dp'] ?>&update_trangthai=<?= $show['ma_dp'] ?>">Hủy</a>
                     </h3>
                 </div>
             </div>
