@@ -59,9 +59,12 @@ $list_bl = selectList_comments($ma_lp);
                 $noi_dung = $_POST['mess'];
                 $ma_khach_hang = $_SESSION['ten_tk']['ma_tk'];
                 date_default_timezone_set('ASIA/HO_CHI_MINH');
-                $ngay_dat = date('H:i:s - Y-m-d');
+                $ngay_dat = date('H:i:s - Y/m/d');
 
-                insert_comments($noi_dung, $ma_khach_hang, $ma_lp, $ngay_dat);
+                if($noi_dung !== '') {
+                    insert_comments($noi_dung, $ma_khach_hang, $ma_lp, $ngay_dat);
+                    header("Location: " . $_SERVER['HTTP_REFERER']);
+                }
             }else {
                 echo '<script>alert("Vui lòng đăng nhập để bình luận!")</script>';
             }

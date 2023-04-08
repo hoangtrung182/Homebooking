@@ -47,13 +47,13 @@
                 if(!isset($BothFiltered)) {
                     return '';
                 }
-             ?>
+            ?>
             <?php 
              if(count($BothFiltered) > 0) {
                  foreach ($BothFiltered as $phong) {
                     extract($phong); ?>
                 <!-- Show sản phẩm tìm kiếm -->
-                <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>" target="_blank">
+                <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>">
                      <li class="new-item">
                          <img src=".//<?= $avatar ?>" alt="">
                          <div class="new-info">

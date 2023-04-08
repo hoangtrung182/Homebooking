@@ -23,7 +23,7 @@
         <header class="header">
             <div class="logo">
                 <a href="./">
-                    <img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt="">
+                    <img src="./img/colordefault.svg" alt="">
                 </a>
             </div>
             <div class="menu">

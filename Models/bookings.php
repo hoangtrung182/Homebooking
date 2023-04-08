@@ -83,6 +83,21 @@ function listBooking()
     $list = pdo_query($sql);
     return $list;
 }
+
+function getListName($ma_phong) {
+    $sql = "SELECT * FROM datphong WHERE ma_phong = '$ma_phong'";
+    $result = pdo_query($sql);
+    return $result;
+}
+
+function getOneName() {
+    $sql = "SELECT DISTINCT ma_phong from datphong";
+    $result = pdo_query($sql);
+    return $result;
+}
+
+
+
 function showDetail_Clientbooking($ma_dp)
 {
     $sql = "SELECT * FROM datphong INNER JOIN phong ON datphong.ma_phong=phong.ma_phong INNER JOIN loaiphong ON phong.ma_lp=loaiphong.ma_lp WHERE ma_dp='$ma_dp'";

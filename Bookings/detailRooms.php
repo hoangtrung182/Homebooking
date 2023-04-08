@@ -149,32 +149,34 @@ if (isset($oneRoom)) {
             </div>
         </div>
     </div>
-    <div class="">
-        <div class="detail_sametype">
-            <div class="icon_home">
-                <i class="fa-solid fa-heart"></i>
-                <span>Các phòng cùng thể loại</span>
+   <section class="list-rooms">
+        <div class="sub_container">
+            <div class="rooms-title">
+                <h2 class="">PHÒNG GỢI Ý CÙNG LOẠI PHÒNG</h2>
             </div>
-        </div>
-        <div class="nameroom-list">            
-            <?php 
-                foreach ($listSameRooms as $listRooms) {
-                    extract($listRooms); ?>
-                    <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>">
-                        <div class="detail-room_title">
-                            <h3><?= $ten_phong ?></h3>
-                            <div class="">
-                                <img src=".//<?= $avatar ?>" class="detail-room_image" alt="">
-                            </div>
+            <div class="row-rooms">
+                <?php
+                foreach ($listSameRooms as $phong) {
+                    extract($phong);
+                    ?>
+                    <div class="body-item">
+                        <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>">
+                            <img src=".//<?= $avatar ?>" alt=""></a>
+                        <div class="">
+                            <h3>
+                                <?= $ten_phong ?>
+                            </h3>
+                            <em>Giá mỗi đêm rẻ từ</em>
                             <p>
                                 <?= number_format($gia, 0, ',', '.') ?> VND
                             </p>
                         </div>
-                    </a>
-                <?php } 
-            ?>
+                    </div>
+                <?php }
+                ?>
+            </div>
         </div>
-    </div>
+    </section>
 </div>
 
 </div>

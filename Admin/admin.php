@@ -23,11 +23,11 @@
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="index.php" class="brand">
-            <div class="logo"><img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt=""></div>
+            <div class="logo"><img src="../img/colordefault.svg" alt=""></div>
         </a>
         <ul class="side-menu top">
             <li class="active">
-                <a href="../index.php">
+                <a href="./index.php">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text"></span>
                 </a>

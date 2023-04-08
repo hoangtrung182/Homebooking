@@ -94,7 +94,7 @@
 
                     </div>
                     <div class="">
-                        <button type="submit" name="dat_phong" class="btn-order1">Đặt phòng</button>
+                        <button type="submit" name="dat_phong" class="btn-order2">Đặt phòng</button>
                     </div>
                 </form>
 
