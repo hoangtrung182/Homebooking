@@ -32,22 +32,21 @@
                     <?php foreach ($shows as $show) {
                         extract($show); ?>
                         <tr class="add_pay">
-                            <td><img src="../<?= $show['avatar'] ?>" alt="" width="200px"></td>
+                            <td><img src=".//<?= $show['avatar'] ?>" alt="" width="200px"></td>
                             <td>
                                 <?= $show['ten_phong'] ?>
                             </td>
                             <td class="text1">
-                                <a href="index.php?goto=show_pay&id_ct=<?= $show['ma_dp'] ?>"><button class="btn-order1">Chi
-                                        tiết</button></a>
+                                <a href="index.php?goto=show_pay&id_ct=<?= $show['ma_dp'] ?>">
+                                    <button class="btn-order2">
+                                        Chi tiết</button>
+                                    </a>
                                 <a href="index.php?goto=add_pay&id_huy=<?= $show['ma_dp'] ?>"
                                     onclick=" return confirm('Bạn chắc chắn muốn hủy đặt phòng không!');"><button
-                                        class="btn-order1">Hủy</button></a>
+                                        class="btn-order2">Hủy</button></a>
                             </td>
                             <td>
                                 <?php
-
-
-
                                 if ($show['trang_thai'] == 0) {
                                     if ($show['ngay_den'] < $date) {
                                         echo "<div class='ron1'><h5>Đã quá thời gian xác nhận!</h5></div>";

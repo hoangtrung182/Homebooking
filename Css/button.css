@@ -5,7 +5,11 @@
 	background-color: #23958fd4;
 	border: none;
 	cursor: pointer;
-	/*margin: 15px;*/
+	margin: 10px 15px;
+}
+
+.btn-add {
+	margin-left: 10px;
 }
 
 .btn-add {

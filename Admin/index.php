@@ -453,6 +453,29 @@ if (isset($_GET['goto'])) {
 			}
 			include './Users/updateUser.php';
 			break;
+		case 'changepassword' :
+			if(isset($_POST['doimatkhau']) && $_POST['doimatkhau']) {
+				$id = $_POST['id'];
+				$ten_tk = $_POST['ten_tk'];
+				$oldpass = $_POST['oldpass'];
+				$newpass1 = $_POST['newpass1'];
+				$newpass2 = $_POST['newpass2'];
+
+				if($oldpass === $_SESSION['ten_tk']['pass']) {
+					if($newpass1 === $newpass2) {
+						update_mk($id, $newpass2);
+						$_SESSION['ten_tk'] = checkAccount($ten_tk, $newpass2);
+						$thongbao = "Đổi mật khẩu thành công!";
+						header('location: index.php?goto=exit');
+					}else {
+						$thongbaodung = "Mật khẩu mới không trùng khớp";
+					}
+				}else {
+					$thongbaodung = "Nhập sai mật khẩu cũ";
+				}
+			}
+			include '../Accounts/changepw.php';
+			break;
 		case 'exit':
 			session_unset();
 			header('location: ../index.php');

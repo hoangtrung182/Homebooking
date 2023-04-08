@@ -16,25 +16,21 @@
                         <?= $ten_phong ?>
                     </h3>
                     <p>
-                        Loại phòng:
-                        <?= $ma_lp ?>
-                    </p>
-                    <p>
                         <?= substr($mo_ta, 0, 100) ?>
                     </p>
                     <span class="price-item">
                         <?php if ($giam_gia == 0) {
                             $format_number_4 = number_format($gia, 0, ',', '.');
-                            echo $format_number_4 . 'vnđ/đêm';
+                            echo 'Giá: ' . $format_number_4 . 'vnđ / đêm';
                         } else { ?>
                             <h4 style="text-decoration-line:line-through; color:black">
                                 <?php
                                 $format_number_4 = number_format($gia, 0, ',', '.');
-                                echo $format_number_4 . 'vnđ/đêm' . '<br>'; ?>
+                                echo 'Giá:' . $format_number_4 . 'vnđ / đêm' . '<br>'; ?>
                             </h4>
                             <?php
                             $format_number_3 = number_format($giam_gia, 0, ',', '.');
-                            echo $format_number_3 . 'vnđ/đêm';
+                            echo 'Giá: ' . $format_number_3 . 'vnđ / đêm';
                         } ?>
                     </span>
                     <div>

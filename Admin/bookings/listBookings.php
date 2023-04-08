@@ -71,8 +71,9 @@
                 <tr>
                     <th>Mã đơn</th>
                     <th>Tên khách hàng</th>
-                    <th>Mã phòng</th>
-                    <th>Ngày đặt</th>
+                    <th>ID</th>
+                    <th>Ngày đến</th>
+                    <th>Ngày về</th>
                     <th>Chi tiết</th>
                     <th>Trạng thái</th>
                 </tr>
@@ -92,7 +93,10 @@
                             <?= $same1['ma_phong'] ?>
                         </td>
                         <td>
-                            <?= $same1['ngay_dat'] ?>
+                            <?= $same1['ngay_den'] ?>
+                        </td>
+                        <td>
+                            <?= $same1['ngay_ve'] ?>
                         </td>
                         <td class="edit">
                             <a href="index.php?goto=detailBookings&update_trangthai=<?= $same1['ma_dp'] ?>">Chi

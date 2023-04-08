@@ -52,7 +52,7 @@ table tr {
 
 
 .form_search {
-    margin: 20px 30px;
+    padding: 30px;
 }
 
 
@@ -196,9 +196,9 @@ table tr {
 .notify_min {
     color: #d94141;
     position: absolute;
-    top: 59%;
+    top: 62%;
     border: 1px solid $ccc;
-    left: 250px;
+    left: 260px;
     display: block;
     border: 1px solid #ccc;
     background: #8cc3eb;
@@ -209,9 +209,9 @@ table tr {
 .notify_max {
     color: #d94141;
     position: absolute;
-    top: 59%;
+    top: 62%;
     border: 1px solid $ccc;
-    left: 250px;
+    left: 260px;
     display: block;
     border: 1px solid #ccc;
     background: #8cc3eb;
