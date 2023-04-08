@@ -23,7 +23,8 @@
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="" class="brand">
-            <div class="logo"><img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt=""></div>
+            <div class="logo"><img src="https://cdn6.agoda.net/images/kite-js/logo/agoda/color-default.svg" alt="">
+            </div>
         </a>
         <ul class="side-menu top">
             <li class="active">
@@ -45,7 +46,7 @@
                 </a>
             </li>
             <li>
-                <a href="index.php?goto=listBooking">
+                <a href="index.php?goto=listRooms_booking">
                     <i class='bx bxs-message-dots'></i>
                     <span class="text">QUẢN LÝ ĐẶT PHÒNG</span>
                 </a>
@@ -85,7 +86,7 @@
             <?php
             if (isset($_SESSION['ten_tk'])) {
                 extract($_SESSION['ten_tk']);
-            ?>
+                ?>
                 <li>
                     <a href="index.php?goto=login">
                         <button class="btn5-hover btn5">
@@ -98,9 +99,9 @@
                         <button class="btn5-hover btn5">Thoát</button>
                     </a>
                 </li>
-            <?php
+                <?php
             } else {
-            ?>
+                ?>
                 <li><a href="index.php?goto=login"><button class="btn5-hover btn5">
                             ĐĂNG NHẬP
                         </button>

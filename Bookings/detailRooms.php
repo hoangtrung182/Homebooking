@@ -2,11 +2,6 @@
 if (isset($oneRoom)) {
     extract($oneRoom);
 }
-// die;
-// $listSameRooms = sameRoom($ma_lp);
-
-// var_dump($listSameRoom);
-
 ?>
 
 <div class="detail_room">
@@ -38,26 +33,7 @@ if (isset($oneRoom)) {
                 <li class="navbar_menu"><a href="">Chính sách</a></li>
             </ul>
         </div>
-        <!-- <div class="show_price">
-            <div class="show_price_right">
-                <div class="navbar_backtotopnav">
-                    <div class="sticky_nav_price">
-                        <span class="span_style">
-                            từ
-                        </span>
-                        <span class="span_price">
-                            <?= number_format($gia, 0, ',', '.') ?>
-                        </span>
-                        <span class="span_price_detail">₫</span>
-                    </div>
-                    <div class="sticky_nav_price_button">
-                        <button class="btn_showgia">
-                            <span class="btn_span_showgia">xem giá</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+
     </div>
     <div class="review_details">
         <div class="introduce">
@@ -127,6 +103,46 @@ if (isset($oneRoom)) {
                     </p>
                 </form>
             </div>
+            <?php
+            extract($oneRoom);
+            $listBookings = getListBookings($ma_phong);
+            ?>
+            <div class="table-booking">
+                <h3 class="table-booking__title">Lịch đặt phòng</h3>
+                <table cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th width="200px">Ngày Đến</th>
+                            <th></th>
+                            <th width="200px">Ngày Về</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if (count($listBookings) <= 0) { ?>
+                            <tr>
+                                <td>
+                                    <h5>Phòng chưa có người đặt</h5>
+                                </td>
+                            </tr>
+                        <?php } else { ?>
+                            <?php
+                            foreach ($listBookings as $tableBooking) {
+                                extract($tableBooking); ?>
+                                <tr id="table-bookings_row">
+                                    <td>
+                                        <?= $ngay_den ?>
+                                    <td>
+                                    <td>
+                                        <?= $ngay_ve ?>
+                                    </td>
+                                </tr>
+                            <?php }
+                            ?>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <div class="box-comment">
@@ -161,49 +177,10 @@ if (isset($oneRoom)) {
             <?php } ?> -->
         </div>
     </div>
-    =======
-    <?php
-    extract($oneRoom);
-    $listBookings = getListBookings($ma_phong);
-    ?>
-    <div class="table-booking">
-        <h3 class="table-booking__title">Lịch đặt phòng</h3>
-        <table cellspacing="0">
-            <thead>
-                <tr>
-                    <th width="200px">Ngày Đến</th>
-                    <th></th>
-                    <th width="200px">Ngày Về</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                if (count($listBookings) <= 0) { ?>
-                    <tr>
-                        <td>
-                            <h5>Phòng chưa có người đặt</h5>
-                        </td>
-                    </tr>
-                <?php } else { ?>
-                    <?php
-                    foreach ($listBookings as $tableBooking) {
-                        extract($tableBooking); ?>
-                        <tr id="table-bookings_row">
-                            <td>
-                                <?= $ngay_den ?>
-                            <td>
-                            <td>
-                                <?= $ngay_ve ?>
-                            </td>
-                        </tr>
-                    <?php }
-                    ?>
-                <?php } ?>
-            </tbody>
-        </table>
-    </div>
+
+
 </div>
 </div>
 
->>>>>>> 60c366168059af8333499057cd1f8501c189b388
+
 </div>

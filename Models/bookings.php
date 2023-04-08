@@ -1,10 +1,5 @@
 <?php
-function check_client($email, $pass)
-{
-    $sql = "SELECT * FROM taikhoan WHERE email = '$email' AND pass = '$pass'";
-    $result = pdo_query_one($sql);
-    return $result;
-}
+
 function selectRooms_booking()
 {
     $sql = "SELECT * FROM phong INNER JOIN loaiphong ON phong.ma_lp=loaiphong.ma_lp  order by ma_phong";
@@ -79,9 +74,17 @@ function show_bookingDetail($ma_dp)
 }
 function listBooking()
 {
-    $sql = "SELECT * FROM datphong INNER JOIN phong ON datphong.ma_phong=phong.ma_phong INNER JOIN loaiphong ON phong.ma_lp=loaiphong.ma_lp ORDER BY ten_phong DESC";
+    $sql = "SELECT * FROM datphong INNER JOIN phong ON datphong.ma_phong=phong.ma_phong INNER JOIN loaiphong ON phong.ma_lp=loaiphong.ma_lp";
     $list = pdo_query($sql);
     return $list;
+}
+
+function getSameOrders($ma_phong)
+{
+    $sql = "SELECT * FROM datphong  WHERE ma_phong='$ma_phong' ORDER BY ma_dp DESC";
+    $list = pdo_query($sql);
+    return $list;
+
 }
 function showDetail_Clientbooking($ma_dp)
 {
@@ -94,7 +97,11 @@ function update_booking($trang_thai, $ma_dp)
     $sql = "UPDATE datphong SET trang_thai='$trang_thai' WHERE ma_dp= '$ma_dp'";
     pdo_execute($sql);
 }
-
+function update_delay($them_gio, $thanh_tien, $ma_dp)
+{
+    $sql = "UPDATE datphong SET them_gio='$them_gio',thanh_tien='$thanh_tien' WHERE ma_dp= '$ma_dp'";
+    pdo_execute($sql);
+}
 function update_taikhoan($id, $ma_km)
 {
     $sql = "UPDATE taikhoan SET ma_km ='$ma_km' WHERE ma_tk ='$id'";
