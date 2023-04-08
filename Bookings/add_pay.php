@@ -37,11 +37,11 @@
                                 <?= $show['ten_phong'] ?>
                             </td>
                             <td class="text1">
-                                <a href="index.php?goto=show_pay&id_ct=<?= $show['ma_dp'] ?>"><button class="btn-order1">Chi
+                                <a href="index.php?goto=show_pay&id_ct=<?= $show['ma_dp'] ?>"><button class="btn-order2">Chi
                                         tiết</button></a>
                                 <a href="index.php?goto=add_pay&id_huy=<?= $show['ma_dp'] ?>"
                                     onclick=" return confirm('Bạn chắc chắn muốn hủy đặt phòng không!');"><button
-                                        class="btn-order1">Hủy</button></a>
+                                        class="btn-order2">Hủy</button></a>
                             </td>
                             <td>
                                 <?php

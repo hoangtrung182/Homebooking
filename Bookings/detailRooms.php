@@ -2,6 +2,7 @@
 if (isset($oneRoom)) {
     extract($oneRoom);
 }
+
 ?>
 
 <div class="detail_room">
@@ -22,6 +23,7 @@ if (isset($oneRoom)) {
             <img src="./img/detail/7.jpg" alt="" class="img-extra img-detail bottom">
         </div>
     </div>
+
     <div class="box_navbar">
         <div class="menu_group">
             <ul>
@@ -35,32 +37,39 @@ if (isset($oneRoom)) {
         </div>
 
     </div>
+
     <div class="review_details">
         <div class="introduce">
             <div class="nameroom">
                 <div class="icon_home">
                     <i class="fa-solid fa-heart"></i>
-                    <span>toàn bộ phòng</span>
+                    <span>Thông tin phòng</span>
                 </div>
-                <?php
-                foreach ($listSameRooms as $room) {
-                    extract($room);
-                } ?>
-                <h3>
-                    <?= $ten_phong ?>
-                </h3>
-                <div class="mo_ta">
-                    <div class="hr">
-                        <div class="sider_line">
-                        </div>
-                    </div>
-                    <div class="content">
-                        <span>
-                            <?= $mo_ta ?>
-                        </span>
-                    </div>
+                <div class="detail-room_header">
+                    <?php
+                    $item = getOneItem($ma_lp);
+                    extract($item);
+                    ?>
+                    <h3 class="detail-room_title">Thể loại:
+                        <?= $ten_lp ?>
+                    </h3>
+                    <h3 class="detail-room_title">
+                        Tên phòng:
+                        <?= $ten_phong ?>
+                    </h3>
                 </div>
-
+            </div>
+            <!-- Comments -->
+            <div class="row_product">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $("#binhluan").load("./Comment/commentForm.php", { ma_lp: <?= $ma_phong ?> })
+                    });
+                </script>
+                <div>
+                    <span id="binhluan"></span>
+                </div>
             </div>
         </div>
         <div class="bookroom">
@@ -76,9 +85,7 @@ if (isset($oneRoom)) {
                                 echo $format_number_3;
                             }
                             ?>
-
                         </h2><span>vnđ / đêm</span>
-
                     </div>
                     <div class="time">
                         <input type="date" name="ngay_den" id="" class="first">
@@ -145,42 +152,34 @@ if (isset($oneRoom)) {
             </div>
         </div>
     </div>
-    <div class="box-comment">
-        <h4>Bình luận </h4>
-        <form action="" method="post">
-            <div class="comment">
-                <textarea title="Nội dung" name="noi_dung" id="binh_luan" placeholder="Nội dung. Tối thiểu 15 ký tự *"
-                    style="resize:none;" required></textarea>
+    <section class="list-rooms">
+        <div class="sub_container">
+            <div class="rooms-title">
+                <h2 class="">PHÒNG GỢI Ý CÙNG LOẠI PHÒNG</h2>
             </div>
-            <div class="send-comment">
-                <button type="submit" name="submit">GỬI BÌNH LUẬN
-                    <i class="fas fa-paper-plane" style="margin-right: 5px;"></i></button>
+            <div class="row-rooms">
+                <?php
+                foreach ($listSameRooms as $phong) {
+                    extract($phong);
+                    ?>
+                    <div class="body-item">
+                        <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>">
+                            <img src=".//<?= $avatar ?>" alt=""></a>
+                        <div class="">
+                            <h3>
+                                <?= $ten_phong ?>
+                            </h3>
+                            <em>Giá mỗi đêm rẻ từ</em>
+                            <p>
+                                <?= number_format($gia, 0, ',', '.') ?> VND
+                            </p>
+                        </div>
+                    </div>
+                <?php }
+                ?>
             </div>
-        </form>
-        <div class="item-comment">
-            <h4>Khách hàng bình luận</h4>
-            <!-- <?php
-            $ma_hs = $_GET['chitiet_dp'];
-            $allbl = $usermodel->show_binhluan($ma_hs);
-            foreach ($allbl as $row) { ?>
-
-                <div class="avatar-and-name">
-                    <i class="fas fa-user-tie"></i>
-                    <h5><?php echo $row['ten_kh'] ?> </h5>
-
-                </div>
-                <div class="detail-comment">
-                    <p><?php echo $row['ngay_bl'] ?></p>
-                    <p><?php echo $row['noi_dung'] ?></p>
-                </div>
-
-            <?php } ?> -->
         </div>
-    </div>
-
-
+    </section>
 </div>
-</div>
-
 
 </div>
