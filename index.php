@@ -14,6 +14,7 @@ if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
 		// Dat phong
 		case 'pays':
+
 			if (isset($_SESSION['ten_tk'])) {
 				$ten_kh = $_SESSION['ten_tk']['ten_tk'];
 				$phone = $_SESSION['ten_tk']['phone'];
@@ -70,11 +71,14 @@ if (isset($_GET['goto'])) {
 					}
 
 					if (!empty($result)) {
+
 						foreach ($result as $value) {
+
 							if ($value['ngay_ve'] < $date) {
 								$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
 								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
 							}
+
 
 							// Check ngày trùng
 							if (($value['ngay_den'] == $book['ngay_den']) && ($value['ngay_ve'] == $book['ngay_ve'])) {
@@ -134,7 +138,7 @@ if (isset($_GET['goto'])) {
 				// $thongbao_xoa = "Xóa thành công !!";
 				extract($oneRoom);
 			}
-			$listSameRooms = sameRoom($ma_lp);
+			$listSameRooms = sameRoom($_GET['id']);
 
 			if (isset($_SESSION['ten_tk'])) {
 				$ten_kh = $_SESSION['ten_tk']['ten_tk'];
@@ -173,6 +177,8 @@ if (isset($_GET['goto'])) {
 
 						$giam_gia_thanh_vien = select_Sale($id_sale)['sale-tv'];
 						$tong_tien = ($gia * ($so_ngay - 1)) - $giam_gia_thanh_vien;
+
+
 
 						$_SESSION['datphong'] = [
 							'ngay_dat' => $ngay_dat,
@@ -218,6 +224,7 @@ if (isset($_GET['goto'])) {
 					if ($_POST['ngay_den'] == '' || $_POST['ngay_ve'] == '' || strtotime($_POST['ngay_den']) >= strtotime($_POST['ngay_ve']) || $_POST['ngay_den'] < $ngay_dat) {
 						$thongbao = "Vui lòng chọn lại thời gian!";
 					} else {
+						//include 'Client/bookings/pay.php';
 						header('Location: index.php?goto=pays');
 						exit();
 					}
@@ -297,12 +304,15 @@ if (isset($_GET['goto'])) {
 					if ($_SESSION['ten_tk']['vai_tro'] == 1) {
 						header('location: Admin/index.php');
 						return $_SESSION['ten_tk'];
+						// echo '<script> alert("Đăng nhập thành công!") </script>';
 					} else {
 						header('location: index.php');
 						return $_SESSION['ten_tk'];
 					}
+					// echo '<script> alert("Đăng nhập thành công!") </script>';
 				} else {
 					echo '<script>alert("Tài khoản sai hoặc không tồn tại!")</script>';
+					// $thongbao = "Tai khoan khong ton tai";
 				}
 			}
 			include './Accounts/login.php';
@@ -324,24 +334,24 @@ if (isset($_GET['goto'])) {
 			}
 			include './Accounts/ForgetPass.php';
 			break;
-		case 'changepassword' :
-			if(isset($_POST['doimatkhau']) && $_POST['doimatkhau']) {
+		case 'changepassword':
+			if (isset($_POST['doimatkhau']) && $_POST['doimatkhau']) {
 				$id = $_POST['id'];
 				$ten_tk = $_POST['ten_tk'];
 				$oldpass = $_POST['oldpass'];
 				$newpass1 = $_POST['newpass1'];
 				$newpass2 = $_POST['newpass2'];
 
-				if($oldpass === $_SESSION['ten_tk']['pass']) {
-					if($newpass1 === $newpass2) {
+				if ($oldpass === $_SESSION['ten_tk']['pass']) {
+					if ($newpass1 === $newpass2) {
 						update_mk($id, $newpass2);
 						$_SESSION['ten_tk'] = checkAccount($ten_tk, $newpass2);
 						$thongbao = "Đổi mật khẩu thành công!";
 						header('location: index.php?goto=exit');
-					}else {
+					} else {
 						$thongbaodung = "Mật khẩu mới không trùng khớp";
 					}
-				}else {
+				} else {
 					$thongbaodung = "Nhập sai mật khẩu cũ";
 				}
 			}

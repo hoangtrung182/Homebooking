@@ -45,7 +45,7 @@
                 </a>
             </li>
             <li>
-                <a href="index.php?goto=listBooking">
+                <a href="index.php?goto=listRooms_booking">
                     <i class='bx bxs-message-dots'></i>
                     <span class="text">QUẢN LÝ ĐẶT PHÒNG</span>
                 </a>
@@ -85,7 +85,7 @@
             <?php
             if (isset($_SESSION['ten_tk'])) {
                 extract($_SESSION['ten_tk']);
-            ?>
+                ?>
                 <li>
                     <a href="index.php?goto=changepassword">
                         <button class="btn5-hover btn5">Đổi mật khẩu</button>
@@ -103,9 +103,9 @@
                         <button class="btn5-hover btn5">Thoát</button>
                     </a>
                 </li>
-            <?php
+                <?php
             } else {
-            ?>
+                ?>
                 <li><a href="index.php?goto=login"><button class="btn5-hover btn5">
                             ĐĂNG NHẬP
                         </button>
