@@ -113,6 +113,7 @@ if (isset($oneRoom)) {
             ?>
             <div class="table-booking">
                 <h3 class="table-booking__title">Lịch đặt phòng</h3>
+                <p class="table-booking__title">( 5 đơn gần nhất )</p>
                 <table cellspacing="0">
                     <thead>
                         <tr>

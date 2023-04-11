@@ -117,7 +117,7 @@
                             if ($date >= $listPay['ngay_ve']) {
                                 echo "<div class='ron1'><h3>Đã kết thúc!</h3></div>";
                             }
-                        } else if ($show['trang_thai'] == 3) {
+                        } else if ($listPay['trang_thai'] == 3) {
                             echo "<div class='ron1'><h3>Đã hủy!</h3></div>";
                         }
                         ?>

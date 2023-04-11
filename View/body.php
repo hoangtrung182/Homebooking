@@ -3,10 +3,10 @@
         <img src="https://img.agoda.net/images/INTTRV-45/default/Bags-heart_2021-09-30.svg" alt="">
     </div>
     <div class="nav-content">
-        <p>Traveling internationally? Get updated information on travel guidance and restrictions.</p>
+        <p>Đi du lịch quốc tế? Nhận thông tin cập nhật về hướng dẫn và hạn chế đi lại.</p>
     </div>
     <div class="learn-more">
-        <a href=""><button class="btn1">Learn more</button></a>
+        <a href=""><button class="btn1">Xem thêm</button></a>
     </div>
 </nav>
 <!-- Banner & Form tìm kiếm -->
@@ -68,26 +68,34 @@
             <p>các địa điểm thu hút ở việt nam</p>
         </div>
         <div class="location-content">
-            <div class="location-img">
-                <img src="./img/image6.png" alt="">
-                <h3>Hồ Chí Minh</h3>
-                <p>14.320 <span>Chỗ nghỉ</span> </p>
-            </div>
-            <div class="location-img">
-                <img src="./img/image7.png" alt="">
-                <h3>Vũng Tàu</h3>
-                <p>14.320 <span>Chỗ nghỉ</span> </p>
-            </div>
-            <div class="location-img">
-                <img src="./img/image8.png" alt="">
-                <h3>Đà Lạt</h3>
-                <p>14.320 <span>Chỗ nghỉ</span> </p>
-            </div>
-            <div class="location-img">
-                <img src="./img/image9.png" alt="">
-                <h3>Hà Nội</h3>
-                <p>14.320 <span>Chỗ nghỉ</span> </p>
-            </div>
+            <a href="./Location./HoChiMinh.html" target="_blank">
+                <div class="location-img">
+                    <img src="./img/image6.png" alt="">
+                    <h3>Hồ Chí Minh</h3>
+                    <p>14.320 <span>Chỗ nghỉ</span> </p>
+                </div>
+            </a>
+            <a href="./Location./Vungtau.html" target="_blank">
+                <div class="location-img">
+                    <img src="./img/image7.png" alt="">
+                    <h3>Vũng Tàu</h3>
+                    <p>14.320 <span>Chỗ nghỉ</span> </p>
+                </div>
+            </a>
+            <a href="./Location./Dalat.html" target="_blank">
+                <div class="location-img">
+                    <img src="./img/image8.png" alt="">
+                    <h3>Đà Lạt</h3>
+                    <p>14.320 <span>Chỗ nghỉ</span> </p>
+                </div>
+            </a>
+            <a href="./Location./Hanoi.html" target="_blank">
+                <div class="location-img">
+                    <img src="./img/image9.png" alt="">
+                    <h3>Hà Nội</h3>
+                    <p>14.320 <span>Chỗ nghỉ</span> </p>
+                </div>
+            </a>
         </div>
     </div>
 </section>
