@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../../Css/style.css">
-    <!-- <link rel="stylesheet" href="../Css/pay.css"> -->
+
 </head>
 <style>
     .container_pay {
@@ -103,8 +103,6 @@
                     <div class="money">
                         <?php
 
-
-
                         if ($listPay['trang_thai'] == 0) {
                             if ($listPay['ngay_den'] < $date) {
                                 echo "<div class='ron2'><h3>Đã quá thời gian xác nhận!</h3></div>";
@@ -116,11 +114,14 @@
                                 echo "<div class='ron3'><h3>Đang diễn ra!</h3></div>";
 
                             }
+                            if ($date > $listPay['ngay_ve']) {
+                                echo "<div class='ron1'><h5>Đã quá thời gian checkout!</h5></div>";
+                            }
                         } else if ($listPay['trang_thai'] == 2) {
                             if ($date >= $listPay['ngay_ve']) {
                                 echo "<div class='ron1'><h3>Đã kết thúc!</h3></div>";
                             }
-                        } else if ($show['trang_thai'] == 3) {
+                        } else {
                             echo "<div class='ron1'><h3>Đã hủy!</h3></div>";
                         }
                         ?>

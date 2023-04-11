@@ -92,15 +92,15 @@
                         </td>
                         <td>
                             <a href="index.php?goto=listBooking&id=<?= $ma_phong ?>">
-                                <button class="btn-order1" type="submit">
+                                <button class="btn-order2" type="submit">
                                     Đơn đặt
                                 </button>
                             </a>
                         </td>
                     </tr>
 
-        </div>
-    <?php } ?>
+                <?php } ?>
+    </div>
     </tbody>
     </table>
     </div>

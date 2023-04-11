@@ -32,7 +32,7 @@
                     <?php foreach ($shows as $show) {
                         extract($show); ?>
                         <tr class="add_pay">
-                            <td><img src="../<?= $show['avatar'] ?>" alt="" width="200px"></td>
+                            <td><img src=".//<?= $show['avatar'] ?>" alt="" width="200px"></td>
                             <td>
                                 <?= $show['ten_phong'] ?>
                             </td>
@@ -46,8 +46,6 @@
                             <td>
                                 <?php
 
-
-
                                 if ($show['trang_thai'] == 0) {
                                     if ($show['ngay_den'] < $date) {
                                         echo "<div class='ron1'><h5>Đã quá thời gian xác nhận!</h5></div>";
@@ -55,8 +53,12 @@
                                         echo "<div class='ron2'><h5>Sắp diễn ra</h5></div>";
                                     }
                                 } else if ($show['trang_thai'] == 1) {
+
                                     if ($show['ngay_den'] <= $date && $show['ngay_ve'] >= $date) {
                                         echo "<div class='ron2'><h5>Đang diễn ra!</h5></div>";
+
+                                    } else if ($date > $show['ngay_ve']) {
+                                        echo "<div class='ron1'><h5>Đã quá thời gian checkout!</h5></div>";
 
                                     }
                                 } else if ($show['trang_thai'] == 2) {

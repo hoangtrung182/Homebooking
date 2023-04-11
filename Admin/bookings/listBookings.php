@@ -37,7 +37,7 @@
     .edit a {
         text-decoration: none;
         color: #fff;
-        padding: 10px 15px;
+        padding: 10px 30px;
         background-color: #23958fd4;
         border-radius: 5px;
         transition: all 0.3s ease-in-out;
@@ -72,7 +72,8 @@
                     <th>Mã đơn</th>
                     <th>Tên khách hàng</th>
                     <th>Mã phòng</th>
-                    <th>Ngày đặt</th>
+                    <th>Ngày đến </th>
+                    <th>Ngày về </th>
                     <th>Chi tiết</th>
                     <th>Trạng thái</th>
                 </tr>
@@ -92,11 +93,13 @@
                             <?= $same1['ma_phong'] ?>
                         </td>
                         <td>
-                            <?= $same1['ngay_dat'] ?>
+                            <?= $same1['ngay_den'] ?>
+                        </td>
+                        <td>
+                            <?= $same1['ngay_ve'] ?>
                         </td>
                         <td class="edit">
-                            <a href="index.php?goto=detailBookings&update_trangthai=<?= $same1['ma_dp'] ?>">Chi
-                                tiết</a>
+                            <a href="index.php?goto=detailBookings&update_trangthai=<?= $same1['ma_dp'] ?>">Chi tiết</a>
                         </td>
                         <td>
 
@@ -127,12 +130,15 @@
                                 if ($same1['ngay_den'] <= $date && $same1['ngay_ve'] >= $date) {
                                     echo "<div class='ron4'><h5>Đang diễn ra!</h5></div>";
                                 }
+                                if ($date > $same1['ngay_ve']) {
+                                    echo "<div class='ron1'><h5>Đã quá thời gian checkout!</h5></div>";
+                                }
                             } else if ($same1['trang_thai'] == 2) {
                                 if ($same1['ngay_ve'] <= $date) {
                                     echo "<div class='ron3'><h5>Đã kết thúc!</h5></div>";
                                 }
 
-                            } else if ($same1['trang_thai'] == 3) {
+                            } else {
                                 echo "<div class='ron1'><h5>Đã hủy!</h5></div>";
                             }
                             ?>

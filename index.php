@@ -159,7 +159,7 @@ if (isset($_GET['goto'])) {
 					$ma_kh = '';
 					$ma_km = '';
 					date_default_timezone_set('ASIA/HO_CHI_MINH');
-					$ngay_dat = date('Y-m-d H:i:s');
+					$ngay_dat = date('Y-m-d G:i:s');
 					$date_in = date_create($_POST['ngay_den']);
 					$ngay_den1 = date_format($date_in, "Y-m-d 14:00:00");
 					$date_out = date_create($_POST['ngay_ve']);
@@ -238,7 +238,8 @@ if (isset($_GET['goto'])) {
 		case 'add_pay':
 			if (isset($_SESSION['ten_tk'])) {
 				$ma_kh = $_SESSION['ten_tk']['ma_tk'];
-				$date = date('Y-m-d');
+				date_default_timezone_set('ASIA/HO_CHI_MINH');
+				$date = date('Y-m-d G:i:s');
 				$shows = show_booking($ma_kh);
 
 				foreach ($shows as $show) {
@@ -255,7 +256,7 @@ if (isset($_GET['goto'])) {
 			include './Bookings/add_pay.php';
 			break;
 		case 'show_pay':
-			$date = date('Y-m-d');
+			$date = date('Y-m-d G:i:s');
 
 			if (isset($_GET['id_ct'])) {
 				$ma_dp = $_GET['id_ct'];

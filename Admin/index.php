@@ -190,7 +190,7 @@ if (isset($_GET['goto'])) {
 					header("Location:index.php?goto=listBooking&id=" . $show['ma_phong']);
 				} else if ($show['trang_thai'] == 3) {
 					header("Location:index.php?goto=listBooking&id=" . $show['ma_phong']);
-				} else if ($show['trang_thai'] == 1 && $show['ngay_ve'] == $date) {
+				} else if ($show['trang_thai'] == 1 && $show['ngay_ve'] <= $date) {
 					$trang_thai = 2;
 					$ma_dp = $_GET['id_checkout'];
 					update_booking($trang_thai, $ma_dp);
