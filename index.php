@@ -14,7 +14,6 @@ if (isset($_GET['goto'])) {
 	switch ($_GET['goto']) {
 		// Dat phong
 		case 'pays':
-
 			if (isset($_SESSION['ten_tk'])) {
 				$ten_kh = $_SESSION['ten_tk']['ten_tk'];
 				$phone = $_SESSION['ten_tk']['phone'];
@@ -61,9 +60,8 @@ if (isset($_GET['goto'])) {
 					//var_dump($value);
 					date_default_timezone_set('ASIA/HO_CHI_MINH');
 					$date = date('Y-m-d');
-					$result = check_datphong($ma_phong); // return $list;
+					$result = check_datphong($_SESSION['datphong']['ma_phong']); // return $list;
 					$book = $_SESSION['datphong'];
-
 
 					if ($result == []) {
 						$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $_SESSION['datphong']['ngay_den'], $_SESSION['datphong']['ngay_ve'], $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
@@ -71,44 +69,47 @@ if (isset($_GET['goto'])) {
 					}
 
 					if (!empty($result)) {
-
+						$err = [];
 						foreach ($result as $value) {
-
 							if ($value['ngay_ve'] < $date) {
 								$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
 								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
+								array_push($err, $thongbao);
+								break;
 							}
 
-
 							// Check ngày trùng
-							if (($value['ngay_den'] == $book['ngay_den']) && ($value['ngay_ve'] == $book['ngay_ve'])) {
+							if (($value['ngay_den'] === $book['ngay_den']) && ($value['ngay_ve'] === $book['ngay_ve'])) {
 								$thongbao = "PHÒNG ĐÃ CÓ NGƯỜI ĐẶT";
+								array_push($err, $thongbao);
 								break;
 							}
 
 							// Check ngày đến
-							if (($book['ngay_den'] >= $value['ngay_den']) && ($book['ngay_den'] <= $value['ngay_ve'])) {
+							if (($book['ngay_den'] >= $value['ngay_den']) && ($book['ngay_den'] < $value['ngay_ve'])) {
 								$thongbao = "PHÒNG KHÔNG CÓ SẴN, VUI LÒNG CHỌN PHÒNG KHÁC";
+								array_push($err, $thongbao);
 								break;
 							}
 
 							// Check ngày về
-							if (($book['ngay_ve'] >= $value['ngay_den']) && ($book['ngay_ve'] <= $value['ngay_ve'])) {
+							if (($book['ngay_ve'] > $value['ngay_den']) && ($book['ngay_ve'] <= $value['ngay_ve'])) {
 								$thongbao = "PHÒNG KHÔNG CÓ SẴN, VUI LÒNG CHỌN PHÒNG KHÁC";
+								array_push($err, $thongbao);
 								break;
 							}
 
 							// Check ngày đã bị lặp
-							if (($book['ngay_den'] <= $value['ngay_den']) && ($book['ngay_ve'] >= $value['ngay_ve'])) {
+							if (($book['ngay_den'] < $value['ngay_den']) && ($book['ngay_ve'] > $value['ngay_ve'])) {
 								$thongbao = "PHÒNG KHÔNG CÓ SẴN, VUI LÒNG CHỌN PHÒNG KHÁC";
+								array_push($err, $thongbao);
 								break;
 							}
-							// Thêm phòng vs trường hợp default
-							if ($book) {
-								$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $book['ngay_den'], $book['ngay_ve'], $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
-								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG !";
-								break;
-							}
+						}
+						// Thêm phòng vs trường hợp default
+						if($err == []) {
+							$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $book['ngay_den'], $book['ngay_ve'], $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
+							$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
 						}
 					}
 				}
@@ -118,14 +119,14 @@ if (isset($_GET['goto'])) {
 			}
 			include './Bookings/pay.php';
 			break;
-		// View Hotel & Rooms
+	// View Hotel & Rooms
 		case 'viewRooms':
 			$listCates = selectCates();
 			$listRooms = selectRooms();
 
 			include './Rooms/viewRooms.php';
 			break;
-		// List Room booked
+	// List Room booked
 		case 'listRooms_booking':
 			$listRooms = selectRooms_booking();
 			date_default_timezone_set('ASIA/HO_CHI_MINH');
@@ -138,7 +139,8 @@ if (isset($_GET['goto'])) {
 				// $thongbao_xoa = "Xóa thành công !!";
 				extract($oneRoom);
 			}
-			$listSameRooms = sameRoom($_GET['id']);
+
+			$listSameRooms = sameRoom($ma_lp);
 
 			if (isset($_SESSION['ten_tk'])) {
 				$ten_kh = $_SESSION['ten_tk']['ten_tk'];
@@ -263,7 +265,7 @@ if (isset($_GET['goto'])) {
 			}
 			include './Bookings/show_pay.php';
 			break;
-		// Tin tuc
+	// Tin tuc
 		case 'viewNews':
 			$listNews = selectNews();
 			include './News/viewNews.php';
@@ -274,7 +276,7 @@ if (isset($_GET['goto'])) {
 			}
 			include './News/detailnew.php';
 			break;
-		// End News
+	// End News
 		case 'register':
 			if (isset($_POST['btn-register']) && ($_POST['btn-register'])) {
 				// $hoten = $_POST['Ho_ten'];
@@ -289,7 +291,7 @@ if (isset($_GET['goto'])) {
 			}
 			include './Accounts/register.php';
 			break;
-		//End register
+	//End register
 		case 'login':
 			if (isset($_POST['login']) && ($_POST['login'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -321,7 +323,7 @@ if (isset($_GET['goto'])) {
 			session_unset();
 			header('location: index.php');
 			break;
-		//End logout
+	//End logout
 		case 'forgetPass':
 			if (isset($_POST['forgetPass']) && ($_POST['forgetPass'])) {
 				$ten_tk = $_POST['ten_tk'];
@@ -357,7 +359,7 @@ if (isset($_GET['goto'])) {
 			}
 			include './Accounts/changepw.php';
 			break;
-		// THông tin cá nhân
+	// THông tin cá nhân
 		case 'editUser':
 			if (isset($_GET['id']) && ($_GET['id'] > 0)) {
 				$user = getOneAccount($_GET['id']);
@@ -416,6 +418,7 @@ if (isset($_GET['goto'])) {
 			$id = isset($_POST['loaiphong']) ? $_POST['loaiphong'] : 0;
 			$Price = isset($_POST['price_chose']) ? $_POST['price_chose'] : '';
 			$err = array();
+
 
 			if (!empty($_POST['price-min']) && ($_POST['price-min'] < 0)) {
 				$err['min'] = "Nhập giá trị không hợp lệ!";

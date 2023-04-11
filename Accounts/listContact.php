@@ -14,9 +14,7 @@
                 <th class="type">Số điện thoại</th>
                 <th class="type" colspan="2">Thao tác</th>
                 <th class="type"></th>
-
             </tr>
-
             <?php
             if (!empty($listContact)) {
                 foreach ($listContact as $contact) {
@@ -32,7 +30,7 @@
                             <?= $ten_ht ?>
                         </td>
                         <td>
-                            <?= $noi_dung ?>
+                            <?= substr($noi_dung, 0, 70) ?>
                         </td>
                         <td>
                             <?= $email ?>

@@ -37,9 +37,8 @@ function showRoom_tm($ma_phong)
     return $result;
 }
 
-function check_datphong($id)
-{
-    $sql = "SELECT * FROM datphong WHERE ma_phong=$id";
+function check_datphong($id) {
+    $sql = "SELECT * FROM datphong WHERE ma_phong = '$id'";
     if ($sql) {
         $list = pdo_query($sql);
         return $list;
@@ -110,7 +109,7 @@ function update_taikhoan($id, $ma_km)
 
 function getListBookings($id)
 {
-    $sql = "SELECT * FROM datphong WHERE ma_phong = '$id' order by ngay_den asc";
+    $sql = "SELECT * FROM datphong WHERE ma_phong = '$id' order by ngay_den asc limit 0,5";
     $listBookings = pdo_query($sql);
     return $listBookings;
 }

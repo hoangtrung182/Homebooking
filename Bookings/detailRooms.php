@@ -113,6 +113,7 @@ if (isset($oneRoom)) {
             ?>
             <div class="table-booking">
                 <h3 class="table-booking__title">Lịch đặt phòng</h3>
+                <p class="table-booking__title">( 5 đơn gần nhất )</p>
                 <table cellspacing="0">
                     <thead>
                         <tr>
@@ -168,7 +169,7 @@ if (isset($oneRoom)) {
                             </h3>
                             <em>Giá mỗi đêm rẻ từ</em>
                             <p>
-                                <?= number_format($gia, 0, ',', '.') ?> VND
+                                <?= number_format($gia, 0, ',', '.') ?> vnđ/1 đêm
                             </p>
                         </div>
                     </div>

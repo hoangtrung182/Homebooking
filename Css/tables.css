@@ -196,12 +196,12 @@ table tr {
 .notify_min {
     color: #d94141;
     position: absolute;
-    top: 62%;
+    top: 69%;
     border: 1px solid $ccc;
-    left: 260px;
+    left: 24%;
     display: block;
     border: 1px solid #ccc;
-    background: #8cc3eb;
+    background: #e4ecf1;
     border-radius: 4px;
     padding: 1px 6px;
 }
@@ -209,12 +209,12 @@ table tr {
 .notify_max {
     color: #d94141;
     position: absolute;
-    top: 62%;
+    top: 69%;
     border: 1px solid $ccc;
-    left: 260px;
+    left: 24%;
     display: block;
     border: 1px solid #ccc;
-    background: #8cc3eb;
+    background: #e4ecf1;
     border-radius: 4px;
     padding: 1px 6px;
 }
