@@ -7,7 +7,8 @@ foreach ($listNews as $News) {
 	?>
 	<li class="new-item">
 		<a href="index.php?goto=detailnew&id=<?= $ma_tin ?>">
-			<img src=".//<?= $hinh_anh ?>" alt="">
+			<!-- <img src=".//<?= $hinh_anh ?>" alt=""> -->
+			<img src="https://picsum.photos/230/210" alt="">
 		</a>
 		<div class="new-info">
 			<div class="">
@@ -22,7 +23,7 @@ foreach ($listNews as $News) {
 			</div>
 			<div class="">
 				<p>Tác giả:
-					<?= $ten_tk ?>
+					<?= $ho_ten ?>
 				</p>
 			</div>
 		</div>

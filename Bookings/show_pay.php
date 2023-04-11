@@ -102,9 +102,6 @@
                     </div>
                     <div class="money">
                         <?php
-
-
-
                         if ($listPay['trang_thai'] == 0) {
                             if ($listPay['ngay_den'] < $date) {
                                 echo "<div class='ron2'><h3>Đã quá thời gian xác nhận!</h3></div>";
@@ -169,6 +166,11 @@
                                 echo $format_number_4 . ' ' . 'vnđ'; ?>
                             </h3>
                         </div>
+                         <a href="index.php? ?>">
+                            <button class="btn-order">
+                                Tiếp tục
+                            </button>
+                        </a>
                     </div>
                     <!-- End item-ticket -->
 

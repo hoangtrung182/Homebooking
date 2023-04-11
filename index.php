@@ -138,7 +138,8 @@ if (isset($_GET['goto'])) {
 				// $thongbao_xoa = "Xóa thành công !!";
 				extract($oneRoom);
 			}
-			$listSameRooms = sameRoom($_GET['id']);
+
+			$listSameRooms = sameRoom($ma_lp);
 
 			if (isset($_SESSION['ten_tk'])) {
 				$ten_kh = $_SESSION['ten_tk']['ten_tk'];
@@ -416,6 +417,7 @@ if (isset($_GET['goto'])) {
 			$id = isset($_POST['loaiphong']) ? $_POST['loaiphong'] : 0;
 			$Price = isset($_POST['price_chose']) ? $_POST['price_chose'] : '';
 			$err = array();
+
 
 			if (!empty($_POST['price-min']) && ($_POST['price-min'] < 0)) {
 				$err['min'] = "Nhập giá trị không hợp lệ!";

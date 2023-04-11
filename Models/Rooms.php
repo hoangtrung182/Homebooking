@@ -56,8 +56,7 @@ function getOneRoom($id)
 	return $room;
 }
 
-function bothFilter($id, $sort, $min, $max)
-{
+function bothFilter($id, $sort, $min, $max) {
 	$sql = "SELECT * FROM phong";
 
 	// Sap xep theo min, max
@@ -137,7 +136,6 @@ function bothFilter($id, $sort, $min, $max)
 			}
 		}
 	}
-
 
 
 	$Filter = pdo_query($sql);

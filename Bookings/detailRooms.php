@@ -168,7 +168,7 @@ if (isset($oneRoom)) {
                             </h3>
                             <em>Giá mỗi đêm rẻ từ</em>
                             <p>
-                                <?= number_format($gia, 0, ',', '.') ?> VND
+                                <?= number_format($gia, 0, ',', '.') ?> vnđ/1 đêm
                             </p>
                         </div>
                     </div>

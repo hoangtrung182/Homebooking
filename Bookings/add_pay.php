@@ -42,8 +42,9 @@
                                         Chi tiết</button>
                                     </a>
                                 <a href="index.php?goto=add_pay&id_huy=<?= $show['ma_dp'] ?>"
-                                    onclick=" return confirm('Bạn chắc chắn muốn hủy đặt phòng không!');"><button
-                                        class="btn-order2">Hủy</button></a>
+                                    onclick=" return confirm('Bạn chắc chắn muốn hủy đặt phòng không!');">
+                                    <button class="btn-order2">Hủy</button>
+                                </a>
                             </td>
                             <td>
                                 <?php

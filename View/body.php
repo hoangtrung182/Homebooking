@@ -34,8 +34,8 @@
                 <option value="asc">` Thấp -> Cao `</option>
             </select><br>
             <div class="input_search-form">
-                <input type="number" name="price-min" class="input_search-price min-1" placeholder="Nhập giá thấp nhất">
-                <input type="number" name="price-max" class="input_search-price max-1" placeholder="Nhập giá cao nhất">
+                <input type="number" name="price-min" class="input_search-price min-1" placeholder="Nhập giá trị tối thiểu">
+                <input type="number" name="price-max" class="input_search-price max-1" placeholder="Nhập giá trị tối đa">
             </div>
             <button class="tk">Tìm Kiếm</button>
         </form>
@@ -111,7 +111,7 @@
                         </h3>
                         <em>Giá mỗi đêm rẻ từ</em>
                         <p>
-                            <?= number_format($gia, 0, ',', '.') ?> VND
+                            <?= number_format($gia, 0, ',', '.') ?> vnđ/1 đêm
                         </p>
                     </div>
                 </div>

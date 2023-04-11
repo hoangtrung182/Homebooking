@@ -45,16 +45,16 @@
 					<?= $ma_tin ?>
 				</td>
 				<td>
-					<?= $tieu_de ?>
+					<?= substr($tieu_de, 0, 70) ?>
 				</td>
 				<td>
 					<img src="<?= $hinh_anh ?>" style="width: 150px; height: 150px">
 				</td>
 				<td>
-					<?= $mo_ta ?>
+					<?= substr($mo_ta, 0, 70) ?>
 				</td>
 				<td>
-					<?= $noi_dung ?>
+					<?= substr($noi_dung, 0, 70) ?>
 				</td>
 				<td>
 					<?= $ngay_dang ?>
