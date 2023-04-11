@@ -76,7 +76,8 @@ if (isset($_GET['goto'])) {
 
 							if ($value['ngay_ve'] < $date) {
 								$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
-								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
+								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG2!";
+								break;
 							}
 
 
@@ -104,11 +105,13 @@ if (isset($_GET['goto'])) {
 								break;
 							}
 							// Thêm phòng vs trường hợp default
-							if ($book) {
-								$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $book['ngay_den'], $book['ngay_ve'], $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
-								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG !";
-								break;
-							}
+
+						}
+					} else {
+						if ($book) {
+							$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $book['ngay_den'], $book['ngay_ve'], $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
+							$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG3 !";
+							break;
 						}
 					}
 				}

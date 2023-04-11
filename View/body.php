@@ -78,22 +78,22 @@
         </div>
         <div class="location-content">
             <div class="location-img">
-                <img src="./img/image6.png" alt="">
+                <a href="./Location./HCM.html"><img src="./img/image6.png" alt=""></a>
                 <h3>Hồ Chí Minh</h3>
                 <p>14.320 <span>Chỗ nghỉ</span> </p>
             </div>
             <div class="location-img">
-                <img src="./img/image7.png" alt="">
+                <a href="./Location./VT.html"> <img src="./img/image7.png" alt=""></a>
                 <h3>Vũng Tàu</h3>
                 <p>14.320 <span>Chỗ nghỉ</span> </p>
             </div>
             <div class="location-img">
-                <img src="./img/image8.png" alt="">
+                <a href="./Location./DL.html"> <img src="./img/image8.png" alt=""></a>
                 <h3>Đà Lạt</h3>
                 <p>14.320 <span>Chỗ nghỉ</span> </p>
             </div>
             <div class="location-img">
-                <img src="./img/image9.png" alt="">
+                <a href="./Location./HN.html"> <img src="./img/image9.png" alt=""></a>
                 <h3>Hà Nội</h3>
                 <p>14.320 <span>Chỗ nghỉ</span> </p>
             </div>
