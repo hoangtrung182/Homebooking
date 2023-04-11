@@ -65,7 +65,7 @@ if (isset($_GET['goto'])) {
 
 					if ($result == []) {
 						$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $_SESSION['datphong']['ngay_den'], $_SESSION['datphong']['ngay_ve'], $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
-						$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG 1!";
+						$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
 					}
 
 					if (!empty($result)) {
@@ -73,7 +73,7 @@ if (isset($_GET['goto'])) {
 						foreach ($result as $value) {
 							if ($value['ngay_ve'] < $date) {
 								$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $ngay_den, $ngay_ve, $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
-								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG 2!";
+								$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
 								array_push($err, $thongbao);
 								break;
 							}
@@ -87,21 +87,21 @@ if (isset($_GET['goto'])) {
 
 							// Check ngày đến
 							if (($book['ngay_den'] >= $value['ngay_den']) && ($book['ngay_den'] < $value['ngay_ve'])) {
-								$thongbao = "PHÒNG KHÔNG CÓ SẴN, VUI LÒNG CHỌN PHÒNG KHÁC den";
+								$thongbao = "PHÒNG KHÔNG CÓ SẴN, VUI LÒNG CHỌN PHÒNG KHÁC";
 								array_push($err, $thongbao);
 								break;
 							}
 
 							// Check ngày về
 							if (($book['ngay_ve'] > $value['ngay_den']) && ($book['ngay_ve'] <= $value['ngay_ve'])) {
-								$thongbao = "PHÒNG KHÔNG CÓ SẴN, VUI LÒNG CHỌN PHÒNG KHÁC ve";
+								$thongbao = "PHÒNG KHÔNG CÓ SẴN, VUI LÒNG CHỌN PHÒNG KHÁC";
 								array_push($err, $thongbao);
 								break;
 							}
 
 							// Check ngày đã bị lặp
 							if (($book['ngay_den'] < $value['ngay_den']) && ($book['ngay_ve'] > $value['ngay_ve'])) {
-								$thongbao = "PHÒNG KHÔNG CÓ SẴN, VUI LÒNG CHỌN PHÒNG KHÁC lap";
+								$thongbao = "PHÒNG KHÔNG CÓ SẴN, VUI LÒNG CHỌN PHÒNG KHÁC";
 								array_push($err, $thongbao);
 								break;
 							}
@@ -109,7 +109,7 @@ if (isset($_GET['goto'])) {
 						// Thêm phòng vs trường hợp default
 						if($err == []) {
 							$resert = insert_booking($ten_kh, $phone, $dia_chi, $ngay_dat, $book['ngay_den'], $book['ngay_ve'], $trang_thai, $thanh_tien, $ma_kh, $ma_km, $ma_phong);
-							$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG 3!";
+							$thongbao = "BẠN ĐÃ ĐẶT PHÒNG THÀNH CÔNG!";
 						}
 					}
 				}
