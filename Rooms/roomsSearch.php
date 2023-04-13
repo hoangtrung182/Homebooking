@@ -45,7 +45,7 @@
              </div>
             <?php
                 if(!isset($BothFiltered)) {
-                    return '';
+                    return;
                 }
             ?>
             <?php 

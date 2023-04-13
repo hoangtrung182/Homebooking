@@ -4,6 +4,7 @@
                                             <ul>
                                                 <li>
                                                     <img src="./img/colordefault.svg" alt="">
+                                                    <img src="../img/colordefault.svg" alt="">
                                                 </li>
                                             </ul>
                                         </div>
