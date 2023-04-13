@@ -27,7 +27,7 @@
 				</a>
 			</td>
 			<td><?= $ma_bl ?></td>
-			<td><?= $noi_dung ?></td>
+			<td><?= substr($noi_dung, 0, 70) ?></td>
 			<td><?= $ma_tk ?></td>
 			<td><?= $ten_phong ?></td>
 			<td><?= $thoi_gian ?></td>

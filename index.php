@@ -446,6 +446,7 @@ if (isset($_GET['goto'])) {
 			# code...
 			break;
 	}
+
 } else {
 	$listCates = selectCates();
 	$list8rooms = selectEightRooms();

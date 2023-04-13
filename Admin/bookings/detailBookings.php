@@ -105,21 +105,7 @@
                     </h3>
                 </div>
             </div>
-            <!-- End item-ticket -->
-            <!-- End item-ticket -->
-            <!-- <div class="item-ticket">
-                <div class="title-item">
-                    <h5>Giờ đặt thêm(nếu có):</h5>
-                </div>
-                <div class="details-item">
-                    <form action="" method="post">
-                        <input type="hidden" name="id" value="<?= $show['ma_dp'] ?>">
-                        <input type="number" name="gio" id="" min='0'>
-                        <button type="submit" name="them_gio">Xác nhận</button>
-                    </form>
-                </div>
-            </div> -->
-            <!-- End item-ticket -->
+            
         </div>
 
         <!-- End item-ticket -->
