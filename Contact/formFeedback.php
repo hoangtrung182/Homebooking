@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Css/account.css">
-    <title>Document</title>
+    <title>Thank you | Agoda</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
             }
             ?>
             <form action="index.php?goto=btnFeedBack" method="post">
-                <h2 style="font-weight: bold;text-align:center;">Đăng ký</h2>
+                <h2 style="font-weight: bold;text-align:center;">HÃY ĐỂ LẠI ĐIỀU BẠN CẦN HỖ TRỢ</h2>
                 <div class=" form-info">
                     Họ tên <br>
                     <input class="input" type="text" value="<?= $ho_ten ?>" name="ten_ht" required placeholder="Họ tên">

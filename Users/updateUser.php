@@ -13,7 +13,8 @@
                 <h3 style="font-weight: bold;text-align:center;">Hồ sơ của tôi</h3>
                 <div class="form-info">
                     Họ tên <br>
-                    <input class="input" type="text" name="ten_tk" value="<?= $ho_ten ?>" required placeholder="Tên đăng nhập">
+                    <input class="input" type="text" name="ho_ten" value="<?= $ho_ten ?>" required
+                        placeholder="Tên đăng nhập">
                 </div>
                 <div class="form-info">
                     Email <br>
@@ -29,7 +30,8 @@
                 </div>
                 <div class="form-info">
                     Địa chỉ <br>
-                    <input class="input" type="text" name="dia_chi" value="<?= $dia_chi ?>" required placeholder="Mật khẩu">
+                    <input class="input" type="text" name="dia_chi" value="<?= $dia_chi ?>" required
+                        placeholder="Mật khẩu">
                 </div>
                 <div class="submit">
                     <input type="hidden" name="ma_tk" value="<?= $ma_tk ?>">

@@ -2,9 +2,8 @@
 <body>
 	<section class="main">
 		<h2 class="form_title">Sửa tin tức</h2>
-		<form action="index.php?goto=editedNews" method="post" enctype="multipart/form-data">
-        	
-			<?php extract($news) ?>
+		<form action="index.php?goto=editedNews" method="post" enctype="multipart/form-data">	
+		<?php extract($news) ?>
 			<div class="text_input">
 				<p class="form_label">Tiêu đề</p>
 				<input type="text" name="tieu_de" value="<?= $tieu_de ?>" class="input_second"><br>

@@ -23,16 +23,16 @@
                         <form action="index.php?goto=editUser" method="post">
                             <h3>Hồ sơ của tôi</h3>
                             <div class="form-info">
-                                Tên đăng nhập<br>
-                                <input class="input" type="text" disabled name="ten_tk" value="<?= $ten_tk ?>" placeholder="Tên đăng nhập" required>
+                                Họ và tên<br>
+                                <input class="input" type="text" disabled name="ho_ten" value="<?= $ho_ten ?>" placeholder="Họ tên" required>
                             </div>
                             <div class="form-info">
                                 Email <br>
-                                <input class="input" type="email" disabled name="pass" value="<?= $email ?>" placeholder="Mật khẩu" required>
+                                <input class="input" type="email" disabled name="pass" value="<?= $email ?>" placeholder="Email" required>
                             </div>
                             <div class="form-info">
                                 Số điện thoại <br>
-                                <input class="input" type="text" disabled name="phone" value="<?= $phone ?>" placeholder="Mật khẩu" required>
+                                <input class="input" type="text" disabled name="phone" value="<?= $phone ?>" placeholder="SĐT" required>
                             </div>
                             <div class="form-info">
                                 Địa chỉ <br>
@@ -41,6 +41,9 @@
                             <input type="hidden" name="ma_tk" value="<?= $ma_tk ?>">
                             <input type="submit" value="Chỉnh sửa hồ sơ" name="editUser" class="btn6-hover btn5">
                         </form>
+                        <button class="btn6-hover btn5">
+                            <a href="index.php?goto=changepassword">Đổi mật khẩu</a>
+                        </button>
                     </div>
                 </div>
             <?php } else { ?>

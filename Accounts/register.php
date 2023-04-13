@@ -14,10 +14,6 @@
         <div class="form-register">
             <form action="index.php?goto=register" method="post">
                 <h2 style="font-weight: bold;text-align:center;">Đăng ký</h2>
-                <div class=" form-info">
-                    Họ tên <br>
-                    <input class="input" type="text" name="Ho_ten" required placeholder="Họ tên">
-                </div>
                 <div class="form-info">
                     Tên đăng nhập <br>
                     <input class="input" type="text" name="ten_tk" required placeholder="Tên đăng nhập">

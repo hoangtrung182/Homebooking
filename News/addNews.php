@@ -32,7 +32,6 @@
 			</div>
 			<br>
 			
-				
 			<div class="button">
 				<input type="submit" value="Thêm" name="addNewNews" class="input_button btn">
 				<input type="reset" value="Xóa hết" class="input_button btn">

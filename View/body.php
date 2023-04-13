@@ -3,10 +3,10 @@
         <img src="https://img.agoda.net/images/INTTRV-45/default/Bags-heart_2021-09-30.svg" alt="">
     </div>
     <div class="nav-content">
-        <p>Traveling internationally? Get updated information on COVID-19 travel guidance and restrictions.</p>
+        <p>Đi du lịch quốc tế? Nhận thông tin cập nhật về hướng dẫn và hạn chế đi lại.</p>
     </div>
     <div class="learn-more">
-        <a href=""><button class="btn1">Learn more</button></a>
+        <a href=""><button class="btn1">Xem thêm</button></a>
     </div>
 </nav>
 <!-- Banner & Form tìm kiếm -->
@@ -16,14 +16,6 @@
         <p>Nhận giá tốt nhất trên hơn 2.000.000 tài sản, trên toàn thế giới</p>
     </div>
     <div class="box">
-        <div class="box-button">
-            <div class="box-0">
-                <button class="box-2">Nghỉ qua Đêm </button>
-            </div>
-            <div class="box-3">
-                <button class="box-4">Lưu trú sửa dụng trong ngày</button>
-            </div>
-        </div>
         <!-- Form -->
         <form action="index.php?search=typerooms" method="post" class="form_search">
             <select name="loaiphong" id="" class="input_third">
@@ -38,12 +30,12 @@
             </select><br>
             <select name="price_chose" id="" class="input_third">
                 <option value="" selected>Sắp xếp giá theo</option>
-                <option value="desc">` Cao đến Thấp `</option>
-                <option value="asc">` Thấp đến Cao `</option>
+                <option value="desc">` Cao -> Thấp `</option>
+                <option value="asc">` Thấp -> Cao `</option>
             </select><br>
             <div class="input_search-form">
-                <input type="number" name="price-min" class="input_search-price min-1" placeholder="Nhập giá thấp nhất">
-                <input type="number" name="price-max" class="input_search-price max-1" placeholder="Nhập giá cao nhất">
+                <input type="number" name="price-min" class="input_search-price min-1" placeholder="Nhập giá trị tối thiểu">
+                <input type="number" name="price-max" class="input_search-price max-1" placeholder="Nhập giá trị tối đa">
             </div>
             <button class="tk">Tìm Kiếm</button>
         </form>
@@ -76,26 +68,34 @@
             <p>các địa điểm thu hút ở việt nam</p>
         </div>
         <div class="location-content">
-            <div class="location-img">
-                <img src="./img/image6.png" alt="">
-                <h3>Hồ Chí Minh</h3>
-                <p>14.320 <span>Chỗ nghỉ</span> </p>
-            </div>
-            <div class="location-img">
-                <img src="./img/image7.png" alt="">
-                <h3>Vũng Tàu</h3>
-                <p>14.320 <span>Chỗ nghỉ</span> </p>
-            </div>
-            <div class="location-img">
-                <img src="./img/image8.png" alt="">
-                <h3>Đà Lạt</h3>
-                <p>14.320 <span>Chỗ nghỉ</span> </p>
-            </div>
-            <div class="location-img">
-                <img src="./img/image9.png" alt="">
-                <h3>Hà Nội</h3>
-                <p>14.320 <span>Chỗ nghỉ</span> </p>
-            </div>
+            <a href="./Location./HoChiMinh.html" target="_blank">
+                <div class="location-img">
+                    <img src="./img/image6.png" alt="">
+                    <h3>Hồ Chí Minh</h3>
+                    <p>14.320 <span>Chỗ nghỉ</span> </p>
+                </div>
+            </a>
+            <a href="./Location./Vungtau.html" target="_blank">
+                <div class="location-img">
+                    <img src="./img/image7.png" alt="">
+                    <h3>Vũng Tàu</h3>
+                    <p>14.320 <span>Chỗ nghỉ</span> </p>
+                </div>
+            </a>
+            <a href="./Location./Dalat.html" target="_blank">
+                <div class="location-img">
+                    <img src="./img/image8.png" alt="">
+                    <h3>Đà Lạt</h3>
+                    <p>14.320 <span>Chỗ nghỉ</span> </p>
+                </div>
+            </a>
+            <a href="./Location./Hanoi.html" target="_blank">
+                <div class="location-img">
+                    <img src="./img/image9.png" alt="">
+                    <h3>Hà Nội</h3>
+                    <p>14.320 <span>Chỗ nghỉ</span> </p>
+                </div>
+            </a>
         </div>
     </div>
 </section>
@@ -112,18 +112,18 @@
                 extract($phong);
                 ?>
                 <div class="body-item">
-                    <img src=".//<?= $avatar ?>" alt="">
+                    <a href="index.php?goto=detaiRooms_booking&id=<?= $ma_phong ?>"><img src=".//<?= $avatar ?>" alt=""></a>
                     <div class="">
                         <h3>
                             <?= $ten_phong ?>
                         </h3>
                         <em>Giá mỗi đêm rẻ từ</em>
                         <p>
-                            <?= number_format($gia, 0, ',', '.') ?> VND
+                            <?= number_format($gia, 0, ',', '.') ?> vnđ/1 đêm
                         </p>
                     </div>
                 </div>
-        <?php }
+            <?php }
             ?>
         </div>
     </div>

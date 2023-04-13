@@ -2,11 +2,18 @@
 	height: 31px;
 	width: 100px;
 	color: #fff;
-	background-color: #ff6b02;
+	background-color: #23958fd4;
 	border: none;
-	border-radius: 2px;
 	cursor: pointer;
-	/*margin: 15px;*/
+	margin: 10px 15px;
+}
+
+.btn-add {
+	margin-left: 10px;
+}
+
+.btn-add {
+	margin-left: 10px;
 }
 
 .btn:hover {
@@ -16,6 +23,7 @@
 .btn a {
 	color: #fff;
 	text-decoration: none;
+	margin: 10px 0;
 }
 
 
@@ -24,21 +32,40 @@
 	color: white;
 	/* border: none; */
 	padding: 5px 10px;
-	border-radius: 5px;
 	margin: auto;
 	border: 1px solid #ddd;
 }
 
+.btn-6 {
+	text-align: center;
+	padding: 5px 15px;
+	margin: auto;
+	/* border: 1px solid #ddd; */
+	color: white;
+	background-color: cornflowerblue;
+	/* border: none; */
+	background-image: linear-gradient(to right,
+			#25aae1,
+			#4481eb,
+			#04befe,
+			#3f86ed);
+	box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+	padding: 5px 10px;
+	margin: auto;
+	border: 1px solid #ddd;
+}
+
+.btn-6:hover {
+	cursor: pointer;
+}
 
 .btn_edit {
 	padding: 5px 15px;
 	margin: auto;
-	border-radius: 5px;
 	border: 1px solid #ddd;
 	color: white;
 	/* border: none; */
 	padding: 5px 10px;
-	border-radius: 5px;
 	margin: auto;
 	border: 1px solid #ddd;
 }

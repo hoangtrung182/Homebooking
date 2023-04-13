@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../Css/account.css">
 
 <body>
-    <h2>Danh sách tài khoản</h2>
+    <h2 class="form_title">DANH SÁCH TÀI KHOẢN</h2>
     <table border="1" cellspacing="0">
         <tr class="row">
             <th class="type">Mã khách hàng</th>
@@ -11,7 +11,7 @@
             <th class="type">Địa chỉ</th>
             <th class="type">Số điện thoại</th>
             <th class="type">Vai trò</th>
-            <th class="type"></th>
+            <th class="type" colspan="2">Thao tác</th>
             <th class="type"></th>
         </tr>
 
@@ -48,12 +48,12 @@
                     </td>
                     <td>
                         <a href="<?= $editAcc ?>">
-                            <input type="button" value="Edit" class="btn-hover btn5">
+                            <input type="button" value="Edit" class="btn btn_edit">
                         </a>
                     </td>
                     <td>
                         <a href="<?= $deleteAcc ?>">
-                            <input type="button" value="Delete" class="btn-hover btn5">
+                            <input type="button" value="Delete" class="btn btn_delete">
                         </a>
                     </td>
                 </tr>

@@ -1,11 +1,10 @@
-
 <body>
-	<h2 class="form_title">Danh sách tin tức</h2>
-	
+	<h2 class="form_title">DANH SÁCH TIN TỨC</h2>
+
 	<?php
-		$thongbao = isset($thongbao) ? $thongbao : '';
-		$thongbao_xoa = isset($thongbao_delete) ? $thongbao_delete : '';
-		$thongbao_sua = isset($thongbao_update) ? $thongbao_update : '';
+	$thongbao = isset($thongbao) ? $thongbao : '';
+	$thongbao_xoa = isset($thongbao_delete) ? $thongbao_delete : '';
+	$thongbao_sua = isset($thongbao_update) ? $thongbao_update : '';
 	?>
 	<p class="">
 		<?= $thongbao ?>
@@ -18,7 +17,7 @@
 	</p>
 	<!-- Thêm mới -->
 	<button class="btn">
-		<a  href="index.php?goto=addNews1">Thêm mới</a>
+		<a href="index.php?goto=addNews1">Thêm mới</a>
 	</button>
 
 	<!-- Table list products -->
@@ -46,21 +45,21 @@
 					<?= $ma_tin ?>
 				</td>
 				<td>
-					<?= $tieu_de ?>
+					<?= substr($tieu_de, 0, 70) ?>
 				</td>
 				<td>
 					<img src="<?= $hinh_anh ?>" style="width: 150px; height: 150px">
 				</td>
 				<td>
-					<?= $mo_ta ?>
+					<?= substr($mo_ta, 0, 70) ?>
 				</td>
 				<td>
-					<?= $noi_dung ?>
+					<?= substr($noi_dung, 0, 70) ?>
 				</td>
 				<td>
 					<?= $ngay_dang ?>
 				</td>
-				
+
 				<td class="thaotac">
 					<a href="<?= $editNews ?>">
 						<input type="button" value="Cập nhật" class="btn btn_edit">
