@@ -27,6 +27,6 @@
         <?php } ?>
     </table>
     <div>
-        <a href="index.php?goto=chart" class="btn-order1">Biểu đồ</a>
+        <a href="index.php?goto=chart" class="btn-order2">Biểu đồ</a>
     </div>
 </body>
